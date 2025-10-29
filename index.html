@@ -50,6 +50,12 @@
     footer{color:var(--muted); font-size:12px; padding:24px; text-align:center}
     a{color:var(--link); text-decoration:none}
     .pill{display:inline-block; padding:2px 8px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid var(--border); font-size:12px; color:var(--muted)}
+    button{
+      background:transparent; border:1px solid var(--border); color:var(--text);
+      padding:6px 10px; border-radius:8px; cursor:pointer; font-size:12px;
+    }
+    button:hover{border-color:#334155; background:rgba(255,255,255,0.03)}
+    .right{display:flex; flex-direction:column; gap:8px; align-items:flex-end}
   </style>
 </head>
 <body>
@@ -62,47 +68,109 @@
 
   <main class="wrap" style="padding:20px;">
     <section class="card">
-      <div class="section-title">Unread (1)</div>
-      <div class="item">
-        <div style="min-width:10px; padding-top:6px;"><span class="dot green"></span></div>
-        <div style="flex:1;">
-          <div class="title">MICHAEL HAYES (LaunchMate) — Update received Oct 27, 2025</div>
-          <div class="preview">Positioning shift: users thought ledger would replace meetings → reframed as making meetings more effective. Strong momentum.</div>
-          <div class="meta">
-            <span class="status"><span class="dot green"></span> Strong momentum</span>
-            <span class="pill">Agent ID: agent-23fe3eca-e949-48a0-b59e-5e832602047f</span>
-            <span class="pill">Next: Follow up with Jess</span>
-          </div>
-        </div>
-        <div><span class="badge">UNREAD</span></div>
-      </div>
+      <div class="section-title">Unread</div>
+      <div id="unread"></div>
     </section>
 
     <section class="card" style="margin-top:16px;">
       <div class="section-title">Read (Last 30 Days)</div>
-      <div class="item">
-        <div style="min-width:10px; padding-top:6px;"><span class="dot green"></span></div>
-        <div style="flex:1;">
-          <div class="title">WASAY ZAMAN (TransferTrack) — Oct 24, 2025</div>
-          <div class="preview">Followed referral strategy → 3 new paying customers (9 total). Scaling via word-of-mouth.</div>
-          <div class="meta">
-            <span class="status"><span class="dot green"></span> Steady growth</span>
-            <span class="pill">Agent ID: agent-a881e6da-02d8-4e7d-bf9b-757b6321c685</span>
-            <span class="pill">Marked Read: Oct 25, 2025</span>
-          </div>
-        </div>
-        <div><span class="badge">READ</span></div>
+      <div id="read"></div>
+      <div style="margin-top:10px">
+        <a href="#" id="reset">Reset local read state</a>
       </div>
     </section>
 
     <section class="card" style="margin-top:16px;">
       <div class="section-title">About this Inbox</div>
-      <p style="margin-top:6px; color:var(--muted)">This page shows agent-initiated updates so they don’t get lost in chat history. Unread items are displayed first. Want additional founders listed? Add their agent IDs to the system.</p>
+      <p style="margin-top:6px; color:var(--muted)">This page shows agent-initiated updates so they don’t get lost in chat history. Use “Mark as Read” to move items below. State persists in your browser via localStorage. For global persistence across devices, we can wire this to a small API or GitHub Action.</p>
     </section>
   </main>
 
   <footer>
     Built for Craig Lauer — ZIP Launchpad. Need changes? Open a PR at golaunchmate/craig-founders.
   </footer>
+
+  <script>
+    const DATA = [
+      {
+        id: 'michael-2025-10-27',
+        founder: 'MICHAEL HAYES (LaunchMate)',
+        date: 'Oct 27, 2025',
+        status: 'Strong momentum',
+        statusColor: 'green',
+        preview: 'Positioning shift: users thought ledger would replace meetings → reframed as making meetings more effective. Strong momentum.',
+        pills: [
+          'Agent ID: agent-23fe3eca-e949-48a0-b59e-5e832602047f',
+          'Next: Follow up with Jess'
+        ],
+        unread: true
+      },
+      {
+        id: 'wasay-2025-10-24',
+        founder: 'WASAY ZAMAN (TransferTrack)',
+        date: 'Oct 24, 2025',
+        status: 'Steady growth',
+        statusColor: 'green',
+        preview: 'Followed referral strategy → 3 new paying customers (9 total). Scaling via word-of-mouth.',
+        pills: [
+          'Agent ID: agent-a881e6da-a881e6da-a881e6da',
+          'Marked Read: Oct 25, 2025'
+        ],
+        unread: false
+      }
+    ];
+
+    const STORAGE_KEY = 'craig_inbox_read_ids_v1';
+    const readIds = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
+
+    function render(){
+      const unreadEl = document.getElementById('unread');
+      const readEl = document.getElementById('read');
+      unreadEl.innerHTML = '';
+      readEl.innerHTML = '';
+
+      DATA.forEach(msg => {
+        const isRead = readIds.has(msg.id) || !msg.unread;
+        const item = document.createElement('div');
+        item.className = 'item';
+        item.innerHTML = `
+          <div style="min-width:10px; padding-top:6px;"><span class="dot ${msg.statusColor}"></span></div>
+          <div style="flex:1;">
+            <div class="title">${msg.founder} — ${msg.unread && !isRead ? 'Update received' : ''} ${msg.date}</div>
+            <div class="preview">${msg.preview}</div>
+            <div class="meta">
+              <span class="status"><span class="dot ${msg.statusColor}"></span> ${msg.status}</span>
+              ${msg.pills.map(p => `<span class="pill">${p}</span>`).join('')}
+            </div>
+          </div>
+          <div class="right">
+            <span class="badge">${isRead ? 'READ' : 'UNREAD'}</span>
+            ${!isRead ? `<button data-id="${msg.id}">Mark as Read</button>` : ''}
+          </div>
+        `;
+
+        if(isRead){ readEl.appendChild(item); } else { unreadEl.appendChild(item); }
+      });
+
+      // attach handlers
+      document.querySelectorAll('button[data-id]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-id');
+          readIds.add(id);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify([...readIds]));
+          render();
+        });
+      });
+    }
+
+    document.getElementById('reset').addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem(STORAGE_KEY);
+      readIds.clear();
+      render();
+    });
+
+    render();
+  </script>
 </body>
 </html>
