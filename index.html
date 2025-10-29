@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Craig's Agent Inbox</title>
+  <style>
+    :root{
+      --bg:#0f172a; /* slate-900 */
+      --card:#111827; /* gray-900 */
+      --muted:#94a3b8; /* slate-400 */
+      --text:#e5e7eb; /* gray-200 */
+      --accent:#22c55e; /* green-500 */
+      --warning:#f59e0b; /* amber-500 */
+      --danger:#ef4444; /* red-500 */
+      --border:#1f2937; /* gray-800 */
+      --link:#60a5fa; /* blue-400 */
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
+      color:var(--text);
+    }
+    header{
+      padding:24px 20px; border-bottom:1px solid var(--border);
+      position:sticky; top:0; backdrop-filter:saturate(150%) blur(6px); background:rgba(15,23,42,0.7);
+    }
+    .wrap{max-width:920px; margin:0 auto;}
+    h1{font-size:24px; margin:0 0 6px 0}
+    .sub{color:var(--muted); font-size:14px}
+    .grid{display:grid; gap:16px; grid-template-columns: 1fr;}
+    @media(min-width:900px){.grid{grid-template-columns: 1fr 1fr}}
+    .card{
+      background:radial-gradient(1200px 600px at 100% -20%, rgba(96,165,250,.08), transparent 60%),
+                linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      border:1px solid var(--border); border-radius:12px; padding:16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .section-title{font-size:14px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; margin:0 0 10px}
+    .item{display:flex; gap:12px; padding:12px; border:1px dashed var(--border); border-radius:10px; align-items:flex-start; background:rgba(255,255,255,0.01)}
+    .badge{font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--border); color:var(--muted)}
+    .status{display:inline-flex; align-items:center; gap:6px; font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--border)}
+    .dot{width:8px; height:8px; border-radius:50%}
+    .green{background:var(--accent)} .yellow{background:var(--warning)} .red{background:var(--danger)}
+    .meta{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
+    .agent{color:var(--muted); font-size:12px}
+    .title{font-weight:600}
+    .preview{color:var(--muted)}
+    footer{color:var(--muted); font-size:12px; padding:24px; text-align:center}
+    a{color:var(--link); text-decoration:none}
+    .pill{display:inline-block; padding:2px 8px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid var(--border); font-size:12px; color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Craig's Agent Inbox</h1>
+      <div class="sub">Live view of agent-initiated updates. Last updated: Oct 29, 2025</div>
+    </div>
+  </header>
 
+  <main class="wrap" style="padding:20px;">
+    <section class="card">
+      <div class="section-title">Unread (1)</div>
+      <div class="item">
+        <div style="min-width:10px; padding-top:6px;"><span class="dot green"></span></div>
+        <div style="flex:1;">
+          <div class="title">MICHAEL HAYES (LaunchMate) — Update received Oct 27, 2025</div>
+          <div class="preview">Positioning shift: users thought ledger would replace meetings → reframed as making meetings more effective. Strong momentum.</div>
+          <div class="meta">
+            <span class="status"><span class="dot green"></span> Strong momentum</span>
+            <span class="pill">Agent ID: agent-23fe3eca-e949-48a0-b59e-5e832602047f</span>
+            <span class="pill">Next: Follow up with Jess</span>
+          </div>
+        </div>
+        <div><span class="badge">UNREAD</span></div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:16px;">
+      <div class="section-title">Read (Last 30 Days)</div>
+      <div class="item">
+        <div style="min-width:10px; padding-top:6px;"><span class="dot green"></span></div>
+        <div style="flex:1;">
+          <div class="title">WASAY ZAMAN (TransferTrack) — Oct 24, 2025</div>
+          <div class="preview">Followed referral strategy → 3 new paying customers (9 total). Scaling via word-of-mouth.</div>
+          <div class="meta">
+            <span class="status"><span class="dot green"></span> Steady growth</span>
+            <span class="pill">Agent ID: agent-a881e6da-02d8-4e7d-bf9b-757b6321c685</span>
+            <span class="pill">Marked Read: Oct 25, 2025</span>
+          </div>
+        </div>
+        <div><span class="badge">READ</span></div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:16px;">
+      <div class="section-title">About this Inbox</div>
+      <p style="margin-top:6px; color:var(--muted)">This page shows agent-initiated updates so they don’t get lost in chat history. Unread items are displayed first. Want additional founders listed? Add their agent IDs to the system.</p>
+    </section>
+  </main>
+
+  <footer>
+    Built for Craig Lauer — ZIP Launchpad. Need changes? Open a PR at golaunchmate/craig-founders.
+  </footer>
+</body>
+</html>
