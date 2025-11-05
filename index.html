@@ -1,176 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Craig's Agent Inbox</title>
-  <style>
-    :root{
-      --bg:#0f172a; /* slate-900 */
-      --card:#111827; /* gray-900 */
-      --muted:#94a3b8; /* slate-400 */
-      --text:#e5e7eb; /* gray-200 */
-      --accent:#22c55e; /* green-500 */
-      --warning:#f59e0b; /* amber-500 */
-      --danger:#ef4444; /* red-500 */
-      --border:#1f2937; /* gray-800 */
-      --link:#60a5fa; /* blue-400 */
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
-      color:var(--text);
-    }
-    header{
-      padding:24px 20px; border-bottom:1px solid var(--border);
-      position:sticky; top:0; backdrop-filter:saturate(150%) blur(6px); background:rgba(15,23,42,0.7);
-    }
-    .wrap{max-width:920px; margin:0 auto;}
-    h1{font-size:24px; margin:0 0 6px 0}
-    .sub{color:var(--muted); font-size:14px}
-    .grid{display:grid; gap:16px; grid-template-columns: 1fr;}
-    @media(min-width:900px){.grid{grid-template-columns: 1fr 1fr}}
-    .card{
-      background:radial-gradient(1200px 600px at 100% -20%, rgba(96,165,250,.08), transparent 60%),
-                linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
-      border:1px solid var(--border); border-radius:12px; padding:16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    .section-title{font-size:14px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; margin:0 0 10px}
-    .item{display:flex; gap:12px; padding:12px; border:1px dashed var(--border); border-radius:10px; align-items:flex-start; background:rgba(255,255,255,0.01)}
-    .badge{font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--border); color:var(--muted)}
-    .status{display:inline-flex; align-items:center; gap:6px; font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--border)}
-    .dot{width:8px; height:8px; border-radius:50%}
-    .green{background:var(--accent)} .yellow{background:var(--warning)} .red{background:var(--danger)}
-    .meta{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
-    .agent{color:var(--muted); font-size:12px}
-    .title{font-weight:600}
-    .preview{color:var(--muted)}
-    footer{color:var(--muted); font-size:12px; padding:24px; text-align:center}
-    a{color:var(--link); text-decoration:none}
-    .pill{display:inline-block; padding:2px 8px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid var(--border); font-size:12px; color:var(--muted)}
-    button{
-      background:transparent; border:1px solid var(--border); color:var(--text);
-      padding:6px 10px; border-radius:8px; cursor:pointer; font-size:12px;
-    }
-    button:hover{border-color:#334155; background:rgba(255,255,255,0.03)}
-    .right{display:flex; flex-direction:column; gap:8px; align-items:flex-end}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craig's Founder Inbox - Nov 5, 2025</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin: 0 0 10px 0;
+            color: #1a1a1a;
+        }
+        .timestamp {
+            color: #666;
+            font-size: 14px;
+        }
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        .message {
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #ddd;
+        }
+        .message.unread {
+            background: #fff9e6;
+            border-left-color: #ffa726;
+        }
+        .message.read {
+            background: #f9f9f9;
+            border-left-color: #ccc;
+        }
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .founder-name {
+            font-weight: 600;
+            font-size: 16px;
+            color: #1a1a1a;
+        }
+        .status {
+            font-size: 20px;
+        }
+        .date {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .agent-id {
+            color: #888;
+            font-size: 12px;
+            font-family: monospace;
+            margin-bottom: 10px;
+        }
+        .preview {
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .status-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .status-green {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .status-yellow {
+            background: #fff9e6;
+            color: #f57c00;
+        }
+        .status-red {
+            background: #ffebee;
+            color: #c62828;
+        }
+        .key-info {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .empty {
+            color: #999;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <h1>Craig's Agent Inbox</h1>
-      <div class="sub">Live view of agent-initiated updates. Last updated: Oct 29, 2025</div>
+    <div class="header">
+        <h1>📬 Founder Inbox</h1>
+        <div class="timestamp">Last Updated: November 5, 2025</div>
     </div>
-  </header>
 
-  <main class="wrap" style="padding:20px;">
-    <section class="card">
-      <div class="section-title">Unread</div>
-      <div id="unread"></div>
-    </section>
-
-    <section class="card" style="margin-top:16px;">
-      <div class="section-title">Read (Last 30 Days)</div>
-      <div id="read"></div>
-      <div style="margin-top:10px">
-        <a href="#" id="reset">Reset local read state</a>
-      </div>
-    </section>
-
-    <section class="card" style="margin-top:16px;">
-      <div class="section-title">About this Inbox</div>
-      <p style="margin-top:6px; color:var(--muted)">This page shows agent-initiated updates so they don’t get lost in chat history. Use “Mark as Read” to move items below. State persists in your browser via localStorage. For global persistence across devices, we can wire this to a small API or GitHub Action.</p>
-    </section>
-  </main>
-
-  <footer>
-    Built for Craig Lauer — ZIP Launchpad. Need changes? Open a PR at golaunchmate/craig-founders.
-  </footer>
-
-  <script>
-    const DATA = [
-      {
-        id: 'michael-2025-10-27',
-        founder: 'MICHAEL HAYES (LaunchMate)',
-        date: 'Oct 27, 2025',
-        status: 'Strong momentum',
-        statusColor: 'green',
-        preview: 'Positioning shift: users thought ledger would replace meetings → reframed as making meetings more effective. Strong momentum.',
-        pills: [
-          'Agent ID: agent-23fe3eca-e949-48a0-b59e-5e832602047f',
-          'Next: Follow up with Jess'
-        ],
-        unread: true
-      },
-      {
-        id: 'wasay-2025-10-24',
-        founder: 'WASAY ZAMAN (TransferTrack)',
-        date: 'Oct 24, 2025',
-        status: 'Steady growth',
-        statusColor: 'green',
-        preview: 'Followed referral strategy → 3 new paying customers (9 total). Scaling via word-of-mouth.',
-        pills: [
-          'Agent ID: agent-a881e6da-a881e6da-a881e6da',
-          'Marked Read: Oct 25, 2025'
-        ],
-        unread: false
-      }
-    ];
-
-    const STORAGE_KEY = 'craig_inbox_read_ids_v1';
-    const readIds = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
-
-    function render(){
-      const unreadEl = document.getElementById('unread');
-      const readEl = document.getElementById('read');
-      unreadEl.innerHTML = '';
-      readEl.innerHTML = '';
-
-      DATA.forEach(msg => {
-        const isRead = readIds.has(msg.id) || !msg.unread;
-        const item = document.createElement('div');
-        item.className = 'item';
-        item.innerHTML = `
-          <div style="min-width:10px; padding-top:6px;"><span class="dot ${msg.statusColor}"></span></div>
-          <div style="flex:1;">
-            <div class="title">${msg.founder} — ${msg.unread && !isRead ? 'Update received' : ''} ${msg.date}</div>
-            <div class="preview">${msg.preview}</div>
-            <div class="meta">
-              <span class="status"><span class="dot ${msg.statusColor}"></span> ${msg.status}</span>
-              ${msg.pills.map(p => `<span class="pill">${p}</span>`).join('')}
+    <div class="section">
+        <div class="section-title">📬 Unread Messages (1)</div>
+        
+        <div class="message unread">
+            <div class="message-header">
+                <div class="founder-name">Vineeta Khanna - HerHealth AI</div>
+                <div class="status">🟡</div>
             </div>
-          </div>
-          <div class="right">
-            <span class="badge">${isRead ? 'READ' : 'UNREAD'}</span>
-            ${!isRead ? `<button data-id="${msg.id}">Mark as Read</button>` : ''}
-          </div>
-        `;
+            <div class="date">October 31, 2025</div>
+            <div class="agent-id">Agent: agent-f080eb59-139c-4846-b271-d983137980a4</div>
+            <div class="status-label status-yellow">🟡 MAJOR PROGRESS - Critical Gap</div>
+            <div class="preview">
+                <strong>BREAKTHROUGH:</strong> Manually delivered service to 1 user (pad image analysis, PCOD indicators) → User "agreed to pay when launches"
+            </div>
+            <div class="key-info">
+                <strong>Neal Test Status:</strong> Manual delivery ✓ / Actual payment ✗<br>
+                <strong>Critical Gap:</strong> "Agreed to pay later" ≠ actual payment (Neal Test incomplete)<br>
+                <strong>Key Question:</strong> Why didn't she charge for service already delivered?<br>
+                <strong>Next Step:</strong> Charge UPFRONT for next 4-5 manual deliveries ($10-15 each)<br>
+                <strong>Deadline:</strong> November 8, 2025 (3 days)
+            </div>
+        </div>
+    </div>
 
-        if(isRead){ readEl.appendChild(item); } else { unreadEl.appendChild(item); }
-      });
+    <div class="section">
+        <div class="section-title">📖 Read Messages (Last 30 Days)</div>
+        
+        <div class="message read">
+            <div class="message-header">
+                <div class="founder-name">Kavindi Seneviratne - Foodie</div>
+                <div class="status">🟩</div>
+            </div>
+            <div class="date">October 31, 2025 • Marked Read: November 5, 2025</div>
+            <div class="agent-id">Agent: agent-99455166-ec2a-46e0-b929-ee16f83f13a0</div>
+            <div class="status-label status-green">🟩 EXCEPTIONAL VALIDATION DISCIPLINE</div>
+            <div class="preview">
+                Alpha complete (11 tests) → Beta phase (strangers as planners)
+            </div>
+            <div class="key-info">
+                <strong>Action Taken:</strong> Loom recorded Nov 5 (quality measurement gap, bias identification)<br>
+                <strong>Commitment:</strong> 5 Beta tests by November 8, 2025
+            </div>
+        </div>
 
-      // attach handlers
-      document.querySelectorAll('button[data-id]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const id = btn.getAttribute('data-id');
-          readIds.add(id);
-          localStorage.setItem(STORAGE_KEY, JSON.stringify([...readIds]));
-          render();
-        });
-      });
-    }
-
-    document.getElementById('reset').addEventListener('click', (e) => {
-      e.preventDefault();
-      localStorage.removeItem(STORAGE_KEY);
-      readIds.clear();
-      render();
-    });
-
-    render();
-  </script>
+        <div class="message read">
+            <div class="message-header">
+                <div class="founder-name">Wasay Zaman - TransferTrack</div>
+                <div class="status">🟩</div>
+            </div>
+            <div class="date">October 24, 2025 • Marked Read: October 25, 2025</div>
+            <div class="agent-id">Agent: agent-a881e6da-02d8-4e7d-bf9b-757b6321c685</div>
+            <div class="status-label status-green">🟩 STEADY GROWTH</div>
+            <div class="preview">
+                Followed referral advice → 3 new paying customers → 9 total now
+            </div>
+            <div class="key-info">
+                <strong>Status:</strong> Referral engine validated and working
+            </div>
+        </div>
+    </div>
 </body>
 </html>
