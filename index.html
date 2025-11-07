@@ -65,6 +65,71 @@
             border-left: 5px solid #667eea;
         }
         
+        .deadline-section {
+            background: #fef2f2;
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .deadline-section.today {
+            background: #fef3c7;
+            border-color: #f59e0b;
+        }
+        
+        .deadline-section.upcoming {
+            background: #dbeafe;
+            border-color: #3b82f6;
+        }
+        
+        .deadline-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .deadline-item {
+            background: white;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border-left: 4px solid #ccc;
+        }
+        
+        .deadline-item.overdue {
+            border-left-color: #ef4444;
+        }
+        
+        .deadline-item.today {
+            border-left-color: #f59e0b;
+        }
+        
+        .deadline-item.upcoming {
+            border-left-color: #3b82f6;
+        }
+        
+        .deadline-team {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .deadline-detail {
+            font-size: 0.9em;
+            color: #666;
+            margin: 3px 0;
+        }
+        
+        .deadline-status {
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
         .team-card {
             background: #f8f9fa;
             border-radius: 8px;
@@ -260,6 +325,88 @@
             <p style="margin-top: 10px;"><em>If they won't pay for manual delivery, they won't pay for software.</em></p>
         </div>
         
+        <!-- COMMITMENT DEADLINES -->
+        <div class="section">
+            <h2 class="section-title">⏰ Active Commitment Tracker</h2>
+            
+            <div class="deadline-section">
+                <div class="deadline-title" style="color: #991b1b;">
+                    🔴 OVERDUE COMMITMENTS
+                </div>
+                
+                <div class="deadline-item overdue">
+                    <div class="deadline-team">Wayvlo (Daniel Generalov)</div>
+                    <div class="deadline-detail">📅 Deadline: Oct 14, 9 PM PST (24 days overdue)</div>
+                    <div class="deadline-detail">💼 Commitment: Payment collection for manual service delivery</div>
+                    <div class="deadline-status" style="color: #ef4444;">Status: Unknown - 28 days since last check-in</div>
+                </div>
+                
+                <div class="deadline-item overdue">
+                    <div class="deadline-team">Academic Advisor AI (Robert)</div>
+                    <div class="deadline-detail">📅 Deadline: Oct 30 (8 days overdue)</div>
+                    <div class="deadline-detail">💼 Commitment: Dean handoff with fully functional prototype</div>
+                    <div class="deadline-status" style="color: #ef4444;">Status: Unknown - last update Oct 21</div>
+                </div>
+                
+                <div class="deadline-item overdue">
+                    <div class="deadline-team">University Valet (Nick Bernal)</div>
+                    <div class="deadline-detail">📅 Deadline: Oct 31 (7 days overdue)</div>
+                    <div class="deadline-detail">💼 Commitment: 1 upfront deposit</div>
+                    <div class="deadline-status" style="color: #ef4444;">Status: Alumni Center event completed, but payment was POST-service (weak validation)</div>
+                </div>
+            </div>
+            
+            <div class="deadline-section today">
+                <div class="deadline-title" style="color: #92400e;">
+                    ⚡ DUE TODAY (Nov 7, 2025)
+                </div>
+                
+                <div class="deadline-item today">
+                    <div class="deadline-team">T-Squeeze (Holland & Thaddeus)</div>
+                    <div class="deadline-detail">📅 Deadline: Nov 7 (TODAY)</div>
+                    <div class="deadline-detail">💼 Commitment: 5 sales, 2+ SD locations, simplified poster, Bitly tracking</div>
+                    <div class="deadline-status" style="color: #f59e0b;">Status: Follow-up sent Nov 6, awaiting confirmation</div>
+                </div>
+                
+                <div class="deadline-item today">
+                    <div class="deadline-team">Second Course (Daniel Self & Gavin Bartow)</div>
+                    <div class="deadline-detail">📅 Deadline: Nov 7 (TODAY)</div>
+                    <div class="deadline-detail">💼 Commitment: Get 10 clubs signed as food sources</div>
+                    <div class="deadline-status" style="color: #ef4444;">Status: RADIO SILENCE - Ghosted since Oct 31 commitment</div>
+                </div>
+                
+                <div class="deadline-item today">
+                    <div class="deadline-team">Period Tracker (Vineeta)</div>
+                    <div class="deadline-detail">📅 Deadline: Nov 7 (TODAY)</div>
+                    <div class="deadline-detail">💼 Commitment: 10 photo submissions from strangers</div>
+                    <div class="deadline-status" style="color: #f59e0b;">Status: Agent contacted Nov 7, awaiting response</div>
+                </div>
+            </div>
+            
+            <div class="deadline-section upcoming">
+                <div class="deadline-title" style="color: #1e40af;">
+                    📅 UPCOMING COMMITMENTS
+                </div>
+                
+                <div class="deadline-item upcoming">
+                    <div class="deadline-team">Foodie App (Kavindi) - Craig's Mentee</div>
+                    <div class="deadline-detail">📅 Deadline: Nov 8 (TOMORROW)</div>
+                    <div class="deadline-detail">💼 Commitment: 5 Beta tests with strangers</div>
+                    <div class="deadline-status" style="color: #f59e0b;">Status: Craig sent Loom Nov 5, no response (2 days silent)</div>
+                </div>
+            </div>
+            
+            <div style="background: #f3f4f6; padding: 15px; border-radius: 6px; margin-top: 20px;">
+                <div style="font-weight: bold; margin-bottom: 8px;">📊 Commitment Summary:</div>
+                <div style="font-size: 0.95em; color: #666;">
+                    • 3 teams overdue (Wayvlo, Academic Advisor AI, University Valet)<br>
+                    • 3 teams due TODAY (T-Squeeze, Second Course, Vineeta)<br>
+                    • 1 team due tomorrow (Kavindi)<br>
+                    • Vital Tidal: Passed Neal Test but stalled with no clear next commitment
+                </div>
+            </div>
+        </div>
+        
         <div class="summary-stats">
             <div class="stat-card">
                 <div class="stat-number">2</div>
@@ -292,6 +439,7 @@
                     <div class="detail-row"><span class="detail-label">Component 1:</span> ✅ Manual product creation + 6 taste tests</div>
                     <div class="detail-row"><span class="detail-label">Component 2:</span> ✅ Sold to 1-2 customers (payment collected)</div>
                     <div class="detail-row"><span class="detail-label">Current Status:</span> Post-breakthrough stall - Oct 13 excuse pattern emerging (ingredient sourcing)</div>
+                    <div class="detail-row"><span class="detail-label">Next Commitment:</span> No clear deadline set</div>
                 </div>
             </div>
             
@@ -311,7 +459,7 @@
                 </div>
                 <div class="commitment-box">
                     <div class="commitment-text"><strong>Oct 31 Commitment:</strong> 5 sales by Nov 7, 2+ SD locations, simplified poster, Bitly tracking</div>
-                    <div class="commitment-status pending">Status: Pending verification (follow-up sent Nov 6)</div>
+                    <div class="commitment-status pending">⚡ DUE TODAY - Awaiting verification (follow-up sent Nov 6)</div>
                 </div>
             </div>
         </div>
@@ -333,7 +481,10 @@
                     <div class="detail-row"><span class="detail-label">Component 1:</span> ✅ Manual service delivery to club tennis</div>
                     <div class="detail-row"><span class="detail-label">Component 2:</span> ❓ Payment deadline was Oct 14, 9 PM PST (status unknown)</div>
                     <div class="detail-row"><span class="detail-label">Pivot:</span> Breakthrough from builder trap to active user discovery</div>
-                    <div class="detail-row"><span class="detail-label">Action Needed:</span> Confirmation of payment collection status</div>
+                </div>
+                <div class="commitment-box">
+                    <div class="commitment-text"><strong>Commitment:</strong> Payment collection by Oct 14, 9 PM PST</div>
+                    <div class="commitment-status missed">🔴 24 DAYS OVERDUE - No confirmation of payment status</div>
                 </div>
             </div>
             
@@ -349,8 +500,11 @@
                     <div class="detail-row"><span class="detail-label">Last Update:</span> October 21, 2025</div>
                     <div class="detail-row"><span class="detail-label">Component 1:</span> 🟡 Focus group + prototype testing planned</div>
                     <div class="detail-row"><span class="detail-label">Component 2:</span> 🟡 Testing willingness to pay with business students</div>
-                    <div class="detail-row"><span class="detail-label">Milestone:</span> Oct 30 dean handoff target (fully functional prototype)</div>
                     <div class="detail-row"><span class="detail-label">Current Status:</span> Strong momentum - resolved technical blockers, focused on validation</div>
+                </div>
+                <div class="commitment-box">
+                    <div class="commitment-text"><strong>Commitment:</strong> Oct 30 dean handoff (fully functional prototype)</div>
+                    <div class="commitment-status missed">🔴 8 DAYS OVERDUE - Status unknown</div>
                 </div>
             </div>
             
@@ -367,7 +521,10 @@
                     <div class="detail-row"><span class="detail-label">Component 1:</span> ✅ Alumni Center event end of Oct (operational ready)</div>
                     <div class="detail-row"><span class="detail-label">Component 2:</span> ❌ $700 payment POST-service, not upfront</div>
                     <div class="detail-row"><span class="detail-label">Red Flag:</span> Hiding in operational perfection while sales stall</div>
-                    <div class="detail-row"><span class="detail-label">Action Needed:</span> 5 campus organizer outreach, 1 upfront deposit by Oct 31</div>
+                </div>
+                <div class="commitment-box">
+                    <div class="commitment-text"><strong>Commitment:</strong> 5 campus organizer outreach, 1 upfront deposit by Oct 31</div>
+                    <div class="commitment-status missed">🔴 7 DAYS OVERDUE - Payment collected POST-service (weak signal)</div>
                 </div>
             </div>
         </div>
@@ -393,7 +550,8 @@
                 </div>
                 <div class="commitment-box">
                     <div class="commitment-text"><strong>Oct 15 Commitment:</strong> App Store submission (building) → ✅ DELIVERED</div>
-                    <div class="commitment-text"><strong>Oct 31 Commitment:</strong> Get 10 clubs signed as food sources by Nov 7 (customers) → <span class="commitment-status missed">❌ RADIO SILENCE</span></div>
+                    <div class="commitment-text"><strong>Oct 31 Commitment:</strong> Get 10 clubs signed as food sources by Nov 7 (customers)</div>
+                    <div class="commitment-status missed">⚡ DUE TODAY - RADIO SILENCE SINCE OCT 31</div>
                     <div style="margin-top: 10px; padding: 10px; background: #fee2e2; border-radius: 4px;">
                         <strong style="color: #991b1b;">Accountability Gap:</strong> ONLY team with zero customer validation after 2+ months. Missed 3+ customer commitments while delivering all building commitments.
                     </div>
