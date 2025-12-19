@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paige's Week | December 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            max-width: 640px;
+            width: 100%;
+            min-height: 70vh;
+            padding: 50px 45px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 28px;
+            line-height: 1.3;
+        }
+
+        .page-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+        }
+
+        .page-content p {
+            margin-bottom: 1.2em;
+        }
+
+        .highlight {
+            color: #60a5fa;
+            font-weight: 500;
+        }
+
+        .decision {
+            color: #34d399;
+            font-weight: 500;
+        }
+
+        .tension {
+            color: #f97316;
+            font-weight: 500;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 25px;
+            right: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #4a4a4a;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #4a4a4a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        .scroll-hint svg {
+            width: 20px;
+            height: 20px;
+            margin-top: 6px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .cover-page .card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #1e1e3f 100%);
+            border-color: #2a2a4a;
+            text-align: center;
+        }
+
+        .cover-page .page-title {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .cover-page .subtitle {
+            font-size: 1.1rem;
+            color: #8b8ba7;
+            margin-bottom: 8px;
+        }
+
+        .cover-page .date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .final-page .card {
+            text-align: center;
+        }
+
+        .takeaway-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #2a2a2a;
+            color: #34d399;
+            font-weight: 500;
+        }
+
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+
+        .code-block {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 16px 0;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 35px 25px;
+                min-height: 80vh;
+            }
+            .page-title {
+                font-size: 1.5rem;
+            }
+            .page-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cover Page -->
+    <section class="page cover-page">
+        <div class="card">
+            <p class="section-label">Weekly Update</p>
+            <h1 class="page-title">Paige's Week</h1>
+            <p class="subtitle">From Setup Friction to Agent Autonomy</p>
+            <p class="date">December 2025 // scroll to read</p>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 1: Context -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Starting Point</p>
+            <h2 class="page-title">The core problem hasn't changed</h2>
+            <div class="page-content">
+                <p>Came into the week with the same thing on my mind: <span class="tension">students showed apprehension toward using Launchmate last semester.</span></p>
+                <p>The goal is still the same—figure out how to make agents genuinely useful so students WANT to use them, not because mentors are forcing it.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">1/6</span>
+        </div>
+    </section>
+
+    <!-- Page 2: Early Week -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Early Week</p>
+            <h2 class="page-title">Nailing the onboarding</h2>
+            <div class="page-content">
+                <p>Dove into designing the onboarding sequence. Built a <span class="highlight">5-question framework mapped to memory blocks</span> (founder_profile, business_context, ecosystem_map).</p>
+                <p>Added "trust checkpoints" after every 3-4 pieces of info—show students what the agent captured, prove it's retaining context, address the skepticism problem directly.</p>
+                <p>Then extended beyond onboarding: created <span class="highlight">10 "crisis-mode capabilities"</span> (Unblock Me, Gut Check, Prepare Me, etc.) with detection logic so agents can contextually suggest help when needed.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">2/6</span>
+        </div>
+    </section>
+
+    <!-- Page 3: The Friction -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Mid-Week Shift</p>
+            <h2 class="page-title">Setup friction became the blocker</h2>
+            <div class="page-content">
+                <p>Realized the onboarding questions, while well-designed, <span class="tension">still felt like WORK.</span> Students are busy, backgrounds vary—if building up context feels like a burden, they won't finish setup at all.</p>
+                <p>Classic trap: <span class="tension">need context to be useful</span> (address skepticism), but <span class="tension">gathering context creates friction</span> (causes drop-off).</p>
+                <p>Started exploring pre-loading: what if agents could ingest info students already provided elsewhere? Applications, intake transcripts, analysis docs.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">3/6</span>
+        </div>
+    </section>
+
+    <!-- Page 4: Reality Check -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Problem</p>
+            <h2 class="page-title">Then I hit reality</h2>
+            <div class="page-content">
+                <p>Designed a JSON schema for what pre-load data should look like. Then realized: <span class="tension">no structured database exists.</span></p>
+                <p>All the source material is unstructured—transcripts, documents, mixed formats. So I started thinking about extraction pipelines, staff pre-processing documents...</p>
+                <p>It was getting complicated fast.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">4/6</span>
+        </div>
+    </section>
+
+    <!-- Page 5: Breakthrough -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Late Week Breakthrough</p>
+            <h2 class="page-title">Let the agent do the work</h2>
+            <div class="page-content">
+                <p>Had an "obvious in hindsight" realization: <span class="decision">why build extraction pipelines? The agent can just... read the documents itself.</span></p>
+                <p>Instead of:</p>
+                <div class="code-block">Documents → extraction tool → structured data → agent → student confirms</div>
+                <p>Just do:</p>
+                <div class="code-block">Documents → agent reads & organizes → student confirms</div>
+                <p>Agent receives PDFs, transcripts, pitch decks on initialization. It decides what's relevant. First interaction shows pre-loaded context with 3-4 targeted questions to fill gaps. <span class="decision">Total student time: 3-5 minutes instead of 15+.</span></p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">5/6</span>
+        </div>
+    </section>
+
+    <!-- Page 6: Current State -->
+    <section class="page final-page">
+        <div class="card">
+            <p class="section-label">Where I Am Now</p>
+            <h2 class="page-title">Simpler is stronger</h2>
+            <div class="page-content">
+                <p>Architecture shifted from "how do we structure data FOR the agent" to <span class="decision">"let the agent structure data ITSELF."</span></p>
+                <p>More elegant, scales better, removes friction at every level. Same process works for 5 students or 500.</p>
+                <p>Now exploring whether Letta supports document processing on initialization, and designing what that first "trust checkpoint" interaction looks like.</p>
+                <ul class="takeaway-list">
+                    <li>Removed staff bottleneck</li>
+                    <li>Removed extraction complexity</li>
+                    <li>Agent owns its context-building</li>
+                </ul>
+                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">Feels like a breakthrough moment—the kind where you realize you were overcomplicating it and the simpler approach is actually stronger.</p>
+            </div>
+            <span class="page-number">6/6</span>
+        </div>
+    </section>
+
+</body>
+</html>
