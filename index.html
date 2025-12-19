@@ -3,313 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Craig's Week | December 11-19, 2025</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Weekly Mirror | Design Thinking</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: #0f0f0f;
-            color: #e0e0e0;
-            overflow-x: hidden;
-        }
-
-        .page {
-            min-height: 100vh;
-            scroll-snap-align: start;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
             padding: 40px 20px;
+            background: #fafafa;
         }
-
-        .card {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #111; }
+        h2 { font-size: 1.5rem; margin: 2rem 0 1rem; color: #222; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+        h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; color: #444; }
+        p { margin-bottom: 1rem; }
+        .subtitle { font-size: 1.2rem; color: #666; margin-bottom: 2rem; }
+        .insight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
             border-radius: 12px;
-            max-width: 640px;
+            margin: 2rem 0;
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+        .insight-box em { font-style: normal; opacity: 0.9; }
+        blockquote {
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #555;
+        }
+        table {
             width: 100%;
-            min-height: 70vh;
-            padding: 50px 45px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            border-collapse: collapse;
+            margin: 1rem 0;
         }
-
-        .section-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        th { background: #f5f5f5; font-weight: 600; }
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #6b7280;
-            margin-bottom: 12px;
         }
-
-        .page-title {
-            font-size: 1.75rem;
+        .motivator { background: #d4edda; color: #155724; }
+        .hygiene { background: #fff3cd; color: #856404; }
+        ul { margin: 1rem 0 1rem 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        .callout {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 1.5rem 0;
+        }
+        .one-liner {
+            font-size: 1.4rem;
             font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 28px;
-            line-height: 1.3;
-        }
-
-        .page-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #b0b0b0;
-        }
-
-        .page-content p {
-            margin-bottom: 1.2em;
-        }
-
-        .highlight {
-            color: #60a5fa;
-            font-weight: 500;
-        }
-
-        .decision {
-            color: #34d399;
-            font-weight: 500;
-        }
-
-        .tension {
-            color: #f97316;
-            font-weight: 500;
-        }
-
-        .page-number {
-            position: absolute;
-            bottom: 25px;
-            right: 30px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: #4a4a4a;
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #4a4a4a;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            animation: pulse 2s infinite;
-        }
-
-        .scroll-hint svg {
-            width: 20px;
-            height: 20px;
-            margin-top: 6px;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        .cover-page .card {
-            background: linear-gradient(135deg, #1a1a2e 0%, #1e1e3f 100%);
-            border-color: #2a2a4a;
             text-align: center;
+            padding: 30px;
+            background: #111;
+            color: #fff;
+            border-radius: 8px;
+            margin: 2rem 0;
         }
-
-        .cover-page .page-title {
-            font-size: 2.2rem;
-            margin-bottom: 16px;
-        }
-
-        .cover-page .subtitle {
-            font-size: 1.1rem;
-            color: #8b8ba7;
-            margin-bottom: 8px;
-        }
-
-        .cover-page .date {
-            font-family: 'JetBrains Mono', monospace;
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            color: #888;
             font-size: 0.9rem;
-            color: #6b7280;
-        }
-
-        .final-page .card {
-            text-align: center;
-        }
-
-        .takeaway-list {
-            list-style: none;
-            margin: 20px 0;
-        }
-
-        .takeaway-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #2a2a2a;
-            color: #34d399;
-            font-weight: 500;
-        }
-
-        .takeaway-list li:last-child {
-            border-bottom: none;
-        }
-
-        @media (max-width: 600px) {
-            .card {
-                padding: 35px 25px;
-                min-height: 80vh;
-            }
-            .page-title {
-                font-size: 1.5rem;
-            }
-            .page-content {
-                font-size: 1rem;
-            }
         }
     </style>
 </head>
 <body>
+    <h1>Weekly Mirror</h1>
+    <p class="subtitle">Design thinking behind your team's narrative agent</p>
 
-    <!-- Cover Page -->
-    <section class="page cover-page">
-        <div class="card">
-            <p class="section-label">Weekly Update</p>
-            <h1 class="page-title">The Founder's Week</h1>
-            <p class="subtitle">December 11–19, 2025</p>
-            <p class="date">// scroll to read</p>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-        </div>
-    </section>
+    <div class="insight-box">
+        <em>The core insight:</em><br>
+        The narrative isn't a status update. It's a <strong>mirror</strong>.<br><br>
+        "Your agent sees patterns in your week that you're too close to notice."
+    </div>
 
-    <!-- Page 1: Context -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">Starting Point</p>
-            <h2 class="page-title">Coming off a good team meeting</h2>
-            <div class="page-content">
-                <p>We'd just announced the pivot to the team: <span class="highlight">LaunchMate isn't just about mentor-founder communication anymore. We're building a super-trusted personal agent for founders.</span></p>
-                <p>Team was on board. Everyone understood the shift. So heading into this week, we had alignment and momentum.</p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">1/6</span>
-        </div>
-    </section>
+    <h2>What This Agent Does</h2>
+    <p>Each team member's agent automatically synthesizes their week into a readable narrative and publishes it before meetings — so everyone arrives already knowing each other's stories.</p>
+    <p><strong>Zero effort from you.</strong> The agent generates the narrative from available context.</p>
 
-    <!-- Page 2: New Information -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">New Information</p>
-            <h2 class="page-title">Then two things landed</h2>
-            <div class="page-content">
-                <p><span class="tension">First:</span> We're only getting 4 users in the upcoming cohort. That's smaller than we'd hoped.</p>
-                <p><span class="highlight">Second:</span> There's an opportunity to open LaunchMate campus-wide—not just cohort founders, but anyone with a business idea.</p>
-                <p>So now we've got a decision to make.</p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">2/6</span>
-        </div>
-    </section>
+    <h2>Two Value Props, Two Audiences</h2>
+    <table>
+        <tr>
+            <th>Audience</th>
+            <th>Value</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+            <td><strong>You</strong></td>
+            <td>"I understand my own week better"</td>
+            <td><span class="tag motivator">Motivator</span></td>
+        </tr>
+        <tr>
+            <td><strong>Team</strong></td>
+            <td>"We arrive caught up, discuss what matters"</td>
+            <td><span class="tag hygiene">Hygiene</span></td>
+        </tr>
+    </table>
+    <p><em>Your value drives adoption. Team value gets it bought.</em></p>
 
-    <!-- Page 3: The Fork -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">The Trade-off</p>
-            <h2 class="page-title">Two reasonable paths</h2>
-            <div class="page-content">
-                <p><span class="highlight">Option A:</span> Stay focused on the 4 cohort founders. Go deep. Test whether the "founder partner" hypothesis actually works.</p>
-                <p><span class="highlight">Option B:</span> Pivot to scale. Open it up campus-wide. Lean into what we know already works—the mentor value—and grow the user base.</p>
-                <p>Both are defensible. But they're very different bets.</p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">3/6</span>
-        </div>
-    </section>
+    <h2>Why "Mirror"?</h2>
+    <blockquote>
+        "Wow I feel like that gave me insights that I hadn't even realized from talking to the agent myself 🤣"
+        <br><br>— First team member feedback
+    </blockquote>
+    <p>The surprise wasn't "this saves meeting time." It was: <strong>"The agent helped me understand my own week better than I could."</strong></p>
 
-    <!-- Page 4: The Reasoning -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">Working Through It</p>
-            <h2 class="page-title">The real question underneath</h2>
-            <div class="page-content">
-                <p>I talked it through with the business partner agent and the Friction Architect agent. And it came down to this:</p>
-                <p>The core thing we're trying to figure out is <span class="highlight">can founders actually feel known by an AI?</span></p>
-                <p>You can't answer that at scale. You answer it by going deep with a small number of people and seeing if the thing we're building actually lands.</p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">4/6</span>
-        </div>
-    </section>
+    <h2>Collaborative Pinning</h2>
+    <p><strong>Any team member can pin items from anyone's mirror for discussion.</strong></p>
+    
+    <div class="callout">
+        <h3>How it works:</h3>
+        <ul>
+            <li><strong>Your pins</strong> = "I want to discuss this"</li>
+            <li><strong>Others' pins on your mirror</strong> = "I want to hear more about this"</li>
+            <li><strong>Multiple pins</strong> = social proof that it matters</li>
+        </ul>
+    </div>
 
-    <!-- Page 5: The Decision + Next -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">Decision</p>
-            <h2 class="page-title">Depth over breadth</h2>
-            <div class="page-content">
-                <p><span class="decision">We're staying focused on the 4.</span></p>
-                <p>Craig validated this in our mentor meeting. And then he added a new challenge: <span class="highlight">figure out how to productize growing an agent after LaunchMate jumpstarts it.</span></p>
-                <p>That's the next horizon. Once you've built trust with a founder, what's the path for that relationship to keep evolving?</p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">5/6</span>
-        </div>
-    </section>
+    <h3>Why Pinning Matters</h3>
+    <ul>
+        <li><strong>Meeting agenda = collective intelligence</strong> — not one person's guess</li>
+        <li><strong>Surfaces hidden relevance</strong> — you might not know your update matters to others</li>
+        <li><strong>Pins = engagement signal</strong> — recognition that people read your narrative</li>
+        <li><strong>Low-effort feedback</strong> — one tap vs. writing a comment</li>
+    </ul>
 
-    <!-- Page 6: Current State -->
-    <section class="page final-page">
-        <div class="card">
-            <p class="section-label">Where We Are</p>
-            <h2 class="page-title">End of week status</h2>
-            <div class="page-content">
-                <p>Team is working through Letta skills learning gaps. Still wrestling with an architecture question: agents, tools, memory blocks all add value—what's the right template for spinning up new agents?</p>
-                <p>But the big stuff is clear:</p>
-                <ul class="takeaway-list">
-                    <li>Experiment is set</li>
-                    <li>Team is aligned</li>
-                    <li>Question is sharper than it was Monday</li>
-                </ul>
-            </div>
-            <span class="page-number">6/6</span>
-        </div>
-    </section>
+    <h3>Pre-Meeting View</h3>
+    <div class="callout">
+        <strong>This week's discussion queue (sorted by pin count):</strong>
+        <ul>
+            <li>Sarah's API delay <em>(pinned by Mike, Tom, Jess)</em></li>
+            <li>Mike's pricing experiment <em>(pinned by Sarah)</em></li>
+            <li>Your infrastructure note <em>(pinned by Mike)</em></li>
+        </ul>
+    </div>
 
+    <h2>The Key Insight</h2>
+    <blockquote>
+        "The mirror shows your week. The pins show what the team needs from you."
+    </blockquote>
+
+    <h2>Motivator Stack</h2>
+    <table>
+        <tr>
+            <th>Motivator</th>
+            <th>How Weekly Mirror Delivers</th>
+        </tr>
+        <tr>
+            <td><strong>Achievement</strong></td>
+            <td>"I see what I actually accomplished — more than I thought"</td>
+        </tr>
+        <tr>
+            <td><strong>Recognition</strong></td>
+            <td>Team reads your narrative. You're seen. Pins = engagement.</td>
+        </tr>
+        <tr>
+            <td><strong>Growth</strong></td>
+            <td>Narratives accumulate. See your arc over months.</td>
+        </tr>
+    </table>
+
+    <div class="one-liner">
+        "Your agent writes your week. Your team pins what matters."
+    </div>
+
+    <h2>What's Next</h2>
+    <ul>
+        <li><strong>"Patterns I noticed"</strong> — Agent calls out recurring themes across weeks</li>
+        <li><strong>Longitudinal mirror</strong> — Monthly/quarterly synthesis of your arc</li>
+        <li><strong>Team patterns</strong> — "3 of you mentioned the API delay"</li>
+        <li><strong>Personal archive</strong> — "See your last 10 weeks"</li>
+    </ul>
+
+    <div class="footer">
+        <p>Analysis by the Friction Architect | December 2025</p>
+    </div>
 </body>
 </html>
