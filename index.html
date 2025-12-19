@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Craig's Week | December 11-19, 2025</title>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -18,9 +18,9 @@
         }
 
         body {
-            font-family: 'Crimson Text', Georgia, serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #2c2c2c;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
             overflow-x: hidden;
         }
 
@@ -33,191 +33,151 @@
             padding: 40px 20px;
         }
 
-        .book-page {
-            background: linear-gradient(to right, #f7f3e9 0%, #fffef9 50%, #f7f3e9 100%);
-            max-width: 700px;
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            max-width: 640px;
             width: 100%;
-            min-height: 80vh;
-            padding: 60px 50px;
-            box-shadow: 
-                0 0 30px rgba(0,0,0,0.3),
-                inset 0 0 80px rgba(0,0,0,0.05),
-                -5px 0 15px rgba(0,0,0,0.1);
+            min-height: 70vh;
+            padding: 50px 45px;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        .book-page::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.15) 80%, transparent);
-        }
-
-        .book-page::after {
-            content: '';
-            position: absolute;
-            right: 15px;
-            top: 10%;
-            bottom: 10%;
-            width: 1px;
-            background: rgba(0,0,0,0.03);
-        }
-
-        .chapter-title {
-            font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
-            letter-spacing: 3px;
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            color: #8b7355;
-            margin-bottom: 20px;
-            text-align: center;
+            color: #6b7280;
+            margin-bottom: 12px;
         }
 
         .page-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
+            font-size: 1.75rem;
             font-weight: 600;
-            color: #2c2c2c;
-            margin-bottom: 30px;
-            text-align: center;
+            color: #ffffff;
+            margin-bottom: 28px;
             line-height: 1.3;
         }
 
         .page-content {
-            font-size: 1.3rem;
-            line-height: 2;
-            color: #3a3a3a;
-            text-align: justify;
-            hyphens: auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b0b0;
         }
 
         .page-content p {
-            margin-bottom: 1.5em;
-            text-indent: 2em;
+            margin-bottom: 1.2em;
         }
 
-        .page-content p:first-child::first-letter {
-            font-family: 'Cinzel', serif;
-            font-size: 4rem;
-            float: left;
-            line-height: 0.8;
-            padding-right: 10px;
-            padding-top: 5px;
-            color: #5c4033;
-        }
-
-        .emphasis {
-            font-style: italic;
-            color: #5c4033;
+        .highlight {
+            color: #60a5fa;
+            font-weight: 500;
         }
 
         .decision {
-            font-weight: 600;
-            color: #2c4a2c;
+            color: #34d399;
+            font-weight: 500;
+        }
+
+        .tension {
+            color: #f97316;
+            font-weight: 500;
         }
 
         .page-number {
             position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
-            color: #8b7355;
+            bottom: 25px;
+            right: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #4a4a4a;
         }
 
         .scroll-hint {
             position: absolute;
-            bottom: 60px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: #8b7355;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            animation: bounce 2s infinite;
+            color: #4a4a4a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
         }
 
         .scroll-hint svg {
-            width: 24px;
-            height: 24px;
-            margin-top: 8px;
+            width: 20px;
+            height: 20px;
+            margin-top: 6px;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(10px); }
-            60% { transform: translateX(-50%) translateY(5px); }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
-        .cover-page .book-page {
-            background: linear-gradient(135deg, #2c1810 0%, #4a2c17 50%, #2c1810 100%);
-            color: #d4c5a9;
+        .cover-page .card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #1e1e3f 100%);
+            border-color: #2a2a4a;
             text-align: center;
         }
 
         .cover-page .page-title {
-            color: #e8dcc4;
-            font-size: 2.8rem;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            margin-bottom: 16px;
         }
 
         .cover-page .subtitle {
-            font-family: 'Crimson Text', serif;
-            font-style: italic;
-            font-size: 1.3rem;
-            color: #b8a88a;
-            margin-bottom: 60px;
+            font-size: 1.1rem;
+            color: #8b8ba7;
+            margin-bottom: 8px;
         }
 
         .cover-page .date {
-            font-family: 'Cinzel', serif;
-            font-size: 1rem;
-            letter-spacing: 4px;
-            color: #8b7355;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #6b7280;
         }
 
-        .cover-page .scroll-hint {
-            color: #8b7355;
-        }
-
-        .final-page .book-page {
+        .final-page .card {
             text-align: center;
         }
 
-        .final-page .page-content {
-            text-align: center;
-            font-style: italic;
+        .takeaway-list {
+            list-style: none;
+            margin: 20px 0;
         }
 
-        .final-page .page-content p {
-            text-indent: 0;
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #2a2a2a;
+            color: #34d399;
+            font-weight: 500;
         }
 
-        .ornament {
-            font-size: 1.5rem;
-            color: #8b7355;
-            margin: 30px 0;
+        .takeaway-list li:last-child {
+            border-bottom: none;
         }
 
         @media (max-width: 600px) {
-            .book-page {
-                padding: 40px 30px;
-                min-height: 85vh;
+            .card {
+                padding: 35px 25px;
+                min-height: 80vh;
             }
             .page-title {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
             .page-content {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
         }
     </style>
@@ -226,14 +186,12 @@
 
     <!-- Cover Page -->
     <section class="page cover-page">
-        <div class="book-page">
-            <div class="ornament">✦</div>
+        <div class="card">
+            <p class="section-label">Weekly Update</p>
             <h1 class="page-title">The Founder's Week</h1>
-            <p class="subtitle">A Story of Pivots, Decisions & Clarity</p>
-            <p class="date">December 11–19, 2025</p>
-            <div class="ornament">✦</div>
+            <p class="subtitle">December 11–19, 2025</p>
+            <p class="date">// scroll to read</p>
             <div class="scroll-hint">
-                SCROLL TO BEGIN
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
@@ -241,138 +199,115 @@
         </div>
     </section>
 
-    <!-- Page 1: The Pivot -->
+    <!-- Page 1: Context -->
     <section class="page">
-        <div class="book-page">
-            <p class="chapter-title">Chapter One</p>
-            <h2 class="page-title">The Pivot</h2>
+        <div class="card">
+            <p class="section-label">Starting Point</p>
+            <h2 class="page-title">Coming off a good team meeting</h2>
             <div class="page-content">
-                <p>The week began in the afterglow of momentum. A team meeting had just concluded—one where the pivot was announced to receptive ears. The vision had shifted: LaunchMate would no longer merely enhance mentor-founder communication. It would become something more ambitious, more intimate.</p>
-                <p><span class="emphasis">A super-trusted personal agent for founders.</span></p>
-                <p>The team understood. The team believed. And so, with alignment secured, the week stretched forward with promise.</p>
+                <p>We'd just announced the pivot to the team: <span class="highlight">LaunchMate isn't just about mentor-founder communication anymore. We're building a super-trusted personal agent for founders.</span></p>
+                <p>Team was on board. Everyone understood the shift. So heading into this week, we had alignment and momentum.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">1</span>
+            <span class="page-number">1/6</span>
         </div>
     </section>
 
-    <!-- Page 2: The Fork -->
+    <!-- Page 2: New Information -->
     <section class="page">
-        <div class="book-page">
-            <p class="chapter-title">Chapter Two</p>
-            <h2 class="page-title">The Fork in the Road</h2>
+        <div class="card">
+            <p class="section-label">New Information</p>
+            <h2 class="page-title">Then two things landed</h2>
             <div class="page-content">
-                <p>Then came the news—arriving as news often does, in pairs that complicate the path forward.</p>
-                <p>First: <span class="emphasis">only four users in the upcoming cohort.</span> Smaller than hoped. A whisper where a chorus was expected.</p>
-                <p>Second: <span class="emphasis">an opportunity</span>—to open LaunchMate campus-wide, to anyone with a business idea, not just cohort founders.</p>
-                <p>The numbers pulled in opposite directions. Scale what works? Or deepen what matters?</p>
+                <p><span class="tension">First:</span> We're only getting 4 users in the upcoming cohort. That's smaller than we'd hoped.</p>
+                <p><span class="highlight">Second:</span> There's an opportunity to open LaunchMate campus-wide—not just cohort founders, but anyone with a business idea.</p>
+                <p>So now we've got a decision to make.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">2</span>
+            <span class="page-number">2/6</span>
         </div>
     </section>
 
-    <!-- Page 3: The Question -->
+    <!-- Page 3: The Fork -->
     <section class="page">
-        <div class="book-page">
-            <p class="chapter-title">Chapter Three</p>
-            <h2 class="page-title">The Core Question</h2>
+        <div class="card">
+            <p class="section-label">The Trade-off</p>
+            <h2 class="page-title">Two reasonable paths</h2>
             <div class="page-content">
-                <p>A prioritization fork had emerged. Two paths, each defensible, each with its own gravity:</p>
-                <p><span class="emphasis">Path One:</span> Stay focused on the four. Test the new "founder partner" hypothesis deeply. Let quality speak.</p>
-                <p><span class="emphasis">Path Two:</span> Pivot resources to scale what already works—mentor value—to a broader audience. Let quantity compound.</p>
-                <p>But beneath the logistics lay a deeper question, the one that would decide everything: <span class="emphasis">Can founders feel known by an AI?</span></p>
+                <p><span class="highlight">Option A:</span> Stay focused on the 4 cohort founders. Go deep. Test whether the "founder partner" hypothesis actually works.</p>
+                <p><span class="highlight">Option B:</span> Pivot to scale. Open it up campus-wide. Lean into what we know already works—the mentor value—and grow the user base.</p>
+                <p>Both are defensible. But they're very different bets.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">3</span>
+            <span class="page-number">3/6</span>
         </div>
     </section>
 
-    <!-- Page 4: The Decision -->
+    <!-- Page 4: The Reasoning -->
     <section class="page">
-        <div class="book-page">
-            <p class="chapter-title">Chapter Four</p>
-            <h2 class="page-title">The Decision</h2>
+        <div class="card">
+            <p class="section-label">Working Through It</p>
+            <h2 class="page-title">The real question underneath</h2>
             <div class="page-content">
-                <p>After working through it—validating with both the business partner agent and the Friction Architect agent—the answer crystallized.</p>
-                <p class="decision">Stay focused on the four.</p>
-                <p><span class="emphasis">Depth over breadth.</span></p>
-                <p>The core question cannot be answered at scale. You don't discover whether founders can feel known by casting a wide net. You discover it by going impossibly deep with a few—by earning trust one conversation at a time.</p>
+                <p>I talked it through with the business partner agent and the Friction Architect agent. And it came down to this:</p>
+                <p>The core thing we're trying to figure out is <span class="highlight">can founders actually feel known by an AI?</span></p>
+                <p>You can't answer that at scale. You answer it by going deep with a small number of people and seeing if the thing we're building actually lands.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">4</span>
+            <span class="page-number">4/6</span>
         </div>
     </section>
 
-    <!-- Page 5: The Next Horizon -->
+    <!-- Page 5: The Decision + Next -->
     <section class="page">
-        <div class="book-page">
-            <p class="chapter-title">Chapter Five</p>
-            <h2 class="page-title">The Next Horizon</h2>
+        <div class="card">
+            <p class="section-label">Decision</p>
+            <h2 class="page-title">Depth over breadth</h2>
             <div class="page-content">
-                <p>Craig validated the decision in their mentor meeting—and then raised the stakes.</p>
-                <p>A new challenge emerged: <span class="emphasis">productize how to grow an agent after LaunchMate jumpstarts it.</span></p>
-                <p>The question was no longer just "can we create a trusted agent?" It was now "what happens after the trust is built? How does the relationship evolve?"</p>
-                <p>That became the next horizon.</p>
+                <p><span class="decision">We're staying focused on the 4.</span></p>
+                <p>Craig validated this in our mentor meeting. And then he added a new challenge: <span class="highlight">figure out how to productize growing an agent after LaunchMate jumpstarts it.</span></p>
+                <p>That's the next horizon. Once you've built trust with a founder, what's the path for that relationship to keep evolving?</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">5</span>
+            <span class="page-number">5/6</span>
         </div>
     </section>
 
-    <!-- Page 6: The Work Continues -->
-    <section class="page">
-        <div class="book-page">
-            <p class="chapter-title">Chapter Six</p>
-            <h2 class="page-title">The Work Continues</h2>
-            <div class="page-content">
-                <p>Meanwhile, the team pressed forward through the practical terrain—working through learning gaps in Letta skills, wrestling with an open architecture question that refused easy answers.</p>
-                <p><span class="emphasis">Agents, tools, and memory blocks all add value. But what's the right template for spinning up new agents?</span></p>
-                <p>The question hung in the air, generative rather than frustrating. A puzzle worth solving.</p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">6</span>
-        </div>
-    </section>
-
-    <!-- Final Page: The Ending -->
+    <!-- Page 6: Current State -->
     <section class="page final-page">
-        <div class="book-page">
-            <p class="chapter-title">Epilogue</p>
-            <h2 class="page-title">Clarity</h2>
+        <div class="card">
+            <p class="section-label">Where We Are</p>
+            <h2 class="page-title">End of week status</h2>
             <div class="page-content">
-                <p>The week ended not with answers, but with something better:</p>
-                <p><span class="decision">The experiment is set.</span></p>
-                <p><span class="decision">The team is aligned.</span></p>
-                <p><span class="decision">The question is sharpening.</span></p>
-                <div class="ornament">✦ ✦ ✦</div>
-                <p><em>And sometimes, that is exactly how a good week ends.</em></p>
+                <p>Team is working through Letta skills learning gaps. Still wrestling with an architecture question: agents, tools, memory blocks all add value—what's the right template for spinning up new agents?</p>
+                <p>But the big stuff is clear:</p>
+                <ul class="takeaway-list">
+                    <li>Experiment is set</li>
+                    <li>Team is aligned</li>
+                    <li>Question is sharper than it was Monday</li>
+                </ul>
             </div>
-            <span class="page-number">Fin</span>
+            <span class="page-number">6/6</span>
         </div>
     </section>
 
