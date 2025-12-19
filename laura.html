@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laura's Week | December 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            max-width: 640px;
+            width: 100%;
+            min-height: 70vh;
+            padding: 50px 45px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 28px;
+            line-height: 1.3;
+        }
+
+        .page-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+        }
+
+        .page-content p {
+            margin-bottom: 1.2em;
+        }
+
+        .highlight {
+            color: #60a5fa;
+            font-weight: 500;
+        }
+
+        .decision {
+            color: #34d399;
+            font-weight: 500;
+        }
+
+        .tension {
+            color: #f97316;
+            font-weight: 500;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 25px;
+            right: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #4a4a4a;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #4a4a4a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        .scroll-hint svg {
+            width: 20px;
+            height: 20px;
+            margin-top: 6px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .cover-page .card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #1e1e3f 100%);
+            border-color: #2a2a4a;
+            text-align: center;
+        }
+
+        .cover-page .page-title {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .cover-page .subtitle {
+            font-size: 1.1rem;
+            color: #8b8ba7;
+            margin-bottom: 8px;
+        }
+
+        .cover-page .date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .final-page .card {
+            text-align: center;
+        }
+
+        .takeaway-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #2a2a2a;
+            color: #34d399;
+            font-weight: 500;
+        }
+
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+
+        .stat-box {
+            display: flex;
+            justify-content: space-around;
+            margin: 24px 0;
+            padding: 20px;
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #34d399;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 16px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 35px 25px;
+                min-height: 80vh;
+            }
+            .page-title {
+                font-size: 1.5rem;
+            }
+            .page-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cover Page -->
+    <section class="page cover-page">
+        <div class="card">
+            <p class="section-label">Weekly Update</p>
+            <h1 class="page-title">Laura's Week</h1>
+            <p class="subtitle">The Survey Analysis Plot Twist</p>
+            <p class="date">December 2025 // scroll to read</p>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 1: The Setup -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Starting Point</p>
+            <h2 class="page-title">Thought we had failed</h2>
+            <div class="page-content">
+                <p>Came into this week thinking LaunchMate had failed the user value survey. Initial analysis showed <span class="tension">43% PMF—below the 40% threshold.</span></p>
+                <p>The feedback was brutal. Users talking about "animosity and hostility," comparing the launch to "a restaurant on their first day."</p>
+                <p>The narrative was clear: <span class="tension">forced usage + bugs = poisoned adoption.</span></p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">1/5</span>
+        </div>
+    </section>
+
+    <!-- Page 2: The Twist -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Twist</p>
+            <h2 class="page-title">I had swapped the labels</h2>
+            <div class="page-content">
+                <p>Turns out I accidentally swapped the cohort labels when processing the survey data. Launch Track and In-Flight responses were mixed up.</p>
+                <p>When I corrected it, the whole story changed:</p>
+                <div class="stat-box">
+                    <div class="stat">
+                        <div class="stat-value">55.6%</div>
+                        <div class="stat-label">Actual PMF</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" style="color: #60a5fa;">40%</div>
+                        <div class="stat-label">Threshold</div>
+                    </div>
+                </div>
+                <p><span class="decision">Above threshold.</span> Not a home run, but not a failure either.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">2/5</span>
+        </div>
+    </section>
+
+    <!-- Page 3: The Reframe -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Reframe</p>
+            <h2 class="page-title">Different problem to solve</h2>
+            <div class="page-content">
+                <p>This shifted everything. Instead of <span class="tension">"we don't have PMF and need to start over"</span>...</p>
+                <p>It became <span class="decision">"we validated the concept, but execution issues are blocking the full value."</span></p>
+                <p>The harsh feedback is still real—forced usage did create resentment, bugs did damage credibility. But now it's framed as:</p>
+                <p><span class="highlight">"Fix the experience to unlock the PMF we already have"</span> rather than "we built the wrong thing."</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">3/5</span>
+        </div>
+    </section>
+
+    <!-- Page 4: What She Shipped -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">What I Shipped</p>
+            <h2 class="page-title">Updated the whole analysis</h2>
+            <div class="page-content">
+                <ul class="takeaway-list">
+                    <li>Built standalone responses page (all 9 user responses in full context)</li>
+                    <li>Corrected cohort breakdowns: Launch Track 50%, In-Flight 60%</li>
+                    <li>Changed headline from "Below Threshold" to "Above Threshold"</li>
+                    <li>Both pages live on GitHub Pages</li>
+                </ul>
+                <p>One user literally gave me the solution:</p>
+                <div class="quote">"Let me tell one complete story at a time instead of answering in stages."</div>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">4/5</span>
+        </div>
+    </section>
+
+    <!-- Page 5: Where She Landed -->
+    <section class="page final-page">
+        <div class="card">
+            <p class="section-label">Where I Am Now</p>
+            <h2 class="page-title">We have PMF—now fix the experience</h2>
+            <div class="page-content">
+                <p>Validated concept with a clear execution roadmap:</p>
+                <ul class="takeaway-list">
+                    <li>Eliminate forced usage</li>
+                    <li>Fix the bugs</li>
+                    <li>Redesign check-in flow: rigid stages → natural conversation</li>
+                </ul>
+                <p>One user even printed out the suggestions for a real meeting. The value is there.</p>
+                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">Week went from "mourning a failed launch" to "we have PMF—now let's fix the experience."</p>
+            </div>
+            <span class="page-number">5/5</span>
+        </div>
+    </section>
+
+</body>
+</html>
