@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael's Week | December 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            max-width: 640px;
+            width: 100%;
+            min-height: 70vh;
+            padding: 50px 45px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 28px;
+            line-height: 1.3;
+        }
+
+        .page-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+        }
+
+        .page-content p {
+            margin-bottom: 1.2em;
+        }
+
+        .highlight {
+            color: #60a5fa;
+            font-weight: 500;
+        }
+
+        .decision {
+            color: #34d399;
+            font-weight: 500;
+        }
+
+        .tension {
+            color: #f97316;
+            font-weight: 500;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 25px;
+            right: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #4a4a4a;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #4a4a4a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        .scroll-hint svg {
+            width: 20px;
+            height: 20px;
+            margin-top: 6px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .cover-page .card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #1e1e3f 100%);
+            border-color: #2a2a4a;
+            text-align: center;
+        }
+
+        .cover-page .page-title {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .cover-page .subtitle {
+            font-size: 1.1rem;
+            color: #8b8ba7;
+            margin-bottom: 8px;
+        }
+
+        .cover-page .date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .final-page .card {
+            text-align: center;
+        }
+
+        .takeaway-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #2a2a2a;
+            color: #34d399;
+            font-weight: 500;
+        }
+
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-list {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 16px 0;
+            color: #9ca3af;
+        }
+
+        .skill-list span {
+            display: inline-block;
+            background: #2a2a2a;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin: 4px;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 35px 25px;
+                min-height: 80vh;
+            }
+            .page-title {
+                font-size: 1.5rem;
+            }
+            .page-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cover Page -->
+    <section class="page cover-page">
+        <div class="card">
+            <p class="section-label">Weekly Update</p>
+            <h1 class="page-title">Michael's Week</h1>
+            <p class="subtitle">From Friction Analysis to Skill Architecture</p>
+            <p class="date">December 15–19, 2025 // scroll to read</p>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 1: Context -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Starting Point</p>
+            <h2 class="page-title">What makes LaunchMate different?</h2>
+            <div class="page-content">
+                <p>Started the week focused on foundations—defining what makes LaunchMate different from generic AI.</p>
+                <p>Built a <span class="highlight">friction analysis framework</span> covering 16 specific frictions founders face with AI tools.</p>
+                <p>Landed on the core insight: <span class="decision">trust + meaning are the locks.</span> Founders don't believe AI can truly know them, and even when it helps, they can't see the value.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">1/5</span>
+        </div>
+    </section>
+
+    <!-- Page 2: Crisis Mode -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Early Week</p>
+            <h2 class="page-title">Crisis mode capabilities</h2>
+            <div class="page-content">
+                <p>That insight led to designing <span class="highlight">10 crisis mode capabilities</span>—patterns for founders in high-stakes moments:</p>
+                <div class="skill-list">
+                    <span>UNBLOCK_ME</span>
+                    <span>GUT_CHECK</span>
+                    <span>PREPARE_ME</span>
+                    <span>REALITY_CHECK</span>
+                    <span>PIVOT_OR_PERSIST</span>
+                    <span>+ 5 more</span>
+                </div>
+                <p>Design principle: <span class="decision">< 60 seconds to value.</span></p>
+                <p>If the agent can't help fast when it matters, the trust never builds.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">2/5</span>
+        </div>
+    </section>
+
+    <!-- Page 3: Validation Playbook -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Midweek Shift</p>
+            <h2 class="page-title">Restructuring the validation playbook</h2>
+            <div class="page-content">
+                <p>Shifted focus to the <span class="highlight">validation playbook</span>—the structure for guiding In-Flight founders through the whole flow: Neal Test → prototype → presales → delivery.</p>
+                <p>Key realization: <span class="tension">the Neal Test isn't just customer discovery.</span> It's the learning phase that informs what to build.</p>
+                <p>Had to restructure the whole framework around that insight. The Neal Test comes first because everything else depends on what you learn there.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">3/5</span>
+        </div>
+    </section>
+
+    <!-- Page 4: Skill Activation -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Late Week</p>
+            <h2 class="page-title">Making the agent context-aware</h2>
+            <div class="page-content">
+                <p>Then explored <span class="highlight">skill activation</span>—how does the agent know which mode to be in?</p>
+                <p>Landed on a hybrid approach: <span class="decision">store skills in archival memory, swap them into an active_skill block based on phase.</span></p>
+                <p>Built and tested two skills:</p>
+                <div class="skill-list">
+                    <span>neal_test_coach</span>
+                    <span>presales_closer</span>
+                </div>
+                <p>Swap works. Agent can shift personalities based on where the founder is in their journey.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">4/5</span>
+        </div>
+    </section>
+
+    <!-- Page 5: Current State -->
+    <section class="page final-page">
+        <div class="card">
+            <p class="section-label">Where I Am Now</p>
+            <h2 class="page-title">Architecture is solid</h2>
+            <div class="page-content">
+                <ul class="takeaway-list">
+                    <li>Friction framework: done (16 patterns)</li>
+                    <li>Crisis mode capabilities: designed</li>
+                    <li>Validation playbook: restructured</li>
+                    <li>Skill swap system: working</li>
+                </ul>
+                <p>Framework and registry pattern established. The pieces are in place.</p>
+                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">Next up: testing with real founder interactions.</p>
+            </div>
+            <span class="page-number">5/5</span>
+        </div>
+    </section>
+
+</body>
+</html>
