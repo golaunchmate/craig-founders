@@ -3,190 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaunchMate | What Your Agent Knows About You</title>
+    <title>LaunchMate | Hypothesis Testing Guide</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #1a1a1a;
             background: #fff;
         }
-        .container {
-            max-width: 100%;
-            padding: 0 20px;
-        }
         
-        /* Hero */
         .hero {
-            padding: 60px 20px 40px;
-            text-align: center;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 50px 20px 40px;
+            background: #111;
             color: #fff;
         }
         .hero h1 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 12px;
-            font-weight: 700;
         }
         .hero p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 320px;
-            margin: 0 auto;
+            opacity: 0.8;
+            font-size: 1rem;
         }
         
-        /* Sections */
         section {
-            padding: 40px 20px;
-            border-bottom: 1px solid #eee;
+            padding: 32px 20px;
+            border-bottom: 1px solid #e5e5e5;
         }
-        section:last-child { border-bottom: none; }
         
         h2 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 16px;
-            color: #1a1a2e;
+            color: #111;
         }
         
-        /* Insight cards */
-        .insight {
-            background: #f8f9fa;
-            border-radius: 12px;
+        p { margin-bottom: 14px; color: #444; }
+        
+        .hypothesis-box {
+            background: #fffbe6;
+            border-left: 4px solid #f59e0b;
             padding: 20px;
-            margin-bottom: 16px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
         }
-        .insight-label {
+        .hypothesis-box .label {
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #666;
+            color: #92400e;
             margin-bottom: 8px;
         }
-        .insight-text {
+        .hypothesis-box .text {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #1a1a2e;
+            color: #111;
         }
         
-        /* Quote blocks */
-        .quote {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
-            padding: 24px;
-            border-radius: 12px;
+        .test-box {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 20px;
             margin: 20px 0;
-            font-size: 1.15rem;
-            font-style: italic;
+            border-radius: 0 8px 8px 0;
+        }
+        .test-box .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #166534;
+            margin-bottom: 8px;
         }
         
-        /* Friction list */
-        .friction-item {
+        .signal-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .signal-box .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #1e40af;
+            margin-bottom: 8px;
+        }
+        
+        .kill-box {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .kill-box .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #991b1b;
+            margin-bottom: 8px;
+        }
+        
+        ul {
+            margin: 12px 0 12px 20px;
+        }
+        li {
+            margin-bottom: 10px;
+            color: #444;
+        }
+        
+        .number-card {
             display: flex;
             align-items: flex-start;
             padding: 16px 0;
             border-bottom: 1px solid #eee;
         }
-        .friction-item:last-child { border-bottom: none; }
-        .friction-icon {
-            width: 40px;
-            height: 40px;
-            background: #f0f0f0;
-            border-radius: 10px;
+        .number-card:last-child { border-bottom: none; }
+        .number {
+            width: 32px;
+            height: 32px;
+            background: #111;
+            color: #fff;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-weight: 700;
+            font-size: 0.9rem;
             margin-right: 14px;
             flex-shrink: 0;
         }
-        .friction-content h3 {
+        .number-content h3 {
             font-size: 1rem;
             margin-bottom: 4px;
-            color: #1a1a2e;
         }
-        .friction-content p {
+        .number-content p {
             font-size: 0.9rem;
-            color: #666;
+            margin: 0;
         }
         
-        /* Capability cards */
-        .capability {
-            background: #fff;
-            border: 2px solid #eee;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 12px;
-        }
-        .capability h3 {
-            font-size: 1rem;
-            margin-bottom: 6px;
-            color: #1a1a2e;
-        }
-        .capability p {
-            font-size: 0.9rem;
-            color: #666;
-        }
-        .capability-trigger {
-            display: inline-block;
-            background: #e8f4f8;
-            color: #0077b6;
-            font-size: 0.8rem;
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin-top: 10px;
-        }
-        
-        /* The unlock */
-        .unlock {
-            background: #1a1a2e;
+        .quote {
+            background: #111;
             color: #fff;
+            padding: 30px 20px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .interview-q {
+            background: #fafafa;
+            padding: 14px 16px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        .interview-q strong {
+            color: #111;
+        }
+        
+        .bottom-cta {
+            background: #f8f9fa;
             padding: 40px 20px;
             text-align: center;
         }
-        .unlock h2 {
-            color: #fff;
-            margin-bottom: 20px;
+        .bottom-cta h2 {
+            margin-bottom: 12px;
         }
-        .unlock p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+        .bottom-cta p {
             max-width: 320px;
-            margin: 0 auto 20px;
-        }
-        .unlock-list {
-            text-align: left;
-            max-width: 300px;
             margin: 0 auto;
         }
-        .unlock-list li {
-            padding: 8px 0;
-            padding-left: 28px;
-            position: relative;
+        
+        .checklist {
             list-style: none;
+            margin-left: 0;
         }
-        .unlock-list li::before {
-            content: "✓";
+        .checklist li {
+            padding: 12px 0;
+            padding-left: 32px;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+        .checklist li::before {
+            content: "☐";
             position: absolute;
             left: 0;
-            color: #4ade80;
+            font-size: 1.1rem;
         }
         
-        /* Bottom section */
-        .bottom-quote {
-            padding: 50px 20px;
-            text-align: center;
-            background: #f8f9fa;
-        }
-        .bottom-quote p {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #1a1a2e;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-        
-        /* Footer */
         .footer {
             padding: 30px 20px;
             text-align: center;
@@ -198,167 +204,222 @@
 <body>
 
     <div class="hero">
-        <h1>What Your Agent Knows About Being a Founder</h1>
-        <p>The hidden blockers no one talks about — and how we designed around them.</p>
+        <h1>LaunchMate Hypothesis Guide</h1>
+        <p>What we think is true. How to test it. What signals to watch for.</p>
     </div>
 
     <section>
-        <div class="container">
-            <h2>The Real Problem</h2>
-            <div class="insight">
-                <div class="insight-label">What founders say</div>
-                <div class="insight-text">"AI gives generic advice. Why would this be different?"</div>
-            </div>
-            <div class="insight">
-                <div class="insight-label">What founders feel</div>
-                <div class="insight-text">"I'm the visionary. I don't need AI telling me what to do."</div>
-            </div>
-            <p style="margin-top: 16px; color: #666;">These aren't product problems. They're <strong>trust</strong> and <strong>identity</strong> problems. We designed for them.</p>
-        </div>
+        <h2>The Fog You're In</h2>
+        <p>You've built an AI agent for founders. Some people seem interested. But you don't know:</p>
+        <ul>
+            <li>Why aren't more people engaging?</li>
+            <li>What's actually blocking adoption?</li>
+            <li>Is this a product problem or a positioning problem?</li>
+            <li>What should you fix first?</li>
+        </ul>
+        <p><strong>This page is your flashlight.</strong> It won't give you answers — it will tell you exactly what questions to ask and what signals to look for.</p>
     </section>
 
     <section>
-        <div class="container">
-            <h2>7 Hidden Frictions We Mapped</h2>
-            
-            <div class="friction-item">
-                <div class="friction-icon">😰</div>
-                <div class="friction-content">
-                    <h3>Skepticism</h3>
-                    <p>"AI gives generic advice, why is this different?"</p>
-                </div>
-            </div>
-            
-            <div class="friction-item">
-                <div class="friction-icon">⏰</div>
-                <div class="friction-content">
-                    <h3>Timing</h3>
-                    <p>Unclear when to engage — another interruption in an overwhelming day.</p>
-                </div>
-            </div>
-            
-            <div class="friction-item">
-                <div class="friction-icon">👥</div>
-                <div class="friction-content">
-                    <h3>Status</h3>
-                    <p>"Using AI for help feels like weakness compared to founders who figure it out."</p>
-                </div>
-            </div>
-            
-            <div class="friction-item">
-                <div class="friction-icon">🪞</div>
-                <div class="friction-content">
-                    <h3>Identity</h3>
-                    <p>"I'm the visionary — I don't need AI telling me what to do."</p>
-                </div>
-            </div>
-            
-            <div class="friction-item">
-                <div class="friction-icon">🔗</div>
-                <div class="friction-content">
-                    <h3>Missing Context</h3>
-                    <p>Agent doesn't know your mentor's feedback, your demo day timeline, your real situation.</p>
-                </div>
-            </div>
-            
-            <div class="friction-item">
-                <div class="friction-icon">🪨</div>
-                <div class="friction-content">
-                    <h3>Inertia</h3>
-                    <p>"I already have a system. Adding another tool = overhead."</p>
-                </div>
-            </div>
-            
-            <div class="friction-item">
-                <div class="friction-icon">❓</div>
-                <div class="friction-content">
-                    <h3>Meaning</h3>
-                    <p>"What is this even FOR? Coach? Search engine? Therapist?"</p>
-                </div>
-            </div>
+        <h2>The Core Hypothesis</h2>
+        
+        <div class="hypothesis-box">
+            <div class="label">Primary hypothesis</div>
+            <div class="text">Founders don't believe AI can truly know them — and even when it helps, they can't see the value.</div>
+        </div>
+        
+        <p>This is a <strong>trust + meaning</strong> problem, not a feature problem.</p>
+        <p>If this is true, adding more features won't help. You need to prove you know them instantly, then show value over time.</p>
+        
+        <div class="test-box">
+            <div class="label">How to test this</div>
+            <p style="margin-bottom: 8px;"><strong>Talk to 5 founders who tried LaunchMate but didn't stick.</strong></p>
+            <p style="margin: 0;">Ask: "What made you stop using it?" Listen for trust/meaning language vs. feature requests.</p>
+        </div>
+        
+        <div class="signal-box">
+            <div class="label">Strong signal it's true</div>
+            <ul style="margin-bottom: 0;">
+                <li>"It felt generic, like talking to ChatGPT"</li>
+                <li>"I wasn't sure what it was for"</li>
+                <li>"I didn't know if it was actually helping"</li>
+                <li>"It didn't really know my situation"</li>
+            </ul>
+        </div>
+        
+        <div class="kill-box">
+            <div class="label">Signal it's wrong</div>
+            <ul style="margin-bottom: 0;">
+                <li>"It was missing [specific feature]"</li>
+                <li>"The UI was confusing"</li>
+                <li>"I didn't have time" (probe deeper — time is usually a proxy)</li>
+            </ul>
         </div>
     </section>
 
     <div class="quote">
-        "The real blocker isn't that the product doesn't work. It's that founders don't believe AI can truly know them — and even when it helps, they can't see the value."
+        "If 3 out of 5 churned users mention trust or meaning, you've validated the hypothesis. Now you know what to fix."
     </div>
 
     <section>
-        <div class="container">
-            <h2>Built for Crisis, Not Conversation</h2>
-            <p style="color: #666; margin-bottom: 20px;">When you're drowning, you don't want a chat. You want a lifeline. Every capability is designed for < 60 seconds to value.</p>
-            
-            <div class="capability">
-                <h3>🚧 Unblock Me</h3>
-                <p>2 questions → 3 actionable options in 60 seconds</p>
-                <span class="capability-trigger">Say: "I'm stuck"</span>
+        <h2>Runner-Up Hypotheses</h2>
+        <p>If the primary hypothesis is wrong, test these:</p>
+        
+        <div class="number-card">
+            <div class="number">2</div>
+            <div class="number-content">
+                <h3>Identity Friction</h3>
+                <p>"I'm the visionary — I don't need AI telling me what to do."</p>
             </div>
-            
-            <div class="capability">
-                <h3>🎯 Gut Check</h3>
-                <p>Steel-man counter-argument + hidden risks</p>
-                <span class="capability-trigger">Say: "Talk me out of this"</span>
+        </div>
+        
+        <div class="number-card">
+            <div class="number">3</div>
+            <div class="number-content">
+                <h3>Status Friction</h3>
+                <p>"Using AI for help feels like weakness vs. founders who figure it out."</p>
             </div>
-            
-            <div class="capability">
-                <h3>🎤 Prepare Me</h3>
-                <p>Top 5 questions, weak spots, your key one-liner</p>
-                <span class="capability-trigger">Say: "I have a pitch tomorrow"</span>
+        </div>
+        
+        <div class="number-card">
+            <div class="number">4</div>
+            <div class="number-content">
+                <h3>Timing/Trigger Friction</h3>
+                <p>"I don't know when to use it — it's not part of my flow."</p>
             </div>
-            
-            <div class="capability">
-                <h3>📋 Triage My Week</h3>
-                <p>Ruthless prioritization → ONE thing to do</p>
-                <span class="capability-trigger">Say: "I'm overwhelmed"</span>
+        </div>
+        
+        <div class="number-card">
+            <div class="number">5</div>
+            <div class="number-content">
+                <h3>Context Gap</h3>
+                <p>"It doesn't know what my mentor said, my demo day timeline, my real blockers."</p>
             </div>
-            
-            <div class="capability">
-                <h3>✍️ Write It For Me</h3>
-                <p>Draft in your voice, ready to send</p>
-                <span class="capability-trigger">Say: "I need to email my investor"</span>
-            </div>
-            
-            <div class="capability">
-                <h3>💬 Give It To Me Straight</h3>
-                <p>Honest read on what's working and what's not</p>
-                <span class="capability-trigger">Say: "No softening"</span>
-            </div>
+        </div>
+        
+        <p style="margin-top: 20px;"><strong>Note:</strong> These might all be true. But you need ONE to focus on first. The primary hypothesis is the starting point.</p>
+    </section>
+
+    <section>
+        <h2>Interview Script</h2>
+        <p>When you talk to founders, use these questions:</p>
+        
+        <div class="interview-q">
+            <strong>Opening:</strong> "You tried LaunchMate for a bit. Can you walk me through what happened?"
+        </div>
+        
+        <div class="interview-q">
+            <strong>Probe trust:</strong> "Did it feel like the agent actually understood your situation? What was missing?"
+        </div>
+        
+        <div class="interview-q">
+            <strong>Probe meaning:</strong> "Was it clear what you were supposed to use it for? What did you expect vs. what you got?"
+        </div>
+        
+        <div class="interview-q">
+            <strong>Probe identity:</strong> "How did it feel to ask an AI for help with your startup?"
+        </div>
+        
+        <div class="interview-q">
+            <strong>Probe triggers:</strong> "When would you have wanted to use it? What would have reminded you?"
+        </div>
+        
+        <div class="interview-q">
+            <strong>Magic wand:</strong> "If it could do one thing perfectly, what would make you use it every day?"
+        </div>
+        
+        <div class="interview-q">
+            <strong>Close:</strong> "What would it take for you to try it again?"
         </div>
     </section>
 
-    <div class="unlock">
-        <h2>The Unlock</h2>
-        <p>Prove we know you — instantly. Then show value over time.</p>
-        <ul class="unlock-list">
-            <li>Knows your business, stage, and blockers</li>
-            <li>Remembers your mentor's advice</li>
-            <li>Tracks decisions you've made</li>
-            <li>Surfaces patterns you're too close to see</li>
+    <section>
+        <h2>Validation Checklist</h2>
+        <p>Before you build anything new, complete this:</p>
+        
+        <ul class="checklist">
+            <li>Talk to 5 founders who churned or went inactive</li>
+            <li>Categorize each response: Trust / Meaning / Identity / Timing / Features / Other</li>
+            <li>Look for patterns: Do 3+ mention the same friction?</li>
+            <li>Write down exact quotes (not your interpretation)</li>
+            <li>Identify the ONE friction to solve first</li>
+            <li>Brainstorm 3 lightweight experiments to address it</li>
+            <li>Run smallest possible test before building</li>
         </ul>
-    </div>
+    </section>
 
     <section>
-        <div class="container">
-            <h2>The Notebook Model</h2>
-            <p style="color: #666; margin-bottom: 16px;">Don't just use it when you're stuck. <strong>Think out loud.</strong></p>
-            
-            <div class="insight">
-                <div class="insight-label">The idea</div>
-                <div class="insight-text">"Write for yourself. Your agent is listening."</div>
+        <h2>If Trust + Meaning Is Confirmed</h2>
+        <p>Here's the unlock we've hypothesized:</p>
+        
+        <div class="number-card">
+            <div class="number">1</div>
+            <div class="number-content">
+                <h3>Prove you know them instantly</h3>
+                <p>First interaction should reflect something specific about THEM — not generic advice.</p>
             </div>
-            
-            <p style="color: #666; margin-top: 16px;">Brain dump your half-thoughts. Your agent connects the dots, notices patterns, and reflects back insights you hadn't realized.</p>
-            
-            <p style="color: #666; margin-top: 12px;"><strong>The more you share, the better your agent knows you.</strong> When crisis hits, it already understands your context.</p>
+        </div>
+        
+        <div class="number-card">
+            <div class="number">2</div>
+            <div class="number-content">
+                <h3>Show value over time</h3>
+                <p>Track decisions, surface patterns, remind them of their own progress. "You mentioned X three weeks ago — did it work?"</p>
+            </div>
+        </div>
+        
+        <div class="number-card">
+            <div class="number">3</div>
+            <div class="number-content">
+                <h3>Make the mirror visible</h3>
+                <p>"Your agent sees patterns you're too close to notice." The insight IS the product.</p>
+            </div>
+        </div>
+        
+        <p style="margin-top: 20px;"><strong>Test before building:</strong> Can you manually deliver this experience to 3 founders and see if it changes their engagement?</p>
+    </section>
+
+    <section>
+        <h2>What "Validated" Looks Like</h2>
+        
+        <div class="signal-box">
+            <div class="label">You've validated the hypothesis when:</div>
+            <ul style="margin-bottom: 0;">
+                <li>3+ of 5 interviews point to the same friction</li>
+                <li>You can predict what a new churned user will say</li>
+                <li>A small intervention addressing that friction changes behavior</li>
+                <li>Founders describe the problem back to you in their own words</li>
+            </ul>
+        </div>
+        
+        <div class="kill-box">
+            <div class="label">You've invalidated it when:</div>
+            <ul style="margin-bottom: 0;">
+                <li>Responses are scattered across many different issues</li>
+                <li>Fixing the hypothesized friction doesn't change engagement</li>
+                <li>Founders say "that's not really it" when you reflect the hypothesis back</li>
+            </ul>
         </div>
     </section>
 
-    <div class="bottom-quote">
-        <p>"Your agent sees patterns in your week that you're too close to notice."</p>
+    <div class="bottom-cta">
+        <h2>The One Thing</h2>
+        <p><strong>Talk to 5 churned founders this week.</strong> Everything else is guessing. The friction map gives you hypotheses. The market gives you answers.</p>
     </div>
+
+    <section>
+        <h2>Remember</h2>
+        <p>This friction map is a <strong>hypothesis generator</strong>, not a prediction engine.</p>
+        <ul>
+            <li>It tells you what <em>might</em> be true</li>
+            <li>It tells you what questions to ask</li>
+            <li>It does NOT tell you what <em>is</em> true</li>
+        </ul>
+        <p><strong>The map gets you out of the fog. The interviews get you to truth.</strong></p>
+    </section>
 
     <div class="footer">
-        <p>Built with friction mapping | December 2025</p>
+        <p>Friction analysis by the Friction Architect | December 2025</p>
     </div>
 
 </body>
