@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tidbits | Feature Friction Audit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            max-width: 640px;
+            width: 100%;
+            min-height: 70vh;
+            padding: 50px 45px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 28px;
+            line-height: 1.3;
+        }
+
+        .page-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+        }
+
+        .page-content p {
+            margin-bottom: 1.2em;
+        }
+
+        .highlight {
+            color: #60a5fa;
+            font-weight: 500;
+        }
+
+        .decision {
+            color: #34d399;
+            font-weight: 500;
+        }
+
+        .tension {
+            color: #f97316;
+            font-weight: 500;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 25px;
+            right: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #4a4a4a;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #4a4a4a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        .scroll-hint svg {
+            width: 20px;
+            height: 20px;
+            margin-top: 6px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .cover-page .card {
+            background: linear-gradient(135deg, #1a2e1a 0%, #1e3f1e 100%);
+            border-color: #2a4a2a;
+            text-align: center;
+        }
+
+        .cover-page .page-title {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .cover-page .subtitle {
+            font-size: 1.1rem;
+            color: #8ba78b;
+            margin-bottom: 8px;
+        }
+
+        .cover-page .date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .friction-grid {
+            display: grid;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .friction-item {
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .friction-item .code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #f97316;
+            margin-bottom: 6px;
+        }
+
+        .friction-item .fix {
+            color: #34d399;
+            font-size: 0.95rem;
+        }
+
+        .motivator-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .motivator-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .motivator-list li:last-child {
+            border-bottom: none;
+        }
+
+        .motivator-list .icon {
+            font-size: 1.3rem;
+        }
+
+        .motivator-list .text {
+            color: #b0b0b0;
+        }
+
+        .motivator-list .label {
+            color: #60a5fa;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background: #1f1f0f;
+            border: 1px solid #3d3d1a;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-box .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f59e0b;
+            margin-bottom: 12px;
+        }
+
+        .warning-box ul {
+            list-style: none;
+        }
+
+        .warning-box li {
+            padding: 8px 0;
+            color: #fef3c7;
+            font-size: 0.95rem;
+        }
+
+        .warning-box li::before {
+            content: "⚠";
+            margin-right: 10px;
+        }
+
+        .unlock-box {
+            background: #0f1f0f;
+            border: 1px solid #1a3d1a;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .unlock-box .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #34d399;
+            margin-bottom: 12px;
+        }
+
+        .unlock-box .text {
+            font-size: 1.1rem;
+            color: #d1fae5;
+            font-style: italic;
+        }
+
+        .sequence-list {
+            list-style: none;
+            counter-reset: sequence;
+            margin: 20px 0;
+        }
+
+        .sequence-list li {
+            padding: 16px 0;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .sequence-list li:last-child {
+            border-bottom: none;
+        }
+
+        .sequence-list li::before {
+            counter-increment: sequence;
+            content: counter(sequence);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #34d399;
+            background: #0f1f0f;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .final-page .card {
+            text-align: center;
+        }
+
+        .final-page .quote {
+            font-size: 1.4rem;
+            color: #ffffff;
+            font-weight: 500;
+            line-height: 1.5;
+            margin: 30px 0;
+        }
+
+        .final-page .attribution {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 35px 25px;
+                min-height: 80vh;
+            }
+            .page-title {
+                font-size: 1.5rem;
+            }
+            .page-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cover Page -->
+    <section class="page cover-page">
+        <div class="card">
+            <p class="section-label">Feature Friction Audit</p>
+            <h1 class="page-title">Tidbits</h1>
+            <p class="subtitle">Will this feature help LaunchMate adoption?</p>
+            <p class="date">December 2025 // scroll to read</p>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 1: What It Is -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Feature</p>
+            <h2 class="page-title">What are Tidbits?</h2>
+            <div class="page-content">
+                <p><span class="highlight">Scroll-snap formatted insights</span> auto-generated from your LaunchMate conversations.</p>
+                <p>Your messy thinking, turned into something polished. Shareable with mentors, cohort, or just yourself.</p>
+                <p>Think of it as <span class="decision">your agent's mirror — packaged for others.</span></p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">1/7</span>
+        </div>
+    </section>
+
+    <!-- Page 2: Frictions Addressed -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Friction Analysis</p>
+            <h2 class="page-title">What problems does it solve?</h2>
+            <div class="friction-grid">
+                <div class="friction-item">
+                    <div class="code">F1: Skepticism</div>
+                    <div class="fix">→ Tidbit is proof LaunchMate knows you</div>
+                </div>
+                <div class="friction-item">
+                    <div class="code">F7: Meaning</div>
+                    <div class="fix">→ Creates tangible output you can point to</div>
+                </div>
+                <div class="friction-item">
+                    <div class="code">F14: Attribution</div>
+                    <div class="fix">→ Makes AI value visible and shareable</div>
+                </div>
+                <div class="friction-item">
+                    <div class="code">F3: Status</div>
+                    <div class="fix">→ Sharing insight = signal, not weakness</div>
+                </div>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">2/7</span>
+        </div>
+    </section>
+
+    <!-- Page 3: Motivators -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Motivator Audit</p>
+            <h2 class="page-title">What makes people love it?</h2>
+            <ul class="motivator-list">
+                <li>
+                    <span class="icon">🏆</span>
+                    <span class="text"><span class="label">Achievement:</span> "I produced something from my thinking"</span>
+                </li>
+                <li>
+                    <span class="icon">👁️</span>
+                    <span class="text"><span class="label">Recognition:</span> Others see your insight, you're visible</span>
+                </li>
+                <li>
+                    <span class="icon">✨</span>
+                    <span class="text"><span class="label">The Work:</span> Satisfying to see messy → polished</span>
+                </li>
+                <li>
+                    <span class="icon">📈</span>
+                    <span class="text"><span class="label">Growth:</span> Tidbits accumulate, see your arc</span>
+                </li>
+            </ul>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">3/7</span>
+        </div>
+    </section>
+
+    <!-- Page 4: New Frictions -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Watch Out</p>
+            <h2 class="page-title">New frictions this creates</h2>
+            <div class="warning-box">
+                <div class="label">Risks to mitigate</div>
+                <ul>
+                    <li><span class="tension">Effort:</span> "I have to create something?" → Agent drafts it</li>
+                    <li><span class="tension">Exposure:</span> "What if it's wrong?" → Preview before publish</li>
+                    <li><span class="tension">Vulnerability:</span> Sharing feels risky → Tone settings, private option</li>
+                </ul>
+            </div>
+            <div class="page-content">
+                <p><span class="decision">The feature only works if creation is effortless.</span></p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">4/7</span>
+        </div>
+    </section>
+
+    <!-- Page 5: The Unlock -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Unlock</p>
+            <h2 class="page-title">Don't make them create it</h2>
+            <div class="unlock-box">
+                <div class="label">LaunchMate says</div>
+                <div class="text">"I noticed you worked through something this week. Here's a draft — want to share it?"</div>
+            </div>
+            <div class="page-content">
+                <p><span class="highlight">One-tap approve.</span> 30-second preview. Tone selector. Private option.</p>
+                <p>The agent does the work. The founder just says yes.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">5/7</span>
+        </div>
+    </section>
+
+    <!-- Page 6: Sequencing -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Rollout</p>
+            <h2 class="page-title">How to launch it</h2>
+            <ul class="sequence-list">
+                <li><span class="text"><span class="highlight">Private first</span> — "Your week, reflected" (self-insight)</span></li>
+                <li><span class="text"><span class="highlight">Optional share</span> — "Want your mentor to see this?"</span></li>
+                <li><span class="text"><span class="highlight">Cohort visibility</span> — See what others are working through</span></li>
+                <li><span class="text"><span class="highlight">Social flywheel</span> — Good Tidbits inspire deeper engagement</span></li>
+            </ul>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">6/7</span>
+        </div>
+    </section>
+
+    <!-- Page 7: Verdict -->
+    <section class="page final-page">
+        <div class="card">
+            <p class="section-label">Verdict</p>
+            <h2 class="page-title">Will it help adoption?</h2>
+            <div class="page-content">
+                <p><span class="decision">Yes.</span> Tidbits directly attack the core hypothesis: <span class="highlight">trust + meaning.</span></p>
+                <p class="quote">"LaunchMate turns your messy thinking into something you're proud to share."</p>
+                <p class="attribution">— Friction Architect // December 2025</p>
+            </div>
+            <span class="page-number">7/7</span>
+        </div>
+    </section>
+
+</body>
+</html>
