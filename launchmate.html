@@ -3,424 +3,530 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaunchMate | Hypothesis Testing Guide</title>
+    <title>LaunchMate | Hypothesis Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.7;
-            color: #1a1a1a;
-            background: #fff;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            overflow-x: hidden;
         }
-        
-        .hero {
-            padding: 50px 20px 40px;
-            background: #111;
-            color: #fff;
+
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
         }
-        .hero h1 {
-            font-size: 1.6rem;
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            max-width: 640px;
+            width: 100%;
+            min-height: 70vh;
+            padding: 50px 45px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #6b7280;
             margin-bottom: 12px;
         }
-        .hero p {
-            opacity: 0.8;
-            font-size: 1rem;
-        }
-        
-        section {
-            padding: 32px 20px;
-            border-bottom: 1px solid #e5e5e5;
-        }
-        
-        h2 {
-            font-size: 1.2rem;
-            margin-bottom: 16px;
-            color: #111;
-        }
-        
-        p { margin-bottom: 14px; color: #444; }
-        
-        .hypothesis-box {
-            background: #fffbe6;
-            border-left: 4px solid #f59e0b;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        .hypothesis-box .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #92400e;
-            margin-bottom: 8px;
-        }
-        .hypothesis-box .text {
-            font-size: 1.1rem;
+
+        .page-title {
+            font-size: 1.75rem;
             font-weight: 600;
-            color: #111;
+            color: #ffffff;
+            margin-bottom: 28px;
+            line-height: 1.3;
         }
-        
-        .test-box {
-            background: #f0fdf4;
-            border-left: 4px solid #22c55e;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
+
+        .page-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b0b0;
         }
-        .test-box .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #166534;
-            margin-bottom: 8px;
+
+        .page-content p {
+            margin-bottom: 1.2em;
         }
-        
-        .signal-box {
-            background: #eff6ff;
-            border-left: 4px solid #3b82f6;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
+
+        .highlight {
+            color: #60a5fa;
+            font-weight: 500;
         }
-        .signal-box .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #1e40af;
-            margin-bottom: 8px;
+
+        .decision {
+            color: #34d399;
+            font-weight: 500;
         }
-        
-        .kill-box {
-            background: #fef2f2;
-            border-left: 4px solid #ef4444;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
+
+        .tension {
+            color: #f97316;
+            font-weight: 500;
         }
-        .kill-box .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #991b1b;
-            margin-bottom: 8px;
+
+        .page-number {
+            position: absolute;
+            bottom: 25px;
+            right: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #4a4a4a;
         }
-        
-        ul {
-            margin: 12px 0 12px 20px;
-        }
-        li {
-            margin-bottom: 10px;
-            color: #444;
-        }
-        
-        .number-card {
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            align-items: flex-start;
-            padding: 16px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .number-card:last-child { border-bottom: none; }
-        .number {
-            width: 32px;
-            height: 32px;
-            background: #111;
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-right: 14px;
-            flex-shrink: 0;
+            color: #4a4a4a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
         }
-        .number-content h3 {
-            font-size: 1rem;
-            margin-bottom: 4px;
+
+        .scroll-hint svg {
+            width: 20px;
+            height: 20px;
+            margin-top: 6px;
         }
-        .number-content p {
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .cover-page .card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #1e1e3f 100%);
+            border-color: #2a2a4a;
+            text-align: center;
+        }
+
+        .cover-page .page-title {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .cover-page .subtitle {
+            font-size: 1.1rem;
+            color: #8b8ba7;
+            margin-bottom: 8px;
+        }
+
+        .cover-page .date {
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .hypothesis-box {
+            background: #1f1f0f;
+            border: 1px solid #3d3d1a;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+
+        .hypothesis-box .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f59e0b;
+            margin-bottom: 10px;
+        }
+
+        .hypothesis-box .text {
+            font-size: 1.15rem;
+            color: #fef3c7;
+            line-height: 1.6;
+        }
+
+        .signal-box {
+            background: #0f1f0f;
+            border: 1px solid #1a3d1a;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+
+        .signal-box .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #34d399;
+            margin-bottom: 10px;
+        }
+
+        .kill-box {
+            background: #1f0f0f;
+            border: 1px solid #3d1a1a;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+
+        .kill-box .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ef4444;
+            margin-bottom: 10px;
+        }
+
+        .question-list {
+            list-style: none;
             margin: 0;
         }
-        
-        .quote {
-            background: #111;
-            color: #fff;
-            padding: 30px 20px;
-            font-size: 1.2rem;
-            font-weight: 500;
-            text-align: center;
+
+        .question-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid #2a2a2a;
+            color: #b0b0b0;
+            font-size: 1.05rem;
         }
-        
-        .interview-q {
-            background: #fafafa;
-            padding: 14px 16px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
+
+        .question-list li:last-child {
+            border-bottom: none;
         }
-        .interview-q strong {
-            color: #111;
+
+        .question-list li::before {
+            content: "→";
+            color: #60a5fa;
+            margin-right: 12px;
         }
-        
-        .bottom-cta {
-            background: #f8f9fa;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        .bottom-cta h2 {
-            margin-bottom: 12px;
-        }
-        .bottom-cta p {
-            max-width: 320px;
-            margin: 0 auto;
-        }
-        
-        .checklist {
+
+        .takeaway-list {
             list-style: none;
-            margin-left: 0;
+            margin: 20px 0;
         }
-        .checklist li {
+
+        .takeaway-list li {
             padding: 12px 0;
-            padding-left: 32px;
-            position: relative;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #2a2a2a;
+            color: #34d399;
+            font-weight: 500;
         }
-        .checklist li::before {
-            content: "☐";
-            position: absolute;
-            left: 0;
-            font-size: 1.1rem;
+
+        .takeaway-list li:last-child {
+            border-bottom: none;
         }
-        
-        .footer {
-            padding: 30px 20px;
+
+        .stat-box {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0;
+            padding: 24px;
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+        }
+
+        .stat {
             text-align: center;
-            color: #999;
-            font-size: 0.85rem;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            font-weight: 600;
+            color: #34d399;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .final-page .card {
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 35px 25px;
+                min-height: 80vh;
+            }
+            .page-title {
+                font-size: 1.5rem;
+            }
+            .page-content {
+                font-size: 1rem;
+            }
+            .stat-value {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <h1>LaunchMate Hypothesis Guide</h1>
-        <p>What we think is true. How to test it. What signals to watch for.</p>
-    </div>
-
-    <section>
-        <h2>The Fog You're In</h2>
-        <p>You've built an AI agent for founders. Some people seem interested. But you don't know:</p>
-        <ul>
-            <li>Why aren't more people engaging?</li>
-            <li>What's actually blocking adoption?</li>
-            <li>Is this a product problem or a positioning problem?</li>
-            <li>What should you fix first?</li>
-        </ul>
-        <p><strong>This page is your flashlight.</strong> It won't give you answers — it will tell you exactly what questions to ask and what signals to look for.</p>
+    <!-- Cover Page -->
+    <section class="page cover-page">
+        <div class="card">
+            <p class="section-label">Hypothesis Guide</p>
+            <h1 class="page-title">LaunchMate</h1>
+            <p class="subtitle">What we think is true. How to test it.</p>
+            <p class="date">December 2025 // scroll to read</p>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+        </div>
     </section>
 
-    <section>
-        <h2>The Core Hypothesis</h2>
-        
-        <div class="hypothesis-box">
-            <div class="label">Primary hypothesis</div>
-            <div class="text">Founders don't believe AI can truly know them — and even when it helps, they can't see the value.</div>
+    <!-- Page 1: The Fog -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Fog</p>
+            <h2 class="page-title">You've built something. But you don't know why it's not working.</h2>
+            <div class="page-content">
+                <p>People try it. Some seem interested. But <span class="tension">they don't stick.</span></p>
+                <p>Is it the product? The positioning? Something you can't see?</p>
+                <p>This guide won't give you answers. <span class="highlight">It will tell you exactly what to ask.</span></p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">1/10</span>
         </div>
-        
-        <p>This is a <strong>trust + meaning</strong> problem, not a feature problem.</p>
-        <p>If this is true, adding more features won't help. You need to prove you know them instantly, then show value over time.</p>
-        
-        <div class="test-box">
-            <div class="label">How to test this</div>
-            <p style="margin-bottom: 8px;"><strong>Talk to 5 founders who tried LaunchMate but didn't stick.</strong></p>
-            <p style="margin: 0;">Ask: "What made you stop using it?" Listen for trust/meaning language vs. feature requests.</p>
+    </section>
+
+    <!-- Page 2: The Hypothesis -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Hypothesis</p>
+            <h2 class="page-title">We think this is the core blocker</h2>
+            <div class="hypothesis-box">
+                <div class="label">Primary hypothesis</div>
+                <div class="text">Founders don't believe AI can truly know them — and even when it helps, they can't see the value.</div>
+            </div>
+            <div class="page-content">
+                <p>This is <span class="highlight">trust + meaning</span>, not features.</p>
+                <p>If true, adding more features won't help. You need to <span class="decision">prove you know them instantly</span>, then show value over time.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">2/10</span>
         </div>
-        
-        <div class="signal-box">
-            <div class="label">Strong signal it's true</div>
-            <ul style="margin-bottom: 0;">
-                <li>"It felt generic, like talking to ChatGPT"</li>
-                <li>"I wasn't sure what it was for"</li>
-                <li>"I didn't know if it was actually helping"</li>
-                <li>"It didn't really know my situation"</li>
+    </section>
+
+    <!-- Page 3: The Test -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Test</p>
+            <h2 class="page-title">Talk to 5 founders who stopped using it</h2>
+            <div class="stat-box">
+                <div class="stat">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">churned founders to interview</div>
+                </div>
+            </div>
+            <div class="page-content">
+                <p>Not active users. Not fans. <span class="tension">The ones who left.</span></p>
+                <p>Ask them one thing: <span class="highlight">"What made you stop?"</span></p>
+                <p>Listen for trust/meaning language vs. feature requests.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">3/10</span>
+        </div>
+    </section>
+
+    <!-- Page 4: Strong Signals -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">What to Listen For</p>
+            <h2 class="page-title">Signals the hypothesis is right</h2>
+            <div class="signal-box">
+                <div class="label">You'll hear things like</div>
+                <ul class="question-list">
+                    <li>"It felt generic, like talking to ChatGPT"</li>
+                    <li>"I wasn't sure what it was for"</li>
+                    <li>"I didn't know if it was actually helping"</li>
+                    <li>"It didn't really know my situation"</li>
+                </ul>
+            </div>
+            <div class="page-content">
+                <p><span class="decision">If 3 of 5 say something like this, the hypothesis is validated.</span></p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">4/10</span>
+        </div>
+    </section>
+
+    <!-- Page 5: Kill Signals -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Or Maybe Not</p>
+            <h2 class="page-title">Signals the hypothesis is wrong</h2>
+            <div class="kill-box">
+                <div class="label">If you hear this instead</div>
+                <ul class="question-list">
+                    <li>"It was missing [specific feature]"</li>
+                    <li>"The UI was confusing"</li>
+                    <li>"I just didn't have time"</li>
+                </ul>
+            </div>
+            <div class="page-content">
+                <p>If responses are scattered, or focused on features, <span class="tension">the hypothesis is wrong.</span></p>
+                <p>That's fine. Now you test the next one.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">5/10</span>
+        </div>
+    </section>
+
+    <!-- Page 6: Runner Ups -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Backup Hypotheses</p>
+            <h2 class="page-title">If #1 is wrong, test these</h2>
+            <ul class="question-list">
+                <li><span class="highlight">Identity:</span> "I don't need AI telling me what to do"</li>
+                <li><span class="highlight">Status:</span> "Using AI feels like weakness"</li>
+                <li><span class="highlight">Timing:</span> "I don't know when to use it"</li>
+                <li><span class="highlight">Context:</span> "It doesn't know my real situation"</li>
             </ul>
+            <div class="page-content" style="margin-top: 20px;">
+                <p>These might all be true. But you need <span class="decision">ONE to focus on first.</span></p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">6/10</span>
         </div>
-        
-        <div class="kill-box">
-            <div class="label">Signal it's wrong</div>
-            <ul style="margin-bottom: 0;">
-                <li>"It was missing [specific feature]"</li>
-                <li>"The UI was confusing"</li>
-                <li>"I didn't have time" (probe deeper — time is usually a proxy)</li>
+    </section>
+
+    <!-- Page 7: Interview Questions -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Interview Script</p>
+            <h2 class="page-title">What to ask them</h2>
+            <ul class="question-list">
+                <li>"Walk me through what happened when you tried it"</li>
+                <li>"Did it feel like it understood your situation?"</li>
+                <li>"Was it clear what you were supposed to use it for?"</li>
+                <li>"How did it feel to ask AI for help?"</li>
+                <li>"If it could do one thing perfectly, what would make you use it daily?"</li>
             </ul>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">7/10</span>
         </div>
     </section>
 
-    <div class="quote">
-        "If 3 out of 5 churned users mention trust or meaning, you've validated the hypothesis. Now you know what to fix."
-    </div>
-
-    <section>
-        <h2>Runner-Up Hypotheses</h2>
-        <p>If the primary hypothesis is wrong, test these:</p>
-        
-        <div class="number-card">
-            <div class="number">2</div>
-            <div class="number-content">
-                <h3>Identity Friction</h3>
-                <p>"I'm the visionary — I don't need AI telling me what to do."</p>
+    <!-- Page 8: The Unlock -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">If Validated</p>
+            <h2 class="page-title">Here's the unlock</h2>
+            <div class="page-content">
+                <p><span class="decision">1. Prove you know them instantly.</span><br>First interaction reflects something specific about THEM — not generic advice.</p>
+                <p><span class="decision">2. Show value over time.</span><br>Track decisions, surface patterns. "You mentioned X three weeks ago — did it work?"</p>
+                <p><span class="decision">3. Make the mirror visible.</span><br>"Your agent sees patterns you're too close to notice."</p>
             </div>
-        </div>
-        
-        <div class="number-card">
-            <div class="number">3</div>
-            <div class="number-content">
-                <h3>Status Friction</h3>
-                <p>"Using AI for help feels like weakness vs. founders who figure it out."</p>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
             </div>
-        </div>
-        
-        <div class="number-card">
-            <div class="number">4</div>
-            <div class="number-content">
-                <h3>Timing/Trigger Friction</h3>
-                <p>"I don't know when to use it — it's not part of my flow."</p>
-            </div>
-        </div>
-        
-        <div class="number-card">
-            <div class="number">5</div>
-            <div class="number-content">
-                <h3>Context Gap</h3>
-                <p>"It doesn't know what my mentor said, my demo day timeline, my real blockers."</p>
-            </div>
-        </div>
-        
-        <p style="margin-top: 20px;"><strong>Note:</strong> These might all be true. But you need ONE to focus on first. The primary hypothesis is the starting point.</p>
-    </section>
-
-    <section>
-        <h2>Interview Script</h2>
-        <p>When you talk to founders, use these questions:</p>
-        
-        <div class="interview-q">
-            <strong>Opening:</strong> "You tried LaunchMate for a bit. Can you walk me through what happened?"
-        </div>
-        
-        <div class="interview-q">
-            <strong>Probe trust:</strong> "Did it feel like the agent actually understood your situation? What was missing?"
-        </div>
-        
-        <div class="interview-q">
-            <strong>Probe meaning:</strong> "Was it clear what you were supposed to use it for? What did you expect vs. what you got?"
-        </div>
-        
-        <div class="interview-q">
-            <strong>Probe identity:</strong> "How did it feel to ask an AI for help with your startup?"
-        </div>
-        
-        <div class="interview-q">
-            <strong>Probe triggers:</strong> "When would you have wanted to use it? What would have reminded you?"
-        </div>
-        
-        <div class="interview-q">
-            <strong>Magic wand:</strong> "If it could do one thing perfectly, what would make you use it every day?"
-        </div>
-        
-        <div class="interview-q">
-            <strong>Close:</strong> "What would it take for you to try it again?"
+            <span class="page-number">8/10</span>
         </div>
     </section>
 
-    <section>
-        <h2>Validation Checklist</h2>
-        <p>Before you build anything new, complete this:</p>
-        
-        <ul class="checklist">
-            <li>Talk to 5 founders who churned or went inactive</li>
-            <li>Categorize each response: Trust / Meaning / Identity / Timing / Features / Other</li>
-            <li>Look for patterns: Do 3+ mention the same friction?</li>
-            <li>Write down exact quotes (not your interpretation)</li>
-            <li>Identify the ONE friction to solve first</li>
-            <li>Brainstorm 3 lightweight experiments to address it</li>
-            <li>Run smallest possible test before building</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>If Trust + Meaning Is Confirmed</h2>
-        <p>Here's the unlock we've hypothesized:</p>
-        
-        <div class="number-card">
-            <div class="number">1</div>
-            <div class="number-content">
-                <h3>Prove you know them instantly</h3>
-                <p>First interaction should reflect something specific about THEM — not generic advice.</p>
+    <!-- Page 9: Remember -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Important</p>
+            <h2 class="page-title">This is a hypothesis, not a prediction</h2>
+            <div class="page-content">
+                <p>The friction map tells you <span class="highlight">what might be true.</span></p>
+                <p>It tells you what questions to ask.</p>
+                <p>It does NOT tell you what IS true.</p>
+                <p style="margin-top: 24px;"><span class="tension">The map gets you out of the fog. The interviews get you to truth.</span></p>
             </div>
-        </div>
-        
-        <div class="number-card">
-            <div class="number">2</div>
-            <div class="number-content">
-                <h3>Show value over time</h3>
-                <p>Track decisions, surface patterns, remind them of their own progress. "You mentioned X three weeks ago — did it work?"</p>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
             </div>
+            <span class="page-number">9/10</span>
         </div>
-        
-        <div class="number-card">
-            <div class="number">3</div>
-            <div class="number-content">
-                <h3>Make the mirror visible</h3>
-                <p>"Your agent sees patterns you're too close to notice." The insight IS the product.</p>
+    </section>
+
+    <!-- Page 10: The One Thing -->
+    <section class="page final-page">
+        <div class="card">
+            <p class="section-label">The One Thing</p>
+            <h2 class="page-title">Talk to 5 churned founders this week</h2>
+            <div class="page-content">
+                <ul class="takeaway-list">
+                    <li>Find 5 who tried and stopped</li>
+                    <li>Ask what made them leave</li>
+                    <li>Listen for trust/meaning vs. features</li>
+                    <li>Count: do 3+ say the same thing?</li>
+                    <li>Write down their exact words</li>
+                </ul>
+                <p style="color: #6b7280; font-style: italic; margin-top: 24px;">Everything else is guessing.</p>
             </div>
-        </div>
-        
-        <p style="margin-top: 20px;"><strong>Test before building:</strong> Can you manually deliver this experience to 3 founders and see if it changes their engagement?</p>
-    </section>
-
-    <section>
-        <h2>What "Validated" Looks Like</h2>
-        
-        <div class="signal-box">
-            <div class="label">You've validated the hypothesis when:</div>
-            <ul style="margin-bottom: 0;">
-                <li>3+ of 5 interviews point to the same friction</li>
-                <li>You can predict what a new churned user will say</li>
-                <li>A small intervention addressing that friction changes behavior</li>
-                <li>Founders describe the problem back to you in their own words</li>
-            </ul>
-        </div>
-        
-        <div class="kill-box">
-            <div class="label">You've invalidated it when:</div>
-            <ul style="margin-bottom: 0;">
-                <li>Responses are scattered across many different issues</li>
-                <li>Fixing the hypothesized friction doesn't change engagement</li>
-                <li>Founders say "that's not really it" when you reflect the hypothesis back</li>
-            </ul>
+            <span class="page-number">10/10</span>
         </div>
     </section>
-
-    <div class="bottom-cta">
-        <h2>The One Thing</h2>
-        <p><strong>Talk to 5 churned founders this week.</strong> Everything else is guessing. The friction map gives you hypotheses. The market gives you answers.</p>
-    </div>
-
-    <section>
-        <h2>Remember</h2>
-        <p>This friction map is a <strong>hypothesis generator</strong>, not a prediction engine.</p>
-        <ul>
-            <li>It tells you what <em>might</em> be true</li>
-            <li>It tells you what questions to ask</li>
-            <li>It does NOT tell you what <em>is</em> true</li>
-        </ul>
-        <p><strong>The map gets you out of the fog. The interviews get you to truth.</strong></p>
-    </section>
-
-    <div class="footer">
-        <p>Friction analysis by the Friction Architect | December 2025</p>
-    </div>
 
 </body>
 </html>
