@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craig's Week | December 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            max-width: 640px;
+            width: 100%;
+            min-height: 70vh;
+            padding: 50px 45px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 28px;
+            line-height: 1.3;
+        }
+
+        .page-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+        }
+
+        .page-content p {
+            margin-bottom: 1.2em;
+        }
+
+        .highlight {
+            color: #60a5fa;
+            font-weight: 500;
+        }
+
+        .decision {
+            color: #34d399;
+            font-weight: 500;
+        }
+
+        .tension {
+            color: #f97316;
+            font-weight: 500;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 25px;
+            right: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #4a4a4a;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #4a4a4a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        .scroll-hint svg {
+            width: 20px;
+            height: 20px;
+            margin-top: 6px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .cover-page .card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #1e1e3f 100%);
+            border-color: #2a2a4a;
+            text-align: center;
+        }
+
+        .cover-page .page-title {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .cover-page .subtitle {
+            font-size: 1.1rem;
+            color: #8b8ba7;
+            margin-bottom: 8px;
+        }
+
+        .cover-page .date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .final-page .card {
+            text-align: center;
+        }
+
+        .takeaway-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #2a2a2a;
+            color: #34d399;
+            font-weight: 500;
+        }
+
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+
+        .architecture-box {
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .architecture-box .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #60a5fa;
+            margin-bottom: 8px;
+        }
+
+        .architecture-box .description {
+            font-size: 0.95rem;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 35px 25px;
+                min-height: 80vh;
+            }
+            .page-title {
+                font-size: 1.5rem;
+            }
+            .page-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cover Page -->
+    <section class="page cover-page">
+        <div class="card">
+            <p class="section-label">Weekly Update</p>
+            <h1 class="page-title">Craig's Week</h1>
+            <p class="subtitle">Depth Over Breadth, Architecture Taking Shape</p>
+            <p class="date">December 31, 2025 // scroll to read</p>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 1: The Focus -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Starting Point</p>
+            <h2 class="page-title">4 users, depth over breadth</h2>
+            <div class="page-content">
+                <p>Started the week with the decision already made: <span class="decision">focus on 4 cohort users.</span></p>
+                <p>The hypothesis: prove <span class="highlight">"show me you know me"</span> works. Go deep with a few rather than shallow with many.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">1/6</span>
+        </div>
+    </section>
+
+    <!-- Page 2: The Tension -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Tension</p>
+            <h2 class="page-title">Neal's ZIP 2026 vision landed</h2>
+            <div class="page-content">
+                <p>Neal sent over the full ZIP 2026 planning document—laying out how LaunchMate should become the <span class="highlight">operating system for all three founder pathways:</span></p>
+                <ul class="takeaway-list">
+                    <li>Legacy applications</li>
+                    <li>Bootcamp ladder</li>
+                    <li>Always-on direct access</li>
+                </ul>
+                <p>This surfaced a tension: <span class="tension">my current focus is intimate and deep (4 users), while Neal's vision is infrastructure for scale.</span></p>
+                <p>That conversation is queued up and prepped.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">2/6</span>
+        </div>
+    </section>
+
+    <!-- Page 3: Tidbits -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">New Feature</p>
+            <h2 class="page-title">Tidbits: scrollable, shareable insights</h2>
+            <div class="page-content">
+                <p>Laura and I synced on a new feature called <span class="highlight">"Tidbits"</span>—scrollable, shareable insights generated from LaunchMate conversations.</p>
+                <p>The session itself became a meta-insight: <span class="decision">both of us were logged into the same Letta agent simultaneously during the Zoom call, collaborating in real-time without screen sharing.</span></p>
+                <p>That pattern felt highly productive. Worth exploring more.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">3/6</span>
+        </div>
+    </section>
+
+    <!-- Page 4: Architecture -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Architecture Evolution</p>
+            <h2 class="page-title">MemCore + Borderline</h2>
+            <div class="page-content">
+                <p>Architecture thinking evolved significantly. Now framing LaunchMate as:</p>
+                <div class="architecture-box">
+                    <div class="label">MEMCORE</div>
+                    <div class="description">The main agent that knows everything about you. Holds all context.</div>
+                </div>
+                <div class="architecture-box">
+                    <div class="label">BORDERLINE</div>
+                    <div class="description">A board of directors of specialized agents—friction mapping, pre-meeting narratives, transcription processing.</div>
+                </div>
+                <p><span class="decision">Specialists stay lean, MemCore holds context, humans stay in the loop for specialist access.</span></p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">4/6</span>
+        </div>
+    </section>
+
+    <!-- Page 5: Team Progress -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Team Movement</p>
+            <h2 class="page-title">Pointed at January</h2>
+            <div class="page-content">
+                <p>Paige sent the <span class="highlight">pre-launch hygiene checklist:</span></p>
+                <ul class="takeaway-list">
+                    <li>Templates</li>
+                    <li>API keys</li>
+                    <li>System messages</li>
+                    <li>Founder data collection</li>
+                </ul>
+                <p>The team is aligned and pointed at January launch.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">5/6</span>
+        </div>
+    </section>
+
+    <!-- Page 6: Self-Check -->
+    <section class="page final-page">
+        <div class="card">
+            <p class="section-label">Where I Am Now</p>
+            <h2 class="page-title">Focused, not scattered</h2>
+            <div class="page-content">
+                <p>The week ended with a self-check: <span class="tension">Am I scattered or focused?</span></p>
+                <p>Answer: <span class="decision">Focused on the right thing</span> (proving founders feel known), with exploration happening around it.</p>
+                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">The core is clear.</p>
+            </div>
+            <span class="page-number">6/6</span>
+        </div>
+    </section>
+
+</body>
+</html>
