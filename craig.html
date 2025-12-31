@@ -152,41 +152,53 @@
             text-align: center;
         }
 
+        .takeaway-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #2a2a2a;
+            color: #34d399;
+            font-weight: 500;
+        }
+
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+
         .architecture-box {
             background: #0f0f0f;
             border: 1px solid #2a2a2a;
             border-radius: 8px;
             padding: 20px;
             margin: 20px 0;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
         }
 
         .architecture-box .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
             color: #6b7280;
-            font-size: 0.75rem;
-            margin-bottom: 8px;
-        }
-
-        .architecture-box .main {
-            color: #34d399;
-            font-size: 1.1rem;
             margin-bottom: 12px;
         }
 
-        .architecture-box .sub {
-            color: #60a5fa;
-            font-size: 0.85rem;
-            padding-left: 16px;
-            border-left: 2px solid #2a2a2a;
+        .architecture-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
         }
 
-        .quote {
-            border-left: 3px solid #60a5fa;
-            padding-left: 16px;
-            margin: 20px 0;
-            font-style: italic;
+        .architecture-item .name {
+            font-family: 'JetBrains Mono', monospace;
+            color: #60a5fa;
+            font-weight: 500;
+            min-width: 100px;
+        }
+
+        .architecture-item .desc {
             color: #9ca3af;
+            font-size: 0.95rem;
         }
 
         @media (max-width: 600px) {
@@ -210,7 +222,7 @@
         <div class="card">
             <p class="section-label">Weekly Update</p>
             <h1 class="page-title">Craig's Week</h1>
-            <p class="subtitle">Depth Over Breadth, Architecture Taking Shape</p>
+            <p class="subtitle">Depth Over Breadth, Exploration Around the Core</p>
             <p class="date">December 2025 // scroll to read</p>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -220,126 +232,109 @@
         </div>
     </section>
 
-    <!-- Page 1: The Focus -->
+    <!-- Page 1: The Setup -->
     <section class="page">
         <div class="card">
             <p class="section-label">Starting Point</p>
-            <h2 class="page-title">Decision already made</h2>
+            <h2 class="page-title">The decision was locked</h2>
             <div class="page-content">
-                <p>Started the week with the decision already locked in: <span class="decision">focus on 4 cohort users, depth over breadth.</span></p>
-                <p>The goal: prove <span class="highlight">"show me you know me"</span> works. If founders feel truly known by LaunchMate, the rest follows.</p>
+                <p>Came into the week with clarity: <span class="decision">focus on 4 cohort users.</span> Depth over breadth.</p>
+                <p>The hypothesis to prove: <span class="highlight">founders "feel known" by the AI.</span></p>
+                <p>Not trying to scale. Not trying to serve everyone. Just prove the core works with 4 people in January.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">1/6</span>
+            <span class="page-number">1/5</span>
         </div>
     </section>
 
     <!-- Page 2: The Tension -->
     <section class="page">
         <div class="card">
-            <p class="section-label">New Input</p>
-            <h2 class="page-title">Neal's ZIP 2026 vision landed</h2>
+            <p class="section-label">What Shifted</p>
+            <h2 class="page-title">Neal's ZIP 2026 doc landed</h2>
             <div class="page-content">
-                <p>Neal sent over the full ZIP 2026 planning document—laying out how LaunchMate should become <span class="highlight">the operating system for all three founder pathways:</span></p>
-                <p>Legacy applications. Bootcamp ladder. Always-on direct access.</p>
-                <p>This surfaced a tension: <span class="tension">my current focus is intimate and deep (4 users), while Neal's vision is infrastructure for scale.</span></p>
-                <p>That conversation is queued up and prepped.</p>
+                <p>Neal sent his planning doc for 2026, positioning LaunchMate as <span class="highlight">infrastructure for scale across all pathways.</span></p>
+                <p>This surfaced a tension:</p>
+                <p><span class="tension">Craig's intimate 4-user focus</span> vs. <span class="tension">Neal's vision for operating system at scale.</span></p>
+                <p>Two different framings of what LaunchMate is becoming. Conversation with Neal is prepped.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">2/6</span>
+            <span class="page-number">2/5</span>
         </div>
     </section>
 
-    <!-- Page 3: Tidbits -->
+    <!-- Page 3: Discovery -->
     <section class="page">
         <div class="card">
-            <p class="section-label">Feature Exploration</p>
-            <h2 class="page-title">Tidbits + a meta-insight</h2>
+            <p class="section-label">Discovery</p>
+            <h2 class="page-title">Synced with Laura on "Tidbits"</h2>
             <div class="page-content">
-                <p>Synced with Laura on a new feature called <span class="highlight">"Tidbits"</span>—scrollable, shareable insights generated from LaunchMate conversations.</p>
-                <p>The session itself became the insight: <span class="decision">both of us were logged into the same Letta agent simultaneously during the Zoom call.</span></p>
-                <p>Collaborating in real-time without screen sharing. That pattern felt highly productive.</p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">3/6</span>
-        </div>
-    </section>
-
-    <!-- Page 4: Architecture -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">Architecture Evolution</p>
-            <h2 class="page-title">MemCore + Borderline</h2>
-            <div class="page-content">
-                <p>Architecture thinking evolved significantly. Now framing LaunchMate as:</p>
+                <p>Working session with Laura on the Tidbits feature. Unexpected discovery:</p>
+                <p><span class="decision">Both logging into the same Letta agent during Zoom was highly productive.</span> No screen sharing needed—just both talking to the same agent.</p>
+                <p>Architecture thinking evolved:</p>
                 <div class="architecture-box">
-                    <div class="label">CORE</div>
-                    <div class="main">MemCore — the main agent that knows everything about you</div>
-                    <div class="label" style="margin-top: 16px;">SPECIALISTS</div>
-                    <div class="sub">Borderline — a board of directors of specialized agents<br/>
-                    • Friction mapping<br/>
-                    • Pre-meeting narratives<br/>
-                    • Transcription processing</div>
+                    <div class="label">New framing</div>
+                    <div class="architecture-item">
+                        <span class="name">MemCore</span>
+                        <span class="desc">→ main agent that knows you</span>
+                    </div>
+                    <div class="architecture-item">
+                        <span class="name">Borderline</span>
+                        <span class="desc">→ board of specialized agents</span>
+                    </div>
                 </div>
-                <p>The model: <span class="decision">specialists stay lean, MemCore holds context, humans stay in the loop for specialist access.</span></p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">4/6</span>
+            <span class="page-number">3/5</span>
         </div>
     </section>
 
-    <!-- Page 5: Team -->
+    <!-- Page 4: Decision -->
     <section class="page">
         <div class="card">
-            <p class="section-label">Team Movement</p>
-            <h2 class="page-title">Pointed at January</h2>
+            <p class="section-label">The Decision</p>
+            <h2 class="page-title">Staying focused on the core</h2>
             <div class="page-content">
-                <p>Paige sent the pre-launch hygiene checklist:</p>
-                <ul style="list-style: none; margin: 16px 0; color: #9ca3af;">
-                    <li style="padding: 8px 0;">→ Templates</li>
-                    <li style="padding: 8px 0;">→ API keys</li>
-                    <li style="padding: 8px 0;">→ System messages</li>
-                    <li style="padding: 8px 0;">→ Founder data collection</li>
-                </ul>
-                <p><span class="decision">The team is pointed at January.</span></p>
+                <p>The exploration is useful. The architecture thinking is evolving. But the north star is clear:</p>
+                <p><span class="decision">Prove "show me you know me" works with 4 users in January.</span></p>
+                <p>That's the hypothesis. Everything else is exploration happening around it—valuable, but not the main thing.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">5/6</span>
+            <span class="page-number">4/5</span>
         </div>
     </section>
 
-    <!-- Page 6: Self-Check -->
+    <!-- Page 5: Where He Stands -->
     <section class="page final-page">
         <div class="card">
             <p class="section-label">Where I Am Now</p>
-            <h2 class="page-title">Focused on the right thing</h2>
+            <h2 class="page-title">Team pointed at January</h2>
             <div class="page-content">
-                <p>Week ended with a self-check:</p>
-                <div class="quote">Am I scattered or focused?</div>
-                <p><span class="decision">Answer: focused on the right thing</span>—proving founders feel known—with exploration happening around it.</p>
-                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">The core is clear.</p>
+                <ul class="takeaway-list">
+                    <li>Paige sent the pre-launch checklist</li>
+                    <li>Core hypothesis locked: "show me you know me"</li>
+                    <li>4 users, depth over breadth</li>
+                    <li>Exploration (MemCore/Borderline) happening around it</li>
+                </ul>
+                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">Core is clear. Exploration is happening around it. Team is ready.</p>
             </div>
-            <span class="page-number">6/6</span>
+            <span class="page-number">5/5</span>
         </div>
     </section>
 
