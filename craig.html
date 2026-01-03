@@ -148,8 +148,43 @@
             color: #6b7280;
         }
 
-        .final-page .card {
-            text-align: center;
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 16px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+
+        .timeline {
+            margin: 20px 0;
+            padding: 20px;
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #60a5fa;
+            width: 80px;
+            flex-shrink: 0;
+        }
+
+        .timeline-label {
+            color: #b0b0b0;
         }
 
         .takeaway-list {
@@ -166,47 +201,6 @@
 
         .takeaway-list li:last-child {
             border-bottom: none;
-        }
-
-        .quote {
-            border-left: 3px solid #60a5fa;
-            padding-left: 16px;
-            margin: 20px 0;
-            font-style: italic;
-            color: #9ca3af;
-        }
-
-        .timeline {
-            margin: 20px 0;
-        }
-
-        .timeline-item {
-            padding: 12px 0 12px 20px;
-            border-left: 2px solid #2a2a2a;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -5px;
-            top: 16px;
-            width: 8px;
-            height: 8px;
-            background: #60a5fa;
-            border-radius: 50%;
-        }
-
-        .timeline-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: #60a5fa;
-            margin-bottom: 4px;
-        }
-
-        .timeline-text {
-            color: #9ca3af;
-            font-size: 0.95rem;
         }
 
         @media (max-width: 600px) {
@@ -228,9 +222,9 @@
     <!-- Cover Page -->
     <section class="page cover-page">
         <div class="card">
-            <p class="section-label">Weekly Update</p>
+            <p class="section-label">Founder Update</p>
             <h1 class="page-title">Craig's Week</h1>
-            <p class="subtitle">The Experiment Becomes the Insight</p>
+            <p class="subtitle">From Interview Questions to Tick-Tock</p>
             <p class="date">January 2026 // scroll to read</p>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -244,19 +238,18 @@
     <section class="page">
         <div class="card">
             <p class="section-label">Starting Point</p>
-            <h2 class="page-title">Testing the magic myself</h2>
+            <h2 class="page-title">Testing my own Founder Agent</h2>
             <div class="page-content">
-                <p>Started the week testing my own Founder Agent—not as a student founder, but as the product leader building Launchmate.</p>
-                <p>The agent had processed my documents and was ready with the standard onboarding playbook: identify gaps, ask structured questions, fill in the profile.</p>
-                <p>But the <span class="tension">interview-style questions felt wrong.</span> I stopped it.</p>
-                <div class="quote">"Before we go any further, it's important that you make me feel like you know me. How would you do that?"</div>
+                <p>Started the week by doing what we ask founders to do: <span class="highlight">use my own agent.</span></p>
+                <p>First attempt was interview-style questions. The agent asking me things, me answering.</p>
+                <p><span class="tension">It felt wrong.</span> Too formal. Too much like filling out a form. Not how I actually think.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">1/6</span>
+            <span class="page-number">1/5</span>
         </div>
     </section>
 
@@ -264,118 +257,90 @@
     <section class="page">
         <div class="card">
             <p class="section-label">The Pivot</p>
-            <h2 class="page-title">Tick-tock, not interrogation</h2>
+            <h2 class="page-title">Tick-tock dialogue</h2>
             <div class="page-content">
-                <p>The real test isn't "can you collect information?" It's <span class="highlight">"can you prove you're actually seeing me?"</span></p>
-                <p>I wanted something different:</p>
-                <div class="quote">"A tick-tock. You share something about me, that causes you to ask more."</div>
-                <p>Less interrogation. <span class="decision">More jazz.</span></p>
-                <p>So we played. The agent would notice something, reflect it back, ask what it opened. I'd riff, correct, build on it.</p>
+                <p>Discovered a better pattern: <span class="decision">tick-tock.</span></p>
+                <p>Agent reflects something back. Asks what it opens up. I riff on it. Agent reflects again.</p>
+                <p>Back and forth. Like jazz. The agent isn't interrogating me—it's <span class="highlight">thinking alongside me.</span></p>
+                <p>That's the interaction model that works.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">2/6</span>
+            <span class="page-number">2/5</span>
         </div>
     </section>
 
     <!-- Page 3: The Through-Line -->
     <section class="page">
         <div class="card">
-            <p class="section-label">The Through-Line</p>
-            <h2 class="page-title">30 years, one question</h2>
+            <p class="section-label">What Surfaced</p>
+            <h2 class="page-title">30-year through-line</h2>
             <div class="page-content">
-                <p>And my whole story came out:</p>
+                <p>The tick-tock process surfaced something I hadn't articulated:</p>
                 <div class="timeline">
                     <div class="timeline-item">
-                        <div class="timeline-label">Eudora</div>
-                        <div class="timeline-text">Early internet. Built one of the first email clients. "How do humans communicate through this thing?"</div>
+                        <span class="timeline-year">Eudora</span>
+                        <span class="timeline-label">Email archaeology</span>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-label">Qualcomm</div>
-                        <div class="timeline-text">Wireless emerges. Messaging products. "What do humans need to say when they're mobile?"</div>
+                        <span class="timeline-year">Qualcomm</span>
+                        <span class="timeline-label">Communication infrastructure</span>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-label">Launchmate</div>
-                        <div class="timeline-text">AI arrives. "How can AI make human-to-human communication more satisfying?"</div>
+                        <span class="timeline-year">LaunchMate</span>
+                        <span class="timeline-label">Relationship continuity</span>
                     </div>
                 </div>
-                <p>Three technology waves. One through-line: <span class="decision">communication archaeologist.</span></p>
+                <p>I'm a <span class="highlight">communication archaeologist.</span> That's been the thread all along.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">3/6</span>
+            <span class="page-number">3/5</span>
         </div>
     </section>
 
-    <!-- Page 4: The Middle Zone -->
+    <!-- Page 4: The Insight -->
     <section class="page">
         <div class="card">
-            <p class="section-label">The Problem</p>
-            <h2 class="page-title">The middle zone is broken</h2>
+            <p class="section-label">The Insight</p>
+            <h2 class="page-title">The middle zone problem</h2>
             <div class="page-content">
-                <p>Got into the weeds on mentor/founder communication. The asymmetry:</p>
-                <p><span class="highlight">Mentors</span> want to stay in the loop so they can actually help.</p>
-                <p><span class="tension">Founders</span> experience keeping mentors updated as work—one more task when they're already drowning.</p>
-                <p>A framework emerged:</p>
-                <p><strong>Near relationships</strong> — Daily/weekly. Texting works fine.<br>
-                <strong>Far relationships</strong> — Once a year. Catch-up is normal.<br>
-                <strong>Middle relationships</strong> — Monthly-ish. <span class="tension">The dead zone.</span></p>
-                <p>Too infrequent to stay connected naturally, too frequent to start from scratch every time.</p>
+                <p>Identified the core problem LaunchMate solves:</p>
+                <p>Some relationships are <span class="tension">too infrequent to stay synced</span> but <span class="tension">too frequent to start from scratch</span> each time.</p>
+                <p>That awkward middle zone. You know each other, but you've lost the thread.</p>
+                <div class="quote">"Continuity for relationships that don't have natural continuity."</div>
+                <p>That's it. That's what we're building.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">4/6</span>
+            <span class="page-number">4/5</span>
         </div>
     </section>
 
-    <!-- Page 5: The Breakthrough -->
+    <!-- Page 5: Where He Landed -->
     <section class="page">
-        <div class="card">
-            <p class="section-label">The Breakthrough</p>
-            <h2 class="page-title">Continuity for relationships that don't have natural continuity</h2>
-            <div class="page-content">
-                <p>That's the unlock. That's what Launchmate—and the <span class="highlight">Transcript Agent architecture</span>—is actually solving for.</p>
-                <p>The Transcript Agent sits between a Founder Agent and a Mentor Agent. It:</p>
-                <ul class="takeaway-list">
-                    <li>Processes meeting transcripts</li>
-                    <li>Pulls context from both sides beforehand</li>
-                    <li>Distributes relevant updates to each agent afterward</li>
-                </ul>
-                <p>Neither human has to "keep the other in the loop." <span class="decision">The loop keeps itself.</span></p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">5/6</span>
-        </div>
-    </section>
-
-    <!-- Page 6: Where We Landed -->
-    <section class="page final-page">
         <div class="card">
             <p class="section-label">Where I Am Now</p>
-            <h2 class="page-title">The experiment passed</h2>
+            <h2 class="page-title">Eating our own cooking</h2>
             <div class="page-content">
-                <p>What we validated:</p>
                 <ul class="takeaway-list">
-                    <li>Tick-tock dialogue > linear interview questions</li>
-                    <li>"Make me feel known" is the bar—pattern recognition, not data collection</li>
-                    <li>Core insight is sharp: continuity for the middle zone</li>
+                    <li>Interview questions → tick-tock dialogue</li>
+                    <li>Surfaced 30-year through-line I hadn't articulated</li>
+                    <li>Clarified core value prop: continuity for the middle zone</li>
+                    <li>The agent process itself proved the concept</li>
                 </ul>
-                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">Next up: what does each side (founder and mentor) actually need to receive from the Transcript Agent? Same words in a meeting mean different things to different people. The agent isn't just summarizing—it's translating.</p>
+                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">Used our own tool. Found something real. The loop maintains itself.</p>
             </div>
-            <span class="page-number">6/6</span>
+            <span class="page-number">5/5</span>
         </div>
     </section>
 
