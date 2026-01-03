@@ -168,37 +168,37 @@
             border-bottom: none;
         }
 
-        .architecture-box {
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 16px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+
+        .timeline {
+            margin: 20px 0;
+            padding: 16px;
             background: #0f0f0f;
             border: 1px solid #2a2a2a;
             border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
         }
 
-        .architecture-box .label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: #6b7280;
-            margin-bottom: 12px;
-        }
-
-        .architecture-item {
+        .timeline-item {
             display: flex;
             align-items: center;
-            margin: 10px 0;
-        }
-
-        .architecture-item .name {
+            margin: 8px 0;
             font-family: 'JetBrains Mono', monospace;
-            color: #60a5fa;
-            font-weight: 500;
-            min-width: 100px;
+            font-size: 0.9rem;
         }
 
-        .architecture-item .desc {
-            color: #9ca3af;
-            font-size: 0.95rem;
+        .timeline-item .arrow {
+            color: #6b7280;
+            margin: 0 12px;
+        }
+
+        .timeline-item .era {
+            color: #60a5fa;
         }
 
         @media (max-width: 600px) {
@@ -222,7 +222,7 @@
         <div class="card">
             <p class="section-label">Weekly Update</p>
             <h1 class="page-title">Craig's Week</h1>
-            <p class="subtitle">Depth Over Breadth, Exploration Around the Core</p>
+            <p class="subtitle">From Interview Questions to "Make Me Feel Known"</p>
             <p class="date">December 2025 // scroll to read</p>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -236,105 +236,123 @@
     <section class="page">
         <div class="card">
             <p class="section-label">Starting Point</p>
-            <h2 class="page-title">The decision was locked</h2>
+            <h2 class="page-title">Standard onboarding approach</h2>
             <div class="page-content">
-                <p>Came into the week with clarity: <span class="decision">focus on 4 cohort users.</span> Depth over breadth.</p>
-                <p>The hypothesis to prove: <span class="highlight">founders "feel known" by the AI.</span></p>
-                <p>Not trying to scale. Not trying to serve everyone. Just prove the core works with 4 people in January.</p>
+                <p>Started testing my own founder agent with a typical onboarding flow. The agent had processed my documents, identified gaps, and was ready to walk through structured questions.</p>
+                <p>Confirmed the basics, then stopped it cold:</p>
+                <div class="quote">"Before we go any further, it's important that you make me feel like you know me. How would you do that?"</div>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">1/5</span>
+            <span class="page-number">1/6</span>
         </div>
     </section>
 
-    <!-- Page 2: The Tension -->
+    <!-- Page 2: The Pivot -->
     <section class="page">
         <div class="card">
-            <p class="section-label">What Shifted</p>
-            <h2 class="page-title">Neal's ZIP 2026 doc landed</h2>
+            <p class="section-label">The Pivot</p>
+            <h2 class="page-title">Synthesizing, not collecting</h2>
             <div class="page-content">
-                <p>Neal sent his planning doc for 2026, positioning LaunchMate as <span class="highlight">infrastructure for scale across all pathways.</span></p>
-                <p>This surfaced a tension:</p>
-                <p><span class="tension">Craig's intimate 4-user focus</span> vs. <span class="tension">Neal's vision for operating system at scale.</span></p>
-                <p>Two different framings of what LaunchMate is becoming. Conversation with Neal is prepped.</p>
+                <p><span class="tension">I wasn't interested in answering interview questions.</span> I wanted proof that the agent was synthesizing, not just collecting.</p>
+                <p>The agent took a risk—reflected back what it noticed without me saying it: that I'm testing whether the Launchmate promise (AI that truly knows you) actually works, by <span class="highlight">being the user</span>.</p>
+                <p>It nailed it. But I pushed further:</p>
+                <div class="quote">"Instead of interview questions, we need a tick-tock. You share something about me, that causes you to ask more."</div>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">2/5</span>
+            <span class="page-number">2/6</span>
         </div>
     </section>
 
-    <!-- Page 3: Discovery -->
+    <!-- Page 3: The Story Unlocked -->
     <section class="page">
         <div class="card">
-            <p class="section-label">Discovery</p>
-            <h2 class="page-title">Synced with Laura on "Tidbits"</h2>
+            <p class="section-label">What Emerged</p>
+            <h2 class="page-title">30 years of communication tech</h2>
             <div class="page-content">
-                <p>Working session with Laura on the Tidbits feature. Unexpected discovery:</p>
-                <p><span class="decision">Both logging into the same Letta agent during Zoom was highly productive.</span> No screen sharing needed—just both talking to the same agent.</p>
-                <p>Architecture thinking evolved:</p>
-                <div class="architecture-box">
-                    <div class="label">New framing</div>
-                    <div class="architecture-item">
-                        <span class="name">MemCore</span>
-                        <span class="desc">→ main agent that knows you</span>
-                    </div>
-                    <div class="architecture-item">
-                        <span class="name">Borderline</span>
-                        <span class="desc">→ board of specialized agents</span>
-                    </div>
+                <p>The tick-tock dialogue unlocked my whole story:</p>
+                <div class="timeline">
+                    <div class="timeline-item"><span class="era">Eudora</span> <span class="arrow">→</span> early internet email</div>
+                    <div class="timeline-item"><span class="era">Qualcomm</span> <span class="arrow">→</span> wireless messaging</div>
+                    <div class="timeline-item"><span class="era">Launchmate</span> <span class="arrow">→</span> AI as communication infrastructure</div>
                 </div>
+                <p>The through-line: every time a new technology layer emerges, I ask <span class="highlight">"what do humans need to say to each other through this thing?"</span></p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">3/5</span>
+            <span class="page-number">3/6</span>
         </div>
     </section>
 
-    <!-- Page 4: Decision -->
+    <!-- Page 4: The Current Puzzle -->
     <section class="page">
         <div class="card">
-            <p class="section-label">The Decision</p>
-            <h2 class="page-title">Staying focused on the core</h2>
+            <p class="section-label">The Puzzle</p>
+            <h2 class="page-title">Asymmetric communication</h2>
             <div class="page-content">
-                <p>The exploration is useful. The architecture thinking is evolving. But the north star is clear:</p>
-                <p><span class="decision">Prove "show me you know me" works with 4 users in January.</span></p>
-                <p>That's the hypothesis. Everything else is exploration happening around it—valuable, but not the main thing.</p>
+                <p>The current puzzle: <span class="tension">asymmetric communication in mentor/founder relationships.</span></p>
+                <p>Mentors want to stay in the loop. But founders experience updating them as work.</p>
+                <p>We landed on a framework of three relationship types:</p>
+                <ul class="takeaway-list">
+                    <li>NEAR — frequent enough to stay synced naturally</li>
+                    <li>FAR — infrequent enough to start fresh each time</li>
+                    <li>MIDDLE — the underserved zone</li>
+                </ul>
+                <p>Mentor/founder sits in that <span class="highlight">middle zone</span>.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">4/5</span>
+            <span class="page-number">4/6</span>
         </div>
     </section>
 
-    <!-- Page 5: Where He Stands -->
+    <!-- Page 5: The Breakthrough -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Breakthrough</p>
+            <h2 class="page-title">Continuity for relationships that don't have natural continuity</h2>
+            <div class="page-content">
+                <p>That's the insight. That's what Launchmate—and specifically the Transcript Agent architecture—is solving for.</p>
+                <p><span class="decision">Relationships that meet too infrequently to stay synced, but too frequently to start from scratch.</span></p>
+                <p>The agent provides the continuity that the relationship cadence can't.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">5/6</span>
+        </div>
+    </section>
+
+    <!-- Page 6: Where Things Stand -->
     <section class="page final-page">
         <div class="card">
             <p class="section-label">Where I Am Now</p>
-            <h2 class="page-title">Team pointed at January</h2>
+            <h2 class="page-title">Onboarding approach validated</h2>
             <div class="page-content">
                 <ul class="takeaway-list">
-                    <li>Paige sent the pre-launch checklist</li>
-                    <li>Core hypothesis locked: "show me you know me"</li>
-                    <li>4 users, depth over breadth</li>
-                    <li>Exploration (MemCore/Borderline) happening around it</li>
+                    <li>Tick-tock dialogue > linear questions</li>
+                    <li>Core product insight articulated</li>
+                    <li>Founder profile now rich with context</li>
+                    <li>Trust established with my own agent</li>
                 </ul>
-                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">Core is clear. Exploration is happening around it. Team is ready.</p>
+                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">Next: deeper work on Transcript Agent design—what each side (founder/mentor) actually needs to receive.</p>
             </div>
-            <span class="page-number">5/5</span>
+            <span class="page-number">6/6</span>
         </div>
     </section>
 
