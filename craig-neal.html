@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craig ↔ Neal | Continuity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            max-width: 680px;
+            width: 100%;
+            min-height: 70vh;
+            padding: 50px 45px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 28px;
+            line-height: 1.3;
+        }
+        .page-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+        }
+        .page-content p { margin-bottom: 1.2em; }
+        .highlight { color: #60a5fa; font-weight: 500; }
+        .decision { color: #34d399; font-weight: 500; }
+        .tension { color: #f97316; font-weight: 500; }
+        .waiting { color: #a78bfa; font-weight: 500; }
+        .page-number {
+            position: absolute;
+            bottom: 25px;
+            right: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #4a4a4a;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #4a4a4a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            animation: pulse 2s infinite;
+        }
+        .scroll-hint svg { width: 20px; height: 20px; margin-top: 6px; }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        .cover-page .card {
+            background: linear-gradient(135deg, #1a2e1a 0%, #1e3f1e 100%);
+            border-color: #2a4a2a;
+            text-align: center;
+        }
+        .cover-page .page-title { font-size: 2.2rem; margin-bottom: 16px; }
+        .cover-page .subtitle { font-size: 1.1rem; color: #8ba78b; margin-bottom: 8px; }
+        .cover-page .date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        .commitment-table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        .commitment-table th {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 2px solid #2a2a2a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+        .commitment-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #2a2a2a;
+            font-size: 0.95rem;
+        }
+        .status-progress { color: #60a5fa; }
+        .status-pending { color: #f97316; }
+        .status-immediate { color: #ef4444; }
+        .status-ongoing { color: #6b7280; }
+        .deadline { 
+            font-family: 'JetBrains Mono', monospace; 
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+        .role-split {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .role-box {
+            flex: 1;
+            padding: 20px;
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+        }
+        .role-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #34d399;
+            margin-bottom: 8px;
+        }
+        .role-desc { font-size: 0.95rem; color: #b0b0b0; }
+        .countdown {
+            text-align: center;
+            padding: 30px;
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .countdown-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            font-weight: 600;
+            color: #f97316;
+        }
+        .countdown-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+        .thread-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        .thread-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .thread-list li:last-child { border-bottom: none; }
+        .thread-title { color: #e0e0e0; font-weight: 500; margin-bottom: 4px; }
+        .thread-status { font-size: 0.9rem; color: #6b7280; }
+        @media (max-width: 600px) {
+            .card { padding: 35px 25px; min-height: 80vh; }
+            .page-title { font-size: 1.5rem; }
+            .page-content { font-size: 1rem; }
+            .role-split { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cover -->
+    <section class="page cover-page">
+        <div class="card">
+            <p class="section-label">Relationship Continuity</p>
+            <h1 class="page-title">Craig ↔ Neal</h1>
+            <p class="subtitle">Where things stand between 1:1s</p>
+            <p class="date">Updated Jan 3, 2026 // scroll to read</p>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 1: The Partnership -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Partnership</p>
+            <h2 class="page-title">How you're working together</h2>
+            <div class="page-content">
+                <div class="role-split">
+                    <div class="role-box">
+                        <div class="role-name">Craig</div>
+                        <div class="role-desc">Agent Trainer — white glove onboarding, context-loading agents</div>
+                    </div>
+                    <div class="role-box">
+                        <div class="role-name">Neal</div>
+                        <div class="role-desc">Mentor — validation, Neal Tests, rigor</div>
+                    </div>
+                </div>
+                <p>Co-mentoring <span class="highlight">4 In-Flight teams</span> together. Friday sessions, all recorded.</p>
+                <p>Relationship state: <span class="decision">Energized and aligned.</span> Building mode, not planning mode.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">1/5</span>
+        </div>
+    </section>
+
+    <!-- Page 2: The Deadline -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Critical Deadline</p>
+            <h2 class="page-title">BC1 is coming</h2>
+            <div class="page-content">
+                <div class="countdown">
+                    <div class="countdown-number">27</div>
+                    <div class="countdown-label">days until Boot Camp 1 (Jan 30)</div>
+                </div>
+                <p>The framework: <span class="highlight">BC1</span> (10 sales in 4 hours) → <span class="highlight">BC2</span> (Neal Test delivery)</p>
+                <p><span class="tension">BC1/BC2 plan not yet created.</span> Kathy and Erica need this to execute.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">2/5</span>
+        </div>
+    </section>
+
+    <!-- Page 3: Craig's Commitments -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Craig's Commitments</p>
+            <h2 class="page-title">What you owe Neal</h2>
+            <table class="commitment-table">
+                <tr>
+                    <th>Commitment</th>
+                    <th>Status</th>
+                    <th>When</th>
+                </tr>
+                <tr>
+                    <td>LaunchMate ready for Boot Camp</td>
+                    <td class="status-progress">In progress</td>
+                    <td class="deadline">Jan 30</td>
+                </tr>
+                <tr>
+                    <td>Delete calendar booking links</td>
+                    <td class="status-immediate">Not done</td>
+                    <td class="deadline">Immediate</td>
+                </tr>
+                <tr>
+                    <td>Connect Jenny → Michael Loeb</td>
+                    <td class="status-pending">Pending</td>
+                    <td class="deadline">ASAP</td>
+                </tr>
+                <tr>
+                    <td>Onboarding flow for 4 teams</td>
+                    <td class="status-progress">In progress</td>
+                    <td class="deadline">Before Fridays</td>
+                </tr>
+                <tr>
+                    <td>Record all Friday sessions</td>
+                    <td class="status-ongoing">Ongoing</td>
+                    <td class="deadline">—</td>
+                </tr>
+            </table>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">3/5</span>
+        </div>
+    </section>
+
+    <!-- Page 4: Waiting on Neal -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Waiting on Neal</p>
+            <h2 class="page-title">What you need from him</h2>
+            <ul class="thread-list">
+                <li>
+                    <div class="thread-title">BC1/BC2 plan sent to Kathy & Erica</div>
+                    <div class="thread-status"><span class="waiting">Blocking</span> — they can't execute without it</div>
+                </li>
+                <li>
+                    <div class="thread-title">Milestone definitions</div>
+                    <div class="thread-status">What unlocks mentor access? Not defined yet.</div>
+                </li>
+                <li>
+                    <div class="thread-title">BC2 selection criteria</div>
+                    <div class="thread-status">What signals matter for who gets in?</div>
+                </li>
+            </ul>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">4/5</span>
+        </div>
+    </section>
+
+    <!-- Page 5: Open Threads -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Open Threads</p>
+            <h2 class="page-title">Unresolved between you</h2>
+            <ul class="thread-list">
+                <li>
+                    <div class="thread-title">Tagging schema</div>
+                    <div class="thread-status">Person → Team → Mentor → Cohort — not designed yet</div>
+                </li>
+                <li>
+                    <div class="thread-title">Agent proactivity</div>
+                    <div class="thread-status">"Hard but needed" — no approach defined</div>
+                </li>
+                <li>
+                    <div class="thread-title tension">Creative tension</div>
+                    <div class="thread-status">Craig: 4-user depth first ("founders feel known")<br>Neal: infrastructure for scale (ZIP 2026 OS vision)</div>
+                </li>
+            </ul>
+            <p style="margin-top: 20px; color: #6b7280; font-style: italic;">Both aligned on north star: In-Flight is earned, not applied to.</p>
+            <span class="page-number">5/5</span>
+        </div>
+    </section>
+
+</body>
+</html>
