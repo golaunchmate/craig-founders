@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Craig's Week | December 2025</title>
+    <title>Craig's Week | January 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * {
@@ -178,27 +178,35 @@
 
         .timeline {
             margin: 20px 0;
-            padding: 16px;
-            background: #0f0f0f;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
         }
 
         .timeline-item {
-            display: flex;
-            align-items: center;
-            margin: 8px 0;
+            padding: 12px 0 12px 20px;
+            border-left: 2px solid #2a2a2a;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 16px;
+            width: 8px;
+            height: 8px;
+            background: #60a5fa;
+            border-radius: 50%;
+        }
+
+        .timeline-label {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-        }
-
-        .timeline-item .arrow {
-            color: #6b7280;
-            margin: 0 12px;
-        }
-
-        .timeline-item .era {
+            font-size: 0.8rem;
             color: #60a5fa;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: #9ca3af;
+            font-size: 0.95rem;
         }
 
         @media (max-width: 600px) {
@@ -222,8 +230,8 @@
         <div class="card">
             <p class="section-label">Weekly Update</p>
             <h1 class="page-title">Craig's Week</h1>
-            <p class="subtitle">From Interview Questions to "Make Me Feel Known"</p>
-            <p class="date">December 2025 // scroll to read</p>
+            <p class="subtitle">The Experiment Becomes the Insight</p>
+            <p class="date">January 2026 // scroll to read</p>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
@@ -236,10 +244,11 @@
     <section class="page">
         <div class="card">
             <p class="section-label">Starting Point</p>
-            <h2 class="page-title">Standard onboarding approach</h2>
+            <h2 class="page-title">Testing the magic myself</h2>
             <div class="page-content">
-                <p>Started testing my own founder agent with a typical onboarding flow. The agent had processed my documents, identified gaps, and was ready to walk through structured questions.</p>
-                <p>Confirmed the basics, then stopped it cold:</p>
+                <p>Started the week testing my own Founder Agent—not as a student founder, but as the product leader building Launchmate.</p>
+                <p>The agent had processed my documents and was ready with the standard onboarding playbook: identify gaps, ask structured questions, fill in the profile.</p>
+                <p>But the <span class="tension">interview-style questions felt wrong.</span> I stopped it.</p>
                 <div class="quote">"Before we go any further, it's important that you make me feel like you know me. How would you do that?"</div>
             </div>
             <div class="scroll-hint">
@@ -255,12 +264,13 @@
     <section class="page">
         <div class="card">
             <p class="section-label">The Pivot</p>
-            <h2 class="page-title">Synthesizing, not collecting</h2>
+            <h2 class="page-title">Tick-tock, not interrogation</h2>
             <div class="page-content">
-                <p><span class="tension">I wasn't interested in answering interview questions.</span> I wanted proof that the agent was synthesizing, not just collecting.</p>
-                <p>The agent took a risk—reflected back what it noticed without me saying it: that I'm testing whether the Launchmate promise (AI that truly knows you) actually works, by <span class="highlight">being the user</span>.</p>
-                <p>It nailed it. But I pushed further:</p>
-                <div class="quote">"Instead of interview questions, we need a tick-tock. You share something about me, that causes you to ask more."</div>
+                <p>The real test isn't "can you collect information?" It's <span class="highlight">"can you prove you're actually seeing me?"</span></p>
+                <p>I wanted something different:</p>
+                <div class="quote">"A tick-tock. You share something about me, that causes you to ask more."</div>
+                <p>Less interrogation. <span class="decision">More jazz.</span></p>
+                <p>So we played. The agent would notice something, reflect it back, ask what it opened. I'd riff, correct, build on it.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -271,19 +281,28 @@
         </div>
     </section>
 
-    <!-- Page 3: The Story Unlocked -->
+    <!-- Page 3: The Through-Line -->
     <section class="page">
         <div class="card">
-            <p class="section-label">What Emerged</p>
-            <h2 class="page-title">30 years of communication tech</h2>
+            <p class="section-label">The Through-Line</p>
+            <h2 class="page-title">30 years, one question</h2>
             <div class="page-content">
-                <p>The tick-tock dialogue unlocked my whole story:</p>
+                <p>And my whole story came out:</p>
                 <div class="timeline">
-                    <div class="timeline-item"><span class="era">Eudora</span> <span class="arrow">→</span> early internet email</div>
-                    <div class="timeline-item"><span class="era">Qualcomm</span> <span class="arrow">→</span> wireless messaging</div>
-                    <div class="timeline-item"><span class="era">Launchmate</span> <span class="arrow">→</span> AI as communication infrastructure</div>
+                    <div class="timeline-item">
+                        <div class="timeline-label">Eudora</div>
+                        <div class="timeline-text">Early internet. Built one of the first email clients. "How do humans communicate through this thing?"</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-label">Qualcomm</div>
+                        <div class="timeline-text">Wireless emerges. Messaging products. "What do humans need to say when they're mobile?"</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-label">Launchmate</div>
+                        <div class="timeline-text">AI arrives. "How can AI make human-to-human communication more satisfying?"</div>
+                    </div>
                 </div>
-                <p>The through-line: every time a new technology layer emerges, I ask <span class="highlight">"what do humans need to say to each other through this thing?"</span></p>
+                <p>Three technology waves. One through-line: <span class="decision">communication archaeologist.</span></p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -294,21 +313,20 @@
         </div>
     </section>
 
-    <!-- Page 4: The Current Puzzle -->
+    <!-- Page 4: The Middle Zone -->
     <section class="page">
         <div class="card">
-            <p class="section-label">The Puzzle</p>
-            <h2 class="page-title">Asymmetric communication</h2>
+            <p class="section-label">The Problem</p>
+            <h2 class="page-title">The middle zone is broken</h2>
             <div class="page-content">
-                <p>The current puzzle: <span class="tension">asymmetric communication in mentor/founder relationships.</span></p>
-                <p>Mentors want to stay in the loop. But founders experience updating them as work.</p>
-                <p>We landed on a framework of three relationship types:</p>
-                <ul class="takeaway-list">
-                    <li>NEAR — frequent enough to stay synced naturally</li>
-                    <li>FAR — infrequent enough to start fresh each time</li>
-                    <li>MIDDLE — the underserved zone</li>
-                </ul>
-                <p>Mentor/founder sits in that <span class="highlight">middle zone</span>.</p>
+                <p>Got into the weeds on mentor/founder communication. The asymmetry:</p>
+                <p><span class="highlight">Mentors</span> want to stay in the loop so they can actually help.</p>
+                <p><span class="tension">Founders</span> experience keeping mentors updated as work—one more task when they're already drowning.</p>
+                <p>A framework emerged:</p>
+                <p><strong>Near relationships</strong> — Daily/weekly. Texting works fine.<br>
+                <strong>Far relationships</strong> — Once a year. Catch-up is normal.<br>
+                <strong>Middle relationships</strong> — Monthly-ish. <span class="tension">The dead zone.</span></p>
+                <p>Too infrequent to stay connected naturally, too frequent to start from scratch every time.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -325,9 +343,14 @@
             <p class="section-label">The Breakthrough</p>
             <h2 class="page-title">Continuity for relationships that don't have natural continuity</h2>
             <div class="page-content">
-                <p>That's the insight. That's what Launchmate—and specifically the Transcript Agent architecture—is solving for.</p>
-                <p><span class="decision">Relationships that meet too infrequently to stay synced, but too frequently to start from scratch.</span></p>
-                <p>The agent provides the continuity that the relationship cadence can't.</p>
+                <p>That's the unlock. That's what Launchmate—and the <span class="highlight">Transcript Agent architecture</span>—is actually solving for.</p>
+                <p>The Transcript Agent sits between a Founder Agent and a Mentor Agent. It:</p>
+                <ul class="takeaway-list">
+                    <li>Processes meeting transcripts</li>
+                    <li>Pulls context from both sides beforehand</li>
+                    <li>Distributes relevant updates to each agent afterward</li>
+                </ul>
+                <p>Neither human has to "keep the other in the loop." <span class="decision">The loop keeps itself.</span></p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -338,19 +361,19 @@
         </div>
     </section>
 
-    <!-- Page 6: Where Things Stand -->
+    <!-- Page 6: Where We Landed -->
     <section class="page final-page">
         <div class="card">
             <p class="section-label">Where I Am Now</p>
-            <h2 class="page-title">Onboarding approach validated</h2>
+            <h2 class="page-title">The experiment passed</h2>
             <div class="page-content">
+                <p>What we validated:</p>
                 <ul class="takeaway-list">
-                    <li>Tick-tock dialogue > linear questions</li>
-                    <li>Core product insight articulated</li>
-                    <li>Founder profile now rich with context</li>
-                    <li>Trust established with my own agent</li>
+                    <li>Tick-tock dialogue > linear interview questions</li>
+                    <li>"Make me feel known" is the bar—pattern recognition, not data collection</li>
+                    <li>Core insight is sharp: continuity for the middle zone</li>
                 </ul>
-                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">Next: deeper work on Transcript Agent design—what each side (founder/mentor) actually needs to receive.</p>
+                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">Next up: what does each side (founder and mentor) actually need to receive from the Transcript Agent? Same words in a meeting mean different things to different people. The agent isn't just summarizing—it's translating.</p>
             </div>
             <span class="page-number">6/6</span>
         </div>
