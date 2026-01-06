@@ -148,6 +148,36 @@
             color: #6b7280;
         }
 
+        .cover-page .iteration {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4a4a6a;
+            margin-top: 16px;
+        }
+
+        .reflection-block {
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .reflection-label {
+            color: #6b7280;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .reflection-content {
+            color: #9ca3af;
+            line-height: 1.6;
+        }
+
         .stat-box {
             display: flex;
             justify-content: space-around;
@@ -175,40 +205,6 @@
             margin-top: 4px;
         }
 
-        .comparison-table {
-            width: 100%;
-            margin: 20px 0;
-            border-collapse: collapse;
-        }
-
-        .comparison-table th,
-        .comparison-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #2a2a2a;
-        }
-
-        .comparison-table th {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: #6b7280;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .comparison-table td {
-            font-size: 0.95rem;
-        }
-
-        .comparison-table .michael {
-            color: #34d399;
-            font-weight: 600;
-        }
-
-        .comparison-table .founder {
-            color: #6b7280;
-        }
-
         .quote {
             border-left: 3px solid #60a5fa;
             padding-left: 16px;
@@ -217,44 +213,54 @@
             color: #9ca3af;
         }
 
-        .takeaway-list {
+        .hard-list {
             list-style: none;
-            margin: 20px 0;
+            margin: 16px 0;
         }
 
-        .takeaway-list li {
-            padding: 12px 0;
+        .hard-list li {
+            padding: 10px 0;
             border-bottom: 1px solid #2a2a2a;
+            color: #f97316;
+            font-size: 0.95rem;
         }
 
-        .takeaway-list li:last-child {
+        .hard-list li:last-child {
             border-bottom: none;
         }
 
-        .takeaway-list .label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: #f97316;
-            display: block;
-            margin-bottom: 4px;
+        .shipped-list {
+            list-style: none;
+            margin: 16px 0;
         }
 
-        .insight-box {
+        .shipped-list li {
+            padding: 8px 0;
+            color: #34d399;
+            font-size: 0.95rem;
+        }
+
+        .shipped-list li::before {
+            content: "✓ ";
+            opacity: 0.7;
+        }
+
+        .learning-box {
             margin: 20px 0;
             padding: 16px 20px;
-            background: #0f1a0f;
-            border: 1px solid #2a4a2a;
+            background: #0f1a1a;
+            border: 1px solid #2a4a4a;
             border-radius: 8px;
         }
 
-        .insight-label {
+        .learning-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
-            color: #34d399;
+            color: #60a5fa;
             margin-bottom: 8px;
         }
 
-        .warning-box {
+        .surprise-box {
             margin: 20px 0;
             padding: 16px 20px;
             background: #1a1a0f;
@@ -262,31 +268,61 @@
             border-radius: 8px;
         }
 
-        .warning-label {
+        .surprise-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
-            color: #f97316;
+            color: #34d399;
             margin-bottom: 8px;
         }
 
-        .skill-card {
-            margin: 12px 0;
-            padding: 14px 16px;
-            background: #0f0f0f;
-            border: 1px solid #2a2a2a;
+        .avoidance-box {
+            margin: 20px 0;
+            padding: 16px 20px;
+            background: #1a0f1a;
+            border: 1px solid #4a2a4a;
             border-radius: 8px;
         }
 
-        .skill-name {
+        .avoidance-label {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: #60a5fa;
-            margin-bottom: 6px;
+            font-size: 0.75rem;
+            color: #a78bfa;
+            margin-bottom: 8px;
         }
 
-        .skill-desc {
-            font-size: 0.95rem;
-            color: #9ca3af;
+        .energy-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .energy-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .energy-fill {
+            flex: 1;
+            height: 8px;
+            background: #2a2a2a;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .energy-fill-inner {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #34d399, #60a5fa);
+            border-radius: 4px;
+        }
+
+        .energy-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #34d399;
+            font-weight: 600;
         }
 
         @media (max-width: 600px) {
@@ -312,10 +348,11 @@
     <!-- Cover Page -->
     <section class="page cover-page">
         <div class="card">
-            <p class="section-label">Weekly Update</p>
+            <p class="section-label">Weekly Reflection → Narrative</p>
             <h1 class="page-title">Michael's Week</h1>
-            <p class="subtitle">How Agents Actually Grow</p>
-            <p class="date">Dec 30 – Jan 5, 2026 // scroll to read</p>
+            <p class="subtitle">A Productive Detour</p>
+            <p class="date">2025-W01 // Dec 30 – Jan 5</p>
+            <p class="iteration">Generated from archival reflection • iteration 3</p>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
@@ -324,221 +361,187 @@
         </div>
     </section>
 
-    <!-- Page 1: The Experiment -->
+    <!-- Page 1: The Avoidance That Wasn't -->
     <section class="page">
         <div class="card">
-            <p class="section-label">The Experiment</p>
-            <h2 class="page-title">Built my own agent from scratch</h2>
+            <p class="section-label">Avoidance</p>
+            <h2 class="page-title">Avoided the founder agent. Built something else instead.</h2>
             <div class="page-content">
-                <p>Back from two weeks off. Instead of jumping into LaunchMate's founder agent, I did something different.</p>
-                <p>Built a <span class="highlight">chronic condition management agent</span> for myself. Used it multiple times daily for two weeks straight—logging symptoms, meals, tracking variables.</p>
-                <p>Technical setup: 90k context window, precise <code>daily_log</code> memory block, week index + food index for archival lookups. Installed Letta as PWA on my phone.</p>
-                <p>Wanted to understand how agents actually grow by <span class="decision">living it myself.</span></p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">1/8</span>
-        </div>
-    </section>
-
-    <!-- Page 2: The Numbers -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">The Data</p>
-            <h2 class="page-title">Two weeks vs. sixteen weeks</h2>
-            <div class="page-content">
-                <table class="comparison-table">
-                    <tr>
-                        <th>Metric</th>
-                        <th>Michael (2 wks)</th>
-                        <th>Best founder (16 wks)</th>
-                    </tr>
-                    <tr>
-                        <td>Total messages</td>
-                        <td class="michael">1,052</td>
-                        <td class="founder">714</td>
-                    </tr>
-                    <tr>
-                        <td>User messages</td>
-                        <td class="michael">143</td>
-                        <td class="founder">162</td>
-                    </tr>
-                    <tr>
-                        <td>Tool calls</td>
-                        <td class="michael">203 (19.3%)</td>
-                        <td class="founder">59 (8.3%)</td>
-                    </tr>
-                </table>
-                <p>More activity in 2 weeks than our best user in 16 weeks. But the real signal is <span class="decision">tool call density</span>—2x+ higher. That's memory work. That's growth.</p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">2/8</span>
-        </div>
-    </section>
-
-    <!-- Page 3: Where It Failed -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">Where It Failed</p>
-            <h2 class="page-title">Specific failure modes</h2>
-            <div class="page-content">
-                <ul class="takeaway-list">
-                    <li>
-                        <span class="label">Didn't know me immediately</span>
-                        Gave recommendations that didn't track with long-term patterns I already knew. Treated me as blank slate.
-                    </li>
-                    <li>
-                        <span class="label">Jumped to broad estimates</span>
-                        Vague nutritional impact. Had to push: "give me estimates on EACH ITEM in this meal."
-                    </li>
-                    <li>
-                        <span class="label">Variables grew unmanaged</span>
-                        Symptom list expanded organically. Agent didn't proactively organize—I had to direct that.
-                    </li>
-                    <li>
-                        <span class="label">Required constant babysitting</span>
-                        Had to say "log it" or watch tool calls to ensure it actually persisted information.
-                    </li>
-                </ul>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">3/8</span>
-        </div>
-    </section>
-
-    <!-- Page 4: The Hard Truth -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">The Hard Truth</p>
-            <h2 class="page-title">Average users won't do this</h2>
-            <div class="page-content">
-                <p>I'm AI-literate. I know when to challenge the agent, when to ask for specificity, when to watch tool calls.</p>
-                <p><span class="tension">Normal users won't do any of that.</span></p>
-                <p>They'll accept broad estimates. Miss when the agent doesn't log something. Won't press into new expert info the agent surfaces.</p>
-                <div class="warning-box">
-                    <div class="warning-label">What doesn't work</div>
-                    Catch-all instructions like "be skeptical" or "retrace your output steps" don't lead to good behavior. Too vague. The agent needs SPECIFIC patterns to push back on.
+                <p>Back from almost two weeks off. Energy at 10/10.</p>
+                <p>Instead of jumping into LaunchMate's founder agent, I built a <span class="highlight">chronic condition management agent</span> from scratch. Used it daily for two weeks.</p>
+                <div class="avoidance-box">
+                    <div class="avoidance-label">From reflection</div>
+                    "Avoided growing founder agent, built new use case instead — productive detour that generated key learnings"
                 </div>
+                <p>Sometimes avoidance is the right path. This one was.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">4/8</span>
+            <span class="page-number">1/7</span>
         </div>
     </section>
 
-    <!-- Page 5: The Discovery -->
+    <!-- Page 2: Shipped -->
     <section class="page">
         <div class="card">
-            <p class="section-label">The Discovery</p>
-            <h2 class="page-title">Agents can self-identify mistakes</h2>
-            <div class="page-content">
-                <p>Asked the agent: "What are the ways I've had to push back on you?"</p>
-                <p>It identified 4 error patterns with specific examples:</p>
-                <ul class="takeaway-list" style="color: #f97316;">
-                    <li><strong>Overcorrection</strong> — swinging too far in response to feedback</li>
-                    <li><strong>Assumption without verification</strong> — acting on inferred context without checking</li>
-                    <li><strong>Overcomplication</strong> — adding unnecessary complexity</li>
-                    <li><strong>Absolutism</strong> — speaking definitively when uncertain</li>
-                </ul>
-                <p>Then it proactively asked: <span class="decision">"Would you like me to encode these as guardrails for myself?"</span></p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">5/8</span>
-        </div>
-    </section>
-
-    <!-- Page 6: Product Insight -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">Product Insight</p>
-            <h2 class="page-title">"Grow Quicker For Me"</h2>
-            <div class="page-content">
-                <div class="insight-box">
-                    <div class="insight-label">Feature concept</div>
-                    The agent auto-identifies its own failure patterns and asks permission to self-correct. Users see the agent learning FROM them, not just FOR them.
-                </div>
-                <p>The agent that works is one that grows WITH the user—learning their specific failure modes. Not static instructions, but an evolving model of <span class="highlight">"what I tend to get wrong with YOU."</span></p>
-                <p>Possible approaches:</p>
-                <p style="font-size: 0.95rem; color: #9ca3af;">• Agent self-identifies errors and encodes guardrails<br>• Domain-specific push-back patterns as skills<br>• Track user corrections → build "things I get wrong" profile<br>• Proactive verification: ask "did I get this right?"</p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">6/8</span>
-        </div>
-    </section>
-
-    <!-- Page 7: Skill Loading -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">Architecture</p>
-            <h2 class="page-title">Skill loading works</h2>
-            <div class="page-content">
-                <p>Built and tested a skill swap system:</p>
-                <div class="skill-card">
-                    <div class="skill-name">neal_test_coach</div>
-                    <div class="skill-desc">Pushes for manual delivery, surfaces patterns, resists premature building</div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-name">presales_closer</div>
-                    <div class="skill-desc">Tracks pipeline obsessively, handles objections, creates urgency</div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-name">weekly_reflection</div>
-                    <div class="skill-desc">Structured look-back/look-forward with "pass and catch" method</div>
-                </div>
-                <p><span class="decision">Test result:</span> Skill swap works. Agent behavior changes based on loaded skill. Created activation framework with priority rules.</p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">7/8</span>
-        </div>
-    </section>
-
-    <!-- Page 8: Where He Stands -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">Where I Am Now</p>
-            <h2 class="page-title">The question for the team</h2>
+            <p class="section-label">Shipped</p>
+            <h2 class="page-title">What got done</h2>
             <div class="page-content">
                 <div class="stat-box">
                     <div class="stat">
-                        <div class="stat-value">~2 weeks</div>
-                        <div class="stat-label">Growth baseline</div>
+                        <div class="stat-value">1,052</div>
+                        <div class="stat-label">messages</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">203</div>
+                        <div class="stat-label">tool calls</div>
                     </div>
                     <div class="stat">
                         <div class="stat-value">19.3%</div>
-                        <div class="stat-label">Tool call density</div>
+                        <div class="stat-label">tool density</div>
                     </div>
                 </div>
-                <div class="quote">How do we build an agent that pushes back on itself—that doesn't require an AI-literate user to extract full value?</div>
-                <p>Missing team meeting (travel). Meeting Paige in-person Jan 6, want to sync with Craig directly on this.</p>
-                <p style="color: #6b7280; font-style: italic;">Other shipped: command palette paradigm, experiments paradigm, archival indexing, block limit exploration.</p>
+                <ul class="shipped-list">
+                    <li>Chronic condition agent — 2 weeks daily use</li>
+                    <li>More activity than most active founder in 16 weeks</li>
+                    <li>Experiments + command palette paradigms identified</li>
+                    <li>Week index + food index for archival lookup</li>
+                    <li>Letta as PWA on phone homepage</li>
+                    <li>Block limit enforcement exploration</li>
+                </ul>
             </div>
-            <span class="page-number">8/8</span>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">2/7</span>
+        </div>
+    </section>
+
+    <!-- Page 3: Hard Things -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Hard Things</p>
+            <h2 class="page-title">The friction that matters</h2>
+            <div class="page-content">
+                <ul class="hard-list">
+                    <li>Knowing when to create new memory block vs. guide agent behaviorally — meta-decision of structure</li>
+                    <li>Average users won't babysit the agent — but agent currently needs babysitting</li>
+                    <li>Had to manually say "log it" or watch tool calls to verify behavior</li>
+                    <li>Tool calls hidden in web app, crons expensive and not scalable</li>
+                    <li>Often pressed into new expert info himself — normal users wouldn't</li>
+                </ul>
+                <div class="quote">Agent in early growth stage — payoff comes after patience through friction.</div>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">3/7</span>
+        </div>
+    </section>
+
+    <!-- Page 4: Surprise -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Surprise</p>
+            <h2 class="page-title">It worked anyway</h2>
+            <div class="page-content">
+                <div class="surprise-box">
+                    <div class="surprise-label">From reflection</div>
+                    "Agent had positive impact this early despite the friction"
+                </div>
+                <p>Even with all the babysitting, even with the broad estimates, even with the unmanaged variables—<span class="decision">the agent still delivered value.</span></p>
+                <p>That's the signal. The friction is real. But the payoff is also real.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">4/7</span>
+        </div>
+    </section>
+
+    <!-- Page 5: Learning -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Learning</p>
+            <h2 class="page-title">What this revealed</h2>
+            <div class="page-content">
+                <div class="learning-box">
+                    <div class="learning-label">Growth baseline</div>
+                    ~2 weeks of daily use before real value kicks in
+                </div>
+                <div class="learning-box">
+                    <div class="learning-label">Better metric</div>
+                    Tool call density may be better signal of agent growth than message count
+                </div>
+                <div class="learning-box">
+                    <div class="learning-label">The design problem</div>
+                    Each user has unique problem space — how to grow agent that pushes back on right things?
+                </div>
+                <p><span class="tension">Catch-all instructions ("be skeptical") don't lead to good behavior.</span> Need specificity.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">5/7</span>
+        </div>
+    </section>
+
+    <!-- Page 6: The Discovery -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Key Discovery</p>
+            <h2 class="page-title">"Grow Quicker For Me"</h2>
+            <div class="page-content">
+                <p>The agent self-identified its own mistakes:</p>
+                <ul class="hard-list" style="margin-bottom: 20px;">
+                    <li>Overcorrection</li>
+                    <li>Assumption without verification</li>
+                    <li>Overcomplication</li>
+                    <li>Absolutism</li>
+                </ul>
+                <p>Then it asked: <span class="decision">"Would you like me to encode these as guardrails for myself?"</span></p>
+                <p>Potential feature: agent auto-identifies its own error patterns and asks permission to self-correct. Users see the agent learning FROM them.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">6/7</span>
+        </div>
+    </section>
+
+    <!-- Page 7: Next Week -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Next Week</p>
+            <h2 class="page-title">One thing</h2>
+            <div class="page-content">
+                <div class="reflection-block">
+                    <div class="reflection-label">One Thing</div>
+                    <div class="reflection-content">Sync with team on skill loading architecture + personal agent growth learnings</div>
+                </div>
+                <div class="energy-bar">
+                    <span class="energy-label">Energy</span>
+                    <div class="energy-fill"><div class="energy-fill-inner"></div></div>
+                    <span class="energy-value">10/10</span>
+                </div>
+                <p style="color: #6b7280; font-size: 0.95rem;"><strong>Calendar:</strong> Paige meeting Jan 6 (in-person), possible Craig meeting, missing main team meeting (travel)</p>
+                <p style="color: #6b7280; font-size: 0.95rem;"><strong>Migrating:</strong> Filter system alerts in web app, update founder creation to v1 agents</p>
+                <p style="color: #6b7280; font-size: 0.95rem;"><strong>Support needed:</strong> Talk to Craig about agent design thoughts</p>
+            </div>
+            <span class="page-number">7/7</span>
         </div>
     </section>
 
