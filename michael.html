@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michael's Week | December 2025</title>
+    <title>Michael's Week | January 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * {
@@ -148,8 +148,48 @@
             color: #6b7280;
         }
 
-        .final-page .card {
+        .stat-box {
+            display: flex;
+            justify-content: space-around;
+            margin: 24px 0;
+            padding: 20px;
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+        }
+
+        .stat {
             text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #60a5fa;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .insight-box {
+            margin: 20px 0;
+            padding: 16px 20px;
+            background: #0f1a0f;
+            border: 1px solid #2a4a2a;
+            border-radius: 8px;
+        }
+
+        .insight-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #34d399;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .takeaway-list {
@@ -168,24 +208,12 @@
             border-bottom: none;
         }
 
-        .skill-list {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            background: #0f0f0f;
-            border: 1px solid #2a2a2a;
-            border-radius: 6px;
-            padding: 16px;
-            margin: 16px 0;
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 16px;
+            margin: 20px 0;
+            font-style: italic;
             color: #9ca3af;
-        }
-
-        .skill-list span {
-            display: inline-block;
-            background: #2a2a2a;
-            padding: 4px 10px;
-            border-radius: 4px;
-            margin: 4px;
-            font-size: 0.8rem;
         }
 
         @media (max-width: 600px) {
@@ -199,6 +227,10 @@
             .page-content {
                 font-size: 1rem;
             }
+            .stat-box {
+                flex-direction: column;
+                gap: 16px;
+            }
         }
     </style>
 </head>
@@ -209,8 +241,8 @@
         <div class="card">
             <p class="section-label">Weekly Update</p>
             <h1 class="page-title">Michael's Week</h1>
-            <p class="subtitle">From Friction Analysis to Skill Architecture</p>
-            <p class="date">December 15–19, 2025 // scroll to read</p>
+            <p class="subtitle">Building an Agent to Understand Agents</p>
+            <p class="date">Week ending January 5, 2026</p>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
@@ -219,111 +251,145 @@
         </div>
     </section>
 
-    <!-- Page 1: Context -->
+    <!-- Page 1: The Setup -->
     <section class="page">
         <div class="card">
             <p class="section-label">Starting Point</p>
-            <h2 class="page-title">What makes LaunchMate different?</h2>
+            <h2 class="page-title">Back from two weeks off</h2>
             <div class="page-content">
-                <p>Started the week focused on foundations—defining what makes LaunchMate different from generic AI.</p>
-                <p>Built a <span class="highlight">friction analysis framework</span> covering 16 specific frictions founders face with AI tools.</p>
-                <p>Landed on the core insight: <span class="decision">trust + meaning are the locks.</span> Founders don't believe AI can truly know them, and even when it helps, they can't see the value.</p>
+                <p>Came back fully recharged. Energy at 10/10.</p>
+                <p>Rather than jumping back into LaunchMate's founder agent, took a <span class="highlight">productive detour</span>: built my own chronic condition management agent from scratch.</p>
+                <p>Goal: learn how agents actually grow by using one daily for two weeks straight.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">1/5</span>
+            <span class="page-number">1/6</span>
         </div>
     </section>
 
-    <!-- Page 2: Crisis Mode -->
+    <!-- Page 2: The Data -->
     <section class="page">
         <div class="card">
-            <p class="section-label">Early Week</p>
-            <h2 class="page-title">Crisis mode capabilities</h2>
+            <p class="section-label">The Experiment</p>
+            <h2 class="page-title">Two weeks of heavy use</h2>
             <div class="page-content">
-                <p>That insight led to designing <span class="highlight">10 crisis mode capabilities</span>—patterns for founders in high-stakes moments:</p>
-                <div class="skill-list">
-                    <span>UNBLOCK_ME</span>
-                    <span>GUT_CHECK</span>
-                    <span>PREPARE_ME</span>
-                    <span>REALITY_CHECK</span>
-                    <span>PIVOT_OR_PERSIST</span>
-                    <span>+ 5 more</span>
+                <div class="stat-box">
+                    <div class="stat">
+                        <div class="stat-value">1,052</div>
+                        <div class="stat-label">messages</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">203</div>
+                        <div class="stat-label">tool calls</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">2 wks</div>
+                        <div class="stat-label">duration</div>
+                    </div>
                 </div>
-                <p>Design principle: <span class="decision">< 60 seconds to value.</span></p>
-                <p>If the agent can't help fast when it matters, the trust never builds.</p>
+                <p>More activity than LaunchMate's most active founder generated in <span class="tension">16 weeks</span>.</p>
+                <p>But message count isn't the metric. <span class="highlight">Tool call density</span> might be the real signal—the agent was constantly logging, updating blocks, iterating.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">2/5</span>
+            <span class="page-number">2/6</span>
         </div>
     </section>
 
-    <!-- Page 3: Validation Playbook -->
+    <!-- Page 3: The Problem -->
     <section class="page">
         <div class="card">
-            <p class="section-label">Midweek Shift</p>
-            <h2 class="page-title">Restructuring the validation playbook</h2>
+            <p class="section-label">The Realization</p>
+            <h2 class="page-title">Average users won't babysit</h2>
             <div class="page-content">
-                <p>Shifted focus to the <span class="highlight">validation playbook</span>—the structure for guiding In-Flight founders through the whole flow: Neal Test → prototype → presales → delivery.</p>
-                <p>Key realization: <span class="tension">the Neal Test isn't just customer discovery.</span> It's the learning phase that informs what to build.</p>
-                <p>Had to restructure the whole framework around that insight. The Neal Test comes first because everything else depends on what you learn there.</p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">3/5</span>
-        </div>
-    </section>
-
-    <!-- Page 4: Skill Activation -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">Late Week</p>
-            <h2 class="page-title">Making the agent context-aware</h2>
-            <div class="page-content">
-                <p>Then explored <span class="highlight">skill activation</span>—how does the agent know which mode to be in?</p>
-                <p>Landed on a hybrid approach: <span class="decision">store skills in archival memory, swap them into an active_skill block based on phase.</span></p>
-                <p>Built and tested two skills:</p>
-                <div class="skill-list">
-                    <span>neal_test_coach</span>
-                    <span>presales_closer</span>
+                <p>I had to <span class="tension">constantly push back</span> on my agent—asking for estimates, watching tool calls, pressing into new info.</p>
+                <p>Normal users won't do that.</p>
+                <p>The agent jumped to broad conclusions, gave recommendations that didn't track with patterns I knew about myself.</p>
+                <div class="insight-box">
+                    <div class="insight-label">Key insight</div>
+                    Catch-all instructions like "be skeptical" don't fix this. The agent needs to <span class="decision">push back on itself.</span>
                 </div>
-                <p>Swap works. Agent can shift personalities based on where the founder is in their journey.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">4/5</span>
+            <span class="page-number">3/6</span>
         </div>
     </section>
 
-    <!-- Page 5: Current State -->
-    <section class="page final-page">
+    <!-- Page 4: The Discovery -->
+    <section class="page">
         <div class="card">
-            <p class="section-label">Where I Am Now</p>
-            <h2 class="page-title">Architecture is solid</h2>
+            <p class="section-label">The Discovery</p>
+            <h2 class="page-title">Agents can self-improve</h2>
+            <div class="page-content">
+                <p>The agent could <span class="decision">self-identify its mistakes</span>:</p>
+                <ul class="takeaway-list">
+                    <li>Overcorrection</li>
+                    <li>Assumption without verification</li>
+                    <li>Overcomplication</li>
+                    <li>Absolutism</li>
+                </ul>
+                <p>It proactively asked to encode these as guardrails.</p>
+                <div class="quote">Potential feature: "Grow quicker for me" — agent auto-improves based on its own error patterns.</div>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">4/6</span>
+        </div>
+    </section>
+
+    <!-- Page 5: Other Wins -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Other Wins</p>
+            <h2 class="page-title">Infrastructure that shipped</h2>
             <div class="page-content">
                 <ul class="takeaway-list">
-                    <li>Friction framework: done (16 patterns)</li>
-                    <li>Crisis mode capabilities: designed</li>
-                    <li>Validation playbook: restructured</li>
-                    <li>Skill swap system: working</li>
+                    <li>Experiments + command palette paradigms for base agent</li>
+                    <li>Week/food indexes for archival lookup</li>
+                    <li>Letta as PWA — recommends for all LaunchMate users</li>
+                    <li>Skill loading architecture working (neal_test_coach, presales_closer)</li>
+                    <li>Filter system alerts, v1 agent creation updates</li>
                 </ul>
-                <p>Framework and registry pattern established. The pieces are in place.</p>
-                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">Next up: testing with real founder interactions.</p>
             </div>
-            <span class="page-number">5/5</span>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">5/6</span>
+        </div>
+    </section>
+
+    <!-- Page 6: Where He Landed -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Where I Am Now</p>
+            <h2 class="page-title">~2 weeks to real payoff</h2>
+            <div class="page-content">
+                <p>Growth baseline: about <span class="highlight">2 weeks of daily use</span> before an agent delivers real value.</p>
+                <p><strong>Next week:</strong></p>
+                <ul class="takeaway-list">
+                    <li>Sync team on skill loading</li>
+                    <li>Share agent growth learnings</li>
+                    <li>Meeting with Paige (Jan 6)</li>
+                    <li>Possibly Craig</li>
+                </ul>
+                <p style="color: #6b7280; font-style: italic; margin-top: 16px;">Missing main team meeting due to travel.</p>
+            </div>
+            <span class="page-number">6/6</span>
         </div>
     </section>
 
