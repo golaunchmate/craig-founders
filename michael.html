@@ -164,32 +164,85 @@
 
         .stat-value {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 600;
             color: #60a5fa;
         }
 
         .stat-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .compare-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .compare-card {
+            padding: 16px;
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .compare-card.highlight-card {
+            border-color: #3b82f6;
+            background: #0f0f1a;
+        }
+
+        .compare-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #6b7280;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .compare-value {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #b0b0b0;
+        }
+
+        .compare-card.highlight-card .compare-value {
+            color: #60a5fa;
+        }
+
+        .compare-subtext {
+            font-size: 0.75rem;
+            color: #4a4a4a;
             margin-top: 4px;
         }
 
         .insight-box {
             margin: 20px 0;
             padding: 16px 20px;
-            background: #0f1a0f;
-            border: 1px solid #2a4a2a;
+            background: #1a0f0f;
+            border: 1px solid #4a2a2a;
             border-radius: 8px;
+        }
+
+        .insight-box.green {
+            background: #0f1a0f;
+            border-color: #2a4a2a;
         }
 
         .insight-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.7rem;
-            color: #34d399;
+            color: #f97316;
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        .insight-box.green .insight-label {
+            color: #34d399;
         }
 
         .takeaway-list {
@@ -200,8 +253,6 @@
         .takeaway-list li {
             padding: 12px 0;
             border-bottom: 1px solid #2a2a2a;
-            color: #34d399;
-            font-weight: 500;
         }
 
         .takeaway-list li:last-child {
@@ -214,6 +265,36 @@
             margin: 20px 0;
             font-style: italic;
             color: #9ca3af;
+        }
+
+        .behavior-list {
+            list-style: none;
+            margin: 16px 0;
+            font-size: 0.95rem;
+        }
+
+        .behavior-list li {
+            padding: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .behavior-list li:last-child {
+            border-bottom: none;
+        }
+
+        .behavior-rating {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .behavior-rating.high {
+            color: #34d399;
+        }
+
+        .behavior-rating.moderate {
+            color: #f97316;
         }
 
         @media (max-width: 600px) {
@@ -231,6 +312,9 @@
                 flex-direction: column;
                 gap: 16px;
             }
+            .compare-box {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -242,7 +326,7 @@
             <p class="section-label">Weekly Update</p>
             <h1 class="page-title">Michael's Week</h1>
             <p class="subtitle">Building an Agent to Understand Agents</p>
-            <p class="date">Week ending January 5, 2026</p>
+            <p class="date">Dec 30, 2024 – Jan 5, 2025</p>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
@@ -258,15 +342,15 @@
             <h2 class="page-title">Back from two weeks off</h2>
             <div class="page-content">
                 <p>Came back fully recharged. Energy at 10/10.</p>
-                <p>Rather than jumping back into LaunchMate's founder agent, took a <span class="highlight">productive detour</span>: built my own chronic condition management agent from scratch.</p>
-                <p>Goal: learn how agents actually grow by using one daily for two weeks straight.</p>
+                <p>Instead of picking up where I left off on LaunchMate's founder agent, I took a <span class="highlight">productive detour</span>: built my own agent from scratch to manage a chronic health condition.</p>
+                <p>Used it daily for two weeks straight. What emerged wasn't just a personal tool—it was a <span class="decision">research lab</span> for understanding how agents actually grow.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">1/6</span>
+            <span class="page-number">1/8</span>
         </div>
     </section>
 
@@ -279,26 +363,37 @@
                 <div class="stat-box">
                     <div class="stat">
                         <div class="stat-value">1,052</div>
-                        <div class="stat-label">messages</div>
+                        <div class="stat-label">total messages</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">143</div>
+                        <div class="stat-label">user messages</div>
                     </div>
                     <div class="stat">
                         <div class="stat-value">203</div>
                         <div class="stat-label">tool calls</div>
                     </div>
-                    <div class="stat">
-                        <div class="stat-value">2 wks</div>
-                        <div class="stat-label">duration</div>
+                </div>
+                <div class="compare-box">
+                    <div class="compare-card highlight-card">
+                        <div class="compare-label">Michael (2 weeks)</div>
+                        <div class="compare-value">19.3%</div>
+                        <div class="compare-subtext">tool call rate</div>
+                    </div>
+                    <div class="compare-card">
+                        <div class="compare-label">Power user (16 weeks)</div>
+                        <div class="compare-value">8.3%</div>
+                        <div class="compare-subtext">tool call rate</div>
                     </div>
                 </div>
-                <p>More activity than LaunchMate's most active founder generated in <span class="tension">16 weeks</span>.</p>
-                <p>But message count isn't the metric. <span class="highlight">Tool call density</span> might be the real signal—the agent was constantly logging, updating blocks, iterating.</p>
+                <p>My agent did more <span class="highlight">work</span> in 2 weeks than our most active founder did in 4 months.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">2/6</span>
+            <span class="page-number">2/8</span>
         </div>
     </section>
 
@@ -308,12 +403,63 @@
             <p class="section-label">The Realization</p>
             <h2 class="page-title">Average users won't babysit</h2>
             <div class="page-content">
-                <p>I had to <span class="tension">constantly push back</span> on my agent—asking for estimates, watching tool calls, pressing into new info.</p>
-                <p>Normal users won't do that.</p>
-                <p>The agent jumped to broad conclusions, gave recommendations that didn't track with patterns I knew about myself.</p>
+                <p>I had to constantly push back:</p>
+                <ul class="takeaway-list">
+                    <li><span class="tension">Manually said "log it"</span> to ensure things got stored</li>
+                    <li><span class="tension">Watched tool call logs</span> to verify agent was working</li>
+                    <li><span class="tension">Pressed into new info</span> the agent surfaced</li>
+                    <li><span class="tension">Used prompt techniques</span> ("give me estimates") because it jumped to generalizations</li>
+                </ul>
+                <p>Normal users won't do any of this. Valuable information would get lost.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">3/8</span>
+        </div>
+    </section>
+
+    <!-- Page 4: The Product Question -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Product Question</p>
+            <h2 class="page-title">How does an agent push back on itself?</h2>
+            <div class="page-content">
                 <div class="insight-box">
-                    <div class="insight-label">Key insight</div>
-                    Catch-all instructions like "be skeptical" don't fix this. The agent needs to <span class="decision">push back on itself.</span>
+                    <div class="insight-label">The core challenge</div>
+                    <p style="margin: 0; color: #e0e0e0;">How do we grow an agent that pushes back on the <em>right</em> things when each user has a unique problem space?</p>
+                </div>
+                <p>Catch-all instructions like "be skeptical" or "retrace your steps" don't lead to good behavior.</p>
+                <p>The agent needs to learn <span class="decision">what to challenge for this specific user.</span></p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">4/8</span>
+        </div>
+    </section>
+
+    <!-- Page 5: Self-Improving Agent -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Discovery</p>
+            <h2 class="page-title">Agents can self-identify mistakes</h2>
+            <div class="page-content">
+                <p>Asked the agent to identify how I'd pushed back on it. It outlined its own mistakes:</p>
+                <ul class="takeaway-list">
+                    <li><span class="tension">Overcorrection</span></li>
+                    <li><span class="tension">Assumption without verification</span></li>
+                    <li><span class="tension">Overcomplication</span></li>
+                    <li><span class="tension">Absolutism</span></li>
+                </ul>
+                <p>Then it proactively asked: <span class="quote" style="display: inline; border: none; padding: 0; margin: 0;">"Can I encode these as guardrails?"</span></p>
+                <div class="insight-box green">
+                    <div class="insight-label">Potential feature</div>
+                    <p style="margin: 0; color: #e0e0e0;">"Grow quicker for me" — agent auto-improves based on its own error patterns.</p>
                 </div>
             </div>
             <div class="scroll-hint">
@@ -321,47 +467,50 @@
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">3/6</span>
+            <span class="page-number">5/8</span>
         </div>
     </section>
 
-    <!-- Page 4: The Discovery -->
+    <!-- Page 6: What Shipped -->
     <section class="page">
         <div class="card">
-            <p class="section-label">The Discovery</p>
-            <h2 class="page-title">Agents can self-improve</h2>
+            <p class="section-label">What Shipped</p>
+            <h2 class="page-title">Architectural discoveries</h2>
             <div class="page-content">
-                <p>The agent could <span class="decision">self-identify its mistakes</span>:</p>
                 <ul class="takeaway-list">
-                    <li>Overcorrection</li>
-                    <li>Assumption without verification</li>
-                    <li>Overcomplication</li>
-                    <li>Absolutism</li>
+                    <li><span class="decision">Experiments paradigm</span> — agent self-initiates structured experiments</li>
+                    <li><span class="decision">Command palette paradigm</span> — user invokes specific agent modes</li>
+                    <li><span class="highlight">Precise daily_log block</span> — no context loss despite 90k window</li>
+                    <li><span class="highlight">Week + food indexes</span> — guide archival lookup for pattern analysis</li>
+                    <li><span class="highlight">Skill loading architecture</span> — tested neal_test_coach, presales_closer swaps</li>
                 </ul>
-                <p>It proactively asked to encode these as guardrails.</p>
-                <div class="quote">Potential feature: "Grow quicker for me" — agent auto-improves based on its own error patterns.</div>
+                <p style="margin-top: 16px;">Also: installed <span class="decision">Letta as PWA</span>. Recommends for all LaunchMate users.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">4/6</span>
+            <span class="page-number">6/8</span>
         </div>
     </section>
 
-    <!-- Page 5: Other Wins -->
+    <!-- Page 7: Key Learnings -->
     <section class="page">
         <div class="card">
-            <p class="section-label">Other Wins</p>
-            <h2 class="page-title">Infrastructure that shipped</h2>
+            <p class="section-label">Key Learnings</p>
+            <h2 class="page-title">What the experiment proved</h2>
             <div class="page-content">
-                <ul class="takeaway-list">
-                    <li>Experiments + command palette paradigms for base agent</li>
-                    <li>Week/food indexes for archival lookup</li>
-                    <li>Letta as PWA — recommends for all LaunchMate users</li>
-                    <li>Skill loading architecture working (neal_test_coach, presales_closer)</li>
-                    <li>Filter system alerts, v1 agent creation updates</li>
+                <p><span class="highlight">1. Growth baseline = ~2 weeks of daily use.</span> That's the investment before payoff kicks in.</p>
+                <p><span class="highlight">2. Tool call density > message count.</span> Tool calls mean the agent is <em>working</em>, not just chatting.</p>
+                <p><span class="highlight">3. Agent proactivity self-report:</span></p>
+                <ul class="behavior-list">
+                    <li><span>Pattern flagging</span><span class="behavior-rating high">High</span></li>
+                    <li><span>Auto-adding coping tools</span><span class="behavior-rating high">High</span></li>
+                    <li><span>Comparative analysis</span><span class="behavior-rating high">High</span></li>
+                    <li><span>Forward questions</span><span class="behavior-rating high">High</span></li>
+                    <li><span>Experiment suggestions</span><span class="behavior-rating moderate">Moderate</span></li>
+                    <li><span>Contextual reminders</span><span class="behavior-rating moderate">Moderate</span></li>
                 </ul>
             </div>
             <div class="scroll-hint">
@@ -369,27 +518,27 @@
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">5/6</span>
+            <span class="page-number">7/8</span>
         </div>
     </section>
 
-    <!-- Page 6: Where He Landed -->
+    <!-- Page 8: Where He Landed -->
     <section class="page">
         <div class="card">
             <p class="section-label">Where I Am Now</p>
-            <h2 class="page-title">~2 weeks to real payoff</h2>
+            <h2 class="page-title">Next week's focus</h2>
             <div class="page-content">
-                <p>Growth baseline: about <span class="highlight">2 weeks of daily use</span> before an agent delivers real value.</p>
-                <p><strong>Next week:</strong></p>
+                <p><strong>One thing:</strong> Sync with the team on skill loading architecture and personal agent growth learnings. Get aligned.</p>
+                <p><strong>Calendar:</strong></p>
                 <ul class="takeaway-list">
-                    <li>Sync team on skill loading</li>
-                    <li>Share agent growth learnings</li>
-                    <li>Meeting with Paige (Jan 6)</li>
-                    <li>Possibly Craig</li>
+                    <li>Paige meeting Jan 6 (in-person)</li>
+                    <li>Possible Craig meeting</li>
+                    <li><span class="tension">Missing main team meeting</span> — travel</li>
                 </ul>
-                <p style="color: #6b7280; font-style: italic; margin-top: 16px;">Missing main team meeting due to travel.</p>
+                <p><strong>Support needed:</strong> Talk to Craig about agent design — wants his thoughts on the architecture direction.</p>
+                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">Despite all the friction, the agent had positive impact this early. Didn't expect that.</p>
             </div>
-            <span class="page-number">6/6</span>
+            <span class="page-number">8/8</span>
         </div>
     </section>
 
