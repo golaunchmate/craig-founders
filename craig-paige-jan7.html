@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craig × Paige | The Pre-Training Pivot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e0e0e0; overflow-x: hidden; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+        .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; max-width: 640px; width: 100%; min-height: 70vh; padding: 50px 45px; position: relative; display: flex; flex-direction: column; justify-content: center; }
+        .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: #6b7280; margin-bottom: 12px; }
+        .page-title { font-size: 1.75rem; font-weight: 600; color: #ffffff; margin-bottom: 28px; line-height: 1.3; }
+        .page-content { font-size: 1.1rem; line-height: 1.8; color: #b0b0b0; }
+        .page-content p { margin-bottom: 1.2em; }
+        .highlight { color: #60a5fa; font-weight: 500; }
+        .decision { color: #34d399; font-weight: 500; }
+        .tension { color: #f97316; font-weight: 500; }
+        .page-number { position: absolute; bottom: 25px; right: 30px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #4a4a4a; }
+        .scroll-hint { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; color: #4a4a4a; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 1px; animation: pulse 2s infinite; }
+        .scroll-hint svg { width: 20px; height: 20px; margin-top: 6px; }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        .cover-page .card { background: linear-gradient(135deg, #1a1a2e 0%, #1e2f4a 100%); border-color: #2a3a5a; text-align: center; }
+        .cover-page .page-title { font-size: 2.2rem; margin-bottom: 16px; }
+        .cover-page .subtitle { font-size: 1.1rem; color: #8ba7c8; margin-bottom: 8px; }
+        .cover-page .date { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #6b7280; }
+        .quote-box { background: #0f1f1a; border: 1px solid #1a3d2a; border-radius: 8px; padding: 24px; margin: 20px 0; text-align: center; }
+        .quote-box .text { font-size: 1.2rem; color: #d1fae5; font-style: italic; line-height: 1.6; }
+        .quote-box .attribution { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; margin-top: 12px; }
+        .mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .mode-item { background: #0f0f0f; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px; text-align: center; }
+        .mode-item.fog { border-color: #3b3b5a; }
+        .mode-item.intent { border-color: #3b5a3b; }
+        .mode-item .icon { font-size: 2rem; margin-bottom: 10px; }
+        .mode-item .name { font-weight: 600; color: #fff; margin-bottom: 8px; }
+        .mode-item .desc { font-size: 0.9rem; color: #888; }
+        .commitment-list { list-style: none; margin: 20px 0; }
+        .commitment-list li { padding: 16px; margin-bottom: 12px; background: #0f0f0f; border: 1px solid #2a2a2a; border-radius: 8px; display: flex; align-items: center; gap: 12px; }
+        .commitment-list .icon { font-size: 1.3rem; }
+        .commitment-list .text { color: #b0b0b0; }
+        .countdown { font-family: 'JetBrains Mono', monospace; font-size: 4rem; font-weight: 600; color: #f97316; text-align: center; margin: 30px 0; }
+        .countdown-label { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #6b7280; text-align: center; }
+        .thread-list { list-style: none; margin: 20px 0; }
+        .thread-list li { padding: 12px 0; border-bottom: 1px solid #2a2a2a; color: #888; }
+        .thread-list li::before { content: "→"; margin-right: 10px; color: #60a5fa; }
+        .final-page .card { text-align: center; background: linear-gradient(135deg, #1f1a0f 0%, #2f2a1a 100%); border-color: #3d3a2a; }
+        .final-page .big-insight { font-size: 1.5rem; color: #fef3c7; line-height: 1.5; margin: 30px 0; }
+        @media (max-width: 600px) { .card { padding: 35px 25px; min-height: 80vh; } .page-title { font-size: 1.5rem; } .page-content { font-size: 1rem; } .mode-grid { grid-template-columns: 1fr; } .countdown { font-size: 3rem; } }
+    </style>
+</head>
+<body>
+
+    <!-- Cover Page -->
+    <section class="page cover-page">
+        <div class="card">
+            <p class="section-label">1:1 Session Tidbit</p>
+            <h1 class="page-title">The Pre-Training Pivot</h1>
+            <p class="subtitle">Craig × Paige // Onboarding Strategy</p>
+            <p class="date">January 7, 2026 // scroll to read</p>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 1: The Shift -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Pivot</p>
+            <h2 class="page-title">Pre-training, not self-onboarding</h2>
+            <div class="page-content">
+                <p>The onboarding sequence Paige built? <span class="highlight">It's perfect</span> — but not for founders to fill out themselves.</p>
+                <p>Instead: <span class="decision">Craig, Cameron, and Erica will pre-train founder agents on their behalf.</span></p>
+                <p>Nothing is out of the box anymore. The <span class="tension">white-glove approach is the product.</span></p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">1/7</span>
+        </div>
+    </section>
+
+    <!-- Page 2: The Bar -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Bar</p>
+            <h2 class="page-title">Make them feel known in 30 seconds</h2>
+            <div class="quote-box">
+                <div class="text">"This is what you told me explicitly — but here's what I know about you implicitly."</div>
+                <div class="attribution">— Craig's "whoa" moment</div>
+            </div>
+            <div class="page-content">
+                <p>That shift — <span class="highlight">explicit to implicit</span> — is where trust is built.</p>
+                <p>The agent proves it sees you. Not by repeating what you said, but by <span class="decision">showing what it understood.</span></p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">2/7</span>
+        </div>
+    </section>
+
+    <!-- Page 3: Framework -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Framework</p>
+            <h2 class="page-title">Fog Mode vs Intent Mode</h2>
+            <div class="mode-grid">
+                <div class="mode-item fog">
+                    <div class="icon">🌫️</div>
+                    <div class="name">FOG MODE</div>
+                    <div class="desc">Lost, uncertain, exploring. Agent responds with support, nurturing, open questions.</div>
+                </div>
+                <div class="mode-item intent">
+                    <div class="icon">🎯</div>
+                    <div class="name">INTENT MODE</div>
+                    <div class="desc">Has a decision to make. Agent responds with pushback, challenge, rigor.</div>
+                </div>
+            </div>
+            <div class="page-content">
+                <p>This is what makes LaunchMate feel like it's <span class="highlight">moving you along</span> — not just waiting for your next prompt.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">3/7</span>
+        </div>
+    </section>
+
+    <!-- Page 4: Commitments -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Action Items</p>
+            <h2 class="page-title">Paige's Commitments</h2>
+            <ul class="commitment-list">
+                <li>
+                    <span class="icon">📞</span>
+                    <span class="text">Coordinate with <span class="highlight">Cameron</span> (back Tuesday) + <span class="highlight">Erica</span> for pre-training interviews</span>
+                </li>
+                <li>
+                    <span class="icon">✨</span>
+                    <span class="text">Design the <span class="decision">"feeling known" moment</span> — first 30 seconds</span>
+                </li>
+                <li>
+                    <span class="icon">🧪</span>
+                    <span class="text">Test <span class="highlight">mode detection</span> with someone other than Craig</span>
+                </li>
+            </ul>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">4/7</span>
+        </div>
+    </section>
+
+    <!-- Page 5: The Clock -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Timeline</p>
+            <h2 class="page-title">The Clock is Ticking</h2>
+            <div class="countdown" id="countdown">--</div>
+            <div class="countdown-label">days until First In-Flight (Jan 23)</div>
+            <div class="page-content" style="margin-top: 30px;">
+                <p><span class="tension">4 founder agents</span> need to be pre-trained and ready.</p>
+                <p>Jan 14: Cameron back → interviews begin<br>
+                Jan 23: First In-Flight<br>
+                Jan 30: Boot Camp</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">5/7</span>
+        </div>
+    </section>
+
+    <!-- Page 6: Open Threads -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Open Threads</p>
+            <h2 class="page-title">Questions still in the air</h2>
+            <ul class="thread-list">
+                <li>How do you start tick-tock naturally?</li>
+                <li>How to merge "soul-seeing" with "immediate needs"?</li>
+                <li>What should the first message say?</li>
+                <li>How does Michael's skills architecture integrate?</li>
+                <li>Should team meetings shift to 1:1s?</li>
+            </ul>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">6/7</span>
+        </div>
+    </section>
+
+    <!-- Page 7: Career Signal -->
+    <section class="page final-page">
+        <div class="card">
+            <p class="section-label">Career Signal</p>
+            <h2 class="page-title">Craig sees something</h2>
+            <div class="big-insight">"The process of training agents is a legitimate job now. Maybe one of the most in-demand jobs. I want to point you in that direction."</div>
+            <div class="page-content">
+                <p><span class="highlight">Agent Trainer</span> — not just a task, but a career.</p>
+                <p>Craig's explicitly flagging this for Paige.</p>
+            </div>
+            <span class="page-number">7/7</span>
+        </div>
+    </section>
+
+    <script>
+        // Live countdown to Jan 23, 2026
+        function updateCountdown() {
+            const target = new Date('2026-01-23T00:00:00');
+            const now = new Date();
+            const diff = target - now;
+            const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+            document.getElementById('countdown').textContent = days > 0 ? days : '🚀';
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const pages = document.querySelectorAll('.page');
+            const current = [...pages].findIndex(p => {
+                const rect = p.getBoundingClientRect();
+                return rect.top >= -100 && rect.top <= 100;
+            });
+            if (e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                if (current < pages.length - 1) pages[current + 1].scrollIntoView({ behavior: 'smooth' });
+            }
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (current > 0) pages[current - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+
+</body>
+</html>
