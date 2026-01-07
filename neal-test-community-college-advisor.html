@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tidbit | Neal Test: Community College Advisor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            max-width: 640px;
+            width: 100%;
+            min-height: 70vh;
+            padding: 50px 45px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 28px;
+            line-height: 1.3;
+        }
+
+        .page-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+        }
+
+        .page-content p {
+            margin-bottom: 1.2em;
+        }
+
+        .highlight {
+            color: #60a5fa;
+            font-weight: 500;
+        }
+
+        .decision {
+            color: #34d399;
+            font-weight: 500;
+        }
+
+        .tension {
+            color: #f97316;
+            font-weight: 500;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 25px;
+            right: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #4a4a4a;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #4a4a4a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        .scroll-hint svg {
+            width: 20px;
+            height: 20px;
+            margin-top: 6px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .cover-page .card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-color: #2a3f5f;
+            text-align: center;
+        }
+
+        .cover-page .page-title {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .cover-page .subtitle {
+            font-size: 1.1rem;
+            color: #8b9dc3;
+            margin-bottom: 8px;
+        }
+
+        .cover-page .date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .scenario-card {
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 16px 0;
+        }
+
+        .scenario-card .scenario-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #60a5fa;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .scenario-card .scenario-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .scenario-card .scenario-desc {
+            font-size: 0.95rem;
+            color: #9ca3af;
+            line-height: 1.6;
+        }
+
+        .pitch-box {
+            background: #0f1f0f;
+            border: 1px solid #1a3d1a;
+            border-left: 3px solid #34d399;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .pitch-box .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #34d399;
+            margin-bottom: 12px;
+        }
+
+        .pitch-box .text {
+            font-size: 1rem;
+            color: #d1fae5;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .checklist {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .checklist li {
+            padding: 12px 0;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist .day {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #60a5fa;
+            min-width: 70px;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background: #1f0f0f;
+            border: 1px solid #3d1a1a;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-box .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f87171;
+            margin-bottom: 12px;
+        }
+
+        .warning-box .text {
+            font-size: 1rem;
+            color: #fecaca;
+            line-height: 1.6;
+        }
+
+        .benchmark-grid {
+            display: grid;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .benchmark-item {
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .benchmark-item .target {
+            font-size: 1.5rem;
+        }
+
+        .benchmark-item .metric {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #34d399;
+            font-weight: 500;
+        }
+
+        .benchmark-item .meaning {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-top: 4px;
+        }
+
+        .two-req {
+            display: flex;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .req-box {
+            flex: 1;
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .req-box .icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .req-box .title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .req-box .desc {
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+        .final-page .card {
+            background: linear-gradient(135deg, #1a2e1a 0%, #1e3f1e 100%);
+            border-color: #2a4a2a;
+            text-align: center;
+        }
+
+        .final-page .quote {
+            font-size: 1.3rem;
+            color: #ffffff;
+            font-weight: 500;
+            line-height: 1.5;
+            margin: 30px 0;
+        }
+
+        .final-page .commitment {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            color: #34d399;
+            background: #0f1f0f;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 35px 25px;
+                min-height: 80vh;
+            }
+            .page-title {
+                font-size: 1.5rem;
+            }
+            .page-content {
+                font-size: 1rem;
+            }
+            .two-req {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cover Page -->
+    <section class="page cover-page">
+        <div class="card">
+            <p class="section-label">The Neal Test</p>
+            <h1 class="page-title">Community College Advisor</h1>
+            <p class="subtitle">Prove customers will pay before you build</p>
+            <p class="date">January 2025 // scroll to begin</p>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 1: The Framework -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Framework</p>
+            <h2 class="page-title">What is the Neal Test?</h2>
+            <div class="page-content">
+                <p>Your product automates a service. <span class="highlight">The Neal Test version:</span> YOU become the service provider.</p>
+                <p>No technology. Just you manually doing what your product would automate.</p>
+            </div>
+            <div class="two-req">
+                <div class="req-box">
+                    <div class="icon">🛠️</div>
+                    <div class="title">Manual Delivery</div>
+                    <div class="desc">You personally do the work</div>
+                </div>
+                <div class="req-box">
+                    <div class="icon">💰</div>
+                    <div class="title">Customer Payment</div>
+                    <div class="desc">They pay for your service</div>
+                </div>
+            </div>
+            <div class="page-content">
+                <p><span class="decision">Goal:</span> Prove customers will PAY for the core value BEFORE you build any technology.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">1/9</span>
+        </div>
+    </section>
+
+    <!-- Page 2: Scenario 1 -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Scenario 1</p>
+            <h2 class="page-title">Daily Transfer Coach</h2>
+            <div class="pitch-box">
+                <div class="label">Your Pitch</div>
+                <div class="text">"For one week, I'll be your personal transfer advisor. Daily text check-ins, course planning help, and transfer pathway guidance. $35/week."</div>
+            </div>
+            <div class="page-content">
+                <p><span class="highlight">Morning:</span> Text each student with their task for the day</p>
+                <p><span class="highlight">Midday:</span> Research their specific transfer requirements</p>
+                <p><span class="highlight">Evening:</span> Send personalized guidance and next steps</p>
+                <p><span class="decision">Target: 3-5 paying students by Wednesday</span></p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">2/9</span>
+        </div>
+    </section>
+
+    <!-- Page 3: Scenario 2 -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Scenario 2</p>
+            <h2 class="page-title">On-Call Transfer Assistant</h2>
+            <div class="pitch-box">
+                <div class="label">Your Pitch</div>
+                <div class="text">"Text me any transfer question 9am-9pm. Course equivalencies, deadlines, requirements — I'll research and respond within 30 minutes. $40/week."</div>
+            </div>
+            <div class="page-content">
+                <p>When they text: <span class="tension">"Does my English 101 transfer to SDSU?"</span></p>
+                <p>You: Look up ASSIST.org, verify articulation, reply with specific answer + what else they need.</p>
+                <p><span class="highlight">What you'll learn:</span> How often do students actually need help? What questions come up most?</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">3/9</span>
+        </div>
+    </section>
+
+    <!-- Page 4: Scenario 3 -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Scenario 3</p>
+            <h2 class="page-title">Pre-Sell the Outcome</h2>
+            <div class="pitch-box">
+                <div class="label">Your Pitch</div>
+                <div class="text">"I will build you a complete 2-year transfer plan to your dream school. Every class mapped. Every requirement checked. $50, delivered in 48 hours."</div>
+            </div>
+            <div class="page-content">
+                <p><span class="highlight">Send to 20-30 students via:</span></p>
+                <p>• DM on Instagram/Discord<br>• Text to contacts who fit<br>• Post in transfer student groups</p>
+                <p>When someone pays → <span class="decision">manually create their plan</span> using ASSIST.org, counselor knowledge, and research.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">4/9</span>
+        </div>
+    </section>
+
+    <!-- Page 5: Scenario 4 -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Scenario 4</p>
+            <h2 class="page-title">Deep Dive Pilot</h2>
+            <div class="pitch-box">
+                <div class="label">Your Pitch</div>
+                <div class="text">"I'm building the best transfer planning tool. Before I build tech, I want to understand your problems deeply. Can I be your dedicated advisor for one week? $100 for exclusive beta access."</div>
+            </div>
+            <div class="page-content">
+                <p><span class="highlight">What you do:</span></p>
+                <p>• Daily 15-minute check-in calls<br>• On-call text support all week<br>• Shadow their course registration<br>• Document EVERYTHING they struggle with</p>
+                <p><span class="decision">Target: 1-2 perfect-fit students</span> paying premium for intensive help.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">5/9</span>
+        </div>
+    </section>
+
+    <!-- Page 6: Scenario 5 -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Scenario 5</p>
+            <h2 class="page-title">Pop-Up Advising</h2>
+            <div class="pitch-box">
+                <div class="label">Your Setup</div>
+                <div class="text">Set up a table in the campus library or student center with a sign: "TRANSFER PLANNING — $15 for a 15-minute session"</div>
+            </div>
+            <div class="page-content">
+                <p><span class="highlight">Your approach:</span> "Are you planning to transfer? I can map your next 2 semesters right now — $15, 15 minutes."</p>
+                <p>Deliver immediate value → Hand them a card: <span class="decision">"Want ongoing help? $40/week — text me."</span></p>
+                <p>Target: 5-10 students in a 3-hour window.</p>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">6/9</span>
+        </div>
+    </section>
+
+    <!-- Page 7: Execution -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Execution</p>
+            <h2 class="page-title">Your Week</h2>
+            <ul class="checklist">
+                <li>
+                    <span class="day">MON</span>
+                    <span>Pick ONE scenario + identify 5 specific target students</span>
+                </li>
+                <li>
+                    <span class="day">TUE-WED</span>
+                    <span>Pitch them. <span class="decision">Goal: 3+ paying customers by Wednesday night</span></span>
+                </li>
+                <li>
+                    <span class="day">THU-SAT</span>
+                    <span>Deliver the manual service, track every hour spent</span>
+                </li>
+                <li>
+                    <span class="day">SUN</span>
+                    <span>Document learnings: <span class="highlight">INSIGHT + SHIFT</span></span>
+                </li>
+            </ul>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">7/9</span>
+        </div>
+    </section>
+
+    <!-- Page 8: Benchmarks -->
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Success Metrics</p>
+            <h2 class="page-title">What does "validated" look like?</h2>
+            <div class="benchmark-grid">
+                <div class="benchmark-item">
+                    <span class="target">🎯</span>
+                    <div>
+                        <div class="metric">3 paying customers this week</div>
+                        <div class="meaning">Your pitch converts — keep testing</div>
+                    </div>
+                </div>
+                <div class="benchmark-item">
+                    <span class="target">⏱️</span>
+                    <div>
+                        <div class="metric">&lt;2 hours per student</div>
+                        <div class="meaning">Service is feasible to deliver</div>
+                    </div>
+                </div>
+                <div class="benchmark-item">
+                    <span class="target">🔄</span>
+                    <div>
+                        <div class="metric">30%+ ask to continue</div>
+                        <div class="meaning">Real ongoing demand exists</div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">8/9</span>
+        </div>
+    </section>
+
+    <!-- Page 9: Reality Check -->
+    <section class="page final-page">
+        <div class="card">
+            <p class="section-label">Reality Check</p>
+            <h2 class="page-title">The Hard Truth</h2>
+            <div class="warning-box">
+                <div class="label">If you can't get 3 students to pay $35-50/week for your MANUAL service...</div>
+                <div class="text">They won't pay for your automated product either.</div>
+            </div>
+            <p class="quote">"The Neal Test tells you these truths BEFORE you waste months building."</p>
+            <div class="commitment">🎯 No technology building until you've manually delivered to 10 paying customers.</div>
+            <span class="page-number">9/9</span>
+        </div>
+    </section>
+
+    <script>
+        // Track current page for analytics
+        const pages = document.querySelectorAll('.page');
+        let currentPage = 0;
+        
+        // Intersection Observer to track which page is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const pageIndex = Array.from(pages).indexOf(entry.target);
+                    currentPage = pageIndex;
+                    
+                    // Add subtle entrance animation
+                    const card = entry.target.querySelector('.card');
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        card.style.transition = 'all 0.4s ease-out';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }
+            });
+        }, { threshold: 0.6 });
+
+        pages.forEach(page => observer.observe(page));
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                if (currentPage < pages.length - 1) {
+                    pages[currentPage + 1].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (currentPage > 0) {
+                    pages[currentPage - 1].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+
+        // Touch hint - hide after first scroll
+        let hasScrolled = false;
+        window.addEventListener('scroll', () => {
+            if (!hasScrolled) {
+                hasScrolled = true;
+                document.querySelectorAll('.scroll-hint').forEach(hint => {
+                    hint.style.transition = 'opacity 0.5s';
+                    hint.style.opacity = '0.3';
+                });
+            }
+        }, { once: false });
+
+        // Add progress indicator
+        const progressBar = document.createElement('div');
+        progressBar.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #60a5fa, #34d399);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        `;
+        document.body.appendChild(progressBar);
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            progressBar.style.width = `${progress}%`;
+        });
+    </script>
+
+</body>
+</html>
