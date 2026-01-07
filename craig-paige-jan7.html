@@ -3,51 +3,394 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Craig × Paige | The Pre-Training Pivot</title>
+    <title>Craig × Paige | Pre-Training Pivot</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
-        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e0e0e0; overflow-x: hidden; }
-        .page { min-height: 100vh; scroll-snap-align: start; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
-        .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; max-width: 640px; width: 100%; min-height: 70vh; padding: 50px 45px; position: relative; display: flex; flex-direction: column; justify-content: center; }
-        .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: #6b7280; margin-bottom: 12px; }
-        .page-title { font-size: 1.75rem; font-weight: 600; color: #ffffff; margin-bottom: 28px; line-height: 1.3; }
-        .page-content { font-size: 1.1rem; line-height: 1.8; color: #b0b0b0; }
-        .page-content p { margin-bottom: 1.2em; }
-        .highlight { color: #60a5fa; font-weight: 500; }
-        .decision { color: #34d399; font-weight: 500; }
-        .tension { color: #f97316; font-weight: 500; }
-        .page-number { position: absolute; bottom: 25px; right: 30px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #4a4a4a; }
-        .scroll-hint { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; color: #4a4a4a; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 1px; animation: pulse 2s infinite; }
-        .scroll-hint svg { width: 20px; height: 20px; margin-top: 6px; }
-        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
-        .cover-page .card { background: linear-gradient(135deg, #1a1a2e 0%, #1e2f4a 100%); border-color: #2a3a5a; text-align: center; }
-        .cover-page .page-title { font-size: 2.2rem; margin-bottom: 16px; }
-        .cover-page .subtitle { font-size: 1.1rem; color: #8ba7c8; margin-bottom: 8px; }
-        .cover-page .date { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #6b7280; }
-        .quote-box { background: #0f1f1a; border: 1px solid #1a3d2a; border-radius: 8px; padding: 24px; margin: 20px 0; text-align: center; }
-        .quote-box .text { font-size: 1.2rem; color: #d1fae5; font-style: italic; line-height: 1.6; }
-        .quote-box .attribution { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; margin-top: 12px; }
-        .mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
-        .mode-item { background: #0f0f0f; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px; text-align: center; }
-        .mode-item.fog { border-color: #3b3b5a; }
-        .mode-item.intent { border-color: #3b5a3b; }
-        .mode-item .icon { font-size: 2rem; margin-bottom: 10px; }
-        .mode-item .name { font-weight: 600; color: #fff; margin-bottom: 8px; }
-        .mode-item .desc { font-size: 0.9rem; color: #888; }
-        .commitment-list { list-style: none; margin: 20px 0; }
-        .commitment-list li { padding: 16px; margin-bottom: 12px; background: #0f0f0f; border: 1px solid #2a2a2a; border-radius: 8px; display: flex; align-items: center; gap: 12px; }
-        .commitment-list .icon { font-size: 1.3rem; }
-        .commitment-list .text { color: #b0b0b0; }
-        .countdown { font-family: 'JetBrains Mono', monospace; font-size: 4rem; font-weight: 600; color: #f97316; text-align: center; margin: 30px 0; }
-        .countdown-label { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #6b7280; text-align: center; }
-        .thread-list { list-style: none; margin: 20px 0; }
-        .thread-list li { padding: 12px 0; border-bottom: 1px solid #2a2a2a; color: #888; }
-        .thread-list li::before { content: "→"; margin-right: 10px; color: #60a5fa; }
-        .final-page .card { text-align: center; background: linear-gradient(135deg, #1f1a0f 0%, #2f2a1a 100%); border-color: #3d3a2a; }
-        .final-page .big-insight { font-size: 1.5rem; color: #fef3c7; line-height: 1.5; margin: 30px 0; }
-        @media (max-width: 600px) { .card { padding: 35px 25px; min-height: 80vh; } .page-title { font-size: 1.5rem; } .page-content { font-size: 1rem; } .mode-grid { grid-template-columns: 1fr; } .countdown { font-size: 3rem; } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            max-width: 640px;
+            width: 100%;
+            min-height: 70vh;
+            padding: 50px 45px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 28px;
+            line-height: 1.3;
+        }
+
+        .page-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+        }
+
+        .page-content p {
+            margin-bottom: 1.2em;
+        }
+
+        .highlight {
+            color: #60a5fa;
+            font-weight: 500;
+        }
+
+        .decision {
+            color: #34d399;
+            font-weight: 500;
+        }
+
+        .tension {
+            color: #f97316;
+            font-weight: 500;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 25px;
+            right: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #4a4a4a;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #4a4a4a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        .scroll-hint svg {
+            width: 20px;
+            height: 20px;
+            margin-top: 6px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .cover-page .card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #1e2f4f 100%);
+            border-color: #2a3a5a;
+            text-align: center;
+        }
+
+        .cover-page .page-title {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .cover-page .subtitle {
+            font-size: 1.1rem;
+            color: #8ba7cb;
+            margin-bottom: 8px;
+        }
+
+        .cover-page .date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .quote-box {
+            background: #0f1a0f;
+            border-left: 3px solid #34d399;
+            padding: 24px 28px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .quote-box .quote {
+            font-size: 1.2rem;
+            color: #d1fae5;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .quote-box .attribution {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 12px;
+        }
+
+        .mode-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .mode-card {
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .mode-card:hover {
+            transform: translateY(-2px);
+            border-color: #4a4a4a;
+        }
+
+        .mode-card .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .mode-card .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .mode-card.fog .label { color: #a78bfa; }
+        .mode-card.intent .label { color: #f97316; }
+
+        .mode-card .description {
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        .commitment-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .commitment-list li {
+            padding: 16px 0;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .commitment-list li:last-child {
+            border-bottom: none;
+        }
+
+        .commitment-list .checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #4a4a4a;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .commitment-list .checkbox.checked {
+            background: #34d399;
+            border-color: #34d399;
+        }
+
+        .commitment-list .checkbox.checked::after {
+            content: "✓";
+            color: #0f0f0f;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .commitment-list .text {
+            color: #b0b0b0;
+        }
+
+        .commitment-list .owner {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #60a5fa;
+            margin-top: 4px;
+        }
+
+        .countdown {
+            background: linear-gradient(135deg, #1f0f0f 0%, #2f1a1a 100%);
+            border: 1px solid #4a2a2a;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .countdown .number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 4rem;
+            font-weight: 600;
+            color: #f87171;
+            line-height: 1;
+        }
+
+        .countdown .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #fca5a5;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .countdown .subtext {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-top: 16px;
+        }
+
+        .thread-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .thread-list li {
+            padding: 12px 16px;
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: #9ca3af;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .thread-list li::before {
+            content: "?";
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            color: #f59e0b;
+            background: #1f1f0f;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .career-box {
+            background: linear-gradient(135deg, #1a1f2e 0%, #1e2a4f 100%);
+            border: 1px solid #3a4a6a;
+            border-radius: 12px;
+            padding: 28px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .career-box .icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .career-box .title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #60a5fa;
+            margin-bottom: 12px;
+        }
+
+        .career-box .description {
+            color: #9ca3af;
+            line-height: 1.6;
+        }
+
+        .final-page .card {
+            background: linear-gradient(135deg, #0f1a1a 0%, #1a2f2f 100%);
+            border-color: #2a4a4a;
+            text-align: center;
+        }
+
+        .final-page .big-quote {
+            font-size: 1.5rem;
+            color: #ffffff;
+            font-weight: 500;
+            line-height: 1.5;
+            margin: 30px 0;
+        }
+
+        .final-page .emphasis {
+            color: #34d399;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 35px 25px;
+                min-height: 80vh;
+            }
+            .page-title {
+                font-size: 1.5rem;
+            }
+            .page-content {
+                font-size: 1rem;
+            }
+            .mode-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -67,15 +410,15 @@
         </div>
     </section>
 
-    <!-- Page 1: The Shift -->
+    <!-- Page 1: The Pivot -->
     <section class="page">
         <div class="card">
-            <p class="section-label">The Pivot</p>
-            <h2 class="page-title">Pre-training, not self-onboarding</h2>
+            <p class="section-label">The Shift</p>
+            <h2 class="page-title">Pre-training is the strategy now</h2>
             <div class="page-content">
-                <p>The onboarding sequence Paige built? <span class="highlight">It's perfect</span> — but not for founders to fill out themselves.</p>
-                <p>Instead: <span class="decision">Craig, Cameron, and Erica will pre-train founder agents on their behalf.</span></p>
-                <p>Nothing is out of the box anymore. The <span class="tension">white-glove approach is the product.</span></p>
+                <p>The onboarding sequence Paige built? It's perfect — but <span class="tension">not for founders to fill out themselves.</span></p>
+                <p>Instead: <span class="highlight">Craig, Cameron, and Erica</span> will pre-train founder agents on their behalf.</p>
+                <p><span class="decision">Nothing is out of the box anymore. The white-glove approach is the product.</span></p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -86,17 +429,17 @@
         </div>
     </section>
 
-    <!-- Page 2: The Bar -->
+    <!-- Page 2: The Insight -->
     <section class="page">
         <div class="card">
             <p class="section-label">The Bar</p>
             <h2 class="page-title">Make them feel known in 30 seconds</h2>
             <div class="quote-box">
-                <div class="text">"This is what you told me explicitly — but here's what I know about you implicitly."</div>
-                <div class="attribution">— Craig's "whoa" moment</div>
+                <p class="quote">"This is what you told me explicitly — but here's what I know about you implicitly."</p>
+                <p class="attribution">— Craig's "whoa" moment</p>
             </div>
             <div class="page-content">
-                <p>That shift — <span class="highlight">explicit to implicit</span> — is where trust is built.</p>
+                <p>That shift — from <span class="highlight">explicit to implicit</span> — is where trust is built.</p>
                 <p>The agent proves it sees you. Not by repeating what you said, but by <span class="decision">showing what it understood.</span></p>
             </div>
             <div class="scroll-hint">
@@ -108,25 +451,25 @@
         </div>
     </section>
 
-    <!-- Page 3: Framework -->
+    <!-- Page 3: Mode Detection -->
     <section class="page">
         <div class="card">
             <p class="section-label">Framework</p>
             <h2 class="page-title">Fog Mode vs Intent Mode</h2>
             <div class="mode-grid">
-                <div class="mode-item fog">
+                <div class="mode-card fog">
                     <div class="icon">🌫️</div>
-                    <div class="name">FOG MODE</div>
-                    <div class="desc">Lost, uncertain, exploring. Agent responds with support, nurturing, open questions.</div>
+                    <div class="label">Fog Mode</div>
+                    <div class="description">Founder is lost, uncertain, exploring. Respond with support, nurturing, open questions.</div>
                 </div>
-                <div class="mode-item intent">
+                <div class="mode-card intent">
                     <div class="icon">🎯</div>
-                    <div class="name">INTENT MODE</div>
-                    <div class="desc">Has a decision to make. Agent responds with pushback, challenge, rigor.</div>
+                    <div class="label">Intent Mode</div>
+                    <div class="description">Founder has a decision to make. Respond with pushback, challenge, rigor.</div>
                 </div>
             </div>
             <div class="page-content">
-                <p>This is what makes LaunchMate feel like it's <span class="highlight">moving you along</span> — not just waiting for your next prompt.</p>
+                <p>This is what makes LaunchMate feel like it's <span class="decision">moving you along</span> — not just waiting for your next prompt.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -144,16 +487,25 @@
             <h2 class="page-title">Paige's Commitments</h2>
             <ul class="commitment-list">
                 <li>
-                    <span class="icon">📞</span>
-                    <span class="text">Coordinate with <span class="highlight">Cameron</span> (back Tuesday) + <span class="highlight">Erica</span> for pre-training interviews</span>
+                    <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
+                    <div>
+                        <div class="text">Coordinate with Cameron + Erica for pre-training interviews</div>
+                        <div class="owner">Cameron back Tuesday, Jan 14</div>
+                    </div>
                 </li>
                 <li>
-                    <span class="icon">✨</span>
-                    <span class="text">Design the <span class="decision">"feeling known" moment</span> — first 30 seconds</span>
+                    <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
+                    <div>
+                        <div class="text">Design the "feeling known" moment — first 30 seconds</div>
+                        <div class="owner">Explicit → implicit shift</div>
+                    </div>
                 </li>
                 <li>
-                    <span class="icon">🧪</span>
-                    <span class="text">Test <span class="highlight">mode detection</span> with someone other than Craig</span>
+                    <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
+                    <div>
+                        <div class="text">Test mode detection with someone other than Craig</div>
+                        <div class="owner">Is it universally useful?</div>
+                    </div>
                 </li>
             </ul>
             <div class="scroll-hint">
@@ -165,18 +517,19 @@
         </div>
     </section>
 
-    <!-- Page 5: The Clock -->
+    <!-- Page 5: Career Signal -->
     <section class="page">
         <div class="card">
-            <p class="section-label">Timeline</p>
-            <h2 class="page-title">The Clock is Ticking</h2>
-            <div class="countdown" id="countdown">--</div>
-            <div class="countdown-label">days until First In-Flight (Jan 23)</div>
-            <div class="page-content" style="margin-top: 30px;">
-                <p><span class="tension">4 founder agents</span> need to be pre-trained and ready.</p>
-                <p>Jan 14: Cameron back → interviews begin<br>
-                Jan 23: First In-Flight<br>
-                Jan 30: Boot Camp</p>
+            <p class="section-label">Career Signal</p>
+            <h2 class="page-title">Craig sees something</h2>
+            <div class="career-box">
+                <div class="icon">🚀</div>
+                <div class="title">Agent Trainer</div>
+                <div class="description">"The process of training agents is a legitimate job now. Maybe one of the most in-demand jobs. I want to point you in that direction."</div>
+            </div>
+            <div class="page-content">
+                <p>Not just a task — <span class="decision">a career.</span></p>
+                <p>Craig's explicitly flagging this for Paige.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -191,13 +544,12 @@
     <section class="page">
         <div class="card">
             <p class="section-label">Open Threads</p>
-            <h2 class="page-title">Questions still in the air</h2>
+            <h2 class="page-title">Still unresolved</h2>
             <ul class="thread-list">
                 <li>How do you start tick-tock naturally?</li>
                 <li>How to merge "soul-seeing" with "immediate needs"?</li>
                 <li>What should the first message say?</li>
                 <li>How does Michael's skills architecture integrate?</li>
-                <li>Should team meetings shift to 1:1s?</li>
             </ul>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -208,47 +560,73 @@
         </div>
     </section>
 
-    <!-- Page 7: Career Signal -->
+    <!-- Page 7: The Clock -->
     <section class="page final-page">
         <div class="card">
-            <p class="section-label">Career Signal</p>
-            <h2 class="page-title">Craig sees something</h2>
-            <div class="big-insight">"The process of training agents is a legitimate job now. Maybe one of the most in-demand jobs. I want to point you in that direction."</div>
-            <div class="page-content">
-                <p><span class="highlight">Agent Trainer</span> — not just a task, but a career.</p>
-                <p>Craig's explicitly flagging this for Paige.</p>
+            <p class="section-label">The Clock</p>
+            <h2 class="page-title">Time is tight</h2>
+            <div class="countdown">
+                <div class="number" id="days-left">16</div>
+                <div class="label">Days to First In-Flight</div>
+                <div class="subtext">January 23, 2026 — 4 founder agents need to be ready</div>
             </div>
+            <p class="big-quote">"<span class="emphasis">The white-glove approach is the product.</span>"</p>
             <span class="page-number">7/7</span>
         </div>
     </section>
 
     <script>
-        // Live countdown to Jan 23, 2026
+        // Calculate actual days remaining until Jan 23, 2026
         function updateCountdown() {
             const target = new Date('2026-01-23T00:00:00');
             const now = new Date();
             const diff = target - now;
             const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-            document.getElementById('countdown').textContent = days > 0 ? days : '🚀';
+            const el = document.getElementById('days-left');
+            if (el && days > 0) {
+                el.textContent = days;
+            } else if (el && days <= 0) {
+                el.textContent = '🚀';
+                el.style.fontSize = '3rem';
+            }
         }
+        
         updateCountdown();
-        setInterval(updateCountdown, 60000);
+        setInterval(updateCountdown, 60000); // Update every minute
 
-        // Keyboard navigation
+        // Add keyboard navigation
         document.addEventListener('keydown', (e) => {
             const pages = document.querySelectorAll('.page');
-            const current = [...pages].findIndex(p => {
-                const rect = p.getBoundingClientRect();
-                return rect.top >= -100 && rect.top <= 100;
-            });
+            const currentScroll = window.scrollY;
+            const viewportHeight = window.innerHeight;
+            const currentPage = Math.round(currentScroll / viewportHeight);
+            
             if (e.key === 'ArrowDown' || e.key === ' ') {
                 e.preventDefault();
-                if (current < pages.length - 1) pages[current + 1].scrollIntoView({ behavior: 'smooth' });
-            }
-            if (e.key === 'ArrowUp') {
+                if (currentPage < pages.length - 1) {
+                    pages[currentPage + 1].scrollIntoView({ behavior: 'smooth' });
+                }
+            } else if (e.key === 'ArrowUp') {
                 e.preventDefault();
-                if (current > 0) pages[current - 1].scrollIntoView({ behavior: 'smooth' });
+                if (currentPage > 0) {
+                    pages[currentPage - 1].scrollIntoView({ behavior: 'smooth' });
+                }
             }
+        });
+
+        // Persist checkbox state in localStorage
+        document.querySelectorAll('.checkbox').forEach((checkbox, index) => {
+            const key = `commitment-${index}`;
+            if (localStorage.getItem(key) === 'checked') {
+                checkbox.classList.add('checked');
+            }
+            checkbox.addEventListener('click', () => {
+                if (checkbox.classList.contains('checked')) {
+                    localStorage.setItem(key, 'checked');
+                } else {
+                    localStorage.removeItem(key);
+                }
+            });
         });
     </script>
 
