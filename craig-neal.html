@@ -31,6 +31,16 @@
             justify-content: center;
             align-items: center;
             padding: 40px 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .card {
@@ -90,9 +100,9 @@
             font-weight: 500;
         }
 
-        .urgent {
+        .warning {
             color: #ef4444;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .page-number {
@@ -117,6 +127,11 @@
             font-size: 0.7rem;
             letter-spacing: 1px;
             animation: pulse 2s infinite;
+            transition: opacity 0.3s;
+        }
+
+        .scroll-hint.hidden {
+            opacity: 0;
         }
 
         .scroll-hint svg {
@@ -131,8 +146,8 @@
         }
 
         .cover-page .card {
-            background: linear-gradient(135deg, #1a2e1a 0%, #1e3f1e 100%);
-            border-color: #2a4a2a;
+            background: linear-gradient(135deg, #1a1a2e 0%, #1e1e3f 100%);
+            border-color: #2a2a4a;
             text-align: center;
         }
 
@@ -143,7 +158,7 @@
 
         .cover-page .subtitle {
             font-size: 1.1rem;
-            color: #8ba78b;
+            color: #8b8ba7;
             margin-bottom: 8px;
         }
 
@@ -153,117 +168,261 @@
             color: #6b7280;
         }
 
-        .deadline-box {
-            display: flex;
-            justify-content: space-around;
-            margin: 24px 0;
-            padding: 20px;
-            background: #1a0f0f;
+        .deadline-alert {
+            background: linear-gradient(135deg, #2a1a1a 0%, #3a1a2a 100%);
             border: 1px solid #4a2a2a;
             border-radius: 8px;
-        }
-
-        .deadline-stat {
+            padding: 20px;
+            margin: 20px 0;
             text-align: center;
         }
 
-        .deadline-value {
+        .deadline-days {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 600;
             color: #ef4444;
         }
 
         .deadline-label {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: #9ca3af;
             margin-top: 4px;
         }
 
-        .status-box {
-            margin: 20px 0;
-            padding: 16px 20px;
-            background: #0f0f0f;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-        }
-
-        .status-item {
+        .deadline-row {
             display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #2a2a2a;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #3a2a2a;
         }
 
-        .status-item:last-child {
-            border-bottom: none;
+        .deadline-item {
+            text-align: center;
         }
 
-        .status-label {
-            color: #9ca3af;
-        }
-
-        .status-value {
-            font-weight: 500;
-        }
-
-        .status-value.done {
-            color: #34d399;
-        }
-
-        .status-value.pending {
+        .deadline-item-days {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            font-weight: 600;
             color: #f97316;
         }
 
-        .status-value.not-started {
-            color: #ef4444;
+        .deadline-item-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 2px;
         }
 
         .commitment-list {
             list-style: none;
-            margin: 20px 0;
+            margin: 16px 0;
         }
 
         .commitment-list li {
-            padding: 14px 0;
+            padding: 12px 0;
             border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .commitment-list li:last-child {
             border-bottom: none;
         }
 
-        .commitment-owner {
+        .commitment-text {
+            flex: 1;
+            color: #d4d4d4;
+        }
+
+        .status-badge {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 12px;
+            white-space: nowrap;
+        }
+
+        .status-done {
+            background: #1a2e1a;
+            color: #34d399;
+            border: 1px solid #2a4a2a;
+        }
+
+        .status-pending {
+            background: #2e2a1a;
+            color: #f97316;
+            border: 1px solid #4a3a2a;
+        }
+
+        .status-unknown {
+            background: #1a1a2e;
             color: #60a5fa;
-            margin-bottom: 4px;
+            border: 1px solid #2a2a4a;
         }
 
-        .roles-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin: 20px 0;
+        .status-blocked {
+            background: #2e1a1a;
+            color: #ef4444;
+            border: 1px solid #4a2a2a;
         }
 
-        .role-card {
-            padding: 16px;
+        .open-thread {
             background: #0f0f0f;
             border: 1px solid #2a2a2a;
-            border-radius: 8px;
+            border-left: 3px solid #f97316;
+            border-radius: 0 8px 8px 0;
+            padding: 14px 16px;
+            margin: 10px 0;
         }
 
-        .role-name {
+        .open-thread-label {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: #60a5fa;
+            font-size: 0.7rem;
+            color: #f97316;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .open-thread-content {
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+
+        .context-box {
+            background: #0f1a1a;
+            border: 1px solid #2a4a4a;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+        }
+
+        .context-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #34d399;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 8px;
         }
 
-        .role-desc {
+        .context-content {
+            color: #9ca3af;
             font-size: 0.95rem;
-            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        .new-info-box {
+            background: #1a0f1a;
+            border: 1px solid #4a2a4a;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+        }
+
+        .new-info-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #a78bfa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .agenda-item {
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin: 10px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .agenda-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #60a5fa;
+            font-weight: 600;
+            min-width: 24px;
+        }
+
+        .agenda-content {
+            flex: 1;
+        }
+
+        .agenda-title {
+            color: #d4d4d4;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .agenda-detail {
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+
+        .vibe-box {
+            background: linear-gradient(135deg, #1a2e1a 0%, #1a1a2e 100%);
+            border: 1px solid #2a4a4a;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .vibe-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .vibe-text {
+            color: #34d399;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .kbd-hint {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #4a4a4a;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .kbd-hint.visible {
+            opacity: 1;
+        }
+
+        .kbd-hint kbd {
+            background: #2a2a2a;
+            border: 1px solid #3a3a3a;
+            border-radius: 4px;
+            padding: 2px 6px;
+            margin: 0 2px;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #60a5fa, #34d399);
+            width: 0%;
+            transition: width 0.3s ease;
+            z-index: 100;
         }
 
         @media (max-width: 600px) {
@@ -277,126 +436,112 @@
             .page-content {
                 font-size: 1rem;
             }
-            .roles-box {
-                grid-template-columns: 1fr;
+            .commitment-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .status-badge {
+                margin-left: 0;
+            }
+            .deadline-row {
+                flex-direction: column;
+                gap: 12px;
             }
         }
     </style>
 </head>
 <body>
 
+    <div class="progress-bar" id="progress"></div>
+    <div class="kbd-hint" id="kbdHint"><kbd>↑</kbd> <kbd>↓</kbd> to navigate</div>
+
     <!-- Cover Page -->
-    <section class="page cover-page">
+    <section class="page cover-page" data-page="0">
         <div class="card">
-            <p class="section-label">Continuity Page</p>
+            <p class="section-label">Continuity Tidbit</p>
             <h1 class="page-title">Craig ↔ Neal</h1>
-            <p class="subtitle">BC1/BC2 Launch Partnership</p>
-            <p class="date">Updated January 3, 2026</p>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <!-- Page 1: The Deadline -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">Priority Alert</p>
-            <h2 class="page-title">BC1 is coming up</h2>
-            <div class="page-content">
-                <div class="deadline-box">
-                    <div class="deadline-stat">
-                        <div class="deadline-value">Jan 30</div>
-                        <div class="deadline-label">BC1 Date</div>
+            <p class="subtitle">Pre-Meeting Brief</p>
+            <p class="date">Meeting: January 8, 2026</p>
+            <div class="deadline-alert">
+                <div class="deadline-days">16</div>
+                <div class="deadline-label">days to In-Flight (Jan 23)</div>
+                <div class="deadline-row">
+                    <div class="deadline-item">
+                        <div class="deadline-item-days">23</div>
+                        <div class="deadline-item-label">BC1 (Jan 30)</div>
                     </div>
-                    <div class="deadline-stat">
-                        <div class="deadline-value">27</div>
-                        <div class="deadline-label">Days Left</div>
+                    <div class="deadline-item">
+                        <div class="deadline-item-days">~30</div>
+                        <div class="deadline-item-label">BC2 (~Feb 6)</div>
                     </div>
                 </div>
-                <p><span class="urgent">Critical item:</span> The BC1/BC2 plan for Kathy/Erica hasn't been created yet. They need this to execute.</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">1/5</span>
         </div>
     </section>
 
-    <!-- Page 2: The Framework -->
-    <section class="page">
+    <!-- Page 1: Where You Left Off -->
+    <section class="page" data-page="1">
         <div class="card">
-            <p class="section-label">What You Decided</p>
-            <h2 class="page-title">BC1 → BC2 framework</h2>
+            <p class="section-label">Last Session</p>
+            <h2 class="page-title">December Strategy Session</h2>
             <div class="page-content">
-                <div class="status-box">
-                    <div class="status-item">
-                        <span class="status-label">BC1 Goal</span>
-                        <span class="status-value highlight">10 sales in 4 hours</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">BC2 Focus</span>
-                        <span class="status-value highlight">Neal Test delivery</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">Mentor access</span>
-                        <span class="status-value decision">Milestone-based unlocks only</span>
-                    </div>
+                <p>Energized, aligned, building mode. Key decisions made:</p>
+                <div class="context-box">
+                    <div class="context-label">The Vision</div>
+                    <div class="context-content">LaunchMate as the <span class="highlight">operating system for ZIP</span>. Milestone-based unlocks replace calendar links.</div>
                 </div>
-                <p>The structure is defined. What's missing is the <span class="tension">execution plan</span> that Kathy/Erica can actually run from.</p>
+                <div class="context-box">
+                    <div class="context-label">Role Split</div>
+                    <div class="context-content"><span class="decision">Craig = Agent Trainer</span> // <span class="decision">Neal = Mentor</span></div>
+                </div>
+                <div class="context-box">
+                    <div class="context-label">Board of Directors Model</div>
+                    <div class="context-content">Karpathy insight: "who should weigh in" not "you" — agent suggests the right mentor at the right moment.</div>
+                </div>
+                <p style="margin-top: 16px; color: #6b7280; font-size: 0.9rem;">Also discussed: "Problem solvers not founders" messaging, Jenny opportunity (health estate manager, Michael Loeb intro)</p>
             </div>
             <div class="scroll-hint">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">2/5</span>
+            <span class="page-number">1/6</span>
         </div>
     </section>
 
-    <!-- Page 3: Role Split -->
-    <section class="page">
+    <!-- Page 2: Craig's Commitments -->
+    <section class="page" data-page="2">
         <div class="card">
-            <p class="section-label">In-Flight Restructure</p>
-            <h2 class="page-title">You split the roles</h2>
-            <div class="page-content">
-                <div class="roles-box">
-                    <div class="role-card">
-                        <div class="role-name">Neal</div>
-                        <div class="role-desc">Validation & accountability</div>
-                    </div>
-                    <div class="role-card">
-                        <div class="role-name">Craig</div>
-                        <div class="role-desc">Agent trainer</div>
-                    </div>
-                </div>
-                <p>This was the In-Flight restructure decision. Neal owns the validation methodology, you own making the agents work.</p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">3/5</span>
-        </div>
-    </section>
-
-    <!-- Page 4: What the Plan Needs -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">Open Thread</p>
-            <h2 class="page-title">What the BC1 plan needs</h2>
+            <p class="section-label">Commitments</p>
+            <h2 class="page-title">What Craig Owes Neal</h2>
             <div class="page-content">
                 <ul class="commitment-list">
-                    <li><span class="commitment-owner">Logistics</span>Venue, time, student capacity, materials</li>
-                    <li><span class="commitment-owner">Facilitation</span>What Kathy/Erica say and do at each stage</li>
-                    <li><span class="commitment-owner">Success criteria</span>How to measure "10 sales" — what counts?</li>
-                    <li><span class="commitment-owner">BC1→BC2 bridge</span>What happens in the week between</li>
-                    <li><span class="commitment-owner">Agent integration</span>How LaunchMate tracks this</li>
+                    <li>
+                        <span class="commitment-text">LaunchMate ready for Boot Camp (Jan 30)</span>
+                        <span class="status-badge status-pending">In Progress</span>
+                    </li>
+                    <li>
+                        <span class="commitment-text">Delete calendar booking links</span>
+                        <span class="status-badge status-pending">Still Pending</span>
+                    </li>
+                    <li>
+                        <span class="commitment-text">Connect Jenny with Michael Loeb</span>
+                        <span class="status-badge status-unknown">Unknown</span>
+                    </li>
+                    <li>
+                        <span class="commitment-text">Record all Friday sessions</span>
+                        <span class="status-badge status-done">Ongoing</span>
+                    </li>
+                    <li>
+                        <span class="commitment-text">Onboarding flow for 4 In-Flight teams</span>
+                        <span class="status-badge status-pending">In Progress</span>
+                    </li>
                 </ul>
             </div>
             <div class="scroll-hint">
@@ -404,39 +549,272 @@
                     <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
                 </svg>
             </div>
-            <span class="page-number">4/5</span>
+            <span class="page-number">2/6</span>
         </div>
     </section>
 
-    <!-- Page 5: Next Conversation -->
-    <section class="page">
+    <!-- Page 3: Neal's Commitments -->
+    <section class="page" data-page="3">
         <div class="card">
-            <p class="section-label">For Your Next 1:1</p>
-            <h2 class="page-title">Pick up here</h2>
+            <p class="section-label">Commitments</p>
+            <h2 class="page-title">What Neal Owes Craig</h2>
             <div class="page-content">
-                <div class="status-box">
-                    <div class="status-item">
-                        <span class="status-label">Framework defined</span>
-                        <span class="status-value done">✓ Done</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">Role split agreed</span>
-                        <span class="status-value done">✓ Done</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">BC1/BC2 plan doc</span>
-                        <span class="status-value not-started">Not started</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">Calendar link cleanup</span>
-                        <span class="status-value pending">Needs deletion</span>
-                    </div>
+                <ul class="commitment-list">
+                    <li>
+                        <span class="commitment-text">Send BC1/BC2 plan to Kathy and Erica</span>
+                        <span class="status-badge status-unknown">Unknown</span>
+                    </li>
+                </ul>
+                <p style="margin-top: 24px;">The 4 In-Flight teams (confirmed):</p>
+                <div class="context-box">
+                    <div class="context-content" style="color: #60a5fa;">Second Course • Academic Advisor AI • T-Squeeze • Vital Tidal</div>
                 </div>
-                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">Neal's agent is ready to draft the full plan document. Just needs the green light.</p>
             </div>
-            <span class="page-number">5/5</span>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">3/6</span>
         </div>
     </section>
+
+    <!-- Page 4: Open Threads -->
+    <section class="page" data-page="4">
+        <div class="card">
+            <p class="section-label">Open Threads</p>
+            <h2 class="page-title">Unresolved from Last Session</h2>
+            <div class="page-content">
+                <div class="open-thread">
+                    <div class="open-thread-label">Blocking</div>
+                    <div class="open-thread-content"><strong>Milestone definitions:</strong> What milestones unlock mentor access? NOT DEFINED — needed before Jan 23</div>
+                </div>
+                <div class="open-thread">
+                    <div class="open-thread-label">Not Started</div>
+                    <div class="open-thread-content"><strong>Tagging schema:</strong> Person → Team → Mentor → Cohort — NOT DESIGNED</div>
+                </div>
+                <div class="open-thread">
+                    <div class="open-thread-label">Undefined</div>
+                    <div class="open-thread-content"><strong>BC2 selection criteria:</strong> What signals determine who moves BC1 → BC2?</div>
+                </div>
+                <div class="open-thread">
+                    <div class="open-thread-label">Philosophical</div>
+                    <div class="open-thread-content"><strong>Depth vs. Scale:</strong> Craig's 4-user depth focus vs. Neal's infrastructure-for-scale vision</div>
+                </div>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">4/6</span>
+        </div>
+    </section>
+
+    <!-- Page 5: New Information -->
+    <section class="page" data-page="5">
+        <div class="card">
+            <p class="section-label">New Information</p>
+            <h2 class="page-title">What's Changed Since December</h2>
+            <div class="page-content">
+                <div class="new-info-box">
+                    <div class="new-info-label">⚠️ Date Change</div>
+                    <div class="context-content"><span class="warning">First In-Flight is Jan 23, not Jan 30.</span> Learned from Paige 1:1. Neal may not know this yet.</div>
+                </div>
+                <div class="context-box">
+                    <div class="context-label">Pre-Training Strategy</div>
+                    <div class="context-content">Craig/Cameron/Erica will fill in founder context — NOT self-onboarding. Goal: agents are "known in 60 seconds" — explicit becomes implicit.</div>
+                </div>
+                <div class="context-box">
+                    <div class="context-label">Paige's v2.0</div>
+                    <div class="context-content">Hybrid onboarding package ready. Michael testing. Adaptive mode-switching built in.</div>
+                </div>
+            </div>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                </svg>
+            </div>
+            <span class="page-number">5/6</span>
+        </div>
+    </section>
+
+    <!-- Page 6: Tomorrow's Agenda -->
+    <section class="page" data-page="6">
+        <div class="card">
+            <p class="section-label">Tomorrow's Meeting</p>
+            <h2 class="page-title">What to Pick Up</h2>
+            <div class="page-content">
+                <div class="agenda-item">
+                    <span class="agenda-number">01</span>
+                    <div class="agenda-content">
+                        <div class="agenda-title">Status check on commitments</div>
+                        <div class="agenda-detail">Calendar links, Jenny intro, BC1/BC2 plan</div>
+                    </div>
+                </div>
+                <div class="agenda-item">
+                    <span class="agenda-number">02</span>
+                    <div class="agenda-content">
+                        <div class="agenda-title">Milestone definitions</div>
+                        <div class="agenda-detail">Needed before Jan 23 — this is blocking</div>
+                    </div>
+                </div>
+                <div class="agenda-item">
+                    <span class="agenda-number">03</span>
+                    <div class="agenda-content">
+                        <div class="agenda-title">Surface the Jan 23 date</div>
+                        <div class="agenda-detail">Neal may not know In-Flight moved up</div>
+                    </div>
+                </div>
+                <div class="agenda-item">
+                    <span class="agenda-number">04</span>
+                    <div class="agenda-content">
+                        <div class="agenda-title">Pre-training approach</div>
+                        <div class="agenda-detail">Craig/Cameron/Erica fill in context, not founders</div>
+                    </div>
+                </div>
+                <div class="vibe-box">
+                    <div class="vibe-label">Relationship Vibe</div>
+                    <div class="vibe-text">In sync. No tension. Both building toward the same thing.</div>
+                </div>
+            </div>
+            <span class="page-number">6/6</span>
+        </div>
+    </section>
+
+    <script>
+        // Progress bar
+        const progressBar = document.getElementById('progress');
+        const pages = document.querySelectorAll('.page');
+        const totalPages = pages.length;
+        
+        // Keyboard hint
+        const kbdHint = document.getElementById('kbdHint');
+        let hasInteracted = false;
+        
+        // Show keyboard hint after 2 seconds
+        setTimeout(() => {
+            if (!hasInteracted) {
+                kbdHint.classList.add('visible');
+            }
+        }, 2000);
+        
+        // Update progress and hide hint on scroll
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            hasInteracted = true;
+            kbdHint.classList.remove('visible');
+            
+            const scrollPos = window.scrollY;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollPos / maxScroll) * 100;
+            progressBar.style.width = progress + '%';
+            
+            // Hide scroll hints on pages that have been passed
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                pages.forEach((page, index) => {
+                    const rect = page.getBoundingClientRect();
+                    const hint = page.querySelector('.scroll-hint');
+                    if (hint && rect.top < window.innerHeight * 0.5) {
+                        hint.classList.add('hidden');
+                    }
+                });
+            }, 100);
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            hasInteracted = true;
+            kbdHint.classList.remove('visible');
+            
+            if (e.key === 'ArrowDown' || e.key === 'j' || e.key === ' ') {
+                e.preventDefault();
+                const currentScroll = window.scrollY;
+                const windowHeight = window.innerHeight;
+                let nextPage = null;
+                
+                pages.forEach(page => {
+                    const rect = page.getBoundingClientRect();
+                    if (rect.top > 10 && !nextPage) {
+                        nextPage = page;
+                    }
+                });
+                
+                if (nextPage) {
+                    nextPage.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            
+            if (e.key === 'ArrowUp' || e.key === 'k') {
+                e.preventDefault();
+                let prevPage = null;
+                
+                pages.forEach(page => {
+                    const rect = page.getBoundingClientRect();
+                    if (rect.bottom < window.innerHeight - 10) {
+                        prevPage = page;
+                    }
+                });
+                
+                if (prevPage) {
+                    prevPage.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    pages[0].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            
+            // Number keys to jump to page
+            const num = parseInt(e.key);
+            if (num >= 0 && num <= totalPages - 1) {
+                pages[num].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+        
+        // Touch swipe support
+        let touchStartY = 0;
+        let touchEndY = 0;
+        
+        document.addEventListener('touchstart', (e) => {
+            touchStartY = e.changedTouches[0].screenY;
+        });
+        
+        document.addEventListener('touchend', (e) => {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const diff = touchStartY - touchEndY;
+            if (Math.abs(diff) < 50) return; // Minimum swipe distance
+            
+            if (diff > 0) {
+                // Swipe up - next page
+                let nextPage = null;
+                pages.forEach(page => {
+                    const rect = page.getBoundingClientRect();
+                    if (rect.top > 10 && !nextPage) {
+                        nextPage = page;
+                    }
+                });
+                if (nextPage) nextPage.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                // Swipe down - previous page
+                let prevPage = null;
+                pages.forEach(page => {
+                    const rect = page.getBoundingClientRect();
+                    if (rect.bottom < window.innerHeight - 10) {
+                        prevPage = page;
+                    }
+                });
+                if (prevPage) {
+                    prevPage.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    pages[0].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+    </script>
 
 </body>
 </html>
