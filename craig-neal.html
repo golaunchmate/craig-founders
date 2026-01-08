@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Craig ↔ Neal | January 2026</title>
+    <title>Craig ↔ Neal | Pre-Meeting Continuity</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * {
@@ -66,7 +66,7 @@
         }
 
         .page-content {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             line-height: 1.8;
             color: #b0b0b0;
         }
@@ -105,46 +105,23 @@
         }
 
         .nav-hint {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            position: absolute;
+            bottom: 25px;
+            left: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #3a3a3a;
             display: flex;
             align-items: center;
-            gap: 16px;
-            color: #4a4a4a;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            background: rgba(15, 15, 15, 0.9);
-            padding: 10px 20px;
-            border-radius: 20px;
-            border: 1px solid #2a2a2a;
-            z-index: 100;
-            transition: opacity 0.3s;
-        }
-
-        .nav-hint.hidden {
-            opacity: 0;
-            pointer-events: none;
+            gap: 8px;
         }
 
         .nav-hint kbd {
             background: #2a2a2a;
-            padding: 4px 8px;
+            border: 1px solid #3a3a3a;
             border-radius: 4px;
-            font-size: 0.7rem;
-        }
-
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #60a5fa, #34d399);
-            width: 0%;
-            z-index: 100;
-            transition: width 0.3s;
+            padding: 2px 6px;
+            font-size: 0.65rem;
         }
 
         .scroll-hint {
@@ -213,14 +190,14 @@
 
         .countdown-box.urgent-box {
             border-color: #f97316;
-            background: #1a0f0f;
+            background: #1a1208;
         }
 
         .countdown-number {
             font-family: 'JetBrains Mono', monospace;
             font-size: 2.5rem;
             font-weight: 700;
-            color: #60a5fa;
+            color: #ffffff;
         }
 
         .countdown-box.urgent-box .countdown-number {
@@ -228,133 +205,113 @@
         }
 
         .countdown-label {
-            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
             color: #6b7280;
-            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
         }
 
-        .commitment-table {
-            width: 100%;
-            margin: 20px 0;
-            border-collapse: collapse;
+        .topic-list {
+            list-style: none;
+            margin: 16px 0;
         }
 
-        .commitment-table th {
+        .topic-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #2a2a2a;
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+
+        .topic-list li:last-child {
+            border-bottom: none;
+        }
+
+        .topic-list li::before {
+            content: "→ ";
+            color: #4a4a4a;
+        }
+
+        .commitment-box {
+            background: #0f0f0f;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 16px 0;
+        }
+
+        .commitment-box.craig {
+            border-left: 3px solid #60a5fa;
+        }
+
+        .commitment-box.neal {
+            border-left: 3px solid #34d399;
+        }
+
+        .commitment-box.blocking {
+            border-left: 3px solid #ef4444;
+            background: #1a0f0f;
+        }
+
+        .commitment-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #6b7280;
-            text-align: left;
-            padding: 8px 0;
-            border-bottom: 1px solid #2a2a2a;
+            margin-bottom: 8px;
         }
 
-        .commitment-table td {
-            padding: 12px 0;
-            border-bottom: 1px solid #1f1f1f;
+        .commitment-box.craig .commitment-label {
+            color: #60a5fa;
+        }
+
+        .commitment-box.neal .commitment-label {
+            color: #34d399;
+        }
+
+        .commitment-box.blocking .commitment-label {
+            color: #ef4444;
+        }
+
+        .commitment-content {
+            color: #d4d4d4;
             font-size: 0.95rem;
-            vertical-align: top;
+            line-height: 1.6;
         }
 
         .status-badge {
             display: inline-block;
-            padding: 4px 10px;
-            border-radius: 12px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
         }
 
         .status-pending {
-            background: #1a1a0f;
-            border: 1px solid #4a4a2a;
+            background: #1a1a08;
             color: #f97316;
-        }
-
-        .status-progress {
-            background: #0f1a1a;
-            border: 1px solid #2a4a4a;
-            color: #60a5fa;
-        }
-
-        .status-done {
-            background: #0f1a0f;
-            border: 1px solid #2a4a2a;
-            color: #34d399;
+            border: 1px solid #4a3a1a;
         }
 
         .status-blocking {
-            background: #1a0f0f;
-            border: 1px solid #4a2a2a;
+            background: #1a0808;
             color: #ef4444;
+            border: 1px solid #4a1a1a;
         }
 
-        .thread-card {
-            background: #0f0f0f;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-            padding: 16px 20px;
-            margin: 12px 0;
+        .status-unknown {
+            background: #1a1a1a;
+            color: #6b7280;
+            border: 1px solid #3a3a3a;
         }
 
-        .thread-card.blocking {
-            border-color: #ef4444;
-            background: #1a0f0f;
-        }
-
-        .thread-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .thread-label.blocking-label {
-            color: #ef4444;
-        }
-
-        .thread-label.open-label {
-            color: #f97316;
-        }
-
-        .thread-content {
-            color: #9ca3af;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .alert-box {
-            background: linear-gradient(135deg, #1a1a0f 0%, #1f1a0f 100%);
-            border: 1px solid #f97316;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        .alert-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: #f97316;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .alert-content {
-            color: #d4d4d4;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .teams-grid {
+        .team-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin: 16px 0;
+            margin: 20px 0;
         }
 
         .team-card {
@@ -365,41 +322,57 @@
         }
 
         .team-name {
-            color: #60a5fa;
-            font-weight: 500;
+            font-weight: 600;
+            color: #ffffff;
             font-size: 0.95rem;
             margin-bottom: 4px;
         }
 
         .team-founders {
+            font-size: 0.8rem;
             color: #6b7280;
-            font-size: 0.85rem;
         }
 
-        .quote {
-            border-left: 3px solid #60a5fa;
-            padding-left: 16px;
+        .alert-box {
+            background: linear-gradient(135deg, #1a1a08 0%, #1a1208 100%);
+            border: 1px solid #4a4a1a;
+            border-radius: 8px;
+            padding: 20px;
             margin: 20px 0;
-            font-style: italic;
-            color: #9ca3af;
+        }
+
+        .alert-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #f97316;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .alert-content {
+            color: #e0e0e0;
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
         .agenda-item {
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid #1f1f1f;
+            gap: 16px;
         }
 
         .agenda-number {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: #60a5fa;
-            background: #0f1a2a;
-            padding: 4px 10px;
-            border-radius: 12px;
-            flex-shrink: 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4a4a4a;
+            min-width: 28px;
         }
 
         .agenda-content {
@@ -407,14 +380,25 @@
         }
 
         .agenda-title {
-            color: #e0e0e0;
             font-weight: 500;
+            color: #ffffff;
             margin-bottom: 4px;
         }
 
-        .agenda-note {
-            color: #6b7280;
+        .agenda-detail {
             font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: #60a5fa;
+            width: 0%;
+            transition: width 0.3s ease;
+            z-index: 1000;
         }
 
         @media (max-width: 600px) {
@@ -428,27 +412,29 @@
             .page-content {
                 font-size: 1rem;
             }
-            .countdown-grid, .teams-grid {
+            .countdown-grid {
                 grid-template-columns: 1fr;
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-hint {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
+
     <div class="progress-bar" id="progress"></div>
-    <div class="nav-hint" id="navHint">
-        <span><kbd>↑</kbd> <kbd>↓</kbd> or scroll</span>
-        <span>•</span>
-        <span><kbd>J</kbd> <kbd>K</kbd> vim-style</span>
-    </div>
 
     <!-- Cover Page -->
     <section class="page cover-page" data-page="0">
         <div class="card">
-            <p class="section-label">Continuity Tidbit</p>
+            <p class="section-label">Pre-Meeting Continuity</p>
             <h1 class="page-title">Craig ↔ Neal</h1>
-            <p class="subtitle">Meeting Tomorrow</p>
-            <p class="date">Last sync: December 2025</p>
+            <p class="subtitle">Tomorrow's 1:1</p>
+            <p class="date">January 8, 2026</p>
             <div class="scroll-hint">
                 <span>scroll or press ↓</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -461,43 +447,48 @@
     <!-- Page 1: Countdown -->
     <section class="page" data-page="1">
         <div class="card">
-            <p class="section-label">Timeline</p>
-            <h2 class="page-title">Two deadlines, one moved up</h2>
-            <div class="page-content">
-                <div class="countdown-grid">
-                    <div class="countdown-box urgent-box">
-                        <div class="countdown-number">15</div>
-                        <div class="countdown-label">days to In-Flight<br><span class="tension">Jan 23</span></div>
-                    </div>
-                    <div class="countdown-box">
-                        <div class="countdown-number">22</div>
-                        <div class="countdown-label">days to BC1<br>Jan 30</div>
-                    </div>
+            <p class="section-label">Time Check</p>
+            <h2 class="page-title">Two deadlines closing in</h2>
+            <div class="countdown-grid">
+                <div class="countdown-box urgent-box">
+                    <div class="countdown-number">15</div>
+                    <div class="countdown-label">Days to In-Flight</div>
+                    <div style="font-size: 0.8rem; color: #f97316; margin-top: 8px;">Jan 23</div>
                 </div>
-                <div class="alert-box">
-                    <div class="alert-label">⚠️ HEADS UP</div>
-                    <div class="alert-content">
-                        <strong>Neal may not know In-Flight moved to Jan 23.</strong><br>
-                        Original plan was LaunchMate ready by Jan 30 (BC1). But first Friday session with the 4 In-Flight teams is Jan 23 — pre-trained agents needed 7 days earlier.
-                    </div>
+                <div class="countdown-box">
+                    <div class="countdown-number">22</div>
+                    <div class="countdown-label">Days to BC1</div>
+                    <div style="font-size: 0.8rem; color: #6b7280; margin-top: 8px;">Jan 30</div>
                 </div>
             </div>
+            <div class="alert-box">
+                <div class="alert-label">⚠️ Neal may not know</div>
+                <div class="alert-content">In-Flight moved to <span class="tension">Jan 23</span> — 7 days earlier than BC1. Pre-trained agents need to be ready by then, not Jan 30.</div>
+            </div>
+            <div class="nav-hint"><kbd>↑</kbd><kbd>↓</kbd> to navigate</div>
             <span class="page-number">1/7</span>
         </div>
     </section>
 
-    <!-- Page 2: Last Session Recap -->
+    <!-- Page 2: Last Conversation -->
     <section class="page" data-page="2">
         <div class="card">
             <p class="section-label">Last Session</p>
-            <h2 class="page-title">December strategy session</h2>
+            <h2 class="page-title">December 2025 Strategy Session</h2>
             <div class="page-content">
-                <p>You two were in <span class="decision">building mode, not planning mode</span>. Energy was high, alignment was clear.</p>
-                <p><strong>Key decisions made:</strong></p>
-                <p><span class="highlight">Role split:</span> Craig = Agent Trainer (white glove onboarding, context-loading). Neal = Mentor (validation, Neal Test rigor). Friday sessions together, all recorded.</p>
-                <p><span class="highlight">Positioning:</span> Target "problem solvers" not "founders." The founder identity often correlates with worst performers. Losers from competitions might be better than winners (they learn).</p>
-                <p><span class="highlight">Karpathy insight Neal shared:</span> Don't address AI as "you" — ask "who would be right to weigh in." Board of Directors model with specialty agents.</p>
+                <p>Big picture stuff. Setting the stage for Q1:</p>
+                <ul class="topic-list">
+                    <li>Boot Camp structure (BC1 → BC2 pipeline)</li>
+                    <li>LaunchMate becoming ZIP's operating system</li>
+                    <li>Replacing Calendly with milestone-based unlocks</li>
+                    <li>Board of Directors agent model (Karpathy insight)</li>
+                    <li>Confirmed 4 In-Flight teams</li>
+                    <li>Role split: <span class="highlight">Craig = Agent Trainer</span>, <span class="decision">Neal = Mentor</span></li>
+                    <li>"Problem solvers not founders" messaging</li>
+                    <li>Jenny health estate manager intro to Michael Loeb</li>
+                </ul>
             </div>
+            <div class="nav-hint"><kbd>↑</kbd><kbd>↓</kbd> to navigate</div>
             <span class="page-number">2/7</span>
         </div>
     </section>
@@ -506,32 +497,30 @@
     <section class="page" data-page="3">
         <div class="card">
             <p class="section-label">In-Flight Cohort</p>
-            <h2 class="page-title">4 teams confirmed</h2>
-            <div class="page-content">
-                <p>These are the founders starting Friday sessions Jan 23:</p>
-                <div class="teams-grid">
-                    <div class="team-card">
-                        <div class="team-name">Second Course</div>
-                        <div class="team-founders">Daniel Self & Gavin Bartow</div>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-name">Academic Advisor AI</div>
-                        <div class="team-founders">Robert Sanchez</div>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-name">T-Squeeze</div>
-                        <div class="team-founders">Holland Peil & Thaddeus Okasinski</div>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-name">Vital Tidal</div>
-                        <div class="team-founders">Stacey Lehrer</div>
-                    </div>
+            <h2 class="page-title">4 teams need pre-trained agents by Jan 23</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-name">Second Course</div>
+                    <div class="team-founders">Daniel Self & Gavin Bartow</div>
                 </div>
-                <p style="margin-top: 16px;"><strong>New strategy:</strong> NOT self-onboarding. Paige, Cameron, and Erica conduct pre-training interviews. Founders feel "known in 60 seconds" because agents are pre-loaded.</p>
-                <div class="quote">
-                    "This is what you told me explicitly, but here's what I know about you implicitly." — the explicit→implicit move is where trust is built.
+                <div class="team-card">
+                    <div class="team-name">Academic Advisor AI</div>
+                    <div class="team-founders">Robert Sanchez</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-name">T-Squeeze</div>
+                    <div class="team-founders">Holland Peil & Thaddeus Okasinski</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-name">Vital Tidal</div>
+                    <div class="team-founders">Stacey Lehrer</div>
                 </div>
             </div>
+            <div class="page-content">
+                <p><strong>Pre-training strategy:</strong> NOT self-onboarding. Craig, Cameron, and Erica interview founders and fill in agent context on their behalf.</p>
+                <p>The bar: <span class="highlight">"Here's what you told me explicitly, but here's what I know about you implicitly."</span></p>
+            </div>
+            <div class="nav-hint"><kbd>↑</kbd><kbd>↓</kbd> to navigate</div>
             <span class="page-number">3/7</span>
         </div>
     </section>
@@ -539,40 +528,23 @@
     <!-- Page 4: Craig's Commitments -->
     <section class="page" data-page="4">
         <div class="card">
-            <p class="section-label">Your Commitments</p>
-            <h2 class="page-title">What Craig owes Neal</h2>
-            <div class="page-content">
-                <table class="commitment-table">
-                    <thead>
-                        <tr>
-                            <th>Commitment</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>LaunchMate ready for In-Flight</td>
-                            <td><span class="status-badge status-progress">In Progress</span></td>
-                        </tr>
-                        <tr>
-                            <td>Delete calendar booking links<br><span style="color: #6b7280; font-size: 0.85rem;">Replace Calendly with milestone-based unlocks</span></td>
-                            <td><span class="status-badge status-pending">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>Connect Jenny with Michael Loeb<br><span style="color: #6b7280; font-size: 0.85rem;">Health estate manager intro</span></td>
-                            <td><span class="status-badge status-pending">Unknown</span></td>
-                        </tr>
-                        <tr>
-                            <td>Record all Friday sessions</td>
-                            <td><span class="status-badge status-done">Ready</span></td>
-                        </tr>
-                        <tr>
-                            <td>Pre-trained agents for 4 teams</td>
-                            <td><span class="status-badge status-progress">In Progress</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <p class="section-label">Craig → Neal</p>
+            <h2 class="page-title">Craig's open commitments</h2>
+            <div class="commitment-box craig">
+                <div class="commitment-label">Delete Calendly Links <span class="status-badge status-pending">Still Pending</span></div>
+                <div class="commitment-content">
+                    The booking links that let students schedule mentor time directly. Should be replaced with milestone-based unlocks inside LaunchMate — students earn access by demonstrating progress.
+                    <br><br>
+                    <span style="color: #6b7280; font-size: 0.85rem;">Committed in December. Not done yet. 👀</span>
+                </div>
             </div>
+            <div class="commitment-box craig">
+                <div class="commitment-label">Build Unlock System</div>
+                <div class="commitment-content">
+                    The replacement for direct booking. Students complete milestones → unlock mentor time. But this is <span class="tension">blocked on Neal's milestone definitions</span>.
+                </div>
+            </div>
+            <div class="nav-hint"><kbd>↑</kbd><kbd>↓</kbd> to navigate</div>
             <span class="page-number">4/7</span>
         </div>
     </section>
@@ -580,25 +552,25 @@
     <!-- Page 5: Neal's Commitments -->
     <section class="page" data-page="5">
         <div class="card">
-            <p class="section-label">Neal's Commitments</p>
-            <h2 class="page-title">What Craig needs from Neal</h2>
-            <div class="page-content">
-                <div class="thread-card blocking">
-                    <div class="thread-label blocking-label">🚫 BLOCKING</div>
-                    <div class="thread-content">
-                        <strong>Define milestones for unlock system</strong><br>
-                        What specific milestones unlock mentor access? Transactions? Neal Tests passed? Thresholds not defined. Craig can't build the unlock system without this.
-                    </div>
+            <p class="section-label">Neal → Craig</p>
+            <h2 class="page-title">What Craig is waiting on from Neal</h2>
+            <div class="commitment-box blocking">
+                <div class="commitment-label">Milestone Definitions <span class="status-badge status-blocking">Blocking</span></div>
+                <div class="commitment-content">
+                    What milestones must students complete before they can book mentor time? Examples discussed: completing transactions, passing Neal Tests.
+                    <br><br>
+                    <strong>Specific thresholds and criteria: NOT DEFINED.</strong>
+                    <br><br>
+                    Craig can't build the unlock system without this.
                 </div>
-                <div class="thread-card">
-                    <div class="thread-label open-label">Needs Follow-up</div>
-                    <div class="thread-content">
-                        <strong>BC1 & BC2 plan for Kathy and Erica</strong><br>
-                        Structure and logistics for Boot Camps. Status unknown — was committed to in December.
-                    </div>
-                </div>
-                <p style="margin-top: 20px; color: #9ca3af;">The milestone definitions are the critical path item. Everything else can move in parallel.</p>
             </div>
+            <div class="commitment-box neal">
+                <div class="commitment-label">BC1/BC2 Plan to Kathy & Erica <span class="status-badge status-unknown">Status Unknown</span></div>
+                <div class="commitment-content">
+                    Neal was supposed to send the Boot Camp execution plan to Kathy and Erica. Need to confirm this happened or surface what's missing.
+                </div>
+            </div>
+            <div class="nav-hint"><kbd>↑</kbd><kbd>↓</kbd> to navigate</div>
             <span class="page-number">5/7</span>
         </div>
     </section>
@@ -607,30 +579,28 @@
     <section class="page" data-page="6">
         <div class="card">
             <p class="section-label">Open Threads</p>
-            <h2 class="page-title">Things still in play</h2>
+            <h2 class="page-title">Things that haven't been resolved</h2>
             <div class="page-content">
-                <div class="thread-card">
-                    <div class="thread-label open-label">Design Decision</div>
-                    <div class="thread-content">
-                        <strong>Tagging Schema</strong><br>
-                        Person → Team → Mentor → Cohort relationships. Graph structure discussed but not designed.
+                <div class="commitment-box" style="border-left: 3px solid #6b7280;">
+                    <div class="commitment-label" style="color: #6b7280;">BC1 Structure</div>
+                    <div class="commitment-content">
+                        "10 sales in 4 hours" — is this still the design? What exactly counts as a sale? What's the facilitation protocol for Kathy/Erica?
                     </div>
                 </div>
-                <div class="thread-card">
-                    <div class="thread-label open-label">Criteria Needed</div>
-                    <div class="thread-content">
-                        <strong>BC2 Selection</strong><br>
-                        What signals determine who moves from BC1 to BC2? Speed? Grit? Learning velocity?
+                <div class="commitment-box" style="border-left: 3px solid #6b7280;">
+                    <div class="commitment-label" style="color: #6b7280;">BC2 Validation</div>
+                    <div class="commitment-content">
+                        BC2 (~Feb 6) is supposed to be "Neal Test delivery." What does this actually look like? What are students presenting?
                     </div>
                 </div>
-                <div class="thread-card">
-                    <div class="thread-label open-label">Tension</div>
-                    <div class="thread-content">
-                        <strong>Depth vs. Scale</strong><br>
-                        Craig focused on 4 users to prove "founders feel known." Neal's vision is infrastructure for ALL pathways by Fall 2026. Resolution: prove with 4 first, then scale.
+                <div class="commitment-box" style="border-left: 3px solid #6b7280;">
+                    <div class="commitment-label" style="color: #6b7280;">Jenny → Michael Loeb</div>
+                    <div class="commitment-content">
+                        Health estate manager intro. Did this happen? Any follow-up needed?
                     </div>
                 </div>
             </div>
+            <div class="nav-hint"><kbd>↑</kbd><kbd>↓</kbd> to navigate</div>
             <span class="page-number">6/7</span>
         </div>
     </section>
@@ -638,144 +608,122 @@
     <!-- Page 7: Tomorrow's Agenda -->
     <section class="page" data-page="7">
         <div class="card">
-            <p class="section-label">Suggested Agenda</p>
-            <h2 class="page-title">Tomorrow's conversation</h2>
-            <div class="page-content">
-                <div class="agenda-item">
-                    <span class="agenda-number">01</span>
-                    <div class="agenda-content">
-                        <div class="agenda-title">Surface the Jan 23 date</div>
-                        <div class="agenda-note">Make sure Neal knows In-Flight starts then, not Jan 30</div>
-                    </div>
+            <p class="section-label">Tomorrow</p>
+            <h2 class="page-title">Suggested agenda for the 1:1</h2>
+            <div class="agenda-item">
+                <div class="agenda-number">1</div>
+                <div class="agenda-content">
+                    <div class="agenda-title">Sync on Jan 23 deadline</div>
+                    <div class="agenda-detail">In-Flight moved up. Does Neal know? What does this change?</div>
                 </div>
-                <div class="agenda-item">
-                    <span class="agenda-number">02</span>
-                    <div class="agenda-content">
-                        <div class="agenda-title">Get milestone definitions</div>
-                        <div class="agenda-note">This is blocking the unlock system. Even rough thresholds help.</div>
-                    </div>
-                </div>
-                <div class="agenda-item">
-                    <span class="agenda-number">03</span>
-                    <div class="agenda-content">
-                        <div class="agenda-title">BC1/BC2 plan status</div>
-                        <div class="agenda-note">Do Kathy and Erica have what they need?</div>
-                    </div>
-                </div>
-                <div class="agenda-item">
-                    <span class="agenda-number">04</span>
-                    <div class="agenda-content">
-                        <div class="agenda-title">Pre-training strategy</div>
-                        <div class="agenda-note">Share the "not self-onboarding" decision and explicit→implicit insight</div>
-                    </div>
-                </div>
-                <p style="margin-top: 24px; color: #6b7280; font-size: 0.9rem;"><strong>Mode:</strong> You're both in building mode. Keep it progress-focused, not re-planning.</p>
             </div>
+            <div class="agenda-item">
+                <div class="agenda-number">2</div>
+                <div class="agenda-content">
+                    <div class="agenda-title">Unblock: Milestone definitions</div>
+                    <div class="agenda-detail">Get specific thresholds. What earns a mentor booking?</div>
+                </div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-number">3</div>
+                <div class="agenda-content">
+                    <div class="agenda-title">BC1/BC2 plan check</div>
+                    <div class="agenda-detail">Did it go to Kathy/Erica? What's missing?</div>
+                </div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-number">4</div>
+                <div class="agenda-content">
+                    <div class="agenda-title">Craig's Calendly commitment</div>
+                    <div class="agenda-detail">Acknowledge it's still pending. Set a deadline.</div>
+                </div>
+            </div>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-top: 24px; text-align: center;">End of tidbit. Good luck tomorrow.</p>
+            <div class="nav-hint"><kbd>↑</kbd><kbd>↓</kbd> to navigate</div>
             <span class="page-number">7/7</span>
         </div>
     </section>
 
     <script>
-        // Page navigation
-        const pages = document.querySelectorAll('.page');
-        const totalPages = pages.length;
-        const progressBar = document.getElementById('progress');
-        const navHint = document.getElementById('navHint');
-        let currentPage = 0;
-        let hasInteracted = false;
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const pages = document.querySelectorAll('.page');
+            const currentScroll = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const currentPage = Math.round(currentScroll / windowHeight);
 
-        function updateProgress() {
+            if (e.key === 'ArrowDown' || e.key === 'j' || e.key === ' ') {
+                e.preventDefault();
+                const nextPage = Math.min(currentPage + 1, pages.length - 1);
+                pages[nextPage].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'k') {
+                e.preventDefault();
+                const prevPage = Math.max(currentPage - 1, 0);
+                pages[prevPage].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                pages[0].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                pages[pages.length - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // Progress bar
+        window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
             const progress = (scrollTop / docHeight) * 100;
-            progressBar.style.width = progress + '%';
-        }
-
-        function goToPage(pageNum) {
-            if (pageNum >= 0 && pageNum < totalPages) {
-                pages[pageNum].scrollIntoView({ behavior: 'smooth' });
-                currentPage = pageNum;
-            }
-        }
-
-        function nextPage() {
-            goToPage(currentPage + 1);
-        }
-
-        function prevPage() {
-            goToPage(currentPage - 1);
-        }
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (!hasInteracted) {
-                hasInteracted = true;
-                setTimeout(() => navHint.classList.add('hidden'), 2000);
-            }
-
-            switch(e.key) {
-                case 'ArrowDown':
-                case 'j':
-                case ' ':
-                    e.preventDefault();
-                    nextPage();
-                    break;
-                case 'ArrowUp':
-                case 'k':
-                    e.preventDefault();
-                    prevPage();
-                    break;
-                case 'Home':
-                    e.preventDefault();
-                    goToPage(0);
-                    break;
-                case 'End':
-                    e.preventDefault();
-                    goToPage(totalPages - 1);
-                    break;
-            }
+            document.getElementById('progress').style.width = progress + '%';
         });
-
-        // Track current page on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    currentPage = parseInt(entry.target.dataset.page);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        pages.forEach(page => observer.observe(page));
-
-        // Update progress on scroll
-        window.addEventListener('scroll', updateProgress);
-
-        // Hide nav hint after first scroll
-        window.addEventListener('scroll', () => {
-            if (!hasInteracted) {
-                hasInteracted = true;
-                setTimeout(() => navHint.classList.add('hidden'), 2000);
-            }
-        }, { once: true });
 
         // Touch/swipe support
         let touchStartY = 0;
+        let touchEndY = 0;
+
         document.addEventListener('touchstart', (e) => {
-            touchStartY = e.touches[0].clientY;
-        });
+            touchStartY = e.changedTouches[0].screenY;
+        }, false);
 
         document.addEventListener('touchend', (e) => {
-            const touchEndY = e.changedTouches[0].clientY;
-            const diff = touchStartY - touchEndY;
-            
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    nextPage();
-                } else {
-                    prevPage();
-                }
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            const pages = document.querySelectorAll('.page');
+            const currentScroll = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const currentPage = Math.round(currentScroll / windowHeight);
+            const swipeThreshold = 50;
+
+            if (touchStartY - touchEndY > swipeThreshold) {
+                // Swipe up - go to next page
+                const nextPage = Math.min(currentPage + 1, pages.length - 1);
+                pages[nextPage].scrollIntoView({ behavior: 'smooth' });
+            } else if (touchEndY - touchStartY > swipeThreshold) {
+                // Swipe down - go to previous page
+                const prevPage = Math.max(currentPage - 1, 0);
+                pages[prevPage].scrollIntoView({ behavior: 'smooth' });
             }
-        });
+        }
+
+        // Hide scroll hints after first interaction
+        let hasInteracted = false;
+        function hideScrollHints() {
+            if (!hasInteracted) {
+                hasInteracted = true;
+                document.querySelectorAll('.scroll-hint').forEach(hint => {
+                    hint.style.transition = 'opacity 0.5s';
+                    hint.style.opacity = '0';
+                    setTimeout(() => hint.style.display = 'none', 500);
+                });
+            }
+        }
+
+        window.addEventListener('scroll', hideScrollHints, { once: true });
+        document.addEventListener('keydown', hideScrollHints, { once: true });
     </script>
+
 </body>
 </html>
