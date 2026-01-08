@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Skills Work - January 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: #0f0f0f; 
+      color: #e5e5e5;
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+    .page {
+      height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 2.5rem;
+      max-width: 600px;
+      width: 100%;
+    }
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    .page-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #6b7280;
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+    }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.25rem; margin-bottom: 1rem; color: #ffffff; }
+    p { line-height: 1.7; margin-bottom: 1rem; color: #d1d5db; }
+    p:last-child { margin-bottom: 0; }
+    .highlight { color: #60a5fa; }
+    .decision { color: #34d399; }
+    .tension { color: #f97316; }
+    .scroll-hint {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 2rem;
+    }
+    strong { color: #ffffff; font-weight: 500; }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: #2a2a2a;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      color: #60a5fa;
+    }
+    ul {
+      margin-bottom: 1rem;
+      padding-left: 1.25rem;
+      line-height: 1.8;
+      color: #d1d5db;
+    }
+    li { margin-bottom: 0.25rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Page 1: Cover -->
+  <section class="page">
+    <div class="card" style="text-align: center;">
+      <div class="label">January 2025</div>
+      <h1>How Skills Work</h1>
+      <p style="color: #6b7280;">Swappable behavioral modes for LaunchMate</p>
+      <div class="scroll-hint">↓ scroll</div>
+    </div>
+    <div class="page-num">1/6</div>
+  </section>
+
+  <!-- Page 2: Starting Point -->
+  <section class="page">
+    <div class="card">
+      <div class="label">Starting Point</div>
+      <h2>The Problem</h2>
+      <p>We were building LaunchMate — an AI agent for founders going through ZIP Launchpad's In-Flight program. The agent needed to help founders across very different phases: <span class="highlight">Neal Test</span> (manual service delivery), <span class="highlight">prototype definition</span>, <span class="highlight">presales</span>, <span class="highlight">delivery</span>.</p>
+      <p>The problem: each phase requires fundamentally different agent behavior. In Neal Test, the agent should push founders to serve customers manually and resist building too early. In presales, it should track pipeline obsessively and help close deals.</p>
+      <p><strong>Same founder, same agent, completely different mode.</strong></p>
+    </div>
+    <div class="page-num">2/6</div>
+  </section>
+
+  <!-- Page 3: New Information -->
+  <section class="page">
+    <div class="card">
+      <div class="label">New Information</div>
+      <h2>The Insight</h2>
+      <p>We realized: <span class="tension">core memory blocks get bloated with static instructions that are used infrequently.</span> You end up with walls of text the agent parses every turn, most of it irrelevant to the current context.</p>
+      <p>The insight: agents need <strong class="highlight">swappable behavioral modes</strong> — skills that load and unload based on context. Keep core memory lean. Load detailed instructions only when needed.</p>
+    </div>
+    <div class="page-num">3/6</div>
+  </section>
+
+  <!-- Page 4: Trade-off -->
+  <section class="page">
+    <div class="card">
+      <div class="label">Trade-off</div>
+      <h2>Two Options</h2>
+      <p><strong>1. Always-on instructions</strong> — Put everything in core memory, let the agent figure out what's relevant. Simpler, but bloated. Agent parses irrelevant instructions constantly.</p>
+      <p><strong>2. Skill loading</strong> — Store detailed behavioral instructions in archival memory. Load the relevant skill into an <code>active_skill</code> block when needed. More moving parts, but cleaner context and sharper behavior.</p>
+      <p class="tension">The tension: simplicity vs. precision.</p>
+      <p>Always-on is easier to implement but degrades as you add more behaviors. Skill loading requires infrastructure but keeps the agent focused.</p>
+    </div>
+    <div class="page-num">4/6</div>
+  </section>
+
+  <!-- Page 5: Reasoning -->
+  <section class="page">
+    <div class="card">
+      <div class="label">Reasoning</div>
+      <h2>How It Works</h2>
+      <p><strong class="highlight">Storage:</strong> Each skill lives in archival memory with tags like <code>["skill", "neal_test_coach"]</code>. Contains detailed instructions — what to say, questions to ask, signs the founder is stuck, when to exit.</p>
+      <p><strong class="highlight">Activation:</strong> When context triggers a skill (phase change, user request, cron), the agent searches archival, retrieves the skill, and writes it to the <code>active_skill</code> block.</p>
+      <p><strong class="highlight">Execution:</strong> While loaded, the agent follows those instructions. Always visible in context — no retrieval needed during conversation.</p>
+      <p><strong class="highlight">Deactivation:</strong> When exit conditions are met, it's cleared or replaced with the next skill.</p>
+    </div>
+    <div class="page-num">5/6</div>
+  </section>
+
+  <!-- Page 6: Decision + Status -->
+  <section class="page">
+    <div class="card">
+      <div class="label">Decision + Status</div>
+      <h2>Current Skills</h2>
+      <ul>
+        <li><code>neal_test_coach</code> — Phase 2, manual service delivery</li>
+        <li><code>presales_closer</code> — Phase 4, closing presale commitments</li>
+        <li><code>weekly_reflection</code> — Routine, Friday/Sunday or on request</li>
+        <li><code>tidbits</code> — Export progress to shareable HTML</li>
+      </ul>
+      <h2 style="margin-top: 1.5rem;">Open Exploration</h2>
+      <p>I want to explore <strong class="decision">collaborative skills</strong> — when a skill is used successfully, can that feedback create a new skill entry with an upgraded version?</p>
+      <p>This raises a deeper question: should a specialized task come from an <strong>agent</strong> (who grows from all interactions) or from a <strong>skill</strong> (where we can explore a frontier growth paradigm — skills that evolve based on collective usage)?</p>
+      <p class="tension">Agents grow implicitly. Skills could grow explicitly. Which path leads to better outcomes?</p>
+    </div>
+    <div class="page-num">6/6</div>
+  </section>
+
+</body>
+</html>
