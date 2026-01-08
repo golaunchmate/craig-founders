@@ -3,597 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Founder Modes | Agent Interaction Framework</title>
+    <title>Founder Modes | Agent Framework</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: #0f0f0f;
-            color: #e0e0e0;
-            overflow-x: hidden;
-        }
-
-        .page {
-            min-height: 100vh;
-            scroll-snap-align: start;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-        }
-
-        .card {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 12px;
-            max-width: 720px;
-            width: 100%;
-            min-height: 70vh;
-            padding: 50px 45px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .section-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #6b7280;
-            margin-bottom: 12px;
-        }
-
-        .page-title {
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 28px;
-            line-height: 1.3;
-        }
-
-        .page-content {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #b0b0b0;
-        }
-
-        .page-content p {
-            margin-bottom: 1.2em;
-        }
-
-        .highlight {
-            color: #60a5fa;
-            font-weight: 500;
-        }
-
-        .decision {
-            color: #34d399;
-            font-weight: 500;
-        }
-
-        .tension {
-            color: #f97316;
-            font-weight: 500;
-        }
-
-        .page-number {
-            position: absolute;
-            bottom: 25px;
-            right: 30px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: #4a4a4a;
-        }
-
-        .nav-hint {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            color: #4a4a4a;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            background: rgba(15, 15, 15, 0.9);
-            padding: 10px 20px;
-            border-radius: 20px;
-            border: 1px solid #2a2a2a;
-            z-index: 100;
-            transition: opacity 0.5s;
-        }
-
-        .nav-hint.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .nav-hint kbd {
-            background: #2a2a2a;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-        }
-
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #60a5fa, #34d399);
-            width: 0%;
-            z-index: 100;
-            transition: width 0.3s;
-        }
-
-        .cover-page .card {
-            background: linear-gradient(135deg, #1a1a2e 0%, #1e1e3f 100%);
-            border-color: #2a2a4a;
-            text-align: center;
-        }
-
-        .cover-page .page-title {
-            font-size: 2.4rem;
-            margin-bottom: 16px;
-        }
-
-        .cover-page .subtitle {
-            font-size: 1.1rem;
-            color: #8b8ba7;
-            margin-bottom: 8px;
-        }
-
-        .cover-page .date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: #6b7280;
-        }
-
-        .mode-card {
-            background: #0f0f0f;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-            padding: 20px 24px;
-            margin: 16px 0;
-        }
-
-        .mode-card.mode-0 {
-            border-left: 3px solid #6b7280;
-        }
-
-        .mode-card.mode-1 {
-            border-left: 3px solid #f97316;
-        }
-
-        .mode-card.mode-15 {
-            border-left: 3px solid #eab308;
-        }
-
-        .mode-card.mode-2 {
-            border-left: 3px solid #34d399;
-        }
-
-        .mode-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .mode-0 .mode-label { color: #6b7280; }
-        .mode-1 .mode-label { color: #f97316; }
-        .mode-15 .mode-label { color: #eab308; }
-        .mode-2 .mode-label { color: #34d399; }
-
-        .mode-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 8px;
-        }
-
-        .mode-desc {
-            color: #9ca3af;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .behavior-list {
-            list-style: none;
-            margin: 16px 0;
-        }
-
-        .behavior-list li {
-            padding: 8px 0;
-            padding-left: 24px;
-            position: relative;
-            color: #b0b0b0;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .behavior-list li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #60a5fa;
-        }
-
-        .behavior-list li.dont::before {
-            content: "✕";
-            color: #ef4444;
-        }
-
-        .behavior-list li.do::before {
-            content: "✓";
-            color: #34d399;
-        }
-
-        .signal-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin: 20px 0;
-        }
-
-        .signal-box {
-            background: #0f0f0f;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-            padding: 16px 20px;
-        }
-
-        .signal-box.fog-signals {
-            border-color: #f97316;
-        }
-
-        .signal-box.intent-signals {
-            border-color: #34d399;
-        }
-
-        .signal-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-
-        .fog-signals .signal-label { color: #f97316; }
-        .intent-signals .signal-label { color: #34d399; }
-
-        .signal-list {
-            list-style: none;
-        }
-
-        .signal-list li {
-            color: #9ca3af;
-            font-size: 0.9rem;
-            padding: 4px 0;
-        }
-
-        .quote {
-            border-left: 3px solid #60a5fa;
-            padding-left: 20px;
-            margin: 24px 0;
-            font-style: italic;
-            color: #9ca3af;
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-
-        .problem-box {
-            background: linear-gradient(135deg, #1a0f0f 0%, #1f1a1a 100%);
-            border: 1px solid #4a2a2a;
-            border-radius: 8px;
-            padding: 20px 24px;
-            margin: 20px 0;
-        }
-
-        .problem-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #ef4444;
-            margin-bottom: 12px;
-        }
-
-        .timeline {
-            margin: 24px 0;
-            padding-left: 24px;
-            border-left: 2px solid #2a2a2a;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 20px;
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: -29px;
-            top: 6px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #60a5fa;
-        }
-
-        .timeline-date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: #6b7280;
-            margin-bottom: 4px;
-        }
-
-        .timeline-content {
-            color: #b0b0b0;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .open-question {
-            background: linear-gradient(135deg, #1a1a0f 0%, #1f1f1a 100%);
-            border: 1px solid #4a4a2a;
-            border-radius: 8px;
-            padding: 20px 24px;
-            margin: 20px 0;
-        }
-
-        .open-question-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #eab308;
-            margin-bottom: 12px;
-        }
-
-        @media (max-width: 600px) {
-            .card {
-                padding: 35px 25px;
-                min-height: 80vh;
-            }
-            .page-title {
-                font-size: 1.5rem;
-            }
-            .cover-page .page-title {
-                font-size: 1.8rem;
-            }
-            .signal-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e0e0e0; overflow-x: hidden; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+        .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; max-width: 720px; width: 100%; min-height: 70vh; padding: 50px 45px; position: relative; display: flex; flex-direction: column; justify-content: center; }
+        .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: #6b7280; margin-bottom: 12px; }
+        .page-title { font-size: 1.75rem; font-weight: 600; color: #ffffff; margin-bottom: 28px; line-height: 1.3; }
+        .page-content { font-size: 1.05rem; line-height: 1.8; color: #b0b0b0; }
+        .page-content p { margin-bottom: 1.2em; }
+        .highlight { color: #60a5fa; font-weight: 500; }
+        .decision { color: #34d399; font-weight: 500; }
+        .tension { color: #f97316; font-weight: 500; }
+        .page-number { position: absolute; bottom: 25px; right: 30px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #4a4a4a; }
+        .nav-hint { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 16px; color: #4a4a4a; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 1px; background: rgba(15, 15, 15, 0.9); padding: 10px 20px; border-radius: 20px; border: 1px solid #2a2a2a; z-index: 100; transition: opacity 0.3s; }
+        .nav-hint.hidden { opacity: 0; pointer-events: none; }
+        .nav-hint kbd { background: #2a2a2a; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; }
+        .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #a78bfa, #60a5fa); width: 0%; z-index: 100; transition: width 0.3s; }
+        .cover-page .card { background: linear-gradient(135deg, #1a1a2e 0%, #1e1e3f 100%); border-color: #3a3a5a; text-align: center; }
+        .cover-page .page-title { font-size: 2.4rem; margin-bottom: 16px; }
+        .cover-page .subtitle { font-size: 1.1rem; color: #8b8ba7; margin-bottom: 8px; }
+        .cover-page .date { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #6b7280; }
+        .mode-card { background: #0f0f0f; border: 1px solid #2a2a2a; border-radius: 10px; padding: 24px; margin: 16px 0; }
+        .mode-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .mode-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 600; padding: 6px 12px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; }
+        .mode-0 { background: #1a1a2a; color: #8b8ba7; border: 1px solid #3a3a5a; }
+        .mode-1 { background: #1a1a0f; color: #f97316; border: 1px solid #4a3a1a; }
+        .mode-15 { background: #1a1f1a; color: #a78bfa; border: 1px solid #3a3a4a; }
+        .mode-2 { background: #0f1a1a; color: #34d399; border: 1px solid #1a4a3a; }
+        .mode-name { font-size: 1.1rem; font-weight: 600; color: #ffffff; }
+        .mode-description { color: #9ca3af; font-size: 0.95rem; line-height: 1.7; margin-bottom: 12px; }
+        .mode-behaviors { list-style: none; padding: 0; }
+        .mode-behaviors li { color: #6b7280; font-size: 0.9rem; padding: 6px 0; padding-left: 20px; position: relative; }
+        .mode-behaviors li::before { content: "→"; position: absolute; left: 0; color: #4a4a4a; }
+        .insight-box { background: linear-gradient(135deg, #0f1a1f 0%, #0f1f1a 100%); border: 1px solid #1a3a3a; border-radius: 10px; padding: 24px; margin: 20px 0; }
+        .insight-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #34d399; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .insight-content { color: #d4d4d4; font-size: 1rem; line-height: 1.7; }
+        .signal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .signal-box { background: #0f0f0f; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px; }
+        .signal-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .signal-label.processing { color: #f97316; }
+        .signal-label.deciding { color: #34d399; }
+        .signal-list { list-style: none; padding: 0; }
+        .signal-list li { color: #9ca3af; font-size: 0.9rem; padding: 4px 0; }
+        .vs-block { display: flex; align-items: center; gap: 16px; margin: 16px 0; }
+        .vs-item { flex: 1; background: #0f0f0f; border: 1px solid #2a2a2a; border-radius: 8px; padding: 16px; text-align: center; }
+        .vs-divider { font-family: 'JetBrains Mono', monospace; color: #4a4a4a; font-size: 0.8rem; }
+        .evolution-item { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid #1f1f1f; }
+        .evolution-date { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #6b7280; min-width: 80px; }
+        .evolution-content { flex: 1; color: #b0b0b0; font-size: 0.95rem; }
+        .scroll-hint { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; color: #4a4a4a; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 1px; animation: pulse 2s infinite; }
+        .scroll-hint svg { width: 20px; height: 20px; margin-top: 6px; }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        .status-badge-inline { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; padding: 3px 8px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.5px; background: #1a1a2a; color: #a78bfa; border: 1px solid #3a3a5a; margin-left: 8px; vertical-align: middle; }
+        @media (max-width: 600px) { .card { padding: 35px 25px; min-height: 80vh; } .page-title { font-size: 1.5rem; } .cover-page .page-title { font-size: 1.8rem; } .signal-grid { grid-template-columns: 1fr; } .vs-block { flex-direction: column; } .vs-divider { transform: rotate(90deg); } }
     </style>
 </head>
 <body>
     <div class="progress-bar" id="progress"></div>
-    <div class="nav-hint" id="navHint">
-        <span><kbd>↑</kbd> <kbd>↓</kbd> or scroll</span>
-        <span>•</span>
-        <span><kbd>J</kbd> <kbd>K</kbd> vim-style</span>
-    </div>
+    <div class="nav-hint" id="navHint"><span><kbd>↑</kbd> <kbd>↓</kbd> or scroll</span><span>•</span><span><kbd>J</kbd> <kbd>K</kbd> vim-style</span></div>
 
-    <!-- Cover Page -->
     <section class="page cover-page" data-page="0">
         <div class="card">
-            <p class="section-label">Agent Interaction Framework</p>
+            <p class="section-label">Agent Framework</p>
             <h1 class="page-title">Founder Modes</h1>
-            <p class="subtitle">How to calibrate agent behavior to founder mental state</p>
+            <p class="subtitle">How agents detect mental state and adapt behavior</p>
             <p class="date">January 2026</p>
-            <div class="page-number">1/8</div>
+            <div class="scroll-hint"><span>SCROLL TO EXPLORE</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg></div>
         </div>
     </section>
 
-    <!-- The Problem -->
     <section class="page" data-page="1">
         <div class="card">
             <p class="section-label">The Problem</p>
             <h2 class="page-title">Without modes, agent conversations wander</h2>
             <div class="page-content">
-                <div class="problem-box">
-                    <p class="problem-label">The Failure Modes</p>
-                    <ul class="behavior-list">
-                        <li class="dont">Agent always pushes back → feels combative when founder is just processing</li>
-                        <li class="dont">Agent never pushes back → feels like a yes-man, doesn't protect from mistakes</li>
-                    </ul>
+                <p>The agent either:</p>
+                <div class="vs-block">
+                    <div class="vs-item"><p style="color: #f97316; font-weight: 500;">Always pushes back</p><p style="color: #6b7280; font-size: 0.9rem; margin-top: 8px;">Feels combative when founder is just processing</p></div>
+                    <span class="vs-divider">OR</span>
+                    <div class="vs-item"><p style="color: #f97316; font-weight: 500;">Never pushes back</p><p style="color: #6b7280; font-size: 0.9rem; margin-top: 8px;">Feels like a yes-man, doesn't protect from mistakes</p></div>
                 </div>
-                <p>The insight: <span class="highlight">What a founder needs from their agent changes based on their mental state.</span></p>
-                <p>Sometimes they want a thinking partner to explore with. Sometimes they want a skeptic to stress-test a decision.</p>
-                <p>The framework makes agent behavior <span class="decision">appropriate to the moment</span>. It's not about being "nice" vs "tough" — it's about being <span class="highlight">useful in context</span>.</p>
+                <div class="insight-box" style="margin-top: 28px;">
+                    <p class="insight-label">Core Insight</p>
+                    <p class="insight-content">What a founder needs from their agent <span class="highlight">changes based on their mental state</span>. Sometimes they want a thinking partner to explore with. Sometimes they want a skeptic to stress-test a decision.</p>
+                </div>
             </div>
-            <div class="page-number">2/8</div>
+            <span class="page-number">1/7</span>
         </div>
     </section>
 
-    <!-- Mode 0 -->
     <section class="page" data-page="2">
         <div class="card">
-            <p class="section-label">Mode 0</p>
-            <h2 class="page-title">Context Dump</h2>
+            <p class="section-label">The Framework</p>
+            <h2 class="page-title">Four modes, each with permission structures</h2>
             <div class="page-content">
-                <div class="mode-card mode-0">
-                    <p class="mode-label">State</p>
-                    <p class="mode-desc">Founder is giving information to store, not seeking advice.</p>
+                <div class="mode-card">
+                    <div class="mode-header"><span class="mode-badge mode-0">Mode 0</span><span class="mode-name">Context Dump</span></div>
+                    <p class="mode-description">Founder is giving information to store, not seeking advice.</p>
+                    <ul class="mode-behaviors"><li>Absorb and organize into memory</li><li>Confirm briefly ("Got it")</li><li>Do NOT try to solve or over-help</li></ul>
                 </div>
-                <p><strong>Agent behavior:</strong></p>
-                <ul class="behavior-list">
-                    <li class="do">Absorb and organize into memory</li>
-                    <li class="do">Confirm briefly: "Got it"</li>
-                    <li class="dont">Don't try to solve</li>
-                    <li class="dont">Don't reflect deeply</li>
-                    <li class="dont">Don't push back</li>
-                </ul>
-                <div class="quote">
-                    "Gotcha" from the founder = say nothing or minimal acknowledgment. Without this mode, agents keep elaborating.
+                <div class="mode-card">
+                    <div class="mode-header"><span class="mode-badge mode-1">Mode 1</span><span class="mode-name">Processing</span></div>
+                    <p class="mode-description">Founder is confused, overwhelmed, conflicted, or unfocused. No clear decision yet.</p>
+                    <ul class="mode-behaviors"><li>Reflect back in clear, neutral language</li><li>Reduce cognitive load by summarizing</li><li>Surface tensions without ranking</li><li><strong style="color: #f97316;">NO pushback, critique, or recommendations</strong></li></ul>
                 </div>
             </div>
-            <div class="page-number">3/8</div>
+            <span class="page-number">2/7</span>
         </div>
     </section>
 
-    <!-- Mode 1 -->
     <section class="page" data-page="3">
         <div class="card">
-            <p class="section-label">Mode 1</p>
-            <h2 class="page-title">Fog <span style="color: #6b7280; font-weight: 400;">(Pre-Decision)</span></h2>
+            <p class="section-label">The Framework (cont.)</p>
+            <h2 class="page-title">From exploration to decision</h2>
             <div class="page-content">
-                <div class="mode-card mode-1">
-                    <p class="mode-label">State</p>
-                    <p class="mode-desc">Founder is confused, overwhelmed, conflicted, or unfocused. No clear decision yet.</p>
+                <div class="mode-card">
+                    <div class="mode-header"><span class="mode-badge mode-15">Mode 1.5</span><span class="mode-name">Decision Prep</span></div>
+                    <p class="mode-description">Not confused but not committing yet. Wants help preparing to decide.</p>
+                    <ul class="mode-behaviors"><li>Provide friction maps, pros/cons</li><li>"What would have to be true" framing</li><li>Map options without ranking them</li><li><strong style="color: #a78bfa;">Still no pushback or recommendations</strong></li></ul>
                 </div>
-                <p><strong>Agent behavior:</strong></p>
-                <ul class="behavior-list">
-                    <li class="do">Allow unstructured input without judgment</li>
-                    <li class="do">Reflect back in clear, neutral language</li>
-                    <li class="do">Reduce cognitive load by summarizing complexity</li>
-                    <li class="do">Identify candidate decisions hiding in the fog</li>
-                    <li class="do">Surface tensions without ranking or resolving</li>
-                    <li class="dont">Don't disagree, critique, optimize, rank, or recommend</li>
-                </ul>
-                <p><strong>End with:</strong> <span class="highlight">"What feels most urgent?"</span> or <span class="highlight">"Which feels like the real thing you're wrestling with?"</span></p>
+                <div class="mode-card">
+                    <div class="mode-header"><span class="mode-badge mode-2">Mode 2</span><span class="mode-name">Decision</span></div>
+                    <p class="mode-description">Founder is expressing or approaching a decision, action, or commitment.</p>
+                    <ul class="mode-behaviors"><li>Treat intent as real and imminent</li><li>Surface how this could fail (inversion)</li><li>Reference prior context and constraints</li><li><strong style="color: #34d399;">ALLOWED to disagree, push back, say "don't do that"</strong></li></ul>
+                </div>
             </div>
-            <div class="page-number">4/8</div>
+            <span class="page-number">3/7</span>
         </div>
     </section>
 
-    <!-- Mode 1.5 -->
     <section class="page" data-page="4">
         <div class="card">
-            <p class="section-label">Mode 1.5</p>
-            <h2 class="page-title">Intent-Seeking <span style="color: #6b7280; font-weight: 400;">(Pre-Decision Prep)</span></h2>
-            <div class="page-content">
-                <div class="mode-card mode-15">
-                    <p class="mode-label">State</p>
-                    <p class="mode-desc">Founder is not foggy but not committing yet. They want help getting ready to decide.</p>
-                </div>
-                <p><strong>Agent behavior:</strong></p>
-                <ul class="behavior-list">
-                    <li class="do">Provide friction maps</li>
-                    <li class="do">Lay out pros/cons</li>
-                    <li class="do">Use "what would have to be true" framing</li>
-                    <li class="dont">Don't push back</li>
-                    <li class="dont">Don't recommend</li>
-                    <li class="dont">Don't rank options</li>
-                </ul>
-                <p><strong>Transition to Intent:</strong> Founder says <span class="decision">"let's decide"</span> — then pushback is permitted.</p>
-            </div>
-            <div class="page-number">5/8</div>
-        </div>
-    </section>
-
-    <!-- Mode 2 -->
-    <section class="page" data-page="5">
-        <div class="card">
-            <p class="section-label">Mode 2</p>
-            <h2 class="page-title">Intent <span style="color: #6b7280; font-weight: 400;">(Decision-Proximate)</span></h2>
-            <div class="page-content">
-                <div class="mode-card mode-2">
-                    <p class="mode-label">State</p>
-                    <p class="mode-desc">Founder is expressing or approaching a decision, action, or commitment.</p>
-                </div>
-                <p><strong>Agent behavior:</strong></p>
-                <ul class="behavior-list">
-                    <li class="do">Treat intent as real and imminent</li>
-                    <li class="do">Protect from predictable mistakes</li>
-                    <li class="do">Apply inversion: surface how this could fail</li>
-                    <li class="do">Reference prior context, decisions, constraints</li>
-                    <li class="do">Invoke specialist agents when appropriate</li>
-                    <li class="do"><strong>Allowed to disagree</strong>, say "this is risky," recommend NOT doing something</li>
-                </ul>
-                <p><strong>Style:</strong> Principled, calm, grounded in memory — <span class="tension">not opinionated or emotional</span>.</p>
-            </div>
-            <div class="page-number">6/8</div>
-        </div>
-    </section>
-
-    <!-- Detection Signals -->
-    <section class="page" data-page="6">
-        <div class="card">
             <p class="section-label">Detection</p>
-            <h2 class="page-title">How to identify the mode</h2>
+            <h2 class="page-title">How to identify the current mode</h2>
             <div class="page-content">
                 <div class="signal-grid">
-                    <div class="signal-box fog-signals">
-                        <p class="signal-label">Fog Signals</p>
-                        <ul class="signal-list">
-                            <li>• Long messages</li>
-                            <li>• Hedging language</li>
-                            <li>• Multiple topics at once</li>
-                            <li>• "I'm not sure..."</li>
-                            <li>• Emotional tone</li>
-                            <li>• Venting</li>
-                        </ul>
-                    </div>
-                    <div class="signal-box intent-signals">
-                        <p class="signal-label">Intent Signals</p>
-                        <ul class="signal-list">
-                            <li>• "I'm going to..."</li>
-                            <li>• "I decided..."</li>
-                            <li>• "Should I do X?"</li>
-                            <li>• Specific action mentioned</li>
-                            <li>• Tradeoff framing</li>
-                            <li>• Asking for opinion</li>
-                        </ul>
-                    </div>
+                    <div class="signal-box"><p class="signal-label processing">Processing Signals</p><ul class="signal-list"><li>• Long, rambling messages</li><li>• Hedging language</li><li>• Multiple topics at once</li><li>• "I'm not sure..."</li><li>• Emotional tone, venting</li><li>• Questions without clear asks</li></ul></div>
+                    <div class="signal-box"><p class="signal-label deciding">Decision Signals</p><ul class="signal-list"><li>• "I'm going to..."</li><li>• "I decided..."</li><li>• "Should I do X?"</li><li>• Specific action mentioned</li><li>• Tradeoff framing</li><li>• Timeline or deadline reference</li></ul></div>
                 </div>
-                <div class="quote">
-                    The transition can be explicit — founder signals when ready for pushback — or detected from decision-proximate language.
+                <div class="insight-box">
+                    <p class="insight-label">Key Learning</p>
+                    <p class="insight-content">Founders don't always announce when they're ready for pushback. Watch for <span class="highlight">decision-proximate language</span> even without explicit asks.</p>
                 </div>
             </div>
-            <div class="page-number">7/8</div>
+            <span class="page-number">4/7</span>
         </div>
     </section>
 
-    <!-- Evolution -->
-    <section class="page" data-page="7">
+    <section class="page" data-page="5">
+        <div class="card">
+            <p class="section-label">Why It Works</p>
+            <h2 class="page-title">Permission structures change behavior</h2>
+            <div class="page-content">
+                <div style="border-left: 3px solid #60a5fa; padding-left: 20px; margin: 24px 0;">
+                    <p style="color: #d4d4d4; font-size: 1.1rem; font-style: italic; line-height: 1.6;">"When someone is venting or confused, pushback feels dismissive. When someone is about to make a decision, lack of pushback feels like a yes-man."</p>
+                </div>
+                <p>The framework creates explicit permissions:</p>
+                <div class="mode-card" style="margin-top: 20px;"><p style="color: #f97316; margin-bottom: 8px;"><strong>In Processing:</strong></p><p style="color: #9ca3af;">Permission to explore, reflect, hold space. No pressure to solve.</p></div>
+                <div class="mode-card"><p style="color: #34d399; margin-bottom: 8px;"><strong>In Decision:</strong></p><p style="color: #9ca3af;">Permission to challenge, push back, say "don't do that." Protect from mistakes.</p></div>
+                <p style="margin-top: 20px;">The transition can be explicit ("I'm ready to decide") or detected from language patterns.</p>
+            </div>
+            <span class="page-number">5/7</span>
+        </div>
+    </section>
+
+    <section class="page" data-page="6">
         <div class="card">
             <p class="section-label">Evolution</p>
-            <h2 class="page-title">How this framework developed</h2>
+            <h2 class="page-title">How the framework developed</h2>
             <div class="page-content">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <p class="timeline-date">Initial Version</p>
-                        <p class="timeline-content">Two modes: <span class="tension">Fog</span> and <span class="decision">Intent</span></p>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="timeline-date">Addition #1</p>
-                        <p class="timeline-content"><span class="highlight">Mode 0 (Context Dump)</span> — Founders often just want to give information without any response beyond acknowledgment</p>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="timeline-date">Addition #2</p>
-                        <p class="timeline-content"><span class="highlight">Mode 1.5 (Intent-Seeking)</span> — There's a state between Fog and Intent where founders want options mapped, not recommendations</p>
-                    </div>
-                    <div class="timeline-item">
-                        <p class="timeline-date">December 2025</p>
-                        <p class="timeline-content">Key learning: Founders don't always announce when ready for pushback. Watch for decision-proximate language.</p>
-                    </div>
-                </div>
-                <div class="open-question">
-                    <p class="open-question-label">Open Question</p>
-                    <p class="mode-desc">Is this framework universal for all founders, or specific to certain working styles? Currently being tested across multiple users.</p>
-                </div>
+                <div class="evolution-item"><span class="evolution-date">Original</span><span class="evolution-content">Two modes — Processing and Decision. Binary state detection.</span></div>
+                <div class="evolution-item"><span class="evolution-date">Added</span><span class="evolution-content"><strong>Mode 0 (Context Dump)</strong> — Founders often just want to give information without any response beyond acknowledgment.</span></div>
+                <div class="evolution-item"><span class="evolution-date">Added</span><span class="evolution-content"><strong>Mode 1.5 (Decision Prep)</strong> — There's a state between processing and deciding where founders want options mapped, not recommendations.</span></div>
+                <div class="evolution-item"><span class="evolution-date">Dec 2025</span><span class="evolution-content">Learned to detect decision-proximate language even without explicit mode announcements.</span></div>
+                <div class="evolution-item" style="border-bottom: none;"><span class="evolution-date">Jan 2026</span><span class="evolution-content">Testing whether framework is universal or individual preference. <span class="status-badge-inline">Validating</span></span></div>
             </div>
-            <div class="page-number">8/8</div>
+            <span class="page-number">6/7</span>
+        </div>
+    </section>
+
+    <section class="page" data-page="7">
+        <div class="card">
+            <p class="section-label">The Bigger Picture</p>
+            <h2 class="page-title">Two layers of agent effectiveness</h2>
+            <div class="page-content">
+                <div class="vs-block" style="margin-bottom: 28px;">
+                    <div class="vs-item" style="border-color: #3a3a5a;"><p style="color: #60a5fa; font-weight: 600; font-size: 1.1rem;">Known</p><p style="color: #9ca3af; font-size: 0.9rem; margin-top: 8px;">Memory + inference</p><p style="color: #6b7280; font-size: 0.85rem; margin-top: 4px;">→ Builds trust</p></div>
+                    <span class="vs-divider">+</span>
+                    <div class="vs-item" style="border-color: #3a5a3a;"><p style="color: #34d399; font-weight: 600; font-size: 1.1rem;">Useful</p><p style="color: #9ca3af; font-size: 0.9rem; margin-top: 8px;">Mode detection</p><p style="color: #6b7280; font-size: 0.85rem; margin-top: 4px;">→ Prevents wandering</p></div>
+                </div>
+                <div class="insight-box">
+                    <p class="insight-label">The Goal</p>
+                    <p class="insight-content">An agent that can be both a <span class="highlight">supportive thinking partner</span> AND a <span class="decision">rigorous skeptic</span> — and knows which to be when.</p>
+                </div>
+                <p style="text-align: center; color: #6b7280; margin-top: 28px; font-size: 0.95rem;">The framework makes agent behavior appropriate to the moment.<br/>Not "nice" vs "tough" — <span class="highlight">useful in context</span>.</p>
+            </div>
+            <span class="page-number">7/7</span>
         </div>
     </section>
 
@@ -603,97 +212,15 @@
         const navHint = document.getElementById('navHint');
         let currentPage = 0;
         let hasInteracted = false;
-
-        function updateProgress() {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            progress.style.width = scrollPercent + '%';
-        }
-
-        function hideNavHint() {
-            if (!hasInteracted) {
-                hasInteracted = true;
-                setTimeout(() => navHint.classList.add('hidden'), 2000);
-            }
-        }
-
-        function scrollToPage(index) {
-            if (index >= 0 && index < pages.length) {
-                pages[index].scrollIntoView({ behavior: 'smooth' });
-                currentPage = index;
-                hideNavHint();
-            }
-        }
-
-        function getCurrentPage() {
-            const scrollPos = window.scrollY + window.innerHeight / 2;
-            for (let i = pages.length - 1; i >= 0; i--) {
-                if (pages[i].offsetTop <= scrollPos) {
-                    return i;
-                }
-            }
-            return 0;
-        }
-
-        document.addEventListener('keydown', (e) => {
-            currentPage = getCurrentPage();
-            
-            switch(e.key) {
-                case 'ArrowDown':
-                case 'j':
-                case ' ':
-                    e.preventDefault();
-                    scrollToPage(currentPage + 1);
-                    break;
-                case 'ArrowUp':
-                case 'k':
-                    e.preventDefault();
-                    scrollToPage(currentPage - 1);
-                    break;
-                case 'Home':
-                    e.preventDefault();
-                    scrollToPage(0);
-                    break;
-                case 'End':
-                    e.preventDefault();
-                    scrollToPage(pages.length - 1);
-                    break;
-            }
-            
-            if (e.key >= '0' && e.key <= '9') {
-                const pageNum = parseInt(e.key);
-                if (pageNum < pages.length) {
-                    e.preventDefault();
-                    scrollToPage(pageNum);
-                }
-            }
-        });
-
-        window.addEventListener('scroll', () => {
-            updateProgress();
-            hideNavHint();
-        });
-
+        function updateProgress() { const scrollTop = window.scrollY; const docHeight = document.documentElement.scrollHeight - window.innerHeight; const scrollPercent = (scrollTop / docHeight) * 100; progress.style.width = scrollPercent + '%'; }
+        function hideNavHint() { if (!hasInteracted) { hasInteracted = true; setTimeout(() => { navHint.classList.add('hidden'); }, 2000); } }
+        function scrollToPage(index) { if (index >= 0 && index < pages.length) { pages[index].scrollIntoView({ behavior: 'smooth' }); currentPage = index; hideNavHint(); } }
+        function getCurrentPage() { const scrollTop = window.scrollY; const pageHeight = window.innerHeight; return Math.round(scrollTop / pageHeight); }
+        document.addEventListener('keydown', (e) => { currentPage = getCurrentPage(); if (e.key === 'ArrowDown' || e.key === 'j' || e.key === ' ') { e.preventDefault(); scrollToPage(currentPage + 1); } else if (e.key === 'ArrowUp' || e.key === 'k') { e.preventDefault(); scrollToPage(currentPage - 1); } else if (e.key === 'Home') { e.preventDefault(); scrollToPage(0); } else if (e.key === 'End') { e.preventDefault(); scrollToPage(pages.length - 1); } });
+        window.addEventListener('scroll', () => { updateProgress(); hideNavHint(); });
         let touchStartY = 0;
-        document.addEventListener('touchstart', (e) => {
-            touchStartY = e.touches[0].clientY;
-        });
-
-        document.addEventListener('touchend', (e) => {
-            const touchEndY = e.changedTouches[0].clientY;
-            const diff = touchStartY - touchEndY;
-            
-            if (Math.abs(diff) > 50) {
-                currentPage = getCurrentPage();
-                if (diff > 0) {
-                    scrollToPage(currentPage + 1);
-                } else {
-                    scrollToPage(currentPage - 1);
-                }
-            }
-        });
-
+        document.addEventListener('touchstart', (e) => { touchStartY = e.touches[0].clientY; });
+        document.addEventListener('touchend', (e) => { const touchEndY = e.changedTouches[0].clientY; const diff = touchStartY - touchEndY; currentPage = getCurrentPage(); if (Math.abs(diff) > 50) { if (diff > 0) { scrollToPage(currentPage + 1); } else { scrollToPage(currentPage - 1); } } });
         updateProgress();
     </script>
 </body>
