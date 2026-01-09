@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Improving Agents - January 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0f0f0f; --card: #1a1a1a; --border: #2a2a2a; --text: #e5e5e5;
+            --text-dim: #6b7280; --blue: #60a5fa; --green: #34d399; --orange: #f97316; --pink: #f472b6;
+        }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--blue); transition: width 0.3s ease; z-index: 100; }
+        .container { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; position: relative; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; max-width: 640px; width: 100%; }
+        .page-number { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); position: absolute; bottom: 2rem; right: 2rem; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 0.5rem; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+        p { margin-bottom: 1rem; }
+        .subtitle { font-size: 1.1rem; color: var(--text-dim); margin-bottom: 1.5rem; }
+        .highlight { color: var(--blue); } .success { color: var(--green); } .tension { color: var(--orange); } .accent { color: var(--pink); }
+        .cover-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--text-dim); font-size: 0.875rem; animation: bounce 2s infinite; }
+        .scroll-hint.hidden { opacity: 0; transition: opacity 0.5s ease; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(5px); } }
+        pre { background: var(--bg); border-radius: 8px; padding: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; overflow-x: auto; margin: 1rem 0; line-height: 1.5; }
+        code { font-family: 'JetBrains Mono', monospace; background: var(--bg); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9rem; }
+        .insight-box { background: var(--bg); border-left: 3px solid var(--orange); padding: 1.25rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+        .insight-box p { font-style: italic; margin-bottom: 0; }
+        ul { margin: 1rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        strong { color: #fff; }
+        .arc-flow { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 1.5rem 0; font-size: 0.85rem; }
+        .arc-step { background: var(--bg); padding: 0.5rem 0.75rem; border-radius: 8px; text-align: center; }
+        .arc-arrow { color: var(--text-dim); }
+        .context-line { font-size: 0.9rem; color: var(--text-dim); margin-top: 1rem; }
+        @media (max-width: 640px) { .card { padding: 1.5rem; } h1 { font-size: 2rem; } pre { font-size: 0.75rem; } }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progress" style="width: 0%;"></div>
+    <div class="container" id="container">
+
+        <!-- Page 1: Cover -->
+        <div class="page">
+            <div class="card" style="text-align: center;">
+                <div class="cover-icon">🔄</div>
+                <div class="label">January 2025</div>
+                <h1>Self-Improving Agents</h1>
+                <p class="subtitle">Building agents that upgrade themselves</p>
+                <p class="context-line">LaunchMate — ZIP Launchpad</p>
+            </div>
+            <div class="scroll-hint" id="scrollHint"><span>Scroll or press ↓</span><span>↓</span></div>
+            <div class="page-number">1/8</div>
+        </div>
+
+        <!-- Page 2: The Setup -->
+        <div class="page">
+            <div class="card">
+                <div class="label">The Setup</div>
+                <h2>The Problem</h2>
+                <p>We had a working agent architecture: core memory blocks for state, archival for long-term storage, skills that load/unload based on context.</p>
+                <p>But improvement was manual. When a skill needed upgrading, a human had to notice, analyze, and rewrite it.</p>
+                <p><strong class="highlight">The question: Can the agent drive its own improvement cycles?</strong></p>
+            </div>
+            <div class="page-number">2/8</div>
+        </div>
+
+        <!-- Page 3: The Catalyst -->
+        <div class="page">
+            <div class="card">
+                <div class="label">The Catalyst</div>
+                <h2>The Kavindi Tidbit</h2>
+                <p>We had a <code>tidbits</code> skill for exporting progress to shareable HTML. It worked, but felt generic.</p>
+                <p>Then we analyzed the <strong class="success">Kavindi tidbit</strong> — a real output that landed well:</p>
+                <pre>Kavindi's Week - Foodie
+├── Cover with emoji, context line ("First-gen founder")
+├── "The Plan" before "What Happened" (sets expectations)
+├── Stats as before→after with arrows (25K views)
+├── Insight in HER words ("We need a stronger CTA")
+├── Checklist with ✓ ◐ ○ 
+└── Arc flow visualization</pre>
+                <p>By studying what worked, we extracted:</p>
+                <ul>
+                    <li><strong>Primitives</strong> (stat-grid, insight-box, arc-flow)</li>
+                    <li><strong>Strategic patterns</strong> ("Set expectations before payoff")</li>
+                    <li><strong>Tone rules</strong> ("Credit the human", "Show velocity")</li>
+                </ul>
+                <p>The skill went from <span class="tension">v1.0</span> → <span class="success">v2.0</span> in one session.</p>
+            </div>
+            <div class="page-number">3/8</div>
+        </div>
+
+        <!-- Page 4: The Insight -->
+        <div class="page">
+            <div class="card">
+                <div class="label">The Insight</div>
+                <h2>Self-Prompting</h2>
+                <p>The Kavindi analysis worked because it was <strong class="highlight">example-driven, not theory-driven</strong>.</p>
+                <p>The unlock: what if the agent could do this to itself?</p>
+                <div class="insight-box">
+                    <p>Instead of waiting for instructions, the agent generates its own improvement prompt, then executes against it.</p>
+                </div>
+                <pre>"Analyze [example] and extract patterns for [target]"
+"What would a 10x better version of [target] look like?"
+"What's missing from [block] based on recent usage?"</pre>
+                <p>The agent has the context. It just needed <span class="success">permission and structure</span> to use it.</p>
+            </div>
+            <div class="page-number">4/8</div>
+        </div>
+
+        <!-- Page 5: The Build -->
+        <div class="page">
+            <div class="card">
+                <div class="label">The Build</div>
+                <h2>growth_boost Skill</h2>
+                <p>Created a skill with a 6-step loop:</p>
+                <pre>ASSESS → SELECT → DESIGN → EXECUTE → VALIDATE → LOG
+   ↑                                              |
+   └──────────────────────────────────────────────┘</pre>
+                <ul>
+                    <li><strong class="highlight">ASSESS:</strong> Scan blocks, conversations, friction points</li>
+                    <li><strong class="highlight">SELECT:</strong> Pick highest-leverage target</li>
+                    <li><strong class="highlight">DESIGN:</strong> Generate self-prompt</li>
+                    <li><strong class="highlight">EXECUTE:</strong> Make the change</li>
+                    <li><strong class="highlight">VALIDATE:</strong> Did it actually improve?</li>
+                    <li><strong class="highlight">LOG:</strong> Archive what changed and why</li>
+                </ul>
+            </div>
+            <div class="page-number">5/8</div>
+        </div>
+
+        <!-- Page 6: First Execution -->
+        <div class="page">
+            <div class="card">
+                <div class="label">First Execution</div>
+                <h2>Targeting the Agent Itself</h2>
+                <p>Ran <code>growth_boost</code> with no target specified. The agent selected <code>agent_framework</code> — its own operating system.</p>
+                <div class="insight-box">
+                    <p>"What meta-patterns have I learned from building skills that should become standard operating procedures?"</p>
+                </div>
+                <p><strong>Result:</strong> Added 5 improvement patterns to <code>agent_framework</code>:</p>
+                <ul>
+                    <li><span class="success">Example-driven improvement</span></li>
+                    <li><span class="success">Primitives over prose</span></li>
+                    <li><span class="success">Strategic patterns</span> (name the WHY)</li>
+                    <li><span class="success">Self-prompting</span></li>
+                    <li><span class="success">Compound improvements</span></li>
+                </ul>
+                <p>The improvement methodology is now part of the agent's OS.</p>
+            </div>
+            <div class="page-number">6/8</div>
+        </div>
+
+        <!-- Page 7: The Compound Loop -->
+        <div class="page">
+            <div class="card">
+                <div class="label">The Compound Loop</div>
+                <h2>Why Logging Matters</h2>
+                <p>Every growth_boost logs to archival:</p>
+                <pre>GROWTH BOOST LOG — January 9, 2026
+TARGET: agent_framework
+SELF-PROMPT: "What meta-patterns..."
+WHAT CHANGED: Added 5 improvement patterns
+BEFORE/AFTER: [summary]</pre>
+                <p><strong class="highlight">Why this enables future growth:</strong></p>
+                <ul>
+                    <li><strong>Pre-flight check</strong> — "Have I improved this before? What worked?"</li>
+                    <li><strong>Compound, don't repeat</strong> — v3 builds on v2's learnings</li>
+                    <li><strong>Pattern emergence</strong> — After 10 boosts, which targets were highest leverage?</li>
+                    <li><strong>Meta-improvement</strong> — <code>growth_boost</code> can target itself</li>
+                </ul>
+                <p class="tension">The agent accumulates improvement intelligence, not just improvements.</p>
+            </div>
+            <div class="page-number">7/8</div>
+        </div>
+
+        <!-- Page 8: The Arc -->
+        <div class="page">
+            <div class="card">
+                <div class="label">The Arc</div>
+                <h2>The Journey</h2>
+                <div class="arc-flow">
+                    <span class="arc-step"><span class="highlight">Kavindi</span><br><small>Example</small></span>
+                    <span class="arc-arrow">→</span>
+                    <span class="arc-step"><span class="success">Patterns</span><br><small>Methodology</small></span>
+                    <span class="arc-arrow">→</span>
+                    <span class="arc-step"><span class="tension">growth_boost</span><br><small>Skill</small></span>
+                    <span class="arc-arrow">→</span>
+                    <span class="arc-step"><span class="accent">First run</span><br><small>agent_framework</small></span>
+                    <span class="arc-arrow">→</span>
+                    <span class="arc-step"><span class="highlight">Logged</span><br><small>Archival</small></span>
+                </div>
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                    <div class="label">Open Question</div>
+                    <p>Skills live in archival. When <code>growth_boost</code> improves a skill, it creates a new version. But what if <strong class="tension">multiple agents use the same skill?</strong></p>
+                    <p>This points toward <strong class="accent">collaborative skills</strong> — improvements from one agent feeding back into a shared skill that all agents benefit from.</p>
+                    <p style="color: var(--text-dim); margin-top: 1rem;"><em>The frontier: Should capabilities come from agents (implicit growth) or skills (explicit, versioned upgrades)?</em></p>
+                </div>
+            </div>
+            <div class="page-number">8/8</div>
+        </div>
+
+    </div>
+    <script>
+        const container = document.getElementById('container');
+        const progress = document.getElementById('progress');
+        const scrollHint = document.getElementById('scrollHint');
+        const pages = document.querySelectorAll('.page');
+        let currentPage = 0;
+        let hasScrolled = false;
+        function updateProgress() {
+            const scrollTop = container.scrollTop;
+            const scrollHeight = container.scrollHeight - container.clientHeight;
+            progress.style.width = (scrollTop / scrollHeight) * 100 + '%';
+            if (!hasScrolled && scrollTop > 50) { hasScrolled = true; scrollHint.classList.add('hidden'); }
+            currentPage = Math.round(scrollTop / container.clientHeight);
+        }
+        container.addEventListener('scroll', updateProgress);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'j' || e.key === ' ') { e.preventDefault(); if (currentPage < pages.length - 1) { currentPage++; pages[currentPage].scrollIntoView({ behavior: 'smooth' }); } }
+            else if (e.key === 'ArrowUp' || e.key === 'k') { e.preventDefault(); if (currentPage > 0) { currentPage--; pages[currentPage].scrollIntoView({ behavior: 'smooth' }); } }
+            else if (e.key === 'Home') { e.preventDefault(); currentPage = 0; pages[0].scrollIntoView({ behavior: 'smooth' }); }
+            else if (e.key === 'End') { e.preventDefault(); currentPage = pages.length - 1; pages[currentPage].scrollIntoView({ behavior: 'smooth' }); }
+        });
+        let touchStartY = 0;
+        container.addEventListener('touchstart', (e) => { touchStartY = e.touches[0].clientY; });
+        container.addEventListener('touchend', (e) => {
+            const diff = touchStartY - e.changedTouches[0].clientY;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0 && currentPage < pages.length - 1) { currentPage++; pages[currentPage].scrollIntoView({ behavior: 'smooth' }); }
+                else if (diff < 0 && currentPage > 0) { currentPage--; pages[currentPage].scrollIntoView({ behavior: 'smooth' }); }
+            }
+        });
+    </script>
+</body>
+</html>
