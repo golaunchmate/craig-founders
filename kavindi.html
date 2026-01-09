@@ -3,327 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kavindi's Week | December 2025</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Kavindi's Week - Foodie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0f0f0f; --card: #1a1a1a; --border: #2a2a2a; --text: #e5e5e5;
+            --text-dim: #6b7280; --blue: #60a5fa; --green: #34d399; --orange: #f97316; --pink: #f472b6;
         }
-
-        html {
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: #0f0f0f;
-            color: #e0e0e0;
-            overflow-x: hidden;
-        }
-
-        .page {
-            min-height: 100vh;
-            scroll-snap-align: start;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-        }
-
-        .card {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 12px;
-            max-width: 640px;
-            width: 100%;
-            min-height: 70vh;
-            padding: 50px 45px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .section-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #6b7280;
-            margin-bottom: 12px;
-        }
-
-        .page-title {
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 28px;
-            line-height: 1.3;
-        }
-
-        .page-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #b0b0b0;
-        }
-
-        .page-content p {
-            margin-bottom: 1.2em;
-        }
-
-        .highlight {
-            color: #60a5fa;
-            font-weight: 500;
-        }
-
-        .decision {
-            color: #34d399;
-            font-weight: 500;
-        }
-
-        .tension {
-            color: #f97316;
-            font-weight: 500;
-        }
-
-        .page-number {
-            position: absolute;
-            bottom: 25px;
-            right: 30px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: #4a4a4a;
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #4a4a4a;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            animation: pulse 2s infinite;
-        }
-
-        .scroll-hint svg {
-            width: 20px;
-            height: 20px;
-            margin-top: 6px;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        .cover-page .card {
-            background: linear-gradient(135deg, #1a1a2e 0%, #1e1e3f 100%);
-            border-color: #2a2a4a;
-            text-align: center;
-        }
-
-        .cover-page .page-title {
-            font-size: 2.2rem;
-            margin-bottom: 16px;
-        }
-
-        .cover-page .subtitle {
-            font-size: 1.1rem;
-            color: #8b8ba7;
-            margin-bottom: 8px;
-        }
-
-        .cover-page .date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: #6b7280;
-        }
-
-        .final-page .card {
-            text-align: center;
-        }
-
-        .takeaway-list {
-            list-style: none;
-            margin: 20px 0;
-        }
-
-        .takeaway-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #2a2a2a;
-            color: #34d399;
-            font-weight: 500;
-        }
-
-        .takeaway-list li:last-child {
-            border-bottom: none;
-        }
-
-        .stat-box {
-            display: flex;
-            justify-content: center;
-            margin: 24px 0;
-            padding: 20px;
-            background: #0f0f0f;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: #34d399;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #6b7280;
-            margin-top: 4px;
-        }
-
-        @media (max-width: 600px) {
-            .card {
-                padding: 35px 25px;
-                min-height: 80vh;
-            }
-            .page-title {
-                font-size: 1.5rem;
-            }
-            .page-content {
-                font-size: 1rem;
-            }
-        }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--blue); transition: width 0.3s ease; z-index: 100; }
+        .container { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; position: relative; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; max-width: 600px; width: 100%; }
+        .page-number { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); position: absolute; bottom: 2rem; right: 2rem; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 0.5rem; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+        .subtitle { font-size: 1.1rem; color: var(--text-dim); margin-bottom: 1.5rem; }
+        .highlight { color: var(--blue); } .success { color: var(--green); } .tension { color: var(--orange); } .accent { color: var(--pink); }
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+        .stat-box { background: var(--bg); border-radius: 12px; padding: 1.25rem; text-align: center; }
+        .stat-before { font-size: 1rem; color: var(--text-dim); margin-bottom: 0.25rem; }
+        .stat-arrow { color: var(--green); font-size: 1.25rem; margin: 0.25rem 0; }
+        .stat-after { font-size: 1.75rem; font-weight: 700; color: var(--green); }
+        .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; margin-top: 0.5rem; }
+        .insight-box { background: var(--bg); border-left: 3px solid var(--orange); padding: 1.25rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+        .insight-box p { font-style: italic; }
+        .timeline { margin: 1.5rem 0; }
+        .timeline-item { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: flex-start; }
+        .timeline-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--blue); margin-top: 0.5rem; flex-shrink: 0; }
+        .timeline-dot.done { background: var(--green); }
+        .timeline-dot.current { background: var(--orange); box-shadow: 0 0 10px var(--orange); }
+        .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--text-dim); font-size: 0.875rem; animation: bounce 2s infinite; }
+        .scroll-hint.hidden { opacity: 0; transition: opacity 0.5s ease; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(5px); } }
+        .checklist { margin: 1rem 0; } .checklist-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; }
+        .check { color: var(--green); } .pending { color: var(--orange); }
+        .cover-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .arc-flow { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-top: 1rem; font-size: 0.9rem; }
+        .arc-step { background: var(--bg); padding: 0.5rem 0.75rem; border-radius: 8px; }
+        .arc-arrow { color: var(--text-dim); }
+        @media (max-width: 640px) { .card { padding: 1.5rem; } h1 { font-size: 2rem; } .stat-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
-    <!-- Cover Page -->
-    <section class="page cover-page">
-        <div class="card">
-            <p class="section-label">Founder Update</p>
-            <h1 class="page-title">Kavindi's Week</h1>
-            <p class="subtitle">From Dual-Track to Focused Execution</p>
-            <p class="date">December 2025 // scroll to read</p>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
+    <div class="progress-bar" id="progress"></div>
+    <div class="container" id="container">
+        <div class="page">
+            <div class="card" style="text-align: center;">
+                <div class="cover-icon">🍜</div>
+                <div class="label">Week of January 8, 2026</div>
+                <h1>Kavindi</h1>
+                <p class="subtitle">Foodie — Group dining decisions, solved</p>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 1rem;">First-gen founder • ZIP EOP → Full member</p>
             </div>
+            <div class="scroll-hint" id="scrollHint"><span>Scroll or press ↓</span><span>↓</span></div>
+            <div class="page-number">1/7</div>
         </div>
-    </section>
-
-    <!-- Page 1: The Setup -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">Starting Point</p>
-            <h2 class="page-title">Running two tracks at once</h2>
-            <div class="page-content">
-                <p>Started the week trying to validate two channels simultaneously: <span class="highlight">QR codes</span> and <span class="highlight">Instagram</span>.</p>
-                <p>The thinking was to test both and see which one got traction. But splitting focus meant neither was getting full attention.</p>
-            </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">1/5</span>
-        </div>
-    </section>
-
-    <!-- Page 2: The Signal -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">The Signal</p>
-            <h2 class="page-title">Instagram is working</h2>
-            <div class="page-content">
-                <p>Then the data came in:</p>
-                <div class="stat-box">
-                    <div class="stat">
-                        <div class="stat-value">300+</div>
-                        <div class="stat-label">views on Instagram</div>
-                    </div>
+        <div class="page">
+            <div class="card">
+                <div class="label">The Plan</div>
+                <h2>Close the first restaurant deal</h2>
+                <p>Coming into winter break, the goal was clear: <span class="highlight">validate demand</span> and <span class="highlight">land one partner restaurant</span>.</p>
+                <div class="timeline" style="margin-top: 1.5rem;">
+                    <div class="timeline-item"><div class="timeline-dot done"></div><div><strong>Killed QR code validation</strong><p style="color: var(--text-dim); font-size: 0.9rem;">Too heavy, not enough signal</p></div></div>
+                    <div class="timeline-item"><div class="timeline-dot done"></div><div><strong>Launched "fake door" Instagram test</strong><p style="color: var(--text-dim); font-size: 0.9rem;">"DM for early access to deals" — deals that don't exist yet</p></div></div>
+                    <div class="timeline-item"><div class="timeline-dot done"></div><div><strong>Started business outreach</strong><p style="color: var(--text-dim); font-size: 0.9rem;">3 restaurants contacted personally</p></div></div>
                 </div>
-                <p>That's real traction. People are actually watching. <span class="decision">Decision: go Instagram-only.</span> Drop the QR track and focus where there's signal.</p>
+                <p style="margin-top: 1rem; color: var(--text-dim);">The chicken-and-egg problem: no deal = can't show demand, no demand proof = can't get deal.</p>
             </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">2/5</span>
+            <div class="page-number">2/7</div>
         </div>
-    </section>
-
-    <!-- Page 3: The Realization -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">The Realization</p>
-            <h2 class="page-title">I'm being passive</h2>
-            <div class="page-content">
-                <p>But then a harder realization hit: <span class="tension">I don't actually have anything to offer yet.</span></p>
-                <p>No restaurant partnerships, no deals to promote. I'm building an audience but I'm just... posting content. <span class="tension">Passive.</span></p>
-                <p>Views are great, but views without a deal to offer is just entertainment, not a business.</p>
+        <div class="page">
+            <div class="card">
+                <div class="label">What Actually Happened</div>
+                <h2>The numbers <span class="success">exploded</span></h2>
+                <div class="stat-grid">
+                    <div class="stat-box"><div class="stat-before">300+</div><div class="stat-arrow">↓</div><div class="stat-after">25K</div><div class="stat-label">Views</div></div>
+                    <div class="stat-box"><div class="stat-before">3</div><div class="stat-arrow">↓</div><div class="stat-after">50</div><div class="stat-label">Restaurants Contacted</div></div>
+                </div>
+                <p style="margin-top: 1rem;">And the first real deal is cooking: <span class="success">Poke Etc is in progress</span>.</p>
             </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">3/5</span>
+            <div class="page-number">3/7</div>
         </div>
-    </section>
-
-    <!-- Page 4: The Solution -->
-    <section class="page">
-        <div class="card">
-            <p class="section-label">The Pivot</p>
-            <h2 class="page-title">Fake door test</h2>
-            <div class="page-content">
-                <p>Smart solution: <span class="decision">run a fake door test.</span></p>
-                <p>Capture demand before having the restaurant partnerships in place. See if people will actually sign up for deals—even if the deals don't exist yet.</p>
-                <p>If they do, that's proof to take to restaurants. <span class="highlight">"I have X people ready to buy your deals."</span></p>
-                <p>Flip the chicken-and-egg problem.</p>
+        <div class="page">
+            <div class="card">
+                <div class="label">The Realization</div>
+                <h2><span class="tension">Views don't convert without action</span></h2>
+                <div class="insight-box"><p>"We need a stronger CTA."</p></div>
+                <p>25,000 people saw the content. But the call-to-action isn't capturing that attention into something she can take to restaurants.</p>
+                <p style="margin-top: 1rem; color: var(--text-dim);">She identified this gap herself — the reach is proven, but <span class="tension">CTA conversion is now the bottleneck</span>.</p>
             </div>
-            <div class="scroll-hint">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-            <span class="page-number">4/5</span>
+            <div class="page-number">4/7</div>
         </div>
-    </section>
-
-    <!-- Page 5: Where She Landed -->
-    <section class="page final-page">
-        <div class="card">
-            <p class="section-label">Where I Am Now</p>
-            <h2 class="page-title">Winter break goal: first restaurant</h2>
-            <div class="page-content">
-                <ul class="takeaway-list">
-                    <li>Pivoted from dual-track to Instagram-only</li>
-                    <li>300+ views proving the channel works</li>
-                    <li>Fake door test to capture demand</li>
-                    <li>Use signups as leverage for restaurant partnerships</li>
-                </ul>
-                <p style="color: #6b7280; font-style: italic; margin-top: 20px;">Winter break mission: land the first restaurant partner.</p>
+        <div class="page">
+            <div class="card">
+                <div class="label">The Pivot</div>
+                <h2>Go live with the full experience</h2>
+                <p>Instead of just fixing the CTA in isolation, Kavindi's planning something bigger:</p>
+                <div style="background: var(--bg); border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0;">
+                    <div class="label" style="color: var(--pink);">SDSU Foodie Club Collab</div>
+                    <p style="margin-top: 0.5rem;">A real-world social outing to a partner restaurant — testing the <span class="highlight">complete loop</span>:</p>
+                    <p style="margin-top: 0.5rem; color: var(--green);">Partner restaurant + Group experience + Social proof</p>
+                </div>
+                <p style="color: var(--text-dim);">This gives her content, testimonials, AND proves the model works in one event.</p>
             </div>
-            <span class="page-number">5/5</span>
+            <div class="page-number">5/7</div>
         </div>
-    </section>
-
+        <div class="page">
+            <div class="card">
+                <div class="label">Where Things Stand</div>
+                <h2>Status Board</h2>
+                <div class="checklist">
+                    <div class="checklist-item"><span class="check">✓</span><span><strong>Reach established</strong> — 25K views proves she can get eyeballs</span></div>
+                    <div class="checklist-item"><span class="check">✓</span><span><strong>Pipeline built</strong> — 50 businesses contacted</span></div>
+                    <div class="checklist-item"><span class="pending">◐</span><span><strong>Poke Etc deal</strong> — actively in progress</span></div>
+                    <div class="checklist-item"><span class="pending">○</span><span><strong>Foodie Club collab</strong> — planned, pending restaurant</span></div>
+                    <div class="checklist-item"><span class="pending">○</span><span><strong>CTA optimization</strong> — identified as bottleneck</span></div>
+                </div>
+            </div>
+            <div class="page-number">6/7</div>
+        </div>
+        <div class="page">
+            <div class="card">
+                <div class="label">The Arc</div>
+                <h2>Kavindi's Week</h2>
+                <div class="arc-flow">
+                    <span class="arc-step"><span class="highlight">Intention</span><br><small>Close first deal</small></span>
+                    <span class="arc-arrow">→</span>
+                    <span class="arc-step"><span class="success">Surprise</span><br><small>Massive reach</small></span>
+                    <span class="arc-arrow">→</span>
+                    <span class="arc-step"><span class="tension">Realization</span><br><small>CTA bottleneck</small></span>
+                    <span class="arc-arrow">→</span>
+                    <span class="arc-step"><span class="accent">Pivot</span><br><small>Live event test</small></span>
+                </div>
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                    <div class="label">What She Needs</div>
+                    <p><span class="tension">Close Poke Etc</span> — Once she has ONE restaurant live, she can promote it on her established social and turn "DM for early access" into <span class="success">"here's a real deal."</span></p>
+                </div>
+            </div>
+            <div class="page-number">7/7</div>
+        </div>
+    </div>
+    <script>
+        const container = document.getElementById('container');
+        const progress = document.getElementById('progress');
+        const scrollHint = document.getElementById('scrollHint');
+        const pages = document.querySelectorAll('.page');
+        let currentPage = 0;
+        let hasScrolled = false;
+        function updateProgress() {
+            const scrollTop = container.scrollTop;
+            const scrollHeight = container.scrollHeight - container.clientHeight;
+            progress.style.width = (scrollTop / scrollHeight) * 100 + '%';
+            if (!hasScrolled && scrollTop > 50) { hasScrolled = true; scrollHint.classList.add('hidden'); }
+            currentPage = Math.round(scrollTop / container.clientHeight);
+        }
+        container.addEventListener('scroll', updateProgress);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'j' || e.key === ' ') { e.preventDefault(); if (currentPage < pages.length - 1) { currentPage++; pages[currentPage].scrollIntoView({ behavior: 'smooth' }); } }
+            else if (e.key === 'ArrowUp' || e.key === 'k') { e.preventDefault(); if (currentPage > 0) { currentPage--; pages[currentPage].scrollIntoView({ behavior: 'smooth' }); } }
+            else if (e.key === 'Home') { e.preventDefault(); currentPage = 0; pages[0].scrollIntoView({ behavior: 'smooth' }); }
+            else if (e.key === 'End') { e.preventDefault(); currentPage = pages.length - 1; pages[currentPage].scrollIntoView({ behavior: 'smooth' }); }
+        });
+        let touchStartY = 0;
+        container.addEventListener('touchstart', (e) => { touchStartY = e.touches[0].clientY; });
+        container.addEventListener('touchend', (e) => {
+            const diff = touchStartY - e.changedTouches[0].clientY;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0 && currentPage < pages.length - 1) { currentPage++; pages[currentPage].scrollIntoView({ behavior: 'smooth' }); }
+                else if (diff < 0 && currentPage > 0) { currentPage--; pages[currentPage].scrollIntoView({ behavior: 'smooth' }); }
+            }
+        });
+    </script>
 </body>
 </html>
