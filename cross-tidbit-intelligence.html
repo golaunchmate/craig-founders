@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Tidbit Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0f0f0f; --card: #1a1a1a; --border: #2a2a2a; --text: #e5e5e5;
+            --text-dim: #6b7280; --blue: #60a5fa; --green: #34d399; --orange: #f97316; --pink: #f472b6; --purple: #a78bfa;
+        }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--purple); transition: width 0.3s ease; z-index: 100; }
+        .container { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; position: relative; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; max-width: 650px; width: 100%; }
+        .page-number { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); position: absolute; bottom: 2rem; right: 2rem; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 0.5rem; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: var(--text); }
+        .subtitle { font-size: 1.1rem; color: var(--text-dim); margin-bottom: 1.5rem; }
+        p { margin-bottom: 1rem; }
+        .highlight { color: var(--blue); } .success { color: var(--green); } .tension { color: var(--orange); } .accent { color: var(--pink); } .purple { color: var(--purple); }
+        .cover-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--text-dim); font-size: 0.875rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(5px); } }
+        .diagram { background: var(--bg); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+        .flow-row { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin: 1rem 0; }
+        .flow-box { background: var(--card); border: 1px solid var(--border); padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.9rem; }
+        .flow-arrow { color: var(--text-dim); font-size: 1.25rem; }
+        .capability-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+        .capability-box { background: var(--bg); border-radius: 12px; padding: 1.25rem; }
+        .capability-box .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .capability-box h4 { font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text); }
+        .capability-box p { font-size: 0.85rem; color: var(--text-dim); margin: 0; }
+        .example-box { background: var(--bg); border-left: 3px solid var(--purple); padding: 1.25rem; margin: 1rem 0; border-radius: 0 12px 12px 0; }
+        .example-box .label { color: var(--purple); margin-bottom: 0.75rem; }
+        .versus { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+        .versus-box { background: var(--bg); border-radius: 12px; padding: 1.25rem; }
+        .versus-box h4 { font-size: 0.85rem; margin-bottom: 0.75rem; }
+        .versus-box ul { list-style: none; font-size: 0.9rem; }
+        .versus-box li { padding: 0.35rem 0; }
+        .status-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+        .status-item:last-child { border-bottom: none; }
+        .status-icon { font-size: 1.25rem; }
+        .question-box { background: var(--bg); border: 1px dashed var(--border); border-radius: 12px; padding: 1.25rem; margin: 1rem 0; }
+        .question-box p { margin: 0; font-style: italic; color: var(--text-dim); }
+        @media (max-width: 640px) { 
+            .card { padding: 1.5rem; } 
+            h1 { font-size: 2rem; } 
+            .capability-grid, .versus { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progress"></div>
+    <div class="container" id="container">
+        
+        <div class="page">
+            <div class="card" style="text-align: center;">
+                <div class="cover-icon">🔗</div>
+                <div class="label">Proposed Capability</div>
+                <h1>Cross-Tidbit Intelligence</h1>
+                <p class="subtitle">What if the memory agent read <em>all</em> the tidbits?</p>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 1rem;">January 2026 • For team discussion</p>
+            </div>
+            <div class="scroll-hint"><span>Scroll or press ↓</span><span>↓</span></div>
+            <div class="page-number">1/7</div>
+        </div>
+
+        <div class="page">
+            <div class="card">
+                <div class="label">Current State</div>
+                <h2>Each tidbit is an island</h2>
+                <p>Right now, tidbits are created one at a time. The memory agent talks to one person's agent, builds their narrative, publishes it.</p>
+                <div class="diagram">
+                    <div class="flow-row">
+                        <span class="flow-box">Kavindi's Agent</span>
+                        <span class="flow-arrow">→</span>
+                        <span class="flow-box">Kavindi's Tidbit</span>
+                    </div>
+                    <div class="flow-row">
+                        <span class="flow-box">Craig's Agent</span>
+                        <span class="flow-arrow">→</span>
+                        <span class="flow-box">Craig's Tidbit</span>
+                    </div>
+                    <div class="flow-row">
+                        <span class="flow-box" style="border-color: var(--orange);">No connection between them</span>
+                    </div>
+                </div>
+                <p style="color: var(--text-dim);">The agent that builds Kavindi's tidbit doesn't know what's in Craig's. Patterns across people are invisible.</p>
+            </div>
+            <div class="page-number">2/7</div>
+        </div>
+
+        <div class="page">
+            <div class="card">
+                <div class="label">The Proposal</div>
+                <h2>Give the memory agent <span class="purple">global context</span></h2>
+                <p>What if the memory agent read through <em>all</em> existing tidbits and built a persistent knowledge base?</p>
+                <div class="diagram">
+                    <div class="flow-row">
+                        <span class="flow-box">All Tidbits</span>
+                        <span class="flow-arrow">→</span>
+                        <span class="flow-box" style="border-color: var(--purple);">Memory Agent</span>
+                        <span class="flow-arrow">→</span>
+                        <span class="flow-box" style="border-color: var(--green);">Cross-Team Intelligence</span>
+                    </div>
+                </div>
+                <p>The agent would know:</p>
+                <ul style="margin-left: 1.5rem; color: var(--text-dim);">
+                    <li>Who's working on what</li>
+                    <li>What's stuck vs. shipping</li>
+                    <li>How projects have evolved over time</li>
+                    <li>Where one person's work connects to another's</li>
+                </ul>
+            </div>
+            <div class="page-number">3/7</div>
+        </div>
+
+        <div class="page">
+            <div class="card">
+                <div class="label">What It Enables</div>
+                <h2>Six new capabilities</h2>
+                <div class="capability-grid">
+                    <div class="capability-box">
+                        <div class="icon">🧠</div>
+                        <h4>Founder Knowledge Base</h4>
+                        <p>Persistent context about each person — no re-explaining needed</p>
+                    </div>
+                    <div class="capability-box">
+                        <div class="icon">🔀</div>
+                        <h4>Cross-Pollination</h4>
+                        <p>"Kavindi's CTA work might help Michael's distribution problem"</p>
+                    </div>
+                    <div class="capability-box">
+                        <div class="icon">📈</div>
+                        <h4>Arc Tracking</h4>
+                        <p>See how each person has evolved — what shipped, what pivoted, what stalled</p>
+                    </div>
+                    <div class="capability-box">
+                        <div class="icon">🎯</div>
+                        <h4>Meeting Synthesis</h4>
+                        <p>"3 people mentioned the same blocker this week"</p>
+                    </div>
+                    <div class="capability-box">
+                        <div class="icon">👀</div>
+                        <h4>Gap Detection</h4>
+                        <p>Who hasn't had a tidbit in a while? Who might need attention?</p>
+                    </div>
+                    <div class="capability-box">
+                        <div class="icon">📚</div>
+                        <h4>Pattern Library</h4>
+                        <p>What pivot patterns work? What signals predict someone getting stuck?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="page-number">4/7</div>
+        </div>
+
+        <div class="page">
+            <div class="card">
+                <div class="label">Example</div>
+                <h2>What this looks like in practice</h2>
+                <div class="example-box">
+                    <div class="label">Before a team meeting</div>
+                    <p style="margin: 0; color: var(--text);">"Hey, before tomorrow's sync — three things jumped out from the tidbits:</p>
+                    <ul style="margin: 1rem 0 0 1.5rem; color: var(--text);">
+                        <li><span class="highlight">Kavindi</span> and <span class="highlight">Daniel</span> are both stuck on user acquisition. Different markets, but maybe there's a shared tactic?</li>
+                        <li><span class="tension">Robert</span> hasn't had a tidbit in 3 weeks. Might be worth checking in.</li>
+                        <li><span class="success">Holland</span> just shipped something that solves a problem <span class="success">Stacey</span> mentioned last week."</li>
+                    </ul>
+                </div>
+                <p style="color: var(--text-dim); margin-top: 1rem;">The agent becomes a <span class="purple">connective tissue</span> — not just documenting each person, but seeing across all of them.</p>
+            </div>
+            <div class="page-number">5/7</div>
+        </div>
+
+        <div class="page">
+            <div class="card">
+                <div class="label">The Shift</div>
+                <h2>From documenter to <span class="purple">pattern-spotter</span></h2>
+                <div class="versus">
+                    <div class="versus-box">
+                        <h4 style="color: var(--text-dim);">TODAY</h4>
+                        <ul>
+                            <li>• One tidbit at a time</li>
+                            <li>• No memory between sessions</li>
+                            <li>• Connections spotted manually</li>
+                            <li>• "Who's stuck?" requires checking each tidbit</li>
+                        </ul>
+                    </div>
+                    <div class="versus-box" style="border: 1px solid var(--purple);">
+                        <h4 style="color: var(--purple);">WITH GLOBAL CONTEXT</h4>
+                        <ul>
+                            <li>• <span class="success">Persistent founder profiles</span></li>
+                            <li>• <span class="success">Builds on past tidbits</span></li>
+                            <li>• <span class="success">Auto-surfaces connections</span></li>
+                            <li>• <span class="success">"Who needs attention?" is one question</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="color: var(--text-dim); margin-top: 1rem;">Same agent, same tidbit format — but now it <em>knows things</em> before you ask.</p>
+            </div>
+            <div class="page-number">6/7</div>
+        </div>
+
+        <div class="page">
+            <div class="card">
+                <div class="label">For Discussion</div>
+                <h2>Is this worth building?</h2>
+                <div class="status-item">
+                    <span class="status-icon">📋</span>
+                    <div>
+                        <strong>What's needed</strong>
+                        <p style="color: var(--text-dim); margin: 0.25rem 0 0 0; font-size: 0.9rem;">A list of all tidbit URLs in the repo, or repo access to crawl them</p>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">⏱️</span>
+                    <div>
+                        <strong>Effort</strong>
+                        <p style="color: var(--text-dim); margin: 0.25rem 0 0 0; font-size: 0.9rem;">Low — mostly reading + memory organization. Could do a first pass today.</p>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">🎯</span>
+                    <div>
+                        <strong>First use case</strong>
+                        <p style="color: var(--text-dim); margin: 0.25rem 0 0 0; font-size: 0.9rem;">Pre-meeting synthesis: "Here's what's happening across the team"</p>
+                    </div>
+                </div>
+                <div class="question-box">
+                    <p>Does this feel useful? What would you want it to surface?</p>
+                </div>
+            </div>
+            <div class="page-number">7/7</div>
+        </div>
+
+    </div>
+    <script>
+        const container = document.getElementById('container');
+        const progress = document.getElementById('progress');
+        const pages = document.querySelectorAll('.page');
+        let currentPage = 0;
+        
+        function updateProgress() {
+            const scrollTop = container.scrollTop;
+            const scrollHeight = container.scrollHeight - container.clientHeight;
+            progress.style.width = (scrollTop / scrollHeight) * 100 + '%';
+            currentPage = Math.round(scrollTop / container.clientHeight);
+        }
+        
+        container.addEventListener('scroll', updateProgress);
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'j' || e.key === ' ') {
+                e.preventDefault();
+                if (currentPage < pages.length - 1) {
+                    currentPage++;
+                    pages[currentPage].scrollIntoView({ behavior: 'smooth' });
+                }
+            } else if (e.key === 'ArrowUp' || e.key === 'k') {
+                e.preventDefault();
+                if (currentPage > 0) {
+                    currentPage--;
+                    pages[currentPage].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
