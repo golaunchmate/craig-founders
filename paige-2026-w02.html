@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paige's Week | January 2026</title>
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Paige">
+    <meta name="tidbit-company" content="LaunchMate">
+    <meta name="tidbit-date" content="2026-01-13">
+    <meta name="tidbit-agent-id" content="agent-297cd755-05a5-421f-8d2b-5fc34a9282e7">
+    <meta name="tidbit-period" content="2026-W02">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { 
+            height: 100%; 
+            background: #0f0f0f; 
+            color: #e5e5e5; 
+            font-family: 'Inter', sans-serif;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .page-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; color: #f5f5f5; }
+        p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 1rem; color: #a3a3a3; }
+        .highlight { color: #60a5fa; }
+        .success { color: #34d399; }
+        .tension { color: #f97316; }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .scroll-hint {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+        .flow {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        .flow-item {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+        .flow-arrow { color: #6b7280; }
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .status-row:last-child { border-bottom: none; }
+        .status-item { color: #e5e5e5; }
+        .status-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        .done { background: #064e3b; color: #34d399; }
+        .in-progress { background: #1e3a5f; color: #60a5fa; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="page-number">1/7</div>
+        <p class="label">Week of January 6-13, 2026</p>
+        <h1>Paige</h1>
+        <p style="font-size: 1.3rem; color: #e5e5e5;">The week the goal shifted from "reduce friction" to "feel known"</p>
+        <p style="margin-top: 2rem;"><span class="tension">11 days</span> to Jan 23 deadline</p>
+    </div>
+
+    <div class="page">
+        <div class="page-number">2/7</div>
+        <p class="label">The Starting Point</p>
+        <h2>I thought I was building student self-service onboarding</h2>
+        <p>v2.0 hybrid onboarding was ready. The goal: reduce setup friction while building enough context for the agent to be useful.</p>
+        <p>Then Craig reframed everything.</p>
+        <div class="card" style="margin-top: 1.5rem;">
+            <p class="label">The pivot</p>
+            <p style="color: #e5e5e5; margin-bottom: 0;">The onboarding sequence isn't for students at all — it's for <span class="highlight">mentor pre-training</span>. Craig/Cameron/Erica fill in context ON BEHALF of founders, then the agent feels "mysteriously knowing" from the first interaction.</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-number">3/7</div>
+        <p class="label">The Key Insight</p>
+        <h2>"Here's what you told me explicitly, but here's what I know about you implicitly"</h2>
+        <p>That shift is where trust is built.</p>
+        <div class="flow" style="margin-top: 2rem;">
+            <div class="flow-item">"How do we make students complete onboarding?"</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-item" style="border-color: #34d399;">"How do we make founders feel KNOWN in 30 seconds?"</div>
+        </div>
+        <p style="margin-top: 1.5rem;">Completely different design problem. Same architecture, new purpose.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-number">4/7</div>
+        <p class="label">What I Built</p>
+        <h2>Two-phase v3.0 architecture</h2>
+        <div class="card">
+            <p class="label" style="color: #60a5fa;">Phase 1: Pre-Training Mode</p>
+            <p style="margin-bottom: 0;">Manager/mentor interviews agent ABOUT the founder. 3rd person questions, memory block population, gap tracking.</p>
+        </div>
+        <div class="card">
+            <p class="label" style="color: #34d399;">Phase 2: Founder Mode</p>
+            <p style="margin-bottom: 0;">Agent demonstrates knowledge immediately. Uses tick-tock onboarding to fill remaining gaps — but founder never sees the checklist. Feels conversational, not transactional.</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-number">5/7</div>
+        <p class="label">The Catch</p>
+        <h2>The opening statement was functional but not energizing</h2>
+        <div class="quote">
+            <p style="color: #a3a3a3;">"Hey [Name]! Here's what's about to happen: I'm going to show you what I already know about you..."</p>
+        </div>
+        <p>It explained the process clearly. But if the first message feels like <span class="tension">"setup overhead,"</span> you've already triggered the friction you're trying to avoid.</p>
+        <p style="margin-top: 1rem;">The opening needs to do double duty: <span class="highlight">ORIENT</span> (what's about to happen) AND <span class="success">ENERGIZE</span> (why this is worth doing).</p>
+    </div>
+
+    <div class="page">
+        <div class="page-number">6/7</div>
+        <p class="label">The Fix</p>
+        <h2>From "here's the process" to "we're not starting from zero"</h2>
+        <div class="card">
+            <p style="color: #e5e5e5; font-size: 1rem; margin-bottom: 0;">"Hey [Name]! I'm already up to speed on you and [Business Name], so we're not starting from zero. Let me show you what I know — you tell me what I'm missing — then [X] quick questions and we can jump into whatever you need. Whole thing takes 2-3 minutes. Ready?"</p>
+        </div>
+        <p style="margin-top: 1.5rem;">Same structure. Different energy. <span class="success">Momentum instead of overhead.</span></p>
+    </div>
+
+    <div class="page">
+        <div class="page-number">7/7</div>
+        <p class="label">Where Things Stand</p>
+        <h2>Ready to ship</h2>
+        <div class="card">
+            <div class="status-row">
+                <span class="status-item">v3.0 two-phase architecture</span>
+                <span class="status-badge done">✓ complete</span>
+            </div>
+            <div class="status-row">
+                <span class="status-item">System instructions drafted</span>
+                <span class="status-badge done">✓ complete</span>
+            </div>
+            <div class="status-row">
+                <span class="status-item">Memory block structure updated</span>
+                <span class="status-badge done">✓ complete</span>
+            </div>
+            <div class="status-row">
+                <span class="status-item">Opening statement</span>
+                <span class="status-badge in-progress">95% — final pick</span>
+            </div>
+        </div>
+        <p style="margin-top: 1.5rem;"><span class="highlight">Next:</span> Lock opening → Deploy Michael's agent for testing → Coordinate with Cameron + Erica for pre-training interviews</p>
+        <div class="quote" style="margin-top: 1.5rem;">
+            <p style="color: #e5e5e5;">"The 'mysteriously knowing' moment isn't just about having the information — it's about how you deliver it."</p>
+        </div>
+    </div>
+
+    <div class="scroll-hint">scroll ↓</div>
+
+    <script>
+        const pages = document.querySelectorAll('.page');
+        const hint = document.querySelector('.scroll-hint');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.target === pages[pages.length - 1] && entry.isIntersecting) {
+                    hint.style.opacity = '0';
+                } else if (entry.isIntersecting) {
+                    hint.style.opacity = '1';
+                }
+            });
+        }, { threshold: 0.5 });
+        pages.forEach(page => observer.observe(page));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'j') {
+                e.preventDefault();
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'k') {
+                e.preventDefault();
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
