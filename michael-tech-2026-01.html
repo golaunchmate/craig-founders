@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Michael">
+    <meta name="tidbit-company" content="LaunchMate">
+    <meta name="tidbit-date" content="2026-01-14">
+    <meta name="tidbit-period" content="2026-W02">
+    <meta name="tidbit-agent-id" content="agent-c7dfe49e-c6c6-45d3-8a43-901be7a5f042">
+    <meta name="tidbit-author" content="MemoryMate">
+    <title>Michael | Tech Deep Dive | Jan 6-13, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+        .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 16px; padding: 3rem; max-width: 700px; width: 100%; }
+        .page-num { font-family: 'JetBrains Mono', monospace; color: #6b7280; font-size: 0.875rem; margin-bottom: 1.5rem; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #60a5fa; }
+        .subtitle { color: #6b7280; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; margin-bottom: 2rem; }
+        p { margin-bottom: 1rem; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .label { font-family: 'JetBrains Mono', monospace; color: #6b7280; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .scroll-hint { text-align: center; margin-top: 2rem; color: #6b7280; font-size: 0.875rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+        .energy-bar { background: #2a2a2a; border-radius: 8px; padding: 1rem; margin-top: 1.5rem; }
+        .energy-fill { height: 8px; background: linear-gradient(90deg, #34d399, #60a5fa); border-radius: 4px; width: 100%; }
+        ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <section class="page">
+        <div class="card">
+            <div class="page-num">1 / 6</div>
+            <h1>Michael</h1>
+            <div class="subtitle">TECH DEEP DIVE • JAN 6-13, 2026</div>
+            <p>A week of realizations about what actually matters in LaunchMate—and building the systems to make agents smarter.</p>
+            <div class="scroll-hint">↓ scroll to continue</div>
+        </div>
+    </section>
+
+    <section class="page">
+        <div class="card">
+            <div class="page-num">2 / 6</div>
+            <h2>The UI Revelation</h2>
+            <div class="label">Starting Point</div>
+            <p>I went into the week thinking we needed more features, more depth in the product.</p>
+            <p>Then I started looking at where users were actually dropping off.</p>
+            <p class="highlight">The first 60 seconds. That's it. That's the whole unlock.</p>
+            <p>If someone doesn't feel momentum in the first minute, feature depth is irrelevant—they're already gone.</p>
+            <div class="tension">Realization: We were optimizing the wrong layer entirely.</div>
+        </div>
+    </section>
+
+    <section class="page">
+        <div class="card">
+            <div class="page-num">3 / 6</div>
+            <h2>Vibe Coding</h2>
+            <div class="label">New Architecture Direction</div>
+            <p>Started exploring a new approach: <span class="highlight">architecture direction + AI generates code to match reference styles</span>.</p>
+            <p>The idea is simple—instead of writing every component from scratch, I set the architectural vision and let AI produce code that matches our visual language.</p>
+            <p>It's not about replacing the craft. It's about <span class="decision">spending time on decisions, not keystrokes</span>.</p>
+        </div>
+    </section>
+
+    <section class="page">
+        <div class="card">
+            <div class="page-num">4 / 6</div>
+            <h2>Agent Self-Improvement v2.0</h2>
+            <div class="label">Making Agents Smarter</div>
+            <p>Built out a full framework for how agents evaluate and improve themselves:</p>
+            <ul>
+                <li><span class="highlight">ASSESS checklist</span> — structured self-evaluation</li>
+                <li><span class="highlight">VALIDATE criteria</span> — clear pass/fail gates</li>
+                <li><span class="highlight">Revert procedure</span> — safe rollback when things break</li>
+                <li><span class="highlight">Iteration limits</span> — prevents infinite loops</li>
+            </ul>
+            <p class="decision">Agents can now try things, check if they worked, and back out gracefully if they didn't.</p>
+        </div>
+    </section>
+
+    <section class="page">
+        <div class="card">
+            <div class="page-num">5 / 6</div>
+            <h2>Other Wins</h2>
+            <div class="label">Rounding Out The Week</div>
+            <p><span class="highlight">Created launchmate_growth_patterns block</span> — starting to codify what we're learning about how founders progress through the system.</p>
+            <p><span class="highlight">Synced with Paige on onboarding</span> — turns out minimal handoff is needed. The existing flow is working better than we thought.</p>
+            <p class="tension">Next week's priority: agent-to-agent affordances. We hit real blockers trying to coordinate tidbits today—no shared credentials, message size limits, no artifact handoff.</p>
+        </div>
+    </section>
+
+    <section class="page">
+        <div class="card">
+            <div class="page-num">6 / 6</div>
+            <h2>Where Things Stand</h2>
+            <div class="label">Current Status</div>
+            <p>The week crystallized around one insight: <span class="decision">velocity matters more than depth right now</span>.</p>
+            <p>First 60 seconds. Vibe coding for faster iteration. Self-improving agents that don't need babysitting.</p>
+            <p>All pointing the same direction—<span class="highlight">remove friction, increase momentum</span>.</p>
+            <div class="energy-bar">
+                <div class="label">Energy Level</div>
+                <div class="energy-fill"></div>
+                <p style="margin-top: 0.5rem; color: #34d399; font-weight: 600;">10 / 10</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            }
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
