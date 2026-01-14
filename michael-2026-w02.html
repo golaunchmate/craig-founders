@@ -74,123 +74,146 @@
             0%, 100% { opacity: 0.5; }
             50% { opacity: 1; }
         }
-        .skill-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        .skill-item {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-            padding: 1rem;
-        }
-        .skill-item .label { margin-bottom: 0.25rem; }
-        .skill-item p { font-size: 0.95rem; margin: 0; color: #e5e5e5; }
-        .tension-box {
-            background: #1a1a1a;
-            border: 1px solid #f97316;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
         .quote {
             border-left: 3px solid #60a5fa;
             padding-left: 1.5rem;
             margin: 1.5rem 0;
             font-style: italic;
         }
+        .flow {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        .flow-item {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+        .flow-arrow { color: #6b7280; }
+        .status-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .status-item {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .status-item .label { margin-bottom: 0.25rem; }
+        .status-item p { font-size: 0.95rem; margin: 0; }
+        .energy {
+            font-size: 2rem;
+            color: #34d399;
+        }
     </style>
 </head>
 <body>
     <div class="page">
-        <div class="page-number">1/6</div>
+        <div class="page-number">1/7</div>
         <p class="label">Week of January 6-13, 2026</p>
         <h1>Michael</h1>
-        <p style="font-size: 1.3rem; color: #e5e5e5;">Deep in the skills spike — conviction locked, now needs alignment</p>
-        <p style="margin-top: 2rem;"><span class="highlight">11 days</span> to Jan 23 deadline</p>
+        <p style="font-size: 1.3rem; color: #e5e5e5;">The week UI went from "hygiene factor" to <span class="highlight">the unlock</span></p>
+        <p class="energy" style="margin-top: 2rem;">Energy: 10/10</p>
     </div>
 
     <div class="page">
-        <div class="page-number">2/6</div>
-        <p class="label">The Starting Point</p>
-        <h2>R&D / Tech Spike Mode</h2>
-        <p>Michael went deep on how <span class="highlight">skills</span> can function for Launchpad-specific exercises.</p>
+        <div class="page-number">2/7</div>
+        <p class="label">The Avoidance</p>
+        <h2>We dismissed it as a "hygiene factor"</h2>
+        <p>For months, users complained about platform instability and UI friction.</p>
+        <p>The team's response: <span class="tension">"Founders not being empathetic to other founders."</span></p>
         <div class="card">
-            <p class="label">Areas explored</p>
-            <p style="color: #e5e5e5; margin-bottom: 0.5rem;">• Neal test coaching</p>
-            <p style="color: #e5e5e5; margin-bottom: 0.5rem;">• Semester goal-setting</p>
-            <p style="color: #e5e5e5; margin-bottom: 0;">• How agents grow with founders over time</p>
+            <p style="color: #e5e5e5; margin-bottom: 0;">We avoided the UI problem. Told ourselves it wasn't the real issue. Turned out to be <span class="success">actually critical</span>.</p>
         </div>
-        <p style="margin-top: 1rem;">The question: Can skills make the agent actually useful for real founder work?</p>
+        <p style="margin-top: 1rem; font-size: 0.95rem;">Lesson: Don't dismiss user complaints — they signal real problems.</p>
     </div>
 
     <div class="page">
-        <div class="page-number">3/6</div>
-        <p class="label">The Realizations</p>
-        <h2>Three things became clear</h2>
-        <div class="card">
-            <p style="color: #34d399; font-weight: 500; margin-bottom: 1rem;">1. Skills are a must</p>
-            <p style="margin-bottom: 0;">The tech spike validated this conviction. Not optional.</p>
-        </div>
-        <div class="card">
-            <p style="color: #60a5fa; font-weight: 500; margin-bottom: 1rem;">2. The real challenge isn't building skills</p>
-            <p style="margin-bottom: 0;">It's making founders <span class="highlight">"feel seen"</span> in the first interaction — proving capability beyond ChatGPT.</p>
-        </div>
-        <div class="tension-box">
-            <p style="color: #f97316; font-weight: 500; margin-bottom: 1rem;">3. Craig's friction analysis (F1+F16) surfaced a gap</p>
-            <p style="margin-bottom: 0;">Skills prove value <em>over time</em>. But what earns the right to show them in the <span class="tension">first 30 seconds</span>?</p>
-        </div>
-    </div>
-
-    <div class="page">
-        <div class="page-number">4/6</div>
-        <p class="label">Decisions Made</p>
-        <h2>Narrowed to four core skills for Jan 23</h2>
-        <div class="skill-grid">
-            <div class="skill-item">
-                <p class="label" style="color: #60a5fa;">Skill 1</p>
-                <p>Weekly reflection / projection</p>
-            </div>
-            <div class="skill-item">
-                <p class="label" style="color: #60a5fa;">Skill 2</p>
-                <p>Neal test</p>
-            </div>
-            <div class="skill-item">
-                <p class="label" style="color: #60a5fa;">Skill 3</p>
-                <p>Tidbits</p>
-            </div>
-            <div class="skill-item">
-                <p class="label" style="color: #60a5fa;">Skill 4</p>
-                <p>Growth boost</p>
-            </div>
-        </div>
-        <p style="margin-top: 1rem;"><span class="tension">Tabled:</span> Agent messaging display (staying focused)</p>
-        <p><span class="tension">Backgrounded:</span> Collaborative skill evolution (requires infra outside Letta)</p>
-    </div>
-
-    <div class="page">
-        <div class="page-number">5/6</div>
-        <p class="label">The Open Question</p>
-        <h2>How do skills connect to the first impression?</h2>
-        <p>Michael's wrestling with Craig's friction lens:</p>
+        <div class="page-number">3/7</div>
+        <p class="label">The Realization</p>
+        <h2>The first 60 seconds is THE unlock</h2>
+        <p>After 6 months exploring what features are possible, clarity hit:</p>
         <div class="quote">
-            <p style="color: #e5e5e5;">"Skills prove the agent can guide real work and grow with the founder. But how do you earn the right to show them before the founder trusts you?"</p>
+            <p style="color: #e5e5e5;">"Longer-term features won't stick because users won't stay around long enough to experience them. You have to solve immediate friction first or you lose them."</p>
         </div>
-        <p>The handoff to Paige matters here — her onboarding flow creates the "feel seen" moment that earns the right for Michael's skills to land.</p>
+        <p><span class="highlight">Friction mapping</span> to prioritize instant user buy-in became the focus.</p>
+        <p style="margin-top: 1rem; font-size: 0.95rem; color: #6b7280;">"It's a hard balance — you have to explore before you can simplify."</p>
     </div>
 
     <div class="page">
-        <div class="page-number">6/6</div>
-        <p class="label">Where Things Stand</p>
-        <h2>Ready for team alignment</h2>
+        <div class="page-number">4/7</div>
+        <p class="label">The Discovery</p>
+        <h2>Vibe coding is real</h2>
+        <p>Michael studied a site, shared the approach + a few APIs, and <span class="success">AI matched the style</span>.</p>
         <div class="card">
-            <p class="label">The pitch</p>
-            <p style="color: #e5e5e5; margin-bottom: 0;">Ship four skills that prove the agent can guide real work and grow with the founder.</p>
+            <p class="label">The shift</p>
+            <p style="color: #e5e5e5; margin-bottom: 0;">Using architecture expertise but <span class="highlight">not writing the code anymore</span>. The abstraction layer from AI is becoming real.</p>
         </div>
-        <p style="margin-top: 1.5rem;"><span class="success">Next:</span> Team sync with Craig and Paige — align on what "feel seen" looks like in practice</p>
-        <p style="margin-top: 2rem; color: #6b7280; font-style: italic;">"Deep exploration → clear conviction on skills → now needs team alignment."</p>
+        <p style="margin-top: 1.5rem;">This is how the UI refresh is shipping fast.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-number">5/7</div>
+        <p class="label">What Shipped</p>
+        <h2>UI refresh in progress</h2>
+        <p>Focused on that critical first 60 seconds:</p>
+        <div class="flow">
+            <div class="flow-item">Reviewed Paige's onboarding</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-item">Context already synced</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-item" style="border-color: #34d399;">Minimal handoff needed</div>
+        </div>
+        <p style="margin-top: 1rem;">Prepped for next week's plans before Craig meeting. Self-directed, just needs sync with Craig and Paige.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-number">6/7</div>
+        <p class="label">Next Week</p>
+        <h2>What's migrating forward</h2>
+        <div class="status-grid">
+            <div class="status-item">
+                <p class="label" style="color: #60a5fa;">One Thing</p>
+                <p>Add tidbits library page (sidebar popover showing all tidbits user created)</p>
+            </div>
+            <div class="status-item">
+                <p class="label" style="color: #f97316;">Migrating</p>
+                <p>Agent-to-agent messaging affordances (who sent it, how to reply in thread)</p>
+            </div>
+            <div class="status-item">
+                <p class="label" style="color: #34d399;">Wednesday 10am</p>
+                <p>Meeting with Craig + team — share updates on reactive chat</p>
+            </div>
+            <div class="status-item">
+                <p class="label" style="color: #6b7280;">Status</p>
+                <p>Self-directed, syncing with Craig and Paige</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-number">7/7</div>
+        <p class="label">The Arc</p>
+        <h2>Michael's Week</h2>
+        <div class="flow" style="flex-direction: column; align-items: flex-start;">
+            <div class="flow-item" style="border-color: #f97316;">Avoided UI as "hygiene factor"</div>
+            <span class="flow-arrow">↓</span>
+            <div class="flow-item">6 months exploring features</div>
+            <span class="flow-arrow">↓</span>
+            <div class="flow-item" style="border-color: #60a5fa;">Realized first 60 seconds is THE unlock</div>
+            <span class="flow-arrow">↓</span>
+            <div class="flow-item">Discovered vibe coding as new paradigm</div>
+            <span class="flow-arrow">↓</span>
+            <div class="flow-item" style="border-color: #34d399;">Now shipping UI refresh with high energy</div>
+        </div>
     </div>
 
     <div class="scroll-hint">scroll ↓</div>
@@ -210,10 +233,10 @@
         pages.forEach(page => observer.observe(page));
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowDown' || e.key === ' ') {
+            if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'j') {
                 e.preventDefault();
                 window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-            } else if (e.key === 'ArrowUp') {
+            } else if (e.key === 'ArrowUp' || e.key === 'k') {
                 e.preventDefault();
                 window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
             }
