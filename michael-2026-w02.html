@@ -4,242 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Michael's Week | January 2026</title>
+    <!-- TIDBIT METADATA -->
     <meta name="tidbit-type" content="team">
     <meta name="tidbit-subject" content="Michael">
     <meta name="tidbit-company" content="LaunchMate">
     <meta name="tidbit-date" content="2026-01-13">
     <meta name="tidbit-agent-id" content="agent-c7dfe49e-c6c6-45d3-8a43-901be7a5f042">
-    <meta name="tidbit-author" content="agent-b9a3f22b-3cbd-466f-9109-fa41603caccf">
+    <meta name="tidbit-author" content="agent-a72dbb02-e690-4c7b-be19-b00c6758d817">
     <meta name="tidbit-version" content="1">
     <meta name="tidbit-period" content="2026-W02">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { 
-            height: 100%; 
-            background: #0f0f0f; 
-            color: #e5e5e5; 
-            font-family: 'Inter', sans-serif;
-            scroll-snap-type: y mandatory;
-            overflow-y: scroll;
-        }
-        .page {
-            min-height: 100vh;
-            scroll-snap-align: start;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 4rem 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .page-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: #6b7280;
-            margin-bottom: 2rem;
-        }
+        html, body { height: 100%; background: #0f0f0f; color: #e5e5e5; font-family: 'Inter', sans-serif; scroll-snap-type: y mandatory; overflow-y: scroll; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; padding: 4rem 2rem; max-width: 800px; margin: 0 auto; }
+        .page-number { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; margin-bottom: 2rem; }
         h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
         h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; color: #f5f5f5; }
         p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 1rem; color: #a3a3a3; }
         .highlight { color: #60a5fa; }
         .success { color: #34d399; }
         .tension { color: #f97316; }
-        .label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: #6b7280;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-        }
-        .card {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
-        .scroll-hint {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: #6b7280;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-        .quote {
-            border-left: 3px solid #60a5fa;
-            padding-left: 1.5rem;
-            margin: 1.5rem 0;
-            font-style: italic;
-        }
-        .flow {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin: 1.5rem 0;
-            flex-wrap: wrap;
-        }
-        .flow-item {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-            padding: 0.75rem 1rem;
-            font-size: 0.9rem;
-        }
-        .flow-arrow { color: #6b7280; }
-        .status-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        .status-item {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-            padding: 1rem;
-        }
-        .status-item .label { margin-bottom: 0.25rem; }
-        .status-item p { font-size: 0.95rem; margin: 0; }
-        .energy {
-            font-size: 2rem;
-            color: #34d399;
-        }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+        .scroll-hint { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+        .grid-item { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 1rem; }
+        .quote { border-left: 3px solid #60a5fa; padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic; }
+        .skill-item { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 1rem; margin: 0.5rem 0; display: flex; align-items: center; gap: 1rem; }
+        .skill-num { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #60a5fa; background: #1e3a5f; padding: 0.25rem 0.5rem; border-radius: 4px; }
+        .tabled { opacity: 0.5; text-decoration: line-through; }
     </style>
 </head>
 <body>
     <div class="page">
-        <div class="page-number">1/7</div>
+        <div class="page-number">1/6</div>
         <p class="label">Week of January 6-13, 2026</p>
         <h1>Michael</h1>
-        <p style="font-size: 1.3rem; color: #e5e5e5;">The week UI went from "hygiene factor" to <span class="highlight">the unlock</span></p>
-        <p class="energy" style="margin-top: 2rem;">Energy: 10/10</p>
+        <p style="font-size: 1.3rem; color: #e5e5e5;">Deep in the skills spike — conviction locked, now needs alignment</p>
+        <p><span class="tension">11 days</span> to Jan 23 deadline</p>
     </div>
 
     <div class="page">
-        <div class="page-number">2/7</div>
-        <p class="label">The Avoidance</p>
-        <h2>We dismissed it as a "hygiene factor"</h2>
-        <p>For months, users complained about platform instability and UI friction.</p>
-        <p>The team's response: <span class="tension">"Founders not being empathetic to other founders."</span></p>
+        <div class="page-number">2/6</div>
+        <p class="label">The Starting Point</p>
+        <h2>R&D / Tech Spike Mode</h2>
+        <p>Michael went deep on how <span class="highlight">skills</span> can function for Launchpad-specific exercises.</p>
         <div class="card">
-            <p style="color: #e5e5e5; margin-bottom: 0;">We avoided the UI problem. Told ourselves it wasn't the real issue. Turned out to be <span class="success">actually critical</span>.</p>
+            <p class="label">Areas Explored</p>
+            <p style="margin: 0;">• Neal test coaching<br>• Semester goal-setting<br>• How agents grow with founders over time</p>
         </div>
-        <p style="margin-top: 1rem; font-size: 0.95rem;">Lesson: Don't dismiss user complaints — they signal real problems.</p>
+        <p style="margin-top: 1rem;">The question: <span class="highlight">Can skills make the agent actually useful for real founder work?</span></p>
     </div>
 
     <div class="page">
-        <div class="page-number">3/7</div>
-        <p class="label">The Realization</p>
-        <h2>The first 60 seconds is THE unlock</h2>
-        <p>After 6 months exploring what features are possible, clarity hit:</p>
+        <div class="page-number">3/6</div>
+        <p class="label">The Realizations</p>
+        <h2>Three things became clear</h2>
+        <div class="card">
+            <p style="color: #34d399; margin: 0;"><strong>1. Skills are a must</strong></p>
+            <p style="margin: 0.5rem 0 0 0;">The tech spike validated this conviction. Not optional.</p>
+        </div>
+        <div class="card">
+            <p style="color: #f97316; margin: 0;"><strong>2. The real challenge isn't building skills</strong></p>
+            <p style="margin: 0.5rem 0 0 0;">It's making founders "feel seen" in the first interaction — proving capability beyond ChatGPT.</p>
+        </div>
+        <div class="card">
+            <p style="color: #60a5fa; margin: 0;"><strong>3. Craig's friction analysis (F1+F16) surfaced a gap</strong></p>
+            <p style="margin: 0.5rem 0 0 0;">Skills prove value <em>over time</em>. But what earns the right to show them in the <em>first 30 seconds</em>?</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-number">4/6</div>
+        <p class="label">Decisions Made</p>
+        <h2>Narrowed to four core skills for Jan 23</h2>
+        <div class="skill-item"><span class="skill-num">1</span><span>Weekly reflection / projection</span></div>
+        <div class="skill-item"><span class="skill-num">2</span><span>Neal test</span></div>
+        <div class="skill-item"><span class="skill-num">3</span><span>Tidbits</span></div>
+        <div class="skill-item"><span class="skill-num">4</span><span>Growth boost</span></div>
+        <p style="margin-top: 1.5rem; font-size: 0.9rem;" class="tabled">Tabled: Agent messaging display (staying focused)</p>
+        <p style="font-size: 0.9rem;" class="tabled">Backgrounded: Collaborative skill evolution (requires infra outside Letta)</p>
+    </div>
+
+    <div class="page">
+        <div class="page-number">5/6</div>
+        <p class="label">The Open Question</p>
+        <h2>How do skills connect to the first impression?</h2>
+        <p>Michael's wrestling with Craig's friction lens:</p>
         <div class="quote">
-            <p style="color: #e5e5e5;">"Longer-term features won't stick because users won't stay around long enough to experience them. You have to solve immediate friction first or you lose them."</p>
+            <p style="color: #e5e5e5;">"Skills prove the agent can guide real work and grow with the founder. But how do you earn the right to show them before the founder trusts you?"</p>
         </div>
-        <p><span class="highlight">Friction mapping</span> to prioritize instant user buy-in became the focus.</p>
-        <p style="margin-top: 1rem; font-size: 0.95rem; color: #6b7280;">"It's a hard balance — you have to explore before you can simplify."</p>
+        <p>The handoff to <span class="highlight">Paige</span> matters here — her onboarding flow creates the "feel seen" moment that earns the right for Michael's skills to land.</p>
     </div>
 
     <div class="page">
-        <div class="page-number">4/7</div>
-        <p class="label">The Discovery</p>
-        <h2>Vibe coding is real</h2>
-        <p>Michael studied a site, shared the approach + a few APIs, and <span class="success">AI matched the style</span>.</p>
+        <div class="page-number">6/6</div>
+        <p class="label">Where Things Stand</p>
+        <h2>Ready for team alignment</h2>
         <div class="card">
-            <p class="label">The shift</p>
-            <p style="color: #e5e5e5; margin-bottom: 0;">Using architecture expertise but <span class="highlight">not writing the code anymore</span>. The abstraction layer from AI is becoming real.</p>
+            <p class="label">The Pitch</p>
+            <p style="color: #e5e5e5; margin: 0;">Ship four skills that prove the agent can guide real work and grow with the founder.</p>
         </div>
-        <p style="margin-top: 1.5rem;">This is how the UI refresh is shipping fast.</p>
-    </div>
-
-    <div class="page">
-        <div class="page-number">5/7</div>
-        <p class="label">What Shipped</p>
-        <h2>UI refresh in progress</h2>
-        <p>Focused on that critical first 60 seconds:</p>
-        <div class="flow">
-            <div class="flow-item">Reviewed Paige's onboarding</div>
-            <span class="flow-arrow">→</span>
-            <div class="flow-item">Context already synced</div>
-            <span class="flow-arrow">→</span>
-            <div class="flow-item" style="border-color: #34d399;">Minimal handoff needed</div>
-        </div>
-        <p style="margin-top: 1rem;">Prepped for next week's plans before Craig meeting. Self-directed, just needs sync with Craig and Paige.</p>
-    </div>
-
-    <div class="page">
-        <div class="page-number">6/7</div>
-        <p class="label">Next Week</p>
-        <h2>What's migrating forward</h2>
-        <div class="status-grid">
-            <div class="status-item">
-                <p class="label" style="color: #60a5fa;">One Thing</p>
-                <p>Add tidbits library page (sidebar popover showing all tidbits user created)</p>
-            </div>
-            <div class="status-item">
-                <p class="label" style="color: #f97316;">Migrating</p>
-                <p>Agent-to-agent messaging affordances (who sent it, how to reply in thread)</p>
-            </div>
-            <div class="status-item">
-                <p class="label" style="color: #34d399;">Wednesday 10am</p>
-                <p>Meeting with Craig + team — share updates on reactive chat</p>
-            </div>
-            <div class="status-item">
-                <p class="label" style="color: #6b7280;">Status</p>
-                <p>Self-directed, syncing with Craig and Paige</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="page">
-        <div class="page-number">7/7</div>
-        <p class="label">The Arc</p>
-        <h2>Michael's Week</h2>
-        <div class="flow" style="flex-direction: column; align-items: flex-start;">
-            <div class="flow-item" style="border-color: #f97316;">Avoided UI as "hygiene factor"</div>
-            <span class="flow-arrow">↓</span>
-            <div class="flow-item">6 months exploring features</div>
-            <span class="flow-arrow">↓</span>
-            <div class="flow-item" style="border-color: #60a5fa;">Realized first 60 seconds is THE unlock</div>
-            <span class="flow-arrow">↓</span>
-            <div class="flow-item">Discovered vibe coding as new paradigm</div>
-            <span class="flow-arrow">↓</span>
-            <div class="flow-item" style="border-color: #34d399;">Now shipping UI refresh with high energy</div>
+        <p style="margin-top: 1.5rem;"><span class="label">Next:</span> Team sync with Craig and Paige — align on what "feel seen" looks like in practice</p>
+        <div class="quote" style="margin-top: 2rem;">
+            <p style="color: #e5e5e5;">"Deep exploration → clear conviction on skills → now needs team alignment."</p>
         </div>
     </div>
 
     <div class="scroll-hint">scroll ↓</div>
-
     <script>
-        const pages = document.querySelectorAll('.page');
-        const hint = document.querySelector('.scroll-hint');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.target === pages[pages.length - 1] && entry.isIntersecting) {
-                    hint.style.opacity = '0';
-                } else if (entry.isIntersecting) {
-                    hint.style.opacity = '1';
-                }
-            });
-        }, { threshold: 0.5 });
-        pages.forEach(page => observer.observe(page));
-
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'j') {
-                e.preventDefault();
-                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-            } else if (e.key === 'ArrowUp' || e.key === 'k') {
-                e.preventDefault();
-                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
-            }
+            if (e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); window.scrollBy({ top: window.innerHeight, behavior: 'smooth' }); }
+            else if (e.key === 'ArrowUp') { e.preventDefault(); window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' }); }
         });
     </script>
 </body>
