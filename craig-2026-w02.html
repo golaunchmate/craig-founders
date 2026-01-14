@@ -4,170 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Craig's Week | January 2026</title>
-    
-    <!-- Tidbit Metadata -->
+    <!-- TIDBIT METADATA -->
     <meta name="tidbit-type" content="team">
     <meta name="tidbit-subject" content="Craig">
     <meta name="tidbit-company" content="LaunchMate">
-    <meta name="tidbit-date" content="2026-01-10">
-    <meta name="tidbit-period" content="2026-W02">
+    <meta name="tidbit-date" content="2026-01-13">
     <meta name="tidbit-agent-id" content="agent-3ee68a5a-a32a-4208-82d5-9523b523e23b">
-    
+    <meta name="tidbit-author" content="agent-3ee68a5a-a32a-4208-82d5-9523b523e23b">
+    <meta name="tidbit-version" content="1">
+    <meta name="tidbit-period" content="2026-W02">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { 
-            height: 100%; 
-            background: #0f0f0f; 
-            color: #e5e5e5; 
-            font-family: 'Inter', sans-serif;
-            scroll-snap-type: y mandatory;
-            overflow-y: scroll;
-        }
-        .page {
-            min-height: 100vh;
-            scroll-snap-align: start;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 4rem 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .page-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: #6b7280;
-            margin-bottom: 2rem;
-        }
+        html, body { height: 100%; background: #0f0f0f; color: #e5e5e5; font-family: 'Inter', sans-serif; scroll-snap-type: y mandatory; overflow-y: scroll; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; padding: 4rem 2rem; max-width: 800px; margin: 0 auto; }
+        .page-number { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; margin-bottom: 2rem; }
         h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
         h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; color: #f5f5f5; }
         p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 1rem; color: #a3a3a3; }
         .highlight { color: #60a5fa; }
         .success { color: #34d399; }
         .tension { color: #f97316; }
-        .label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: #6b7280;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-        }
-        .card {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
-        .scroll-hint {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: #6b7280;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-        .trait-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #2a2a2a;
-            gap: 1rem;
-        }
-        .trait-row:last-child { border-bottom: none; }
-        .trait-name { color: #60a5fa; font-weight: 500; min-width: 180px; }
-        .trait-signal { color: #a3a3a3; font-size: 0.9rem; }
-        .quote {
-            border-left: 3px solid #60a5fa;
-            padding-left: 1.5rem;
-            margin: 1.5rem 0;
-            font-style: italic;
-        }
-        .countdown {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 3rem;
-            font-weight: 700;
-            color: #34d399;
-        }
-        .flow {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin: 1.5rem 0;
-            flex-wrap: wrap;
-        }
-        .flow-item {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-            padding: 0.5rem 0.75rem;
-            font-size: 0.85rem;
-        }
-        .flow-arrow { color: #6b7280; font-size: 0.8rem; }
-        .status-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        .status-item {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-            padding: 1rem;
-        }
-        .status-item .label { margin-bottom: 0.25rem; }
-        .status-item p { font-size: 0.9rem; margin: 0; color: #e5e5e5; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+        .scroll-hint { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        .flow { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
+        .flow-item { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 0.75rem 1rem; font-size: 0.9rem; }
+        .flow-arrow { color: #6b7280; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+        .grid-item { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 1rem; }
+        .quote { border-left: 3px solid #60a5fa; padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic; }
+        .status-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #2a2a2a; }
+        .status-row:last-child { border-bottom: none; }
     </style>
 </head>
 <body>
-    <!-- Cover -->
     <div class="page">
         <div class="page-number">1/7</div>
         <p class="label">Week of January 6-10, 2026</p>
         <h1>Craig</h1>
         <p style="font-size: 1.3rem; color: #e5e5e5;">The week the pieces clicked together</p>
-        <div style="margin-top: 2rem;">
-            <span class="countdown">9</span>
-            <span style="color: #6b7280; margin-left: 0.5rem;">days to Jan 23 launch</span>
-        </div>
+        <p><span class="tension">9 days</span> to Jan 23 launch</p>
     </div>
 
-    <!-- The Tension -->
     <div class="page">
         <div class="page-number">2/7</div>
         <p class="label">The Starting Point</p>
         <h2>Two things that didn't fit together</h2>
-        <div class="card">
-            <div class="trait-row">
-                <span class="trait-name" style="color: #f97316;">Strategic Bet</span>
-                <span class="trait-signal">"The agent that knows you" — the deep, personalized AI partner</span>
+        <div class="grid">
+            <div class="grid-item">
+                <p class="label">Strategic Bet</p>
+                <p style="color: #e5e5e5; margin: 0;">"The agent that knows you" — the deep, personalized AI partner</p>
             </div>
-            <div class="trait-row">
-                <span class="trait-name" style="color: #34d399;">User Excitement</span>
-                <span class="trait-signal">Tidbits — the thing users actually get fired up about</span>
+            <div class="grid-item">
+                <p class="label">User Excitement</p>
+                <p style="color: #e5e5e5; margin: 0;">Tidbits — the thing users actually get fired up about</p>
             </div>
         </div>
         <p style="margin-top: 1.5rem;">The week started with a question: <span class="highlight">Which one is the real value?</span></p>
         <p>Are we building a deep agent or a content generator?</p>
     </div>
 
-    <!-- The Realization -->
     <div class="page">
         <div class="page-number">3/7</div>
         <p class="label">The Realization</p>
-        <h2 style="color: #34d399;">They're the same thing</h2>
+        <h2>They're the same thing</h2>
         <p>Tidbits isn't separate from "the agent that knows you."</p>
-        <p><span class="highlight">Tidbits IS the proof</span> the agent knows you.</p>
+        <p style="color: #34d399; font-size: 1.2rem;">Tidbits <strong>IS</strong> the proof the agent knows you.</p>
         <div class="flow" style="margin-top: 2rem;">
             <div class="flow-item">Agent listens</div>
             <span class="flow-arrow">→</span>
@@ -180,118 +84,93 @@
         <p style="margin-top: 1.5rem;">The explicit→implicit moment, in shareable form.</p>
     </div>
 
-    <!-- Neal's Vision -->
     <div class="page">
         <div class="page-number">4/7</div>
         <p class="label">Then Neal Dropped Something</p>
         <h2>Tidbits as talent signal</h2>
-        <p>Neal's bigger vision surfaced: LaunchMate for <span class="highlight">ALL Boot Camp participants</span>, not just In-Flight.</p>
-        <p>Use it for talent scouting.</p>
+        <p>Neal's bigger vision surfaced: LaunchMate for <span class="highlight">ALL</span> Boot Camp participants, not just In-Flight.</p>
+        <p style="color: #f97316;">Use it for talent scouting.</p>
         <div class="card" style="margin-top: 1.5rem;">
             <p class="label">The connection</p>
-            <p style="color: #e5e5e5; margin-bottom: 0;">If Tidbits captures how founders think through problems... it also reveals who thinks like an <span class="success">exceptional founder</span>.</p>
+            <p style="color: #e5e5e5; margin: 0;">If Tidbits captures how founders think through problems... it also reveals who thinks like an <span class="success">exceptional founder</span>.</p>
         </div>
         <p style="margin-top: 1.5rem;">Craig built the Scouting Agent that night. Demoed it. Neal loved it.</p>
     </div>
 
-    <!-- The Insight -->
     <div class="page">
         <div class="page-number">5/7</div>
         <p class="label">The Key Insight</p>
         <h2>Two audiences, one artifact</h2>
-        <div class="card">
-            <div class="trait-row">
-                <span class="trait-name">For Founders</span>
-                <span class="trait-signal">"This makes me look smart. I want to share it."</span>
+        <div class="grid">
+            <div class="grid-item">
+                <p class="label" style="color: #60a5fa;">For Founders</p>
+                <p style="color: #e5e5e5; margin: 0;">"This makes me look smart. I want to share it."</p>
             </div>
-            <div class="trait-row">
-                <span class="trait-name">For Neal</span>
-                <span class="trait-signal">"This shows me who actually thinks like a founder."</span>
+            <div class="grid-item">
+                <p class="label" style="color: #34d399;">For Neal</p>
+                <p style="color: #e5e5e5; margin: 0;">"This shows me who actually thinks like a founder."</p>
             </div>
         </div>
-        <div class="quote" style="margin-top: 1.5rem;">
-            <p style="color: #e5e5e5;">Don't tell founders Tidbits is used for scouting. They think it's for them. Neal uses it to see who's exceptional. Honest signal, no gaming.</p>
-        </div>
+        <p style="margin-top: 2rem;"><span class="tension">Don't tell founders Tidbits is used for scouting.</span> They think it's for them. Neal uses it to see who's exceptional. Honest signal, no gaming.</p>
     </div>
 
-    <!-- Decisions -->
     <div class="page">
         <div class="page-number">6/7</div>
         <p class="label">Decisions Made</p>
         <h2>What's now locked in</h2>
         <div class="card">
-            <div class="trait-row">
-                <span class="trait-name">Time to First Tidbit</span>
-                <span class="trait-signal">Key onboarding metric — that's the "aha" moment</span>
+            <div class="status-row">
+                <span class="highlight">Time to First Tidbit</span>
+                <span style="color: #a3a3a3;">Key onboarding metric — that's the "aha" moment</span>
             </div>
-            <div class="trait-row">
-                <span class="trait-name">First Tidbit = white glove</span>
-                <span class="trait-signal">Craig triggers it manually — control the quality of that first "wow"</span>
+            <div class="status-row">
+                <span class="highlight">First Tidbit = white glove</span>
+                <span style="color: #a3a3a3;">Craig triggers it manually — control the quality</span>
             </div>
-            <div class="trait-row">
-                <span class="trait-name">Three trigger paths</span>
-                <span class="trait-signal">Internal (auto-detect), external (agent triggers), founder-triggered</span>
+            <div class="status-row">
+                <span class="highlight">Three trigger paths</span>
+                <span style="color: #a3a3a3;">Internal (auto-detect), external (agent), founder-triggered</span>
             </div>
-            <div class="trait-row">
-                <span class="trait-name">Scouting stays hidden</span>
-                <span class="trait-signal">Keeps the signal honest</span>
+            <div class="status-row">
+                <span class="highlight">Scouting stays hidden</span>
+                <span style="color: #a3a3a3;">Keeps the signal honest</span>
             </div>
         </div>
     </div>
 
-    <!-- Where Things Stand -->
     <div class="page">
         <div class="page-number">7/7</div>
         <p class="label">Where Things Stand</p>
         <h2>Green lights, team shipping</h2>
-        <div class="status-grid">
-            <div class="status-item">
-                <p class="label" style="color: #34d399;">Jan 23</p>
-                <p>Confirmed with Neal</p>
+        <div class="card">
+            <div class="status-row">
+                <span>Jan 23</span>
+                <span class="success">Confirmed with Neal</span>
             </div>
-            <div class="status-item">
-                <p class="label" style="color: #34d399;">Scouting Agent</p>
-                <p>Built and validated</p>
+            <div class="status-row">
+                <span>Scouting Agent</span>
+                <span class="success">Built and validated</span>
             </div>
-            <div class="status-item">
-                <p class="label" style="color: #60a5fa;">Michael</p>
-                <p>New chat interface live</p>
+            <div class="status-row">
+                <span>Michael</span>
+                <span class="success">New chat interface live</span>
             </div>
-            <div class="status-item">
-                <p class="label" style="color: #60a5fa;">Paige</p>
-                <p>Pre-training mechanism done</p>
+            <div class="status-row">
+                <span>Paige</span>
+                <span class="success">Pre-training mechanism done</span>
             </div>
         </div>
         <div class="quote" style="margin-top: 2rem;">
             <p style="color: #e5e5e5;">"Tidbits isn't a feature — it's the proof that the agent knows you AND the signal that surfaces exceptional founders."</p>
         </div>
-        <p style="margin-top: 1rem; color: #6b7280;">Next: Get real founder feedback from 4 In-Flight teams.</p>
+        <p style="margin-top: 1rem;"><span class="label">Next:</span> Get real founder feedback from 4 In-Flight teams.</p>
     </div>
 
     <div class="scroll-hint">scroll ↓</div>
-
     <script>
-        const pages = document.querySelectorAll('.page');
-        const hint = document.querySelector('.scroll-hint');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.target === pages[pages.length - 1] && entry.isIntersecting) {
-                    hint.style.opacity = '0';
-                } else if (entry.isIntersecting) {
-                    hint.style.opacity = '1';
-                }
-            });
-        }, { threshold: 0.5 });
-        pages.forEach(page => observer.observe(page));
-
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowDown' || e.key === ' ') {
-                e.preventDefault();
-                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-            } else if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
-            }
+            if (e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); window.scrollBy({ top: window.innerHeight, behavior: 'smooth' }); }
+            else if (e.key === 'ArrowUp') { e.preventDefault(); window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' }); }
         });
     </script>
 </body>
