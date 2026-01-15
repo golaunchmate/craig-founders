@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live in the Future | Craig's Thinking Shift</title>
+    <meta name="tidbit-type" content="framework">
+    <meta name="tidbit-subject" content="Craig">
+    <meta name="tidbit-company" content="SDSU">
+    <meta name="tidbit-date" content="2026-01-15">
+    <meta name="tidbit-period" content="2026-01">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+        .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 16px; padding: 3rem; max-width: 700px; width: 100%; }
+        .page-num { font-family: 'JetBrains Mono', monospace; color: #6b7280; font-size: 0.875rem; margin-bottom: 1.5rem; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: #e5e5e5; }
+        .date { font-family: 'JetBrains Mono', monospace; color: #6b7280; font-size: 1rem; margin-bottom: 2rem; }
+        .label { font-family: 'JetBrains Mono', monospace; color: #6b7280; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        p { margin-bottom: 1rem; font-size: 1.1rem; }
+        .scroll-hint { text-align: center; margin-top: 2rem; color: #6b7280; font-size: 0.875rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+        .quote-box { background: #0f0f0f; border-left: 3px solid #60a5fa; padding: 1.25rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+        .quote-box p { font-style: italic; margin-bottom: 0; }
+        .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+        .compare-box { background: #0f0f0f; border-radius: 12px; padding: 1.25rem; }
+        .compare-box .label { margin-bottom: 0.75rem; }
+        .compare-box ul { margin-left: 1rem; font-size: 0.95rem; }
+        .compare-box li { margin-bottom: 0.5rem; }
+        .pattern-item { background: #0f0f0f; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+        .pattern-name { font-weight: 600; color: #60a5fa; margin-bottom: 0.25rem; }
+        .pattern-desc { font-size: 0.95rem; color: #9ca3af; }
+        @media (max-width: 640px) { .compare-grid { grid-template-columns: 1fr; } .card { padding: 2rem; } h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="card" style="text-align: center;">
+            <div class="page-num">1/6</div>
+            <h1>Live in the Future</h1>
+            <div class="date">January 2026</div>
+            <p style="font-size: 1.25rem; color: #6b7280;">A different path for technical founders</p>
+            <div class="scroll-hint">↓ scroll to continue</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="page-num">2/6</div>
+            <div class="label">The Starting Point</div>
+            <h2>One Program Doesn't Fit All</h2>
+            <p>I teach founders at San Diego State to build businesses. For years, the path has been the same: <span class="highlight">identify a problem → validate through sales → build the solution.</span></p>
+            <p>That works for non-technical founders. They don't have the luxury of building first, so they have to validate first.</p>
+            <p>But I kept wondering: <span class="tension">is that the right path for technical founders?</span></p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="page-num">3/6</div>
+            <div class="label">The Realization</div>
+            <h2>Asymmetric Access = Asymmetric Insight</h2>
+            <p>Technical founders using cutting-edge AI have something most people don't: <span class="highlight">they're living in the future.</span></p>
+            <p>Maybe 0.1% of the population has real exposure to agent orchestration, local inference, stateful memory systems, multi-agent coordination.</p>
+            <div class="quote-box">
+                <p>"If you have access to tools that 99.9% of people don't, you can see problems that normal people don't even know they're about to have."</p>
+            </div>
+            <p>That's a fundamentally different starting point than traditional founders have.</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="page-num">4/6</div>
+            <div class="label">The Shift</div>
+            <h2>Two Different Validation Questions</h2>
+            <div class="compare-grid">
+                <div class="compare-box">
+                    <div class="label" style="color: #6b7280;">Non-Technical Path</div>
+                    <ul>
+                        <li>Find a problem</li>
+                        <li>Validate demand exists</li>
+                        <li>Build the solution</li>
+                        <li><span class="tension">Ask: "Will people pay?"</span></li>
+                    </ul>
+                </div>
+                <div class="compare-box">
+                    <div class="label" style="color: #60a5fa;">Technical Path</div>
+                    <ul>
+                        <li>Work at the frontier</li>
+                        <li>Feel the friction firsthand</li>
+                        <li>Build the wedge now</li>
+                        <li><span class="decision">Ask: "Is this inevitable?"</span></li>
+                    </ul>
+                </div>
+            </div>
+            <p>Technical founders don't validate <em>demand</em>. They validate <span class="decision">inevitability</span>.</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="page-num">5/6</div>
+            <div class="label">The Framework</div>
+            <h2>Four Friction Patterns to Watch</h2>
+            <div class="pattern-item">
+                <div class="pattern-name">Capability Shock</div>
+                <div class="pattern-desc">New AI capability appears → old workflows instantly break</div>
+            </div>
+            <div class="pattern-item">
+                <div class="pattern-name">Abundance Inversion</div>
+                <div class="pattern-desc">Something goes from scarce to free → new frictions emerge</div>
+            </div>
+            <div class="pattern-item">
+                <div class="pattern-name">Delegation Overload</div>
+                <div class="pattern-desc">Tasks become delegable → bottleneck shifts to coordination, memory, evaluation</div>
+            </div>
+            <div class="pattern-item">
+                <div class="pattern-name">Human-In-the-Loop Bottleneck</div>
+                <div class="pattern-desc">AI creates workflows → humans still stuck approving, labeling, deciding</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="page-num">6/6</div>
+            <div class="label">Where This Lands</div>
+            <h2>The "Live in the Future" Program</h2>
+            <p>I'm developing a separate track for technical founders at SDSU:</p>
+            <p><span class="highlight">Weekly frontier exposure</span> — hands-on with capabilities most people won't touch for years.</p>
+            <p><span class="highlight">Friction logging</span> — not brainstorming, but documenting what actually breaks.</p>
+            <p><span class="highlight">Inevitability arguments</span> — why this problem is guaranteed to exist in 12-36 months.</p>
+            <p style="margin-top: 1.5rem; color: #9ca3af;">The goal: founders who are 18-24 months ahead of the market, building wedges into problems that don't fully exist yet — but will.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            const pages = document.querySelectorAll('.page');
+            const currentScroll = window.scrollY;
+            const pageHeight = window.innerHeight;
+            const currentPage = Math.round(currentScroll / pageHeight);
+            
+            if (e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                const next = Math.min(currentPage + 1, pages.length - 1);
+                pages[next].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                const prev = Math.max(currentPage - 1, 0);
+                pages[prev].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
