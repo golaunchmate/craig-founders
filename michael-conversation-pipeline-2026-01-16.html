@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversation Pipeline Architecture | January 2026</title>
+    <meta name="tidbit-type" content="methodology">
+    <meta name="tidbit-subject" content="Michael">
+    <meta name="tidbit-company" content="LaunchMate">
+    <meta name="tidbit-date" content="2026-01-16">
+    <meta name="tidbit-period" content="2026-W03">
+    <meta name="tidbit-agent-id" content="agent-c7dfe49e-c6c6-45d3-8a43-901be7a5f042">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; padding: 4rem 2rem; max-width: 800px; margin: 0 auto; }
+        .page-number { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #6b7280; margin-bottom: 2rem; }
+        .cover { text-align: center; }
+        .cover-icon { font-size: 4rem; margin-bottom: 1.5rem; }
+        .cover h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
+        .cover .subtitle { font-size: 1.25rem; color: #9ca3af; margin-bottom: 2rem; }
+        .cover .date { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #6b7280; }
+        .cover .context { font-size: 1rem; color: #60a5fa; margin-top: 1rem; }
+        .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: #fff; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; margin-bottom: 0.5rem; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .quote { font-size: 1.1rem; font-style: italic; color: #60a5fa; border-left: 3px solid #60a5fa; padding-left: 1.5rem; margin: 1.5rem 0; }
+        .checklist { list-style: none; }
+        .checklist li { padding: 0.75rem 0; border-bottom: 1px solid #2a2a2a; display: flex; align-items: flex-start; gap: 0.75rem; }
+        .checklist li:last-child { border-bottom: none; }
+        .check { color: #34d399; }
+        .reject { color: #ef4444; }
+        .code { font-family: 'JetBrains Mono', monospace; background: #252525; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.9rem; }
+        .flow { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; justify-content: center; margin: 1.5rem 0; }
+        .flow-step { background: #252525; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.875rem; }
+        .flow-arrow { color: #6b7280; }
+        .scroll-hint { text-align: center; color: #6b7280; font-size: 0.875rem; margin-top: 2rem; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div class="page cover">
+        <div class="page-number">1/7</div>
+        <div class="cover-icon">🔀</div>
+        <h1>Conversation Pipeline Architecture</h1>
+        <p class="subtitle">Solving multi-founder concurrency without external infrastructure</p>
+        <p class="date">January 16, 2026</p>
+        <p class="context">Message-level queueing ≠ flow-level isolation</p>
+        <div class="scroll-hint">scroll ↓</div>
+    </div>
+
+    <div class="page">
+        <div class="page-number">2/7</div>
+        <div class="card">
+            <div class="label">The Setup</div>
+            <h2>The Concurrency Problem</h2>
+            <p>We have a shared tidbits agent with a <span class="highlight">multi-step agent-to-agent flow</span>. Problem: if multiple founders trigger tidbits concurrently, the flows could interleave and corrupt each other.</p>
+            <p style="margin-top: 1rem; color: #6b7280;">Looked at Letta's conversation API to see if it could help.</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-number">3/7</div>
+        <div class="card">
+            <div class="label">The Assumption</div>
+            <h2>Message Queue ≠ Flow Queue</h2>
+            <p>Initial thought: <span class="highlight">Letta conversations queue concurrent messages</span> — maybe that solves it?</p>
+            <p style="margin-top: 1rem;">But the queue is at the <em>message</em> level, not the <em>flow</em> level.</p>
+            <div style="margin-top: 1.5rem; padding: 1rem; background: #252525; border-radius: 8px;">
+                <p class="tension">A multi-step flow (msg1 → response → msg2) could still get interleaved by another founder's request mid-flow.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-number">4/7</div>
+        <div class="card">
+            <div class="label">Options Considered</div>
+            <h2>Three Paths Forward</h2>
+            <ul class="checklist">
+                <li><span class="reject">✗</span> <div><strong>External job queue</strong> (Redis, etc.)<br><span style="color: #6b7280;">Rejected — didn't want separate queuing infrastructure</span></div></li>
+                <li><span class="check">◐</span> <div><strong>Conversation-per-founder</strong><br><span style="color: #6b7280;">Isolates flows, but needs custom a2a routing</span></div></li>
+                <li><span class="reject">✗</span> <div><strong>Flatten to single-message flow</strong><br><span style="color: #6b7280;">Simpler but probably not feasible for tidbits</span></div></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-number">5/7</div>
+        <div class="card">
+            <div class="label">The Pivot</div>
+            <h2>Clarification from Letta</h2>
+            <p>Got clarification from <span class="highlight">Letta Cameron</span>:</p>
+            <div class="quote">"Conversations are fully parallel — memory block writes are handled safely by Letta."</div>
+            <p style="margin-top: 1rem;"><span class="decision">✓ Removed concern about shared memory corruption</span></p>
+            <p style="margin-top: 0.5rem; color: #6b7280;">But conversation-per-founder is still needed to prevent flow interleaving.</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-number">6/7</div>
+        <div class="card">
+            <div class="label">The Solution</div>
+            <h2>Custom A2A Tool</h2>
+            <p>Build <span class="code">send_message_to_agent_conversation</span> with three params:</p>
+            <ul class="checklist">
+                <li><span class="check">→</span> <span class="code">recipient_agent_id</span></li>
+                <li><span class="check">→</span> <span class="code">founder_id</span></li>
+                <li><span class="check">→</span> <span class="code">message</span></li>
+            </ul>
+            <p style="margin-top: 1rem;">Tool looks up or creates a conversation for that founder on the target agent, then routes the message there. DB table stores <span class="highlight">founder_id → conversation_id</span> mapping.</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-number">7/7</div>
+        <div class="card">
+            <div class="label">The Arc</div>
+            <h2>The Journey</h2>
+            <div class="quote">"I thought Letta's conversation queueing might handle concurrency, but realized it's message-level not flow-level. I didn't want to build a separate queue service, so I'm using conversation-per-founder with a custom a2a tool. Letta handling parallel memory writes means one less thing to worry about."</div>
+            <p style="margin-top: 1.5rem; text-align: center;"><span class="decision">Clean architecture, no external queue infra, leverages Letta's native conversation isolation.</span></p>
+        </div>
+        <div class="scroll-hint">↑ scroll to review</div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); window.scrollBy({ top: window.innerHeight, behavior: 'smooth' }); }
+            else if (e.key === 'ArrowUp') { e.preventDefault(); window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' }); }
+        });
+    </script>
+</body>
+</html>
