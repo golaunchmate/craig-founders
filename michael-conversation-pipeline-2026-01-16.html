@@ -47,9 +47,9 @@
         <div class="card">
             <div class="label">The Problem</div>
             <h2>The Return Path Breaks</h2>
-            <p>The tidbits agent kicks off the flow — it messages a founder's agent to gather their narrative. That part works fine.</p>
-            <p style="margin-top: 1rem;">But when the founder's agent responds back, <span class="tension">the response lands in the tidbits agent's main conversation</span> — not the founder's specific thread.</p>
-            <p style="margin-top: 1rem;">All founder responses pile into the same place. The outbound path works, but the return path collides.</p>
+            <p>The tidbits pipeline initiates — it sends a message to the right founder's agent. That works fine.</p>
+            <p style="margin-top: 1rem;">But when the founder replies, <span class="tension">the default a2a tool routes their response to the pipeline's main conversation</span> — not their specific sub-conversation with the pipeline.</p>
+            <p style="margin-top: 1rem;">All founder responses end up in the same main thread. The outbound routing is correct, but the return path is broken.</p>
         </div>
     </div>
 
@@ -58,8 +58,8 @@
         <div class="card">
             <div class="label">The Solution</div>
             <h2>One Conversation Per Founder</h2>
-            <p>Each founder gets their own dedicated conversation thread on the tidbits agent. Kavindi's responses go to Kavindi's thread. Jordan's go to Jordan's.</p>
-            <p style="margin-top: 1rem;"><span class="highlight">The founder agents need a conversation-aware tool</span> so their responses route to the right sub-conversation — not the default.</p>
+            <p>Each founder has their own sub-conversation with the tidbits pipeline. Kavindi's thread stays separate from Jordan's.</p>
+            <p style="margin-top: 1rem;"><span class="highlight">Founder agents need a conversation-aware a2a tool</span> so their responses route back to their specific sub-conversation — not the main thread.</p>
         </div>
     </div>
 
@@ -68,9 +68,9 @@
         <div class="card">
             <div class="label">The Tradeoff</div>
             <h2>Growth Gets Siloed</h2>
-            <p>Here's the catch: if the tidbits agent learns to tell better stories through feedback in Craig's conversation, <span class="tension">that improvement stays in Craig's thread</span>.</p>
-            <p style="margin-top: 1rem;">A new founder's thread starts fresh — it doesn't inherit the storytelling gains. The growth lives in conversation history, not in shared memory blocks.</p>
-            <p style="margin-top: 1rem;"><span class="highlight">We need a way to extract learnings into memory so all threads benefit.</span></p>
+            <p>Here's the catch: if the tidbits agent learns to tell better stories through feedback in Craig's sub-conversation, <span class="tension">that improvement stays in Craig's thread</span>.</p>
+            <p style="margin-top: 1rem;">A new founder's sub-conversation starts fresh — it doesn't inherit the storytelling gains. The growth lives in conversation history, not in shared memory blocks.</p>
+            <p style="margin-top: 1rem;"><span class="highlight">We need a way to extract learnings into memory so all sub-conversations benefit.</span></p>
         </div>
     </div>
 
@@ -79,8 +79,8 @@
         <div class="card">
             <div class="label">The Build</div>
             <h2>Custom A2A Tool + Growth Pipeline</h2>
-            <p>Letta's built-in a2a doesn't support conversation routing. Founder agents need a custom tool that routes responses to their specific sub-conversation on the tidbits agent.</p>
-            <p style="margin-top: 1rem;"><span class="decision">Next step:</span> figure out how to promote conversation learnings to memory blocks so all founder threads can access them.</p>
+            <p>Letta's default a2a routes to agents, not conversations. Founder agents need a custom tool that routes responses to their specific sub-conversation with the tidbits pipeline.</p>
+            <p style="margin-top: 1rem;"><span class="decision">Next step:</span> figure out how to promote conversation learnings to memory blocks so all founder sub-conversations can access them.</p>
         </div>
         <div class="scroll-hint">↑ scroll to review</div>
     </div>
