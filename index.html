@@ -2,136 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Craig's Founders | Tidbit Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Inter',sans-serif;background:#0f0f0f;color:#e5e5e5;min-height:100vh;padding:3rem 2rem}
-        .container{max-width:1000px;margin:0 auto}
-        header{text-align:center;margin-bottom:3rem}
-        h1{font-size:2.5rem;font-weight:700;margin-bottom:0.5rem}
-        .subtitle{color:#6b7280;font-size:1.1rem}
-        .stats{display:flex;justify-content:center;gap:2rem;margin-top:1.5rem}
-        .stat{text-align:center}
-        .stat-num{font-size:2rem;font-weight:700;color:#60a5fa}
-        .stat-label{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#6b7280;text-transform:uppercase}
-        .section{margin-bottom:2.5rem}
-        .section-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem}
-        .section-icon{font-size:1.25rem}
-        .section-title{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em}
-        .section-count{background:#1a1a1a;color:#60a5fa;font-size:0.7rem;padding:0.25rem 0.5rem;border-radius:4px;font-family:'JetBrains Mono',monospace}
-        .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
-        .card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:1.25rem;transition:all 0.2s;text-decoration:none;color:#e5e5e5;display:block}
-        .card:hover{border-color:#3a3a3a;transform:translateY(-2px);background:#1f1f1f}
-        .card-title{font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#fff}
-        .card-meta{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#6b7280}
-        .card-tag{display:inline-block;background:#0f0f0f;color:#60a5fa;font-size:0.65rem;padding:0.2rem 0.5rem;border-radius:4px;margin-top:0.5rem}
-        .card-tag.green{color:#34d399}
-        .card-tag.orange{color:#f97316}
-        .card-tag.pink{color:#f472b6}
-        footer{text-align:center;margin-top:3rem;padding-top:2rem;border-top:1px solid #2a2a2a;color:#6b7280;font-size:0.85rem}
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#0f0f0f;color:#e5e5e5;min-height:100vh;padding:3rem 2rem}.container{max-width:1000px;margin:0 auto}header{text-align:center;margin-bottom:2rem}h1{font-size:2.5rem;font-weight:700;margin-bottom:0.5rem}.subtitle{color:#6b7280;font-size:1.1rem}.search-box{margin:1.5rem auto;max-width:400px}#search{width:100%;padding:0.75rem 1rem;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e5e5e5;font-size:1rem}#search:focus{outline:none;border-color:#60a5fa}.section{margin-bottom:2rem}.section-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem}.section-icon{font-size:1.25rem}.section-title{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#6b7280;text-transform:uppercase}.section-count{background:#1a1a1a;color:#60a5fa;font-size:0.7rem;padding:0.25rem 0.5rem;border-radius:4px;font-family:'JetBrains Mono',monospace}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}.card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:1.25rem;transition:all 0.2s;text-decoration:none;color:#e5e5e5;display:block}.card:hover{border-color:#3a3a3a;transform:translateY(-2px)}.card.hidden{display:none}.card-title{font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#fff}.card-meta{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#6b7280}.card-tag{display:inline-block;background:#0f0f0f;font-size:0.65rem;padding:0.2rem 0.5rem;border-radius:4px;margin-top:0.5rem;color:#60a5fa}.green{color:#34d399}.orange{color:#f97316}.pink{color:#f472b6}footer{text-align:center;margin-top:2rem;padding-top:2rem;border-top:1px solid #2a2a2a;color:#6b7280;font-size:0.85rem}
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🎯 Craig's Founders</h1>
-            <p class="subtitle">Tidbit Dashboard</p>
-            <div class="stats">
-                <div class="stat"><div class="stat-num">24</div><div class="stat-label">Tidbits</div></div>
-                <div class="stat"><div class="stat-num">6</div><div class="stat-label">Categories</div></div>
-            </div>
-        </header>
-
-        <div class="section">
-            <div class="section-header">
-                <span class="section-icon">👤</span>
-                <span class="section-title">Founder Profiles</span>
-                <span class="section-count">5</span>
-            </div>
-            <div class="grid">
-                <a href="kavindi.html" class="card"><div class="card-title">Kavindi</div><div class="card-meta">Foodie — Group dining decisions</div><span class="card-tag green">Week of Jan 8</span></a>
-                <a href="paige.html" class="card"><div class="card-title">Paige</div><div class="card-meta">LaunchMate team</div><span class="card-tag">Profile</span></a>
-                <a href="laura.html" class="card"><div class="card-title">Laura</div><div class="card-meta">LaunchMate team</div><span class="card-tag">Profile</span></a>
-                <a href="michael.html" class="card"><div class="card-title">Michael</div><div class="card-meta">LaunchMate team</div><span class="card-tag">Profile</span></a>
-                <a href="craig.html" class="card"><div class="card-title">Craig</div><div class="card-meta">ZIP Launchpad mentor</div><span class="card-tag">Profile</span></a>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <span class="section-icon">📅</span>
-                <span class="section-title">Weekly Updates</span>
-                <span class="section-count">4</span>
-            </div>
-            <div class="grid">
-                <a href="craig-2026-w02.html" class="card"><div class="card-title">Craig — W02</div><div class="card-meta">2026 Week 2</div><span class="card-tag">Weekly</span></a>
-                <a href="michael-2026-w02.html" class="card"><div class="card-title">Michael — W02</div><div class="card-meta">2026 Week 2</div><span class="card-tag">Weekly</span></a>
-                <a href="paige-2026-w02.html" class="card"><div class="card-title">Paige — W02</div><div class="card-meta">2026 Week 2</div><span class="card-tag">Weekly</span></a>
-                <a href="michael-launchmate-2026-01-W02.html" class="card"><div class="card-title">Michael LaunchMate — W02</div><div class="card-meta">January 2026</div><span class="card-tag">Weekly</span></a>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <span class="section-icon">🤝</span>
-                <span class="section-title">1:1 Meetings</span>
-                <span class="section-count">3</span>
-            </div>
-            <div class="grid">
-                <a href="craig-laura-jan7.html" class="card"><div class="card-title">Craig × Laura</div><div class="card-meta">January 7, 2026</div><span class="card-tag orange">1:1</span></a>
-                <a href="craig-paige-jan7.html" class="card"><div class="card-title">Craig × Paige</div><div class="card-meta">January 7, 2026</div><span class="card-tag orange">1:1</span></a>
-                <a href="team-jan21.html" class="card"><div class="card-title">Team Meeting</div><div class="card-meta">January 21, 2026</div><span class="card-tag orange">Team</span></a>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <span class="section-icon">🧠</span>
-                <span class="section-title">Frameworks & Concepts</span>
-                <span class="section-count">6</span>
-            </div>
-            <div class="grid">
-                <a href="cross-tidbit-intelligence.html" class="card"><div class="card-title">Cross-Tidbit Intelligence</div><div class="card-meta">Pattern detection across founders</div><span class="card-tag pink">Framework</span></a>
-                <a href="founder-modes.html" class="card"><div class="card-title">Founder Modes</div><div class="card-meta">States of founder operation</div><span class="card-tag pink">Framework</span></a>
-                <a href="tidbits.html" class="card"><div class="card-title">Tidbits</div><div class="card-meta">What are tidbits?</div><span class="card-tag pink">Framework</span></a>
-                <a href="skills.html" class="card"><div class="card-title">Skills</div><div class="card-meta">Founder skill taxonomy</div><span class="card-tag pink">Framework</span></a>
-                <a href="weekly-mirror.html" class="card"><div class="card-title">Weekly Mirror</div><div class="card-meta">Reflection framework</div><span class="card-tag pink">Framework</span></a>
-                <a href="self-improving-agents-2025-01-09.html" class="card"><div class="card-title">Self-Improving Agents</div><div class="card-meta">January 9, 2025</div><span class="card-tag pink">Research</span></a>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <span class="section-icon">🧪</span>
-                <span class="section-title">Neal Test & Validation</span>
-                <span class="section-count">2</span>
-            </div>
-            <div class="grid">
-                <a href="neal-test-community-college-advisor.html" class="card"><div class="card-title">Neal Test: CC Advisor</div><div class="card-meta">Community college validation</div><span class="card-tag green">Neal Test</span></a>
-                <a href="craig-neal.html" class="card"><div class="card-title">Craig × Neal</div><div class="card-meta">Discussion notes</div><span class="card-tag green">Mentor</span></a>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <span class="section-icon">⚙️</span>
-                <span class="section-title">Technical & Meta</span>
-                <span class="section-count">4</span>
-            </div>
-            <div class="grid">
-                <a href="michael-conversation-pipeline-2026-01-16.html" class="card"><div class="card-title">Conversation Pipeline</div><div class="card-meta">Michael — January 16</div><span class="card-tag">Technical</span></a>
-                <a href="michael-tech-2026-01.html" class="card"><div class="card-title">Michael Tech</div><div class="card-meta">January 2026</div><span class="card-tag">Technical</span></a>
-                <a href="launchmate.html" class="card"><div class="card-title">LaunchMate</div><div class="card-meta">Product overview</div><span class="card-tag">Meta</span></a>
-                <a href="craig-live-in-the-future.html" class="card"><div class="card-title">Live in the Future</div><div class="card-meta">Craig's vision</div><span class="card-tag">Meta</span></a>
-            </div>
-        </div>
-
-        <footer>
-            <p>LaunchMate • ZIP Launchpad @ SDSU</p>
-            <p style="margin-top:0.5rem;font-family:'JetBrains Mono',monospace;font-size:0.7rem;">Last updated: January 21, 2026</p>
-        </footer>
-    </div>
+<div class="container">
+    <header><h1>🎯 Craig's Founders</h1><p class="subtitle">Tidbit Dashboard — <span id="count">24</span> tidbits</p>
+    <div class="search-box"><input type="text" id="search" placeholder="Search tidbits... (or press /)" autocomplete="off"></div></header>
+    <div class="section"><div class="section-header"><span class="section-icon">👤</span><span class="section-title">Founder Profiles</span></div><div class="grid">
+        <a href="kavindi.html" class="card" data-s="kavindi foodie"><div class="card-title">Kavindi</div><div class="card-meta">Foodie</div><span class="card-tag green">Jan 8</span></a>
+        <a href="paige.html" class="card" data-s="paige launchmate"><div class="card-title">Paige</div><div class="card-meta">LaunchMate</div></a>
+        <a href="laura.html" class="card" data-s="laura launchmate"><div class="card-title">Laura</div><div class="card-meta">LaunchMate</div></a>
+        <a href="michael.html" class="card" data-s="michael launchmate"><div class="card-title">Michael</div><div class="card-meta">LaunchMate</div></a>
+        <a href="craig.html" class="card" data-s="craig mentor"><div class="card-title">Craig</div><div class="card-meta">ZIP Mentor</div></a>
+    </div></div>
+    <div class="section"><div class="section-header"><span class="section-icon">📅</span><span class="section-title">Weekly Updates</span></div><div class="grid">
+        <a href="craig-2026-w02.html" class="card" data-s="craig w02 weekly"><div class="card-title">Craig — W02</div><div class="card-meta">2026</div></a>
+        <a href="michael-2026-w02.html" class="card" data-s="michael w02 weekly"><div class="card-title">Michael — W02</div><div class="card-meta">2026</div></a>
+        <a href="paige-2026-w02.html" class="card" data-s="paige w02 weekly"><div class="card-title">Paige — W02</div><div class="card-meta">2026</div></a>
+        <a href="michael-launchmate-2026-01-W02.html" class="card" data-s="michael launchmate w02"><div class="card-title">Michael LM — W02</div><div class="card-meta">Jan 2026</div></a>
+    </div></div>
+    <div class="section"><div class="section-header"><span class="section-icon">🤝</span><span class="section-title">1:1 Meetings</span></div><div class="grid">
+        <a href="craig-laura-jan7.html" class="card" data-s="craig laura jan7 meeting"><div class="card-title">Craig × Laura</div><div class="card-meta">Jan 7</div><span class="card-tag orange">1:1</span></a>
+        <a href="craig-paige-jan7.html" class="card" data-s="craig paige jan7 meeting"><div class="card-title">Craig × Paige</div><div class="card-meta">Jan 7</div><span class="card-tag orange">1:1</span></a>
+        <a href="team-jan21.html" class="card" data-s="team jan21 meeting"><div class="card-title">Team Meeting</div><div class="card-meta">Jan 21</div><span class="card-tag orange">Team</span></a>
+    </div></div>
+    <div class="section"><div class="section-header"><span class="section-icon">🧠</span><span class="section-title">Frameworks</span></div><div class="grid">
+        <a href="cross-tidbit-intelligence.html" class="card" data-s="cross tidbit intelligence pattern"><div class="card-title">Cross-Tidbit Intelligence</div><div class="card-meta">Pattern detection</div><span class="card-tag pink">Framework</span></a>
+        <a href="founder-modes.html" class="card" data-s="founder modes"><div class="card-title">Founder Modes</div><div class="card-meta">States</div><span class="card-tag pink">Framework</span></a>
+        <a href="tidbits.html" class="card" data-s="tidbits what"><div class="card-title">Tidbits</div><div class="card-meta">Explainer</div><span class="card-tag pink">Framework</span></a>
+        <a href="skills.html" class="card" data-s="skills taxonomy"><div class="card-title">Skills</div><div class="card-meta">Taxonomy</div><span class="card-tag pink">Framework</span></a>
+        <a href="weekly-mirror.html" class="card" data-s="weekly mirror reflection"><div class="card-title">Weekly Mirror</div><div class="card-meta">Reflection</div><span class="card-tag pink">Framework</span></a>
+        <a href="self-improving-agents-2025-01-09.html" class="card" data-s="self improving agents"><div class="card-title">Self-Improving Agents</div><div class="card-meta">Jan 2025</div><span class="card-tag pink">Research</span></a>
+    </div></div>
+    <div class="section"><div class="section-header"><span class="section-icon">🧪</span><span class="section-title">Neal Test</span></div><div class="grid">
+        <a href="neal-test-community-college-advisor.html" class="card" data-s="neal test community college"><div class="card-title">CC Advisor</div><div class="card-meta">Validation</div><span class="card-tag green">Neal Test</span></a>
+        <a href="craig-neal.html" class="card" data-s="craig neal mentor"><div class="card-title">Craig × Neal</div><div class="card-meta">Notes</div><span class="card-tag green">Mentor</span></a>
+    </div></div>
+    <div class="section"><div class="section-header"><span class="section-icon">⚙️</span><span class="section-title">Technical</span></div><div class="grid">
+        <a href="michael-conversation-pipeline-2026-01-16.html" class="card" data-s="michael conversation pipeline"><div class="card-title">Conversation Pipeline</div><div class="card-meta">Jan 16</div></a>
+        <a href="michael-tech-2026-01.html" class="card" data-s="michael tech"><div class="card-title">Michael Tech</div><div class="card-meta">Jan 2026</div></a>
+        <a href="launchmate.html" class="card" data-s="launchmate product"><div class="card-title">LaunchMate</div><div class="card-meta">Overview</div></a>
+        <a href="craig-live-in-the-future.html" class="card" data-s="craig live future vision"><div class="card-title">Live in the Future</div><div class="card-meta">Vision</div></a>
+    </div></div>
+    <footer><p>LaunchMate • ZIP Launchpad @ SDSU</p></footer>
+</div>
+<script>
+const s=document.getElementById('search'),cards=document.querySelectorAll('.card'),cnt=document.getElementById('count');
+s.addEventListener('input',()=>{const q=s.value.toLowerCase();let n=0;cards.forEach(c=>{const m=c.dataset.s.includes(q)||c.textContent.toLowerCase().includes(q);c.classList.toggle('hidden',!m);if(m)n++});cnt.textContent=n});
+document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==s){e.preventDefault();s.focus()}if(e.key==='Escape'){s.value='';s.dispatchEvent(new Event('input'));s.blur()}});
+</script>
 </body>
 </html>
