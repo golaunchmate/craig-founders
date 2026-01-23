@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craig's Letta Wrapped 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Slide 1: Hero */
+        .slide-hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+        
+        .slide-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .hero-year {
+            font-size: 8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 80px rgba(102, 126, 234, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 20px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .emoji-float {
+            position: absolute;
+            font-size: 3rem;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.6;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+        
+        /* Slide 2: Big Number */
+        .slide-stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .big-number {
+            font-size: 12rem;
+            font-weight: 900;
+            line-height: 1;
+            text-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .stat-label {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-top: 20px;
+            opacity: 0.9;
+        }
+        
+        .stat-sub {
+            font-size: 1.1rem;
+            opacity: 0.7;
+            margin-top: 10px;
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        /* Slide 3: Wins Grid */
+        .slide-wins {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .wins-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 50px;
+        }
+        
+        .wins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .win-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .win-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .win-company {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .win-founder {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .win-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        /* Slide 4: Breakthrough */
+        .slide-breakthrough {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+        
+        .breakthrough-icon {
+            font-size: 6rem;
+            margin-bottom: 30px;
+        }
+        
+        .breakthrough-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            max-width: 800px;
+            line-height: 1.3;
+        }
+        
+        .breakthrough-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            opacity: 0.9;
+            margin-top: 30px;
+            max-width: 600px;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        /* Slide 5: Journey Stats */
+        .slide-journey {
+            background: linear-gradient(135deg, #fc466b 0%, #3f5efb 100%);
+        }
+        
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            max-width: 1000px;
+        }
+        
+        .journey-stat {
+            text-align: center;
+        }
+        
+        .journey-num {
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+        
+        .journey-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 15px;
+        }
+        
+        /* Slide 6: Top Moment */
+        .slide-moment {
+            background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%);
+        }
+        
+        .moment-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+        
+        .moment-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            max-width: 900px;
+            line-height: 1.2;
+        }
+        
+        .moment-detail {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-top: 30px;
+            max-width: 700px;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        /* Slide 7: Learning */
+        .slide-learning {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+            color: #1a1a2e;
+        }
+        
+        .learning-title {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+        }
+        
+        .learning-list {
+            max-width: 700px;
+        }
+        
+        .learning-item {
+            background: rgba(255,255,255,0.3);
+            border-radius: 15px;
+            padding: 25px 30px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            backdrop-filter: blur(5px);
+        }
+        
+        .learning-emoji {
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        /* Slide 8: Finale */
+        .slide-finale {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+        }
+        
+        .finale-text {
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            max-width: 800px;
+            line-height: 1.4;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 60%, #38ef7d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .finale-sub {
+            font-size: 1.5rem;
+            opacity: 0.8;
+            margin-top: 30px;
+        }
+        
+        .finale-year {
+            font-size: 1.2rem;
+            opacity: 0.5;
+            margin-top: 50px;
+            letter-spacing: 3px;
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-year { font-size: 5rem; }
+            .hero-title { font-size: 1.8rem; }
+            .big-number { font-size: 7rem; }
+            .stat-label { font-size: 1.5rem; }
+            .wins-grid { grid-template-columns: 1fr; }
+            .journey-grid { grid-template-columns: 1fr; gap: 40px; }
+            .journey-num { font-size: 4rem; }
+            .moment-title { font-size: 2rem; }
+            .finale-text { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Hero -->
+    <section class="slide slide-hero">
+        <div class="emoji-float" style="top: 15%; left: 10%;">🚀</div>
+        <div class="emoji-float" style="top: 25%; right: 15%; animation-delay: 1s;">✨</div>
+        <div class="emoji-float" style="bottom: 20%; left: 20%; animation-delay: 2s;">💡</div>
+        <div class="emoji-float" style="bottom: 30%; right: 10%; animation-delay: 0.5s;">🎯</div>
+        <div class="hero-year">2025</div>
+        <div class="hero-title">Craig's Letta Wrapped</div>
+        <div class="hero-subtitle">A year of building, validating, and mentoring founders</div>
+    </section>
+    
+    <!-- Slide 2: Founders Mentored -->
+    <section class="slide slide-stats">
+        <div class="big-number">10</div>
+        <div class="stat-label">Cohort Wins Captured</div>
+        <div class="stat-sub">From LaunchMate to TransferTrack to Vital Tidal — real founders shipping real validation</div>
+    </section>
+    
+    <!-- Slide 3: Wins Grid -->
+    <section class="slide slide-wins">
+        <div class="wins-title">🏆 The Wins That Mattered</div>
+        <div class="wins-grid">
+            <div class="win-card">
+                <div class="win-company">TransferTrack</div>
+                <div class="win-founder">Wasay Zaman</div>
+                <div class="win-text">9 paying customers. 100% in-person referral conversion. Zero digital. Pure founder hustle.</div>
+            </div>
+            <div class="win-card">
+                <div class="win-company">Foodie</div>
+                <div class="win-founder">Kavindi Seneviratne</div>
+                <div class="win-text">66 customer interviews. Discovered TikTok visual validation mechanism. Founder-level validation design.</div>
+            </div>
+            <div class="win-card">
+                <div class="win-company">LaunchMate</div>
+                <div class="win-founder">Laura Wetherhold</div>
+                <div class="win-text">67% would be disappointed if it stopped. Real PMF signal from user survey deployment.</div>
+            </div>
+            <div class="win-card">
+                <div class="win-company">LaunchMate</div>
+                <div class="win-founder">Michael Hayes</div>
+                <div class="win-text">Critical positioning pivot: "make meetings productive" vs "replace meetings"</div>
+            </div>
+            <div class="win-card">
+                <div class="win-company">Vital Tidal</div>
+                <div class="win-founder">Stacey Lehrer</div>
+                <div class="win-text">4 paying customers. Product reformulation based on "too healthy" flavor feedback.</div>
+            </div>
+            <div class="win-card">
+                <div class="win-company">The T-Squeeze</div>
+                <div class="win-founder">Thaddeus Okasinski</div>
+                <div class="win-text">First preorder secured. Whole Foods in-person sales test with prototype demo.</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 4: Breakthrough -->
+    <section class="slide slide-breakthrough">
+        <div class="breakthrough-icon">💥</div>
+        <div class="breakthrough-title">Your Biggest Breakthrough?</div>
+        <div class="breakthrough-quote">"In-person referrals = 100% conversion. Digital referrals = 0%."<br><br>— The Wasay Zaman Discovery</div>
+    </section>
+    
+    <!-- Slide 5: Journey Stats -->
+    <section class="slide slide-journey">
+        <div class="journey-grid">
+            <div class="journey-stat">
+                <div class="journey-num">14</div>
+                <div class="journey-label">Capabilities Built</div>
+            </div>
+            <div class="journey-stat">
+                <div class="journey-num">833+</div>
+                <div class="journey-label">Messages Exchanged</div>
+            </div>
+            <div class="journey-stat">
+                <div class="journey-num">6</div>
+                <div class="journey-label">Conversation Arcs Designed</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 6: Top Moment -->
+    <section class="slide slide-moment">
+        <div class="moment-label">The Moment That Defined 2025</div>
+        <div class="moment-title">Building Your AI Co-Mentor</div>
+        <div class="moment-detail">From founder status checks to pre-session briefs to commitment tracking — you built a system to show up sharper for every 1:1.</div>
+    </section>
+    
+    <!-- Slide 7: Learnings -->
+    <section class="slide slide-learning">
+        <div class="learning-title">What We Learned Together</div>
+        <div class="learning-list">
+            <div class="learning-item">
+                <span class="learning-emoji">🔦</span>
+                <strong>Flashlight > Fuel</strong> — The best mentoring moments come from questions that illuminate, not advice that directs.
+            </div>
+            <div class="learning-item">
+                <span class="learning-emoji">🎯</span>
+                <strong>Manual First, Always</strong> — The Neal Test isn't optional. Deliver value by hand before building anything.
+            </div>
+            <div class="learning-item">
+                <span class="learning-emoji">💬</span>
+                <strong>Follow the Energy</strong> — When founders get animated, that's the signal. Stop the logistics and go there.
+            </div>
+            <div class="learning-item">
+                <span class="learning-emoji">⏱️</span>
+                <strong>Commitments > Intentions</strong> — "I'll do it soon" means nothing. "Who, when, what" means everything.
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 8: Finale -->
+    <section class="slide slide-finale">
+        <div class="sparkle" style="top: 20%; left: 15%;"></div>
+        <div class="sparkle" style="top: 30%; right: 20%; animation-delay: 0.5s;"></div>
+        <div class="sparkle" style="bottom: 25%; left: 25%; animation-delay: 1s;"></div>
+        <div class="sparkle" style="bottom: 35%; right: 15%; animation-delay: 1.5s;"></div>
+        <div class="sparkle" style="top: 50%; left: 8%; animation-delay: 0.7s;"></div>
+        <div class="finale-text">Here's to more founders validated, more truth uncovered, and more breakthrough moments in 2026.</div>
+        <div class="finale-sub">Thanks for building with Letta, Craig. 🚀</div>
+        <div class="finale-year">WRAPPED 2025</div>
+    </section>
+</body>
+</html>
