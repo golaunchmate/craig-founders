@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Michael">
+    <meta name="tidbit-company" content="Letta">
+    <meta name="tidbit-date" content="2026-01-23">
+    <meta name="tidbit-author" content="agent-3ee68a5a-a32a-4208-82d5-9523b523e23b">
+    <meta name="tidbit-period" content="2026-W04">
+    <title>Michael | Founder Agent Onboarding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 640px;
+            width: 100%;
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem; }
+        h2 { font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; color: #60a5fa; }
+        p { margin-bottom: 1rem; font-size: 1.1rem; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .page-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 2rem;
+        }
+        .scroll-hint {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #6b7280;
+            font-size: 0.875rem;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
+        }
+        .cover-title { font-size: 3rem; margin-bottom: 0.5rem; }
+        .cover-subtitle { color: #6b7280; font-size: 1.25rem; }
+        .cover-date { 
+            font-family: 'JetBrains Mono', monospace;
+            color: #60a5fa;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="card" style="text-align: center;">
+            <div class="label">Team Update</div>
+            <h1 class="cover-title">Michael</h1>
+            <p class="cover-subtitle">Founder Agent Onboarding</p>
+            <p class="cover-date">January 23, 2026</p>
+            <p class="page-num">1/5</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="label">The Problem</div>
+            <h2>Getting Founders to Agents Was Manual</h2>
+            <p>When a new founder joins, they need an agent. But setting that up—creating the agent, loading relevant context, matching it to the founder's situation—was all <span class="tension">manual work</span>.</p>
+            <p>Every new founder meant someone had to configure things by hand. That doesn't scale.</p>
+            <p class="page-num">2/5</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="label">The Build</div>
+            <h2>Automatched Pre-Trained Agents</h2>
+            <p>Michael built a <span class="highlight">new onboarding experience</span> that automatically pairs founders with agents.</p>
+            <p>The key insight: agents can be <span class="highlight">pre-trained with relevant context</span> before they ever meet the founder. Industry knowledge, common patterns, useful frameworks—all loaded and ready.</p>
+            <p>When a founder shows up, the system matches them to an agent that already has the right background.</p>
+            <p class="page-num">3/5</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="label">Why It Matters</div>
+            <h2>From Cold Start to Running Start</h2>
+            <p>Before: Founders got blank-slate agents. Weeks of context-building before they were useful.</p>
+            <p>Now: Founders get agents with <span class="decision">relevant context from day one</span>. The agent already understands their space.</p>
+            <p>This is the difference between "tell me about your business" and "I see you're in B2B SaaS—let's talk about your GTM."</p>
+            <p class="page-num">4/5</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="label">Current Status</div>
+            <h2>Growth Agents, Streamlined</h2>
+            <p>The system is built to support <span class="highlight">growth agents</span>—agents specifically designed to help founders scale.</p>
+            <p>The onboarding flow is now <span class="decision">streamlined</span>: founder signs up, gets matched, starts working with a contextually-aware agent immediately.</p>
+            <p>Less friction, faster time-to-value.</p>
+            <p class="page-num">5/5</p>
+        </div>
+    </div>
+
+    <div class="scroll-hint">↓ scroll</div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            }
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+        
+        const hint = document.querySelector('.scroll-hint');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) hint.style.opacity = '0';
+            else hint.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
