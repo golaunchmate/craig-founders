@@ -22,7 +22,7 @@
         .cover h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
         .cover .subtitle { font-size: 1.25rem; color: #9ca3af; margin-bottom: 2rem; }
         .cover .date { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #6b7280; }
-        .cover .context { font-size: 1rem; color: #60a5fa; margin-top: 1rem; }
+        .cover .context { font-size: 1rem; color: #34d399; margin-top: 1rem; font-weight: 600; }
         .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
         h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.25rem; color: #fff; }
         .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; margin-bottom: 0.5rem; }
@@ -31,22 +31,23 @@
         .tension { color: #f97316; }
         .scroll-hint { text-align: center; color: #6b7280; font-size: 0.875rem; margin-top: 2rem; animation: pulse 2s infinite; }
         .stage-box { background: #1a2a1a; border: 1px solid #34d399; border-radius: 8px; padding: 1.25rem; margin: 1rem 0; }
+        .win-box { background: #1a2a1a; border: 2px solid #34d399; border-radius: 8px; padding: 1.25rem; margin: 1rem 0; text-align: center; }
         @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
     </style>
 </head>
 <body>
     <div class="page cover">
-        <div class="page-number">1/4</div>
+        <div class="page-number">1/5</div>
         <div class="cover-icon">🚀</div>
         <h1>Kavindi Seneviratne</h1>
         <p class="subtitle">Foodie — Launch Readiness</p>
         <p class="date">January 23, 2026</p>
-        <p class="context">For the Launch Committee</p>
+        <p class="context">✓ FIRST DEAL CLOSED</p>
         <div class="scroll-hint">scroll ↓</div>
     </div>
 
     <div class="page">
-        <div class="page-number">2/4</div>
+        <div class="page-number">2/5</div>
         <div class="card">
             <div class="label">The Journey</div>
             <h2>From Broad Idea to Model Clarity</h2>
@@ -57,18 +58,31 @@
     </div>
 
     <div class="page">
-        <div class="page-number">3/4</div>
+        <div class="page-number">3/5</div>
         <div class="card">
-            <div class="label">The Proof Point</div>
-            <h2>CocoCurry Is the Test</h2>
-            <p>Knowing the model isn't enough — she needs to <span class="highlight">prove it works</span>.</p>
-            <p style="margin-top: 1rem;">CocoCurry is the deal in motion. There are 7 other restaurants in the pipeline too. One of them landing proves the model isn't just theory.</p>
-            <p style="margin-top: 1rem;"><span class="tension">Close to Launch, but needs a closed deal to cross the line.</span></p>
+            <div class="label">The Gap</div>
+            <h2>Motion Without Close</h2>
+            <p>She had pipeline — restaurants interested, conversations happening. But the question was: <span class="tension">can she actually close?</span></p>
+            <p style="margin-top: 1rem;">Knowing the model isn't enough. Talking to restaurants isn't enough. Launch requires proof that the model converts.</p>
         </div>
     </div>
 
     <div class="page">
-        <div class="page-number">4/4</div>
+        <div class="page-number">4/5</div>
+        <div class="card">
+            <div class="label">The Proof</div>
+            <h2>Cluck n Sip — Deal Closed</h2>
+            <div class="win-box">
+                <p style="font-size: 1.25rem;"><span class="decision">🎉 First restaurant deal locked</span></p>
+                <p style="margin-top: 0.5rem; color: #9ca3af;">10% student discount • Code secured and in hand</p>
+            </div>
+            <p style="margin-top: 1rem;">She's now working on a collab post with the restaurant and coordinating an event with SDSU Foodie Club.</p>
+            <p style="margin-top: 1rem;"><span class="highlight">7 more restaurants still in pipeline.</span></p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-number">5/5</div>
         <div class="card">
             <div class="label">Launch Criteria</div>
             <h2>Where She Stands</h2>
@@ -77,8 +91,8 @@
             </div>
             <p style="margin-top: 1rem;"><span class="decision">✓ Model clarity — yes</span></p>
             <p><span class="decision">✓ Discovery over — yes</span></p>
-            <p><span class="tension">◐ Execution proof — pending (CocoCurry or similar)</span></p>
-            <p style="margin-top: 1.5rem;">Kavindi is at the threshold. One closed deal confirms she's in Launch.</p>
+            <p><span class="decision">✓ Execution proof — Cluck n Sip closed</span></p>
+            <p style="margin-top: 1.5rem; font-size: 1.1rem;"><span class="decision"><strong>Kavindi is Launch ready.</strong></span></p>
         </div>
         <div class="scroll-hint">↑ scroll to review</div>
     </div>
