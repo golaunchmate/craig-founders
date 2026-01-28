@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billy Carter - Celebrity Concierge</title>
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Billy Carter">
+    <meta name="tidbit-company" content="Celebrity Concierge">
+    <meta name="tidbit-date" content="2026-01-28">
+    <meta name="tidbit-agent-id" content="agent-db28e696-6396-438f-8116-48bbca751b10">
+    <meta name="tidbit-period" content="2026-W05">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #f5f5f5; }
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #404040;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #404040;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(5px); }
+        }
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #a3a3a3;
+        }
+        ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #34d399;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover -->
+    <section class="page">
+        <div class="card" style="text-align: center;">
+            <div class="label">Founder Update</div>
+            <h1>Billy Carter</h1>
+            <p style="color: #60a5fa; font-size: 1.25rem; margin-bottom: 2rem;">Celebrity Concierge</p>
+            <p style="color: #6b7280;">January 28, 2026</p>
+        </div>
+        <div class="scroll-hint">scroll ↓</div>
+        <div class="page-num">1/5</div>
+    </section>
+
+    <!-- Starting Point -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Where I Started</div>
+            <h2>"I need a website"</h2>
+            <p>I run a white-glove nightlife planning service in San Diego — birthdays, bachelor/ette parties, tourist nights. I leverage my promoter relationships to guarantee entry and handle all the logistics.</p>
+            <p>I came in thinking the next step was obvious: <span class="highlight">build a website, get more clients, grow the business.</span></p>
+            <p style="color: #6b7280;">Seemed straightforward.</p>
+        </div>
+        <div class="page-num">2/5</div>
+    </section>
+
+    <!-- The Realization -->
+    <section class="page">
+        <div class="card">
+            <div class="label">What I Discovered</div>
+            <h2>Two things changed everything</h2>
+            <p><span class="tension">First: I am the product.</span> My relationships, my judgment, my real-time problem-solving — that's what makes it work. And that doesn't scale.</p>
+            <p>Until I figure out what can be systematized vs. what stays founder-led, tech is just a distraction.</p>
+            <p><span class="highlight">Second: My volume is way bigger than I thought.</span></p>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">500-1,200</div>
+                    <div class="stat-label">people/month</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">15-20</div>
+                    <div class="stat-label">groups/weekend</div>
+                </div>
+            </div>
+            <p>That reframed my leverage with venues <em>entirely</em>.</p>
+        </div>
+        <div class="page-num">3/5</div>
+    </section>
+
+    <!-- The Pivot -->
+    <section class="page">
+        <div class="card">
+            <div class="label">The Real Opportunity</div>
+            <h2>I'm not building a service business</h2>
+            <p><span class="highlight">I'm sitting on a distribution channel.</span></p>
+            <p>500+ people flowing through San Diego nightlife every month — and I control where they go.</p>
+            <p>The real play: <span class="decision">own the flow, monetize both sides.</span></p>
+            <ul>
+                <li>Venue partner subscriptions ($500-1,200/month)</li>
+                <li>Commissions on bookings (10%)</li>
+                <li>Client intake to own the data</li>
+                <li>My own monthly event ("The List") for recurring engagement</li>
+            </ul>
+        </div>
+        <div class="page-num">4/5</div>
+    </section>
+
+    <!-- Current Status -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Where I'm At</div>
+            <h2>Building the systems</h2>
+            <p>Now focused on locking in the infrastructure that lets me scale <span class="tension">without losing the trust and quality</span> that made it work.</p>
+            <ul>
+                <li>Venue partner subscription model (3-month contracts)</li>
+                <li>Client intake form to capture relationships</li>
+                <li>Core offer packages defined</li>
+                <li>Monthly hosted event in design</li>
+            </ul>
+            <p style="margin-top: 1.5rem; color: #6b7280; font-style: italic;">"I thought I needed a website. I actually needed to understand what I was really selling."</p>
+        </div>
+        <div class="page-num">5/5</div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
