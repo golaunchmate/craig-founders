@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qudsi - LazyDate</title>
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Qudsi">
+    <meta name="tidbit-company" content="LazyDate">
+    <meta name="tidbit-date" content="2026-01-28">
+    <meta name="tidbit-period" content="2026-W05">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 700px;
+            width: 100%;
+        }
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #6b7280;
+            font-size: 0.75rem;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #f5f5f5; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .subtitle { color: #9ca3af; font-size: 1.125rem; }
+        .date { font-family: 'JetBrains Mono', monospace; color: #6b7280; margin-top: 1rem; }
+        p { margin-bottom: 1rem; color: #d1d5db; }
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="card" style="text-align: center;">
+            <div class="label">Founder Tidbit</div>
+            <h1>Qudsi</h1>
+            <p class="subtitle">LazyDate — Date planning, Pinterest-style</p>
+            <p class="date">January 28, 2026</p>
+        </div>
+        <div class="scroll-hint">↓ scroll</div>
+        <div class="page-num">1/4</div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="label">The Validation</div>
+            <h2><span class="decision">20-30 prepaid orders</span> in one week</h2>
+            <p>Started with a personal pain point — planning creative dates in his own relationship. Discovered friends had the same problem.</p>
+            <p>So he tested it: sold "$5 plan my date" services to friends. <span class="highlight">20-30 prepaid orders in a single week.</span></p>
+            <p>That's not "interest." That's people paying real money to solve a real problem. Friction in date planning is validated.</p>
+        </div>
+        <div class="page-num">2/4</div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="label">The Tension</div>
+            <h2><span class="tension">Service vs. Platform</span></h2>
+            <p>Here's the problem: what he validated was a <span class="highlight">done-for-you service</span> — he literally plans the date. What he's building is a <span class="highlight">self-serve discovery platform</span> (Pinterest for dates).</p>
+            <p>These are fundamentally different products:</p>
+            <p>• <strong>Service:</strong> Scales his taste and curation. High-touch, limited scale.</p>
+            <p>• <strong>Platform:</strong> Scales a tool. Low-touch, high scale — but requires users to do the work.</p>
+            <p class="quote">"The core question is: what actually scales?"</p>
+            <p>Mentors recommend focusing mechanisms — strong charisma and sales instincts sometimes lead to chasing exciting ideas vs. the validated opportunity.</p>
+        </div>
+        <div class="page-num">3/4</div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="label">Current Status</div>
+            <h2><span class="decision">In-Flight</span> — vision still forming</h2>
+            <p>Recently advanced to In-Flight track at ZIP Launchpad.</p>
+            <p>Product vision: Pinterest-style (not Yelp) platform for date ideas. Personalized by interests, budget, location. Dates viewed as a "journey," not single activities.</p>
+            <p>Features in mind: random idea sheets, Algolia-style search, idea sharing among users.</p>
+            <p><span class="tension">Problem definition still being refined.</span> The open question: should he double down on the service model that's already working, or build the platform he's excited about?</p>
+        </div>
+        <div class="page-num">4/4</div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
