@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zach Brenner - Sonomos</title>
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Zachary Brenner">
+    <meta name="tidbit-company" content="Sonomos">
+    <meta name="tidbit-date" content="2026-01-28">
+    <meta name="tidbit-period" content="2026-W05">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 700px;
+            width: 100%;
+        }
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #6b7280;
+            font-size: 0.75rem;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #f5f5f5; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .subtitle { color: #9ca3af; font-size: 1.125rem; }
+        .date { font-family: 'JetBrains Mono', monospace; color: #6b7280; margin-top: 1rem; }
+        p { margin-bottom: 1rem; color: #d1d5db; }
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; color: #d1d5db; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="card" style="text-align: center;">
+            <div class="label">Founder Tidbit</div>
+            <h1>Zach Brenner</h1>
+            <p class="subtitle">Sonomos — On-device AI privacy layer</p>
+            <p class="date">January 28, 2026</p>
+        </div>
+        <div class="scroll-hint">↓ scroll</div>
+        <div class="page-num">1/5</div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="label">The Problem</div>
+            <h2>Shadow AI is <span class="tension">uninsurable</span></h2>
+            <p>I'm a J.D./M.B.A. candidate, so I see AI privacy from the legal side. Professionals are pasting sensitive client data into ChatGPT every day — PII, financials, privileged communications.</p>
+            <p>Here's the kicker: <span class="tension">your malpractice insurance won't cover AI breaches</span>. I talked to cyber liability carriers and they confirmed it — shadow AI is a major uninsurable risk.</p>
+            <p>That's the pain point. Not abstract "privacy concerns" — concrete "you're exposed and no one will cover you."</p>
+        </div>
+        <div class="page-num">2/5</div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="label">The Pivot</div>
+            <h2>Finding the <span class="highlight">real buyer</span></h2>
+            <p>I started pitching startups. They didn't care — move fast, break things, privacy is someone else's problem.</p>
+            <p>Then I tried investors. Lukewarm.</p>
+            <p>The breakthrough: <span class="highlight">regulated professionals in mid-size firms</span>. Especially law firms. They have real liability, real compliance requirements, and real fear.</p>
+            <p>I pitched at an AI governance panel at my law school — 15-20 people came up after asking <span class="decision">"is it ready?"</span> and handed me their LinkedIn. The dean wants to feature me in the alumni newsletter.</p>
+        </div>
+        <div class="page-num">3/5</div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="label">The Insight</div>
+            <h2>Insurance carriers = <span class="decision">distribution</span></h2>
+            <p>Here's what I didn't expect: the insurance carriers who told me shadow AI is uninsurable? They expressed "a ton of interest" in Sonomos.</p>
+            <p>They <em>want</em> firms to mitigate AI risk. If my tool reduces their exposure, they might actually push it to their clients.</p>
+            <p class="quote">"Insurance carriers are both validation source AND potential distribution channel."</p>
+            <p>That's the play I'm building toward — but first, I need to ship and prove it works.</p>
+        </div>
+        <div class="page-num">4/5</div>
+    </div>
+
+    <div class="page">
+        <div class="card">
+            <div class="label">Current Status</div>
+            <h2><span class="decision">MVP shipping mid-February</span></h2>
+            <p>Product: <span class="highlight">Dagger</span> (detection + risk flagging + local knowledge base) — $5/month. Future add-on: Cloak (masking/unmasking) — $12/month bundle.</p>
+            <p>Team of 4: me on legal/regulatory, three engineers (Nathan, Nathaniel, Ata).</p>
+            <p>Infrastructure ready: Mercury bank, Puzzle accounting, legal docs, GTM playbooks.</p>
+            <p>Stage: Transitioning from E-Track to <span class="decision">In-Flight</span> at ZIP Launchpad.</p>
+            <div class="quote">"Thoughts belong to thinkers."</div>
+        </div>
+        <div class="page-num">5/5</div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
