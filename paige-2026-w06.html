@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Paige">
+    <meta name="tidbit-company" content="LaunchMate">
+    <meta name="tidbit-date" content="2026-02-04">
+    <meta name="tidbit-period" content="2026-W06">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Paige | Bootcamp Agent Deployment">
+    <meta property="og:description" content="I thought I'd be running the bootcamp agent deployment. I actually became a student using it—and watched it work at scale without me.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://golaunchmate.github.io/craig/paige-2026-w06.html">
+    <meta property="og:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Paige | Bootcamp Agent Deployment">
+    <meta name="twitter:description" content="I thought I'd be running the bootcamp agent deployment. I actually became a student using it—and watched it work at scale without me.">
+    <meta name="twitter:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <title>Paige - Bootcamp Agent | Team Tidbit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
+        
+        p { margin-bottom: 1rem; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #34d399;
+        }
+        
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+        
+        .arrow-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .arrow-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+        }
+        
+        .arrow-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .final-quote {
+            background: #1a1a2e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .final-quote p {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <section class="slide" id="slide1">
+        <div class="card">
+            <p class="label">LaunchMate Team · W06</p>
+            <h1>Paige</h1>
+            <p class="subtitle"><span class="highlight">Bootcamp Agent Deployment</span> · February 4, 2026</p>
+            <p>65 students onboarded. Zero fires. And I was one of them.</p>
+            <p class="scroll-hint">scroll ↓</p>
+            <span class="page-num">1/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide2">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>The Plan: Run It From Behind the Scenes</h2>
+            <p>Friday deadline: deploy bootcamp agents for <span class="highlight">80 students</span>.</p>
+            <p>My original role: <span class="tension">team support</span>. Build it, hand it off, watch from the sidelines while Michael and Laura run the session.</p>
+            <p>The architecture I'd designed: momentum coaching across all bootcamp stages. Felt solid.</p>
+            <p>Then I had a thought...</p>
+            <span class="page-num">2/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide3">
+        <div class="card">
+            <p class="label">The Pivot</p>
+            <h2>What If I Actually Used It?</h2>
+            <p>Instead of running the deployment, I decided to <span class="decision">attend as a participant</span>.</p>
+            <p>Ultimate dogfooding moment: use my own bootcamp agent alongside 65 other students.</p>
+            <p>This forced two things:</p>
+            <ul class="arrow-list">
+                <li>Handoff materials had to be <span class="highlight">airtight</span> for Michael & Laura</li>
+                <li>I'd experience the agent the way students actually would</li>
+            </ul>
+            <span class="page-num">3/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide4">
+        <div class="card">
+            <p class="label">The Architectural Shift</p>
+            <h2>Interview Recall, Not Personal Experience</h2>
+            <p>Critical realization mid-build:</p>
+            <div class="quote">
+                "Students interviewed <span class="tension">someone else's problem</span>. The agent needed interview-recall scaffolding, not personal experience prompts."
+            </div>
+            <p>Core value shifted to <span class="highlight">solution ideation</span> using pre/post consumption framework (learned from Craig's friction agent).</p>
+            <p>Final architecture: two-tier approach (strategic frameworks always, concrete product ideas on request) + individual memory blocks with team tags.</p>
+            <span class="page-num">4/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide5">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>It Worked. Without Me.</h2>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">65+</div>
+                    <div class="stat-label">Students</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">Fires</div>
+                </div>
+            </div>
+            <p>Michael and Laura ran it smoothly. Students understood how to use agents immediately—<span class="decision">pre-loaded context worked</span>.</p>
+            <p>Lightweight architecture (framework-focused, minimal tools, individual memory blocks) <span class="decision">scales</span>.</p>
+            <div class="final-quote">
+                <p>"I thought I'd be running the deployment.<br>I actually became a student using it—<br>and watched it <span class="highlight">work at scale without me</span>."</p>
+            </div>
+            <span class="page-num">5/5</span>
+        </div>
+    </section>
+
+    <script>
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+
+        // Deep linking: jump to slide on load if hash present
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                setTimeout(() => target.scrollIntoView(), 100);
+            }
+        }
+
+        // Update URL hash as user scrolls between slides
+        const slides = document.querySelectorAll('.slide');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    history.replaceState(null, null, '#' + entry.target.id);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => observer.observe(slide));
+    </script>
+</body>
+</html>
