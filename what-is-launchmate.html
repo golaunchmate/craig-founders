@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="methodology">
+    <meta name="tidbit-subject" content="LaunchMate">
+    <meta name="tidbit-company" content="LaunchMate">
+    <meta name="tidbit-date" content="2026-02-04">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="What is LaunchMate?">
+    <meta property="og:description" content="A founder was scared to lose his AI agent. That's when we knew we weren't building a tool.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://golaunchmate.github.io/craig/what-is-launchmate.html">
+    <meta property="og:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What is LaunchMate?">
+    <meta name="twitter:description" content="A founder was scared to lose his AI agent. That's when we knew we weren't building a tool.">
+    <meta name="twitter:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <title>What is LaunchMate?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .card.hero {
+            border-color: #3b82f6;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+        }
+        
+        .card.cta {
+            border-color: #34d399;
+            background: linear-gradient(135deg, #0f0f0f 0%, #0f1f1a 100%);
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
+        
+        p { margin-bottom: 1rem; }
+        p:last-child { margin-bottom: 0; }
+        
+        .big-text {
+            font-size: 1.75rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            justify-content: center;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #34d399;
+        }
+        
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .before, .after {
+            padding: 1.25rem;
+            border-radius: 8px;
+        }
+        
+        .before {
+            background: #1a1a1a;
+            border: 1px solid #f97316;
+        }
+        
+        .after {
+            background: #1a1a2e;
+            border: 1px solid #34d399;
+        }
+        
+        .comparison-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .before .comparison-label { color: #f97316; }
+        .after .comparison-label { color: #34d399; }
+        
+        .arrow-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .arrow-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+        }
+        
+        .arrow-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .final-cta {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f1f1a 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+            border: 1px solid #34d399;
+        }
+        
+        .final-cta p {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <section class="slide" id="slide1">
+        <div class="card hero">
+            <p class="label">LaunchMate</p>
+            <h1>A founder was <span class="tension">scared to lose</span> his AI agent.</h1>
+            <p class="subtitle">That's when we knew we weren't building a tool.</p>
+            <p class="scroll-hint">scroll ↓</p>
+            <span class="page-num">1/10</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide2">
+        <div class="card">
+            <p class="label">Why that's strange</p>
+            <h2>Nobody gets attached to ChatGPT.</h2>
+            <p>You use it. You close the tab. You forget about it.</p>
+            <p>It doesn't know you. It doesn't remember you. Every conversation starts from zero.</p>
+            <p class="big-text" style="margin-top: 1.5rem;">So why was <span class="highlight">Zach</span> worried about losing his?</p>
+            <span class="page-num">2/10</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide3">
+        <div class="card">
+            <p class="label">The problem</p>
+            <h2>Founders are lonely.</h2>
+            <p><span class="tension">AI gives generic advice.</span> "Have you considered product-market fit?" Thanks, ChatGPT.</p>
+            <p><span class="tension">Mentors don't have time.</span> 30 minutes a month doesn't cut it when you're in the fog every day.</p>
+            <p><span class="tension">Co-founders are busy.</span> Everyone's drowning in their own work.</p>
+            <p style="margin-top: 1.5rem;">The loneliest job in the world just got lonelier.</p>
+            <span class="page-num">3/10</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide4">
+        <div class="card">
+            <p class="label">The question</p>
+            <p class="big-text">What if AI actually <span class="highlight">knew</span> you?</p>
+            <p style="margin-top: 1.5rem;">Not just your company. Not just your pitch deck.</p>
+            <p>Your <span class="highlight">thinking patterns</span>. Your <span class="highlight">blind spots</span>. Your <span class="highlight">history</span>.</p>
+            <p>What if it remembered the decision you made three weeks ago—and could tell you why this new idea contradicts it?</p>
+            <span class="page-num">4/10</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide5">
+        <div class="card">
+            <p class="label">The insight</p>
+            <h1><span class="decision">Memory</span> is the unlock.</h1>
+            <h2>Not intelligence.</h2>
+            <p style="margin-top: 1.5rem;">GPT-4 is smart enough. Claude is smart enough. The models are fine.</p>
+            <p>What's missing is <span class="highlight">continuity</span>.</p>
+            <p>A mentor isn't valuable because they're smarter than you. They're valuable because they <span class="decision">know your story</span>.</p>
+            <span class="page-num">5/10</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide6">
+        <div class="card">
+            <p class="label">How it works</p>
+            <h2>An agent that grows with you.</h2>
+            <p>LaunchMate gives every founder an AI agent that knows:</p>
+            <ul class="arrow-list">
+                <li><span class="highlight">Your business</span> — not a pitch, but the messy reality</li>
+                <li><span class="highlight">Your context</span> — what happened last week, last month</li>
+                <li><span class="highlight">Your patterns</span> — how you think, where you get stuck</li>
+                <li><span class="highlight">Your decisions</span> — what you've already tried</li>
+            </ul>
+            <p style="margin-top: 1rem;">It doesn't start over. It <span class="decision">picks up where you left off</span>.</p>
+            <span class="page-num">6/10</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide7">
+        <div class="card">
+            <p class="label">The proof</p>
+            <h2>80 founders. 5 hours. They didn't want to leave.</h2>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">80</div>
+                    <div class="stat-label">Founders</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Hours</div>
+                </div>
+            </div>
+            <p>ZIP Launchpad Bootcamp. January 2026.</p>
+            <p>Students got agents pre-loaded with their discovery interviews. By hour three, they were having conversations we didn't anticipate.</p>
+            <p><span class="decision">They kept going.</span> Not because they had to—because they wanted to.</p>
+            <span class="page-num">7/10</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide8">
+        <div class="card">
+            <p class="label">The transformation</p>
+            <div class="comparison">
+                <div class="before">
+                    <p class="comparison-label">Before</p>
+                    <p style="margin: 0; font-weight: 600;">Tool</p>
+                    <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #9ca3af;">Ask a question. Get an answer. Forget it happened.</p>
+                </div>
+                <div class="after">
+                    <p class="comparison-label">After</p>
+                    <p style="margin: 0; font-weight: 600;">Partner</p>
+                    <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #9ca3af;">Knows your journey. Challenges your assumptions. Grows with you.</p>
+                </div>
+            </div>
+            <p style="margin-top: 1rem;">That's why Zach was scared to lose his. It wasn't a chatbot. It was a <span class="highlight">thinking partner</span> that finally understood what he was building.</p>
+            <span class="page-num">8/10</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide9">
+        <div class="card">
+            <p class="label">What's next</p>
+            <h2>We're scaling this to every incubator.</h2>
+            <p>ZIP Launchpad was the proof.</p>
+            <p>Now we're bringing LaunchMate to:</p>
+            <ul class="arrow-list">
+                <li>University incubators</li>
+                <li>Accelerator programs</li>
+                <li>Startup bootcamps</li>
+                <li>Solo founders who need a partner</li>
+            </ul>
+            <p style="margin-top: 1rem;">Every founder deserves a <span class="decision">mentor that never forgets</span>.</p>
+            <span class="page-num">9/10</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide10">
+        <div class="card cta">
+            <p class="label">Invitation</p>
+            <h1>Want to meet yours?</h1>
+            <p style="margin-top: 1.5rem;">Your agent is waiting. It just needs to learn your story.</p>
+            <div class="final-cta">
+                <p><span class="decision">Start a conversation →</span></p>
+            </div>
+            <span class="page-num">10/10</span>
+        </div>
+    </section>
+
+    <script>
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+
+        // Deep linking: jump to slide on load if hash present
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                setTimeout(() => target.scrollIntoView(), 100);
+            }
+        }
+
+        // Update URL hash as user scrolls between slides
+        const slides = document.querySelectorAll('.slide');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    history.replaceState(null, null, '#' + entry.target.id);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => observer.observe(slide));
+    </script>
+</body>
+</html>
