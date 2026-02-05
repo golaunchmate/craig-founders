@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="methodology">
+    <meta name="tidbit-subject" content="Craig">
+    <meta name="tidbit-company" content="Live in the Future">
+    <meta name="tidbit-date" content="2026-02-05">
+    <meta name="tidbit-period" content="2026-W06">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Craig | Live in the Future Week 1">
+    <meta property="og:description" content="I thought the hard part would be getting founders to the frontier. I realized the hard part is keeping them there.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://golaunchmate.github.io/craig/litf-week1-learnings-2026-02-05.html">
+    <meta property="og:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Craig | Live in the Future Week 1">
+    <meta name="twitter:description" content="I thought the hard part would be getting founders to the frontier. I realized the hard part is keeping them there.">
+    <meta name="twitter:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <title>LITF Week 1 Learnings | Craig</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 640px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2; }
+        h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
+        
+        p { margin-bottom: 1rem; }
+        p:last-child { margin-bottom: 0; }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .team-card {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid;
+        }
+        
+        .team-card.frontier { border-color: #34d399; }
+        .team-card.pivoting { border-color: #f97316; }
+        .team-card.incremental { border-color: #fbbf24; }
+        .team-card.domain { border-color: #60a5fa; }
+        
+        .team-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .team-focus {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+        
+        .pattern-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .pattern-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .pattern-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .pattern-insight {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-top: 0.25rem;
+        }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+        
+        .learning-box {
+            background: #1a1a2e;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid #3b82f6;
+        }
+        
+        .learning-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #60a5fa;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .final-quote {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f1f1a 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+            border: 1px solid #34d399;
+        }
+        
+        .week2-grid {
+            display: grid;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        
+        .week2-item {
+            background: #1a1a1a;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .week2-team {
+            font-weight: 600;
+            color: #60a5fa;
+        }
+    </style>
+</head>
+<body>
+    <section class="slide" id="slide1">
+        <div class="card">
+            <p class="label">Live in the Future · Week 1</p>
+            <h1>Four Teams. One Week. First Learnings.</h1>
+            <p class="subtitle">February 5, 2026</p>
+            <p>I expected to spend Week 1 getting founders to the frontier.</p>
+            <p>The actual challenge was different.</p>
+            <p class="scroll-hint">scroll ↓</p>
+            <span class="page-num">1/6</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide2">
+        <div class="card">
+            <p class="label">The Cohort</p>
+            <h2>Four teams, four different entry points</h2>
+            <div class="team-grid">
+                <div class="team-card frontier">
+                    <div class="team-name">Hackathon Team</div>
+                    <div class="team-focus">Autonomous desktop agents</div>
+                    <div class="team-status decision">Strong LITF</div>
+                </div>
+                <div class="team-card pivoting">
+                    <div class="team-name">Jai & Satith</div>
+                    <div class="team-focus">AI-generated 3D games</div>
+                    <div class="team-status tension">Pivoting</div>
+                </div>
+                <div class="team-card incremental">
+                    <div class="team-name">CAPY Card</div>
+                    <div class="team-focus">AI business cards</div>
+                    <div class="team-status" style="color: #fbbf24;">Incremental risk</div>
+                </div>
+                <div class="team-card domain">
+                    <div class="team-name">Think Tank</div>
+                    <div class="team-focus">AI sports coaching</div>
+                    <div class="team-status highlight">Domain-first</div>
+                </div>
+            </div>
+            <p>Each needed a <span class="highlight">different path</span> to the same destination.</p>
+            <span class="page-num">2/6</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide3">
+        <div class="card">
+            <p class="label">The Core Realization</p>
+            <h1>The hard part isn't <span class="highlight">getting</span> them to the frontier.</h1>
+            <p style="margin-top: 1.5rem; font-size: 1.1rem;">It's <span class="tension">keeping them there</span> when they naturally want to build the obvious thing.</p>
+            <div class="quote">
+                "CAPY Card has an MVP competing with DOT/Linq on features. Without intervention, they'd build 'digital business card but with AI' — the classic incremental trap."
+            </div>
+            <p>Product-first teams drift incremental. Curiosity-first teams find LITF faster.</p>
+            <span class="page-num">3/6</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide4">
+        <div class="card">
+            <p class="label">What Surprised Me</p>
+            <h2>The Inversion Framework worked immediately</h2>
+            <p>Jai & Satith ran the four questions. Result: they recognized 3D content creation is <span class="tension">commoditizing fast</span>.</p>
+            <p>They got frustrated: <em>"What should we do?"</em></p>
+            <div class="learning-box">
+                <div class="learning-num">Key insight</div>
+                <p style="margin: 0;"><span class="decision">Frustration is a positive signal.</span> "What should we do?" means they're actually thinking instead of building on quicksand.</p>
+            </div>
+            <p>Samuel (Hackathon Team) landed on autonomous agents <span class="decision">without any pushing</span>. Curiosity-first works.</p>
+            <span class="page-num">4/6</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide5">
+        <div class="card">
+            <p class="label">Patterns Across Teams</p>
+            <ul class="pattern-list">
+                <li>
+                    <strong>Less technical ≠ less frontier</strong>
+                    <div class="pattern-insight">Think Tank can't "build an agent" but can run experiments and document friction.</div>
+                </li>
+                <li>
+                    <strong>Domain interest is fine if capability edge is real</strong>
+                    <div class="pattern-insight">Sports coaching focus → video analysis frontier. The domain doesn't have to be frontier—the capability exploration does.</div>
+                </li>
+                <li>
+                    <strong>Each team needs a different experiment</strong>
+                    <div class="pattern-insight">Technical teams build. Non-technical teams probe and document where AI breaks.</div>
+                </li>
+            </ul>
+            <span class="page-num">5/6</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide6">
+        <div class="card">
+            <p class="label">Week 2 Plan</p>
+            <h2>Four experiments, same goal</h2>
+            <div class="week2-grid">
+                <div class="week2-item"><span class="week2-team">Jai & Satith:</span> Explore Sequel, re:motion. Find the durable layer after content creation commoditizes.</div>
+                <div class="week2-item"><span class="week2-team">CAPY Card:</span> Push from typed input → voice capture. Record mock conversations, test with recruiters.</div>
+                <div class="week2-item"><span class="week2-team">Hackathon:</span> Install OpenClaw, set up ONE autonomous task, run 3 days, document friction.</div>
+                <div class="week2-item"><span class="week2-team">Think Tank:</span> Feed 3 soccer clips to GPT-4V, ask for coaching analysis, document what breaks.</div>
+            </div>
+            <div class="final-quote">
+                <p>"I thought the hard part would be getting founders to the frontier.<br><span class="decision">I realized the hard part is keeping them there.</span>"</p>
+            </div>
+            <span class="page-num">6/6</span>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) setTimeout(() => target.scrollIntoView(), 100);
+        }
+
+        const slides = document.querySelectorAll('.slide');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    history.replaceState(null, null, '#' + entry.target.id);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => observer.observe(slide));
+    </script>
+</body>
+</html>
