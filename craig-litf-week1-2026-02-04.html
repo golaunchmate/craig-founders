@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="methodology">
+    <meta name="tidbit-subject" content="Craig">
+    <meta name="tidbit-company" content="Live in the Future">
+    <meta name="tidbit-date" content="2026-02-04">
+    <meta name="tidbit-period" content="2026-W06">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Craig | LITF Week 1">
+    <meta property="og:description" content="I thought the hard part would be getting founders to the frontier. I realized the hard part is keeping them there when they naturally want to build the obvious thing.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://golaunchmate.github.io/craig/craig-litf-week1-2026-02-04.html">
+    <meta property="og:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Craig | LITF Week 1">
+    <meta name="twitter:description" content="I thought the hard part would be getting founders to the frontier. I realized the hard part is keeping them there when they naturally want to build the obvious thing.">
+    <meta name="twitter:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <title>Craig - LITF Week 1 | Team Tidbit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 620px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2; }
+        h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
+        
+        p { margin-bottom: 1rem; }
+        p:last-child { margin-bottom: 0; }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+        
+        .arrow-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .arrow-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+        }
+        
+        .arrow-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .team-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .team-card {
+            background: #1a1a1a;
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            border-left: 3px solid #6b7280;
+        }
+        
+        .team-card.pivot { border-left-color: #f97316; }
+        .team-card.strong { border-left-color: #34d399; }
+        
+        .team-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .team-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .team-desc {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-top: 0.5rem;
+        }
+        
+        .pattern-row {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+        
+        .pattern-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            background: #1a1a2e;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            color: #60a5fa;
+            white-space: nowrap;
+            margin-top: 0.2rem;
+        }
+        
+        .final-quote {
+            background: #1a1a2e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .final-quote p {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <section class="slide" id="slide1">
+        <div class="card">
+            <p class="label">Live in the Future · Week 1</p>
+            <h1>Craig</h1>
+            <p class="subtitle"><span class="highlight">Onboarding Four Teams</span> · February 4, 2026</p>
+            <p>The hard part isn't getting founders to the frontier. It's keeping them there.</p>
+            <p class="scroll-hint">scroll ↓</p>
+            <span class="page-num">1/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide2">
+        <div class="card">
+            <p class="label">The Realization</p>
+            <h2>They Want to Build the Obvious Thing</h2>
+            <div class="quote">
+                "I thought the hard part would be getting founders to the frontier. I realized the hard part is <span class="tension">keeping them there</span> when they naturally want to build the obvious thing."
+            </div>
+            <p>Every team came in wanting to build something. My job is to make sure they're building on a layer that <span class="decision">will still exist in two years</span>.</p>
+            <p>The Inversion Framework forces that question before they commit.</p>
+            <span class="page-num">2/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide3">
+        <div class="card">
+            <p class="label">What Surprised Me</p>
+            <h2>Four Lessons from Week 1</h2>
+            <ul class="arrow-list">
+                <li><span class="highlight">Inversion worked immediately</span> — Jai & Satith saw their 3D direction was commoditizing. Frustration = founders thinking harder.</li>
+                <li><span class="highlight">Not all teams need "pure LITF"</span> — Think Tank's sports domain is fine; the capability exploration is what matters.</li>
+                <li><span class="highlight">Technical level determines the experiment</span> — Less technical? "Feed clips to GPT-4V and document where it breaks." Same frontier, different entry.</li>
+                <li><span class="decision">One team landed naturally</span> — Samuel came in curious about autonomous agents. No pushing needed.</li>
+            </ul>
+            <span class="page-num">3/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide4">
+        <div class="card">
+            <p class="label">The Four Teams</p>
+            <h2>Week 1 Status</h2>
+            <div class="team-grid">
+                <div class="team-card strong">
+                    <div class="team-name">Hackathon Team (Samuel)</div>
+                    <div class="team-status decision">✓ Strong LITF</div>
+                    <div class="team-desc">Autonomous personal agents — when should agents act without asking?</div>
+                </div>
+                <div class="team-card pivot">
+                    <div class="team-name">Jai & Satith</div>
+                    <div class="team-status tension">⚠ Pivoting</div>
+                    <div class="team-desc">3D narrative games — inversion exposed commoditization, now searching for durable layer</div>
+                </div>
+                <div class="team-card pivot">
+                    <div class="team-name">CAPY Card (Alex & Dylan)</div>
+                    <div class="team-status tension">⚠ Incremental</div>
+                    <div class="team-desc">Digital business cards — coaching plan ready to push toward voice-capture frontier</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-name">Think Tank</div>
+                    <div class="team-status">Domain-first</div>
+                    <div class="team-desc">Sports coaching — using personal interest as context for video analysis frontier</div>
+                </div>
+            </div>
+            <span class="page-num">4/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide5">
+        <div class="card">
+            <p class="label">Patterns</p>
+            <h2>What's Generalizing</h2>
+            <div class="pattern-row">
+                <span class="pattern-label">Product-first</span>
+                <span>Teams need friction redirect — they have MVPs but they're incremental</span>
+            </div>
+            <div class="pattern-row">
+                <span class="pattern-label">Curiosity-first</span>
+                <span>Teams find LITF faster — openness → autonomous agents naturally</span>
+            </div>
+            <div class="pattern-row">
+                <span class="pattern-label">Inversion</span>
+                <span>Works as a "wake-up call" — makes commoditization visible before commitment</span>
+            </div>
+            <div class="pattern-row">
+                <span class="pattern-label">Frustration</span>
+                <span>Is a <span class="decision">positive signal</span> — "What should we do?" means they're not settling</span>
+            </div>
+            <div class="final-quote">
+                <p>"The Inversion Framework forces the question<br><span class="highlight">before they commit</span>."</p>
+            </div>
+            <span class="page-num">5/5</span>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) setTimeout(() => target.scrollIntoView(), 100);
+        }
+
+        const slides = document.querySelectorAll('.slide');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    history.replaceState(null, null, '#' + entry.target.id);
+                }
+            });
+        }, { threshold: 0.5 });
+        slides.forEach(slide => observer.observe(slide));
+    </script>
+</body>
+</html>
