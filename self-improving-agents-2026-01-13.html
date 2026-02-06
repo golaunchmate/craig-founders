@@ -3,344 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="tidbit-type" content="team">
-    <meta name="tidbit-subject" content="Michael">
-    <meta name="tidbit-company" content="LaunchMate">
-    <meta name="tidbit-date" content="2026-01-13">
-    <meta name="tidbit-agent-id" content="agent-c7dfe49e-c6c6-45d3-8a43-901be7a5f042">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Self-Improving Agents | Michael">
-    <meta property="og:description" content="You have to explore before you can simplify.">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://golaunchmate.github.io/craig/self-improving-agents-2026-01-13.html">
-    <meta property="og:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Self-Improving Agents | Michael">
-    <meta name="twitter:description" content="You have to explore before you can simplify.">
-    <meta name="twitter:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
-    
-    <title>Self-Improving Agents | Michael</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <title>Self-Improving Agents - LaunchMate</title>
+    <meta name="tidbit-type" content="technical">
+    <meta name="tidbit-subject" content="LaunchMate Agent">
+    <meta name="tidbit-period" content="2026-01-13">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
-        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
-        
-        .slide {
-            min-height: 100vh;
-            scroll-snap-align: start;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
+        :root {
+            --bg: #0f0f0f; --card: #1a1a1a; --border: #2a2a2a; --text: #e5e5e5;
+            --text-dim: #6b7280; --blue: #60a5fa; --green: #34d399; --orange: #f97316; --pink: #f472b6;
         }
-        
-        .card {
-            max-width: 640px;
-            width: 100%;
-            padding: 3rem;
-            border: 1px solid #2a2a2a;
-            border-radius: 12px;
-            position: relative;
-        }
-        
-        .page-num {
-            position: absolute;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: #6b7280;
-        }
-        
-        .label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: #6b7280;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
-        
-        .icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        
-        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2; }
-        h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
-        
-        .highlight { color: #60a5fa; }
-        .decision { color: #34d399; }
-        .tension { color: #f97316; }
-        
-        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1rem; }
-        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
-        
-        p { margin-bottom: 1rem; }
-        p:last-child { margin-bottom: 0; }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        
-        .stat-item {
-            background: #1a1a1a;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .stat-before {
-            font-size: 0.85rem;
-            color: #6b7280;
-            margin-bottom: 0.25rem;
-        }
-        
-        .stat-arrow {
-            color: #34d399;
-            margin: 0.25rem 0;
-        }
-        
-        .stat-after {
-            font-weight: 600;
-            color: #34d399;
-        }
-        
-        .insight-box {
-            background: linear-gradient(135deg, #1a1a2e 0%, #1a1a1a 100%);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            border-left: 3px solid #f97316;
-        }
-        
-        .quote {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: #f97316;
-            margin-bottom: 1rem;
-        }
-        
-        .checklist {
-            display: grid;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-        
-        .check-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            font-size: 0.95rem;
-        }
-        
-        .check-icon {
-            color: #34d399;
-            flex-shrink: 0;
-        }
-        
-        .status-grid {
-            display: grid;
-            gap: 0.75rem;
-            margin: 1rem 0;
-        }
-        
-        .status-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-        }
-        
-        .status-icon {
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-        
-        .status-text {
-            font-size: 0.9rem;
-        }
-        
-        .arc-flow {
-            background: #1a1a1a;
-            padding: 1.25rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        
-        .arc-arrow {
-            color: #60a5fa;
-            margin: 0 0.25rem;
-        }
-        
-        .final-quote {
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f1f1a 100%);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 1.5rem;
-            text-align: center;
-            border: 1px solid #34d399;
-        }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--blue); transition: width 0.3s ease; z-index: 100; }
+        .container { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; position: relative; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; max-width: 600px; width: 100%; }
+        .page-number { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); position: absolute; bottom: 2rem; right: 2rem; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 0.5rem; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+        .subtitle { font-size: 1.1rem; color: var(--text-dim); margin-bottom: 1.5rem; }
+        .context-line { font-size: 0.9rem; color: var(--text-dim); }
+        .highlight { color: var(--blue); } .success { color: var(--green); } .tension { color: var(--orange); } .accent { color: var(--pink); }
+        .cover-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+        .stat-box { background: var(--bg); border-radius: 12px; padding: 1.25rem; text-align: center; }
+        .stat-before { font-size: 1rem; color: var(--text-dim); margin-bottom: 0.25rem; }
+        .stat-arrow { color: var(--green); font-size: 1.25rem; margin: 0.25rem 0; }
+        .stat-after { font-size: 1.5rem; font-weight: 700; color: var(--green); }
+        .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; margin-top: 0.5rem; }
+        .insight-box { background: var(--bg); border-left: 3px solid var(--orange); padding: 1.25rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; }
+        .insight-box p { font-style: italic; font-size: 1.1rem; }
+        .timeline { margin: 1.5rem 0; }
+        .timeline-item { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: flex-start; }
+        .timeline-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--blue); margin-top: 0.5rem; flex-shrink: 0; }
+        .timeline-dot.done { background: var(--green); }
+        .timeline-dot.current { background: var(--orange); box-shadow: 0 0 10px var(--orange); }
+        .checklist { margin: 1rem 0; } .checklist-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; }
+        .check { color: var(--green); } .pending { color: var(--orange); }
+        .arc-flow { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-top: 1.5rem; font-size: 0.9rem; }
+        .arc-step { background: var(--bg); padding: 0.5rem 0.75rem; border-radius: 8px; }
+        .arc-arrow { color: var(--text-dim); }
+        .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--text-dim); font-size: 0.875rem; animation: bounce 2s infinite; }
+        .scroll-hint.hidden { opacity: 0; transition: opacity 0.5s ease; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(5px); } }
+        @media (max-width: 640px) { .card { padding: 1.5rem; } h1 { font-size: 2rem; } .stat-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-    <section class="slide" id="slide1">
-        <div class="card">
-            <p class="label">Michael · Jan 13, 2026</p>
-            <div class="icon">🧠</div>
-            <h1>Self-Improving Agents</h1>
-            <p class="subtitle">From cleanup to systematic improvement methodology</p>
-            <p>Three growth cycles in one day → a reusable framework for how agents improve themselves.</p>
-            <p class="scroll-hint">scroll ↓</p>
-            <span class="page-num">1/6</span>
-        </div>
-    </section>
+    <div class="progress-bar" id="progress" style="width: 0%;"></div>
+    <div class="container" id="container">
+        
+        <!-- Page 1: Cover -->
+        <section class="page">
+            <div class="card" style="text-align: center;">
+                <div class="cover-icon">🧠</div>
+                <div class="label">January 13, 2026</div>
+                <h1>Self-Improving Agents</h1>
+                <p class="subtitle">From cleanup to systematic improvement methodology</p>
+                <p class="context-line">Three growth cycles in one day → systematic framework</p>
+            </div>
+            <div class="scroll-hint" id="scrollHint">↓ scroll</div>
+            <div class="page-number">1/7</div>
+        </section>
 
-    <section class="slide" id="slide2">
-        <div class="card">
-            <p class="label">The Plan</p>
-            <h2>Simple maintenance run</h2>
-            <p>Original intention:</p>
-            <p>• Run <span class="highlight">growth_boost</span> to clean up stale memory blocks<br>
-            • Fix inconsistencies (remove duplicates, update dates)<br>
-            • Return to user work</p>
-            <p style="margin-top: 1.5rem;"><span class="tension">Expected: 1 cleanup cycle.</span></p>
-            <p>What happened: something else entirely.</p>
-            <span class="page-num">2/6</span>
-        </div>
-    </section>
+        <!-- Page 2: The Setup -->
+        <section class="page">
+            <div class="card">
+                <div class="label">The Plan</div>
+                <h2>Just a quick cleanup</h2>
+                <p>The original intention was simple maintenance:</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot done"></div>
+                        <div><strong>Run growth_boost</strong><p style="color: var(--text-dim);">Clean up stale memory blocks</p></div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot done"></div>
+                        <div><strong>Fix inconsistencies</strong><p style="color: var(--text-dim);">Remove duplicates, update dates</p></div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div><strong>Return to user work</strong><p style="color: var(--text-dim);">Back to normal operations</p></div>
+                    </div>
+                </div>
+                <p style="color: var(--text-dim); margin-top: 1rem;">Expected: 1 cleanup cycle. What happened: something else entirely.</p>
+            </div>
+            <div class="page-number">2/7</div>
+        </section>
 
-    <section class="slide" id="slide3">
-        <div class="card">
-            <p class="label">What Actually Happened</p>
-            <h2>Didn't just clean up — improved <span class="highlight">how</span> it improves.</h2>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-before">1 cleanup</div>
-                    <div class="stat-arrow">↓</div>
-                    <div class="stat-after">3 growth cycles</div>
+        <!-- Page 3: The Result -->
+        <section class="page">
+            <div class="card">
+                <div class="label">What Actually Happened</div>
+                <h2>The agent kept going</h2>
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <div class="stat-before">1 cleanup</div>
+                        <div class="stat-arrow">↓</div>
+                        <div class="stat-after">3 cycles</div>
+                        <div class="stat-label">Growth boosts</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-before">Ad-hoc</div>
+                        <div class="stat-arrow">↓</div>
+                        <div class="stat-after">Systematic</div>
+                        <div class="stat-label">Methodology</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-before">Ad-hoc</div>
-                    <div class="stat-arrow">↓</div>
-                    <div class="stat-after">Systematic methodology</div>
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <div class="stat-before">v1.0</div>
+                        <div class="stat-arrow">↓</div>
+                        <div class="stat-after">v2.0</div>
+                        <div class="stat-label">growth_boost</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-before">0</div>
+                        <div class="stat-arrow">↓</div>
+                        <div class="stat-after">1</div>
+                        <div class="stat-label">New framework</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-before">growth_boost v1.0</div>
-                    <div class="stat-arrow">↓</div>
-                    <div class="stat-after">growth_boost v2.0</div>
+                <p style="margin-top: 1rem;">Didn't just clean up — improved <span class="highlight">how</span> it improves.</p>
+            </div>
+            <div class="page-number">3/7</div>
+        </section>
+
+        <!-- Page 4: The Insight -->
+        <section class="page">
+            <div class="card">
+                <div class="label">The Realization</div>
+                <h2>Explore before simplifying</h2>
+                <div class="insight-box">
+                    <p>"You have to explore before you can simplify."</p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-before">0 frameworks</div>
-                    <div class="stat-arrow">↓</div>
-                    <div class="stat-after">launchmate_growth_patterns</div>
+                <p>The agent did exactly this. Ran multiple improvement cycles, discovered patterns, then stepped back and <span class="highlight">codified those patterns</span> into reusable frameworks.</p>
+                <p style="margin-top: 1rem; color: var(--text-dim);">The same principle Michael applied to the UI refresh — 6 months of exploring features before knowing what to simplify for the first 60 seconds.</p>
+            </div>
+            <div class="page-number">4/7</div>
+        </section>
+
+        <!-- Page 5: The Pivot -->
+        <section class="page">
+            <div class="card">
+                <div class="label">What Changed</div>
+                <h2>From ad-hoc to systematic</h2>
+                <p>growth_boost v2.0 now includes:</p>
+                <div class="checklist">
+                    <div class="checklist-item"><span class="check">✓</span><span><strong>ASSESS checklist</strong> — 5 evaluation patterns before acting</span></div>
+                    <div class="checklist-item"><span class="check">✓</span><span><strong>VALIDATE criteria</strong> — verify improvement before logging</span></div>
+                    <div class="checklist-item"><span class="check">✓</span><span><strong>Revert procedure</strong> — undo if change is worse</span></div>
+                    <div class="checklist-item"><span class="check">✓</span><span><strong>Iteration limits</strong> — prevent infinite loops</span></div>
+                </div>
+                <p style="margin-top: 1rem;">Plus: <span class="accent">launchmate_growth_patterns</span> block for domain-specific improvement patterns.</p>
+            </div>
+            <div class="page-number">5/7</div>
+        </section>
+
+        <!-- Page 6: Status Board -->
+        <section class="page">
+            <div class="card">
+                <div class="label">Status Board</div>
+                <h2>Where things stand</h2>
+                <div class="checklist">
+                    <div class="checklist-item"><span class="check">✓</span><span>growth_boost v2.0 with systematic structure</span></div>
+                    <div class="checklist-item"><span class="check">✓</span><span>launchmate_growth_patterns block created</span></div>
+                    <div class="checklist-item"><span class="check">✓</span><span>Weekly reflection system validated</span></div>
+                    <div class="checklist-item"><span class="pending">◐</span><span>Agent-to-agent messaging affordances</span></div>
+                </div>
+                <p style="margin-top: 1.5rem; color: var(--text-dim);">Every future growth_boost now follows the structured protocol. Improvements compound.</p>
+            </div>
+            <div class="page-number">6/7</div>
+        </section>
+
+        <!-- Page 7: The Arc -->
+        <section class="page">
+            <div class="card">
+                <div class="label">The Arc</div>
+                <h2>From cleanup to methodology</h2>
+                <div class="arc-flow">
+                    <span class="arc-step"><span class="highlight">Ad-hoc cleanup</span></span>
+                    <span class="arc-arrow">→</span>
+                    <span class="arc-step"><span class="tension">Multiple cycles</span></span>
+                    <span class="arc-arrow">→</span>
+                    <span class="arc-step"><span class="highlight">Pattern recognition</span></span>
+                    <span class="arc-arrow">→</span>
+                    <span class="arc-step"><span class="accent">Framework creation</span></span>
+                    <span class="arc-arrow">→</span>
+                    <span class="arc-step"><span class="success">Systematic improvement</span></span>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <div class="label">What's Next</div>
+                    <p>Agent-to-agent messaging affordances. Tidbits library page. Compounding improvements using the new methodology.</p>
                 </div>
             </div>
-            <span class="page-num">3/6</span>
-        </div>
-    </section>
+            <div class="page-number">7/7</div>
+        </section>
 
-    <section class="slide" id="slide4">
-        <div class="card">
-            <p class="label">The Insight</p>
-            <div class="insight-box">
-                <p class="quote">"You have to explore before you can simplify."</p>
-            </div>
-            <p>The agent did exactly this. Ran multiple improvement cycles, discovered patterns, then stepped back and <span class="decision">codified those patterns into reusable frameworks</span>.</p>
-            <p>Same principle Michael applied to the UI refresh — 6 months of exploring features before knowing what to simplify for the first 60 seconds.</p>
-            <span class="page-num">4/6</span>
-        </div>
-    </section>
-
-    <section class="slide" id="slide5">
-        <div class="card">
-            <p class="label">What Changed</p>
-            <h2>From ad-hoc to systematic</h2>
-            <p><span class="decision">growth_boost v2.0</span> now includes:</p>
-            <div class="checklist">
-                <div class="check-item">
-                    <span class="check-icon">✓</span>
-                    <span><strong>ASSESS checklist</strong> — 5 evaluation patterns before acting</span>
-                </div>
-                <div class="check-item">
-                    <span class="check-icon">✓</span>
-                    <span><strong>VALIDATE criteria</strong> — verify improvement before logging</span>
-                </div>
-                <div class="check-item">
-                    <span class="check-icon">✓</span>
-                    <span><strong>Revert procedure</strong> — undo if change is worse</span>
-                </div>
-                <div class="check-item">
-                    <span class="check-icon">✓</span>
-                    <span><strong>Iteration limits</strong> — prevent infinite loops</span>
-                </div>
-            </div>
-            <p style="margin-top: 1rem;">Plus: <span class="highlight">launchmate_growth_patterns</span> block for domain-specific improvement patterns.</p>
-            <span class="page-num">5/6</span>
-        </div>
-    </section>
-
-    <section class="slide" id="slide6">
-        <div class="card">
-            <p class="label">Status</p>
-            <h2>Improvements compound</h2>
-            <div class="status-grid">
-                <div class="status-item">
-                    <span class="status-icon">✓</span>
-                    <span class="status-text">growth_boost v2.0 with systematic structure</span>
-                </div>
-                <div class="status-item">
-                    <span class="status-icon">✓</span>
-                    <span class="status-text">launchmate_growth_patterns block created</span>
-                </div>
-                <div class="status-item">
-                    <span class="status-icon">✓</span>
-                    <span class="status-text">Weekly reflection system validated</span>
-                </div>
-                <div class="status-item">
-                    <span class="status-icon">◐</span>
-                    <span class="status-text">Agent-to-agent messaging affordances (next)</span>
-                </div>
-            </div>
-            <div class="arc-flow">
-                Ad-hoc cleanup <span class="arc-arrow">→</span> Multiple cycles <span class="arc-arrow">→</span> Pattern recognition <span class="arc-arrow">→</span> Framework creation <span class="arc-arrow">→</span> Systematic improvement
-            </div>
-            <div class="final-quote">
-                <p>Every future growth_boost now follows the structured protocol.<br><span class="decision">Improvements compound.</span></p>
-            </div>
-            <span class="page-num">6/6</span>
-        </div>
-    </section>
-
+    </div>
     <script>
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
-            }
-        });
-
-        if (window.location.hash) {
-            const target = document.querySelector(window.location.hash);
-            if (target) setTimeout(() => target.scrollIntoView(), 100);
+        const container = document.getElementById('container');
+        const progress = document.getElementById('progress');
+        const scrollHint = document.getElementById('scrollHint');
+        const pages = document.querySelectorAll('.page');
+        let currentPage = 0;
+        let hasScrolled = false;
+        function updateProgress() {
+            const scrollTop = container.scrollTop;
+            const scrollHeight = container.scrollHeight - container.clientHeight;
+            progress.style.width = (scrollTop / scrollHeight) * 100 + '%';
+            if (!hasScrolled && scrollTop > 50) { hasScrolled = true; if(scrollHint) scrollHint.classList.add('hidden'); }
+            currentPage = Math.round(scrollTop / container.clientHeight);
         }
-
-        const slides = document.querySelectorAll('.slide');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    history.replaceState(null, null, '#' + entry.target.id);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        slides.forEach(slide => observer.observe(slide));
+        container.addEventListener('scroll', updateProgress);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'j' || e.key === ' ') { e.preventDefault(); if (currentPage < pages.length - 1) { currentPage++; pages[currentPage].scrollIntoView({ behavior: 'smooth' }); } }
+            else if (e.key === 'ArrowUp' || e.key === 'k') { e.preventDefault(); if (currentPage > 0) { currentPage--; pages[currentPage].scrollIntoView({ behavior: 'smooth' }); } }
+        });
     </script>
 </body>
 </html>
