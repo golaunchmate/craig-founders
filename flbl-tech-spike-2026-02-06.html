@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="methodology">
+    <meta name="tidbit-subject" content="Craig">
+    <meta name="tidbit-company" content="LaunchMate">
+    <meta name="tidbit-date" content="2026-02-06">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="FLBL Tech Spike | LaunchMate">
+    <meta property="og:description" content="We thought cloning agents was a config copy problem. We discovered it's a lived-experience transfer problem.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://golaunchmate.github.io/craig/flbl-tech-spike-2026-02-06.html">
+    <meta property="og:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FLBL Tech Spike | LaunchMate">
+    <meta name="twitter:description" content="We thought cloning agents was a config copy problem. We discovered it's a lived-experience transfer problem.">
+    <meta name="twitter:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <title>FLBL Tech Spike | Craig</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 640px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2; }
+        h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
+        
+        p { margin-bottom: 1rem; }
+        p:last-child { margin-bottom: 0; }
+        
+        .code {
+            font-family: 'JetBrains Mono', monospace;
+            background: #1a1a1a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        
+        .two-channels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .channel {
+            background: #1a1a1a;
+            padding: 1.25rem;
+            border-radius: 8px;
+            border-top: 3px solid;
+        }
+        
+        .channel.push { border-color: #60a5fa; }
+        .channel.async { border-color: #34d399; }
+        
+        .channel-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .channel-desc {
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+        
+        .insight-box {
+            background: linear-gradient(135deg, #1a1a2e 0%, #1a1a1a 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 3px solid #f97316;
+        }
+        
+        .insight-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #f97316;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .decision-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .decision-item {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #34d399;
+        }
+        
+        .decision-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .decision-reason {
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+        
+        .tools-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .tool-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            background: #1a1a2e;
+            padding: 0.35rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid #3b82f6;
+            color: #60a5fa;
+        }
+        
+        .growth-loop {
+            background: #0f1f1a;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid #34d399;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .loop-arrow {
+            color: #34d399;
+            margin: 0 0.25rem;
+        }
+        
+        .final-quote {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f1f1a 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+            border: 1px solid #34d399;
+        }
+        
+        .status-grid {
+            display: grid;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        
+        .status-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        
+        .status-icon {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .status-text {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <section class="slide" id="slide1">
+        <div class="card">
+            <p class="label">FLBL Tech Spike · Feb 6, 2026</p>
+            <h1>We thought cloning agents was a <span class="highlight">config copy</span> problem.</h1>
+            <p class="subtitle">Like spinning up containers from an image.</p>
+            <p>Build an orchestration layer. Clone specialized agents at scale. Deploy N copies of a perfected master.</p>
+            <p>Straightforward, right?</p>
+            <p class="scroll-hint">scroll ↓</p>
+            <span class="page-num">1/6</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide2">
+        <div class="card">
+            <p class="label">Discovery</p>
+            <h2>Agent growth happens through TWO channels</h2>
+            <div class="two-channels">
+                <div class="channel push">
+                    <div class="channel-name"><span class="highlight">Shared Memory Blocks</span></div>
+                    <div class="channel-desc">Master updates a block → all clones see it instantly. Knowledge push.</div>
+                </div>
+                <div class="channel async">
+                    <div class="channel-name"><span class="decision">A2A Async Messaging</span></div>
+                    <div class="channel-desc">Clone sends message to master → arrives as system message → becomes part of lived experience.</div>
+                </div>
+            </div>
+            <div class="growth-loop">
+                Clones learn <span class="loop-arrow">→</span> A2A to master <span class="loop-arrow">→</span> master distills <span class="loop-arrow">→</span> updates shared blocks <span class="loop-arrow">→</span> ALL clones benefit
+            </div>
+            <p>Collective intelligence through bidirectional growth.</p>
+            <span class="page-num">2/6</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide3">
+        <div class="card">
+            <p class="label">The Shift</p>
+            <h2>The "magic" isn't in the config.</h2>
+            <div class="insight-box">
+                <div class="insight-label">The realization</div>
+                <p style="margin: 0; font-size: 1.1rem;">An agent's <span class="tension">message history IS its learned behavior</span> — tone, tool call patterns, edge case handling, compacted summaries.</p>
+            </div>
+            <p>We thought cloning meant copying configuration and memory blocks.</p>
+            <p>But the <span class="highlight">lived experience</span> — the actual conversations — is where behavior emerges.</p>
+            <p><span class="decision">This changed the entire cloning strategy.</span></p>
+            <span class="page-num">3/6</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide4">
+        <div class="card">
+            <p class="label">Key Decisions</p>
+            <h2>What we built and why</h2>
+            <div class="decision-grid">
+                <div class="decision-item">
+                    <div class="decision-title">Export/Import deep clone only</div>
+                    <div class="decision-reason">Templates = clean slate (no history). Conversations = can't seed. Deep clone carries everything.</div>
+                </div>
+                <div class="decision-item">
+                    <div class="decision-title">8 focused tool primitives</div>
+                    <div class="decision-reason">Universal API tool was fragile (datetime issues, param collisions). Focused tools are stable.</div>
+                </div>
+                <div class="decision-item">
+                    <div class="decision-title">Optional <span class="code">target_agent_id</span></div>
+                    <div class="decision-reason">Default = self (via env var). Explicit ID = target child. Clean self-vs-other pattern.</div>
+                </div>
+            </div>
+            <span class="page-num">4/6</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide5">
+        <div class="card">
+            <p class="label">The Primitives</p>
+            <h2>Self-orchestrating through client injection</h2>
+            <p>Every tool gets a pre-initialized <span class="code">client</span> with full API access. The FLBL agent can autonomously:</p>
+            <div class="tools-list">
+                <span class="tool-tag">clone_agent</span>
+                <span class="tool-tag">send_agent_message</span>
+                <span class="tool-tag">create_shared_block</span>
+                <span class="tool-tag">update_block</span>
+                <span class="tool-tag">list_my_blocks</span>
+                <span class="tool-tag">list_agents</span>
+                <span class="tool-tag">manage_agent_tools</span>
+                <span class="tool-tag">create_tool</span>
+            </div>
+            <p style="margin-top: 1rem;"><span class="decision">The agent bootstrapped itself</span> — used its own tools to attach its own tools via client injection.</p>
+            <span class="page-num">5/6</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide6">
+        <div class="card">
+            <p class="label">Status</p>
+            <h2>Where it stands</h2>
+            <div class="status-grid">
+                <div class="status-item">
+                    <span class="status-icon">✓</span>
+                    <span class="status-text">Architecture doc at v0.2, all 8 tools created and self-attached</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">→</span>
+                    <span class="status-text">Next: Fleet registry block (master/clone relationships)</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">→</span>
+                    <span class="status-text">Next: Test export/import clone flow end-to-end</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">→</span>
+                    <span class="status-text">Next: Define upstream filtering (signal vs. noise from clones)</span>
+                </div>
+            </div>
+            <div class="final-quote">
+                <p>"We thought cloning agents was a config copy problem.<br><span class="decision">We discovered it's a lived-experience transfer problem.</span>"</p>
+            </div>
+            <span class="page-num">6/6</span>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) setTimeout(() => target.scrollIntoView(), 100);
+        }
+
+        const slides = document.querySelectorAll('.slide');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    history.replaceState(null, null, '#' + entry.target.id);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => observer.observe(slide));
+    </script>
+</body>
+</html>
