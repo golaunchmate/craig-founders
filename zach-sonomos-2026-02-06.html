@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Zach Brenner">
+    <meta name="tidbit-company" content="Sonomos">
+    <meta name="tidbit-date" content="2026-02-06">
+    <meta name="tidbit-agent-id" content="agent-52da569f-e001-4099-8bca-8539c4a175c9">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Zach Brenner | Sonomos">
+    <meta property="og:description" content="Swiss Re called us. We didn't call them. 21 days to launch.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://golaunchmate.github.io/craig/zach-sonomos-2026-02-06.html">
+    <meta property="og:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zach Brenner | Sonomos">
+    <meta name="twitter:description" content="Swiss Re called us. We didn't call them. 21 days to launch.">
+    <meta name="twitter:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <title>Zach Brenner | Sonomos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 640px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2; }
+        h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
+        
+        p { margin-bottom: 1rem; }
+        p:last-child { margin-bottom: 0; }
+        
+        .countdown {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #34d399;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        
+        .countdown-label {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        
+        .signal-box {
+            background: linear-gradient(135deg, #0f1f1a 0%, #1a1a1a 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border: 1px solid #34d399;
+        }
+        
+        .signal-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #34d399;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .phase-timeline {
+            margin: 1.5rem 0;
+        }
+        
+        .phase {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .phase:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .phase-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            min-width: 100px;
+        }
+        
+        .phase-content {
+            flex: 1;
+        }
+        
+        .phase-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .phase-detail {
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+        
+        .content-grid {
+            display: grid;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        
+        .content-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: #1a1a1a;
+            border-radius: 6px;
+        }
+        
+        .content-status {
+            font-size: 1rem;
+        }
+        
+        .content-text {
+            font-size: 0.9rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        
+        .team-card {
+            background: #1a1a1a;
+            padding: 0.75rem;
+            border-radius: 6px;
+        }
+        
+        .team-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #60a5fa;
+            margin-bottom: 0.25rem;
+        }
+        
+        .team-lane {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+        
+        .final-quote {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f1f1a 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+            border: 1px solid #34d399;
+        }
+        
+        .ops-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .ops-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+        
+        .ops-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #34d399;
+        }
+    </style>
+</head>
+<body>
+    <section class="slide" id="slide1">
+        <div class="card">
+            <p class="label">Zach Brenner · Sonomos</p>
+            <h1>Swiss Re called us.</h1>
+            <p class="subtitle">We didn't call them.</p>
+            <div class="countdown">21</div>
+            <p class="countdown-label">days to Dagger v1 launch</p>
+            <p class="scroll-hint">scroll ↓</p>
+            <span class="page-num">1/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide2">
+        <div class="card">
+            <p class="label">The Signal</p>
+            <h2>Insurance-as-distribution thesis: <span class="decision">validated</span></h2>
+            <div class="signal-box">
+                <div class="signal-label">Inbound Interest</div>
+                <p style="margin: 0;"><strong>Swiss Re</strong> — global insurance giant — reached out unprompted requesting a phone call and product demo.</p>
+            </div>
+            <p>This isn't a cold outreach. This is <span class="highlight">the market finding us</span>.</p>
+            <p>The shadow AI → regulated professional pain narrative is landing. Cyber underwriters and brokers see the problem. Now they're looking for the solution.</p>
+            <span class="page-num">2/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide3">
+        <div class="card">
+            <p class="label">30-Day Launch Campaign</p>
+            <h2>February 5 → March 6</h2>
+            <div class="phase-timeline">
+                <div class="phase">
+                    <div class="phase-date">Feb 5-26</div>
+                    <div class="phase-content">
+                        <div class="phase-name">Phase 1: Authority Building</div>
+                        <div class="phase-detail">Substack, LinkedIn, thought leadership across 4 team members</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-date">Feb 27-Mar 1</div>
+                    <div class="phase-content">
+                        <div class="phase-name decision">Phase 2: Dagger Launch Week</div>
+                        <div class="phase-detail">MVP goes live. Demo video. Waitlist conversion.</div>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-date">Mar 2-6</div>
+                    <div class="phase-content">
+                        <div class="phase-name">Phase 3: Webinar Sprint</div>
+                        <div class="phase-detail">Insurance webinar targeting cyber underwriters, brokers, insurtech</div>
+                    </div>
+                </div>
+            </div>
+            <p><span class="highlight">Launch date locked:</span> February 27, 2026</p>
+            <span class="page-num">3/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide4">
+        <div class="card">
+            <p class="label">Content Engine</p>
+            <h2>Four lanes, one message</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-name">Zach</div>
+                    <div class="team-lane">X, FB, Reddit, Substack — thought leadership</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-name">Nate</div>
+                    <div class="team-lane">LinkedIn — business case, insurance angle</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-name">Ata</div>
+                    <div class="team-lane">LinkedIn — technical depth</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-name">Nathan</div>
+                    <div class="team-lane">Visual product storytelling</div>
+                </div>
+            </div>
+            <div class="content-grid">
+                <div class="content-item">
+                    <span class="content-status">✓</span>
+                    <span class="content-text">First Substack live (3,000 words) — philosophical foundation</span>
+                </div>
+                <div class="content-item">
+                    <span class="content-status">✓</span>
+                    <span class="content-text">Local-only architecture one-pager as waitlist incentive</span>
+                </div>
+                <div class="content-item">
+                    <span class="content-status">→</span>
+                    <span class="content-text">Demo video in polish phase</span>
+                </div>
+            </div>
+            <span class="page-num">4/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide5">
+        <div class="card">
+            <p class="label">Foundation Set</p>
+            <h2>Clean books, clean ops, clean conscience</h2>
+            <ul class="ops-list">
+                <li>Simple Analytics (cookieless) — eating own cooking</li>
+                <li>S-Corp election filed</li>
+                <li>Mercury + accounting connected, books clean from day one</li>
+                <li>SBDC meetings (James Zanowitz)</li>
+                <li>Vistage Chair World meetup — direct access to target buyers</li>
+            </ul>
+            <div class="final-quote">
+                <p>\"Swiss Re reached out unprompted.<br><span class="decision">The market is finding us.</span>\"</p>
+            </div>
+            <span class="page-num">5/5</span>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) setTimeout(() => target.scrollIntoView(), 100);
+        }
+
+        const slides = document.querySelectorAll('.slide');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    history.replaceState(null, null, '#' + entry.target.id);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => observer.observe(slide));
+    </script>
+</body>
+</html>
