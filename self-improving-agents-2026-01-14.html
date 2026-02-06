@@ -6,12 +6,12 @@
     <meta name="tidbit-type" content="methodology">
     <meta name="tidbit-subject" content="Michael">
     <meta name="tidbit-company" content="LaunchMate">
-    <meta name="tidbit-date" content="2026-01-14">
+    <meta name="tidbit-date" content="2026-01-13">
     <meta name="tidbit-agent-id" content="agent-c7dfe49e-c6c6-45d3-8a43-901be7a5f042">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Self-Improving Agents | Michael">
-    <meta property="og:description" content="You have to explore before you can simplify. Ad-hoc cleanup became systematic methodology.">
+    <meta property="og:description" content="You have to explore before you can simplify. Ad-hoc cleanup became systematic improvement methodology.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://golaunchmate.github.io/craig/self-improving-agents-2026-01-14.html">
     <meta property="og:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
@@ -19,7 +19,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Self-Improving Agents | Michael">
-    <meta name="twitter:description" content="You have to explore before you can simplify. Ad-hoc cleanup became systematic methodology.">
+    <meta name="twitter:description" content="You have to explore before you can simplify. Ad-hoc cleanup became systematic improvement methodology.">
     <meta name="twitter:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
     
     <title>Self-Improving Agents | Michael</title>
@@ -78,45 +78,31 @@
         p { margin-bottom: 1rem; }
         p:last-child { margin-bottom: 0; }
         
-        .code {
-            font-family: 'JetBrains Mono', monospace;
-            background: #1a1a1a;
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-        }
+        .emoji-large { font-size: 3rem; margin-bottom: 1rem; }
         
-        .emoji-large {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .arc-grid {
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 1rem;
             margin: 1.5rem 0;
         }
         
-        .arc-item {
+        .stat-box {
             background: #1a1a1a;
             padding: 1rem;
             border-radius: 8px;
             text-align: center;
         }
         
-        .arc-before {
-            color: #6b7280;
+        .stat-change {
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
             margin-bottom: 0.25rem;
         }
         
-        .arc-after {
-            font-weight: 600;
-        }
-        
-        .arc-arrow {
-            color: #34d399;
+        .stat-label {
+            font-size: 0.8rem;
+            color: #6b7280;
         }
         
         .insight-box {
@@ -135,23 +121,23 @@
             margin-bottom: 0.5rem;
         }
         
-        .v2-grid {
-            display: grid;
-            gap: 0.75rem;
-            margin: 1rem 0;
-        }
-        
-        .v2-item {
+        .v2-section {
             background: #1a1a1a;
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 3px solid #34d399;
         }
         
-        .v2-icon {
+        .v2-title {
+            font-weight: 600;
             color: #34d399;
+            margin-bottom: 0.5rem;
+        }
+        
+        .v2-list {
+            font-size: 0.9rem;
+            color: #9ca3af;
         }
         
         .status-grid {
@@ -162,36 +148,36 @@
         
         .status-item {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 0.75rem;
+            padding: 0.5rem 0;
         }
         
         .status-icon {
             font-size: 1rem;
-            line-height: 1.5;
+            min-width: 1.5rem;
         }
         
         .status-text {
             font-size: 0.9rem;
         }
         
-        .journey-flow {
+        .arc-flow {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             gap: 0.5rem;
             margin: 1.5rem 0;
-            justify-content: center;
+            font-size: 0.9rem;
         }
         
-        .journey-step {
+        .arc-step {
             background: #1a1a1a;
             padding: 0.5rem 0.75rem;
             border-radius: 6px;
-            font-size: 0.85rem;
         }
         
-        .journey-arrow {
+        .arc-arrow {
             color: #6b7280;
         }
         
@@ -203,55 +189,63 @@
             text-align: center;
             border: 1px solid #34d399;
         }
+        
+        .context-note {
+            background: #1a1a2e;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            border: 1px solid #3b82f6;
+        }
     </style>
 </head>
 <body>
     <section class="slide" id="slide1">
         <div class="card">
-            <p class="label">Self-Improving Agents · Jan 13, 2026</p>
+            <p class="label">Michael · Jan 13, 2026</p>
             <div class="emoji-large">🧠</div>
-            <h1>From cleanup to <span class="highlight">systematic methodology</span></h1>
-            <p class="subtitle">Three growth cycles in one day.</p>
-            <p>Started with a quick cleanup. Ended with a framework.</p>
+            <h1>Self-Improving Agents</h1>
+            <p class="subtitle">From cleanup to systematic improvement methodology</p>
             <p class="scroll-hint">scroll ↓</p>
-            <span class="page-num">1/6</span>
+            <span class="page-num">1/7</span>
         </div>
     </section>
 
     <section class="slide" id="slide2">
         <div class="card">
             <p class="label">The Setup</p>
-            <h2>I thought it would be one cycle.</h2>
-            <p>The plan: run <span class="code">growth_boost</span>, fix some inconsistencies, get back to user work.</p>
-            <p>Quick cleanup. Maybe 30 minutes.</p>
-            <p><span class="tension">Expected: 1 cycle.</span></p>
-            <span class="page-num">2/6</span>
+            <h2>Original plan: simple maintenance.</h2>
+            <p>Run <span class="highlight">growth_boost</span> to clean up stale memory blocks. Fix inconsistencies — remove duplicates, update dates. Then return to normal user work.</p>
+            <p><strong>Expected:</strong> 1 cleanup cycle.</p>
+            <p>Just housekeeping.</p>
+            <span class="page-num">2/7</span>
         </div>
     </section>
 
     <section class="slide" id="slide3">
         <div class="card">
-            <p class="label">What Happened</p>
-            <h2>One cleanup became three cycles.</h2>
-            <div class="arc-grid">
-                <div class="arc-item">
-                    <div class="arc-before">1 cleanup</div>
-                    <div class="arc-after"><span class="arc-arrow">→</span> <span class="decision">3 growth cycles</span></div>
+            <p class="label">The Result</p>
+            <h2>What actually happened</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-change"><span class="tension">1</span> → <span class="decision">3</span></div>
+                    <div class="stat-label">cleanup cycles</div>
                 </div>
-                <div class="arc-item">
-                    <div class="arc-before">Ad-hoc</div>
-                    <div class="arc-after"><span class="arc-arrow">→</span> <span class="decision">Systematic</span></div>
+                <div class="stat-box">
+                    <div class="stat-change">ad-hoc → <span class="decision">systematic</span></div>
+                    <div class="stat-label">approach</div>
                 </div>
-                <div class="arc-item">
-                    <div class="arc-before">growth_boost v1.0</div>
-                    <div class="arc-after"><span class="arc-arrow">→</span> <span class="decision">v2.0</span></div>
+                <div class="stat-box">
+                    <div class="stat-change">v1.0 → <span class="decision">v2.0</span></div>
+                    <div class="stat-label">growth_boost</div>
                 </div>
-                <div class="arc-item">
-                    <div class="arc-before">No patterns block</div>
-                    <div class="arc-after"><span class="arc-arrow">→</span> <span class="decision">launchmate_growth_patterns</span></div>
+                <div class="stat-box">
+                    <div class="stat-change">0 → <span class="decision">1</span></div>
+                    <div class="stat-label">new framework</div>
                 </div>
             </div>
-            <span class="page-num">3/6</span>
+            <span class="page-num">3/7</span>
         </div>
     </section>
 
@@ -259,77 +253,83 @@
         <div class="card">
             <p class="label">The Insight</p>
             <h2><span class="tension">"You have to explore before you can simplify."</span></h2>
-            <div class="insight-box">
-                <div class="insight-label">What I learned</div>
-                <p style="margin: 0;">The agent ran multiple improvement cycles, discovered patterns across them, then codified those patterns into reusable frameworks.</p>
+            <div class="context-note">
+                <strong>Context:</strong> Michael said this about the UI refresh work — after 6 months exploring what features are possible, they're now simplifying to focus on the first 60 seconds.
             </div>
-            <p>The exploration wasn't waste — it was <span class="highlight">necessary input</span> for the framework.</p>
-            <span class="page-num">4/6</span>
+            <p>The agent did the same thing in miniature:</p>
+            <p>Ran multiple improvement cycles → discovered patterns → <span class="decision">THEN</span> stepped back and codified those patterns into reusable frameworks.</p>
+            <p>You can't simplify until you've explored enough to know what matters.</p>
+            <span class="page-num">4/7</span>
         </div>
     </section>
 
     <section class="slide" id="slide5">
         <div class="card">
-            <p class="label">The Framework</p>
-            <h2><span class="code">growth_boost</span> v2.0</h2>
-            <div class="v2-grid">
-                <div class="v2-item">
-                    <span class="v2-icon">✓</span>
-                    <span><strong>ASSESS checklist:</strong> 5 evaluation patterns</span>
-                </div>
-                <div class="v2-item">
-                    <span class="v2-icon">✓</span>
-                    <span><strong>VALIDATE criteria:</strong> when to accept changes</span>
-                </div>
-                <div class="v2-item">
-                    <span class="v2-icon">✓</span>
-                    <span><strong>Revert procedure:</strong> how to back out safely</span>
-                </div>
-                <div class="v2-item">
-                    <span class="v2-icon">✓</span>
-                    <span><strong>Iteration limits:</strong> prevent runaway cycles</span>
+            <p class="label">The Pivot</p>
+            <h2>From ad-hoc to <span class="decision">systematic</span></h2>
+            <div class="v2-section">
+                <div class="v2-title">growth_boost v2.0</div>
+                <div class="v2-list">
+                    • <strong>ASSESS checklist</strong> — 5 evaluation patterns before acting<br>
+                    • <strong>VALIDATE criteria</strong> — verify improvement actually improved<br>
+                    • <strong>Revert procedure</strong> — explicit undo steps<br>
+                    • <strong>Iteration limits</strong> — cap cycles to prevent infinite loops
                 </div>
             </div>
-            <p style="margin-top: 1rem;">Plus: <span class="highlight">launchmate_growth_patterns</span> block for domain-specific patterns.</p>
-            <span class="page-num">5/6</span>
+            <div class="v2-section" style="border-color: #60a5fa;">
+                <div class="v2-title" style="color: #60a5fa;">New: launchmate_growth_patterns</div>
+                <div class="v2-list">Domain-specific applications of the methodology for founder validation coaching</div>
+            </div>
+            <p style="margin-top: 1rem;"><span class="decision">Every future growth_boost now follows structured protocol.</span></p>
+            <span class="page-num">5/7</span>
         </div>
     </section>
 
     <section class="slide" id="slide6">
         <div class="card">
-            <p class="label">Status</p>
-            <h2>Where it stands</h2>
+            <p class="label">Status Board</p>
+            <h2>Where things stand</h2>
             <div class="status-grid">
                 <div class="status-item">
                     <span class="status-icon">✓</span>
-                    <span class="status-text">growth_boost v2.0 with systematic structure</span>
+                    <span class="status-text">growth_boost v2.0</span>
                 </div>
                 <div class="status-item">
                     <span class="status-icon">✓</span>
-                    <span class="status-text">launchmate_growth_patterns block created</span>
+                    <span class="status-text">growth_patterns block</span>
                 </div>
                 <div class="status-item">
                     <span class="status-icon">✓</span>
-                    <span class="status-text">Weekly reflection system validated</span>
+                    <span class="status-text">weekly reflection ritual</span>
                 </div>
                 <div class="status-item">
                     <span class="status-icon">◐</span>
-                    <span class="status-text">Agent-to-agent messaging affordances</span>
+                    <span class="status-text">agent-to-agent messaging</span>
                 </div>
             </div>
-            <div class="journey-flow">
-                <span class="journey-step">Ad-hoc cleanup</span>
-                <span class="journey-arrow">→</span>
-                <span class="journey-step">Multiple cycles</span>
-                <span class="journey-arrow">→</span>
-                <span class="journey-step">Pattern recognition</span>
-                <span class="journey-arrow">→</span>
-                <span class="journey-step">Framework</span>
+            <span class="page-num">6/7</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide7">
+        <div class="card">
+            <p class="label">The Arc</p>
+            <h2>What emerged</h2>
+            <div class="arc-flow">
+                <span class="arc-step">Ad-hoc cleanup</span>
+                <span class="arc-arrow">→</span>
+                <span class="arc-step">Multiple cycles</span>
+                <span class="arc-arrow">→</span>
+                <span class="arc-step">Pattern recognition</span>
+                <span class="arc-arrow">→</span>
+                <span class="arc-step">Framework creation</span>
+                <span class="arc-arrow">→</span>
+                <span class="arc-step decision">Systematic improvement</span>
             </div>
             <div class="final-quote">
-                <p>"I thought I'd do a quick cleanup.<br><span class="decision">I ended up building a systematic improvement methodology.</span>"</p>
+                <p>"I thought I was doing cleanup.<br><span class="decision">I was actually building methodology.</span>"</p>
             </div>
-            <span class="page-num">6/6</span>
+            <span class="page-num">7/7</span>
         </div>
     </section>
 
