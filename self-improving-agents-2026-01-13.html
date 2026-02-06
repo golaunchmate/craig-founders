@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="tidbit-type" content="methodology">
+    <meta name="tidbit-type" content="team">
     <meta name="tidbit-subject" content="Michael">
     <meta name="tidbit-company" content="LaunchMate">
     <meta name="tidbit-date" content="2026-01-13">
@@ -11,7 +11,7 @@
     
     <!-- Open Graph -->
     <meta property="og:title" content="Self-Improving Agents | Michael">
-    <meta property="og:description" content="You have to explore before you can simplify.">
+    <meta property="og:description" content="You have to explore before you can simplify. Three growth cycles → systematic improvement methodology.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://golaunchmate.github.io/craig/self-improving-agents-2026-01-13.html">
     <meta property="og:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
@@ -19,7 +19,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Self-Improving Agents | Michael">
-    <meta name="twitter:description" content="You have to explore before you can simplify.">
+    <meta name="twitter:description" content="You have to explore before you can simplify. Three growth cycles → systematic improvement methodology.">
     <meta name="twitter:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
     
     <title>Self-Improving Agents | Michael</title>
@@ -74,60 +74,39 @@
         
         .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1rem; }
         .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
-        .context-line { color: #6b7280; font-size: 0.95rem; margin-top: 1rem; }
         
         p { margin-bottom: 1rem; }
         p:last-child { margin-bottom: 0; }
         
-        .icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        
-        .setup-list {
-            margin: 1rem 0;
+        .code {
+            font-family: 'JetBrains Mono', monospace;
+            background: #1a1a1a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
         }
         
-        .setup-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-        
-        .setup-arrow {
-            color: #6b7280;
-        }
-        
-        .stats-grid {
+        .comparison {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr auto 1fr;
             gap: 1rem;
             margin: 1.5rem 0;
+            align-items: center;
         }
         
-        .stat-item {
+        .before, .after {
             background: #1a1a1a;
             padding: 1rem;
             border-radius: 8px;
             text-align: center;
         }
         
-        .stat-before {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: #6b7280;
-        }
+        .before { border-top: 3px solid #6b7280; }
+        .after { border-top: 3px solid #34d399; }
         
-        .stat-arrow {
-            color: #34d399;
-            margin: 0.25rem 0;
-        }
+        .arrow { color: #6b7280; font-size: 1.5rem; }
         
-        .stat-after {
-            font-weight: 600;
-            color: #34d399;
-        }
-        
-        .quote-box {
+        .insight-box {
             background: linear-gradient(135deg, #1a1a2e 0%, #1a1a1a 100%);
             padding: 1.5rem;
             border-radius: 8px;
@@ -136,35 +115,24 @@
             text-align: center;
         }
         
-        .quote-text {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: #60a5fa;
-        }
-        
-        .checklist {
+        .framework-list {
+            display: grid;
+            gap: 0.75rem;
             margin: 1rem 0;
         }
         
-        .check-item {
+        .framework-item {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 0.75rem;
-            margin-bottom: 0.75rem;
-            font-size: 0.95rem;
+            padding: 0.75rem 1rem;
+            background: #1a1a1a;
+            border-radius: 6px;
+            border-left: 3px solid #34d399;
         }
         
-        .check-icon {
-            color: #34d399;
-            flex-shrink: 0;
-        }
-        
-        .check-label {
-            font-weight: 600;
-        }
-        
-        .check-desc {
-            color: #9ca3af;
+        .framework-icon {
+            font-size: 1rem;
         }
         
         .status-grid {
@@ -188,7 +156,7 @@
             font-size: 0.9rem;
         }
         
-        .flow-diagram {
+        .arc-flow {
             background: #1a1a1a;
             padding: 1.25rem;
             border-radius: 8px;
@@ -197,25 +165,18 @@
             font-size: 0.9rem;
         }
         
-        .flow-arrow {
+        .arc-arrow {
             color: #34d399;
-            margin: 0 0.25rem;
+            margin: 0 0.5rem;
         }
         
-        .next-box {
-            background: #0f1f1a;
-            padding: 1rem;
+        .final-quote {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f1f1a 100%);
+            padding: 1.5rem;
             border-radius: 8px;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
+            text-align: center;
             border: 1px solid #34d399;
-        }
-        
-        .next-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: #34d399;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
         }
     </style>
 </head>
@@ -223,115 +184,84 @@
     <section class="slide" id="slide1">
         <div class="card">
             <p class="label">Michael · Jan 13, 2026</p>
-            <div class="icon">🧠</div>
-            <h1>Self-Improving Agents</h1>
+            <h1>🧠 Self-Improving Agents</h1>
             <p class="subtitle">From cleanup to systematic improvement methodology</p>
-            <p class="context-line">Three growth cycles in one day → systematic framework</p>
+            <p>Started with simple maintenance. Ended with a framework for how agents improve themselves.</p>
+            <p><span class="highlight">Three growth cycles in one day</span> → systematic methodology.</p>
             <p class="scroll-hint">scroll ↓</p>
-            <span class="page-num">1/7</span>
+            <span class="page-num">1/5</span>
         </div>
     </section>
 
     <section class="slide" id="slide2">
         <div class="card">
             <p class="label">The Setup</p>
-            <h2>"Just a quick cleanup"</h2>
-            <p>The original intention was simple maintenance:</p>
-            <div class="setup-list">
-                <div class="setup-item">
-                    <span>Run growth_boost</span>
-                    <span class="setup-arrow">→</span>
-                    <span>clean up stale memory blocks</span>
+            <h2>Plan was simple maintenance</h2>
+            <p>Run <span class="code">growth_boost</span>, clean up stale blocks, return to user work.</p>
+            <p><span class="tension">Expected:</span> 1 cleanup cycle.</p>
+            <div class="comparison">
+                <div class="before">
+                    <div style="font-size: 0.8rem; color: #6b7280; margin-bottom: 0.5rem;">EXPECTED</div>
+                    <div>1 cleanup</div>
+                    <div style="font-size: 0.85rem; color: #9ca3af;">Ad-hoc</div>
+                    <div style="font-size: 0.85rem; color: #9ca3af;">growth_boost v1.0</div>
                 </div>
-                <div class="setup-item">
-                    <span>Fix inconsistencies</span>
-                    <span class="setup-arrow">→</span>
-                    <span>remove duplicates, update dates</span>
-                </div>
-                <div class="setup-item">
-                    <span>Return to user work</span>
-                    <span class="setup-arrow">→</span>
-                    <span>back to normal operations</span>
+                <div class="arrow">→</div>
+                <div class="after">
+                    <div style="font-size: 0.8rem; color: #34d399; margin-bottom: 0.5rem;">ACTUAL</div>
+                    <div><span class="decision">3 growth cycles</span></div>
+                    <div style="font-size: 0.85rem; color: #9ca3af;">Systematic methodology</div>
+                    <div style="font-size: 0.85rem; color: #9ca3af;">growth_boost v2.0</div>
                 </div>
             </div>
-            <p style="margin-top: 1.5rem;"><span class="highlight">Expected:</span> 1 cleanup cycle.</p>
-            <p><span class="tension">What happened:</span> something else entirely.</p>
-            <span class="page-num">2/7</span>
+            <p>Didn't just clean up — <span class="decision">improved how it improves</span>.</p>
+            <span class="page-num">2/5</span>
         </div>
     </section>
 
     <section class="slide" id="slide3">
         <div class="card">
-            <p class="label">The Result</p>
-            <h2>"The agent kept going"</h2>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-before">1 cleanup</div>
-                    <div class="stat-arrow">↓</div>
-                    <div class="stat-after">3 growth cycles</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-before">Ad-hoc</div>
-                    <div class="stat-arrow">↓</div>
-                    <div class="stat-after">Systematic methodology</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-before">growth_boost v1.0</div>
-                    <div class="stat-arrow">↓</div>
-                    <div class="stat-after">v2.0</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-before">0 frameworks</div>
-                    <div class="stat-arrow">↓</div>
-                    <div class="stat-after">1 new framework</div>
-                </div>
+            <p class="label">The Insight</p>
+            <h2>You have to explore before you can simplify.</h2>
+            <div class="insight-box">
+                <p style="margin: 0; font-size: 1.1rem;">The agent ran multiple improvement cycles, <span class="highlight">discovered patterns</span>, then codified them into reusable frameworks.</p>
             </div>
-            <p>Didn't just clean up — improved <span class="decision">how it improves</span>.</p>
-            <span class="page-num">3/7</span>
+            <p>Same principle Michael applied to UI refresh — iterate first, systematize second.</p>
+            <div class="arc-flow">
+                Ad-hoc cleanup <span class="arc-arrow">→</span> Multiple cycles <span class="arc-arrow">→</span> Pattern recognition <span class="arc-arrow">→</span> Framework creation
+            </div>
+            <span class="page-num">3/5</span>
         </div>
     </section>
 
     <section class="slide" id="slide4">
         <div class="card">
-            <p class="label">The Insight</p>
-            <div class="quote-box">
-                <p class="quote-text">"You have to explore before you can simplify."</p>
+            <p class="label">The Result</p>
+            <h2><span class="code">growth_boost</span> v2.0</h2>
+            <div class="framework-list">
+                <div class="framework-item">
+                    <span class="framework-icon">✓</span>
+                    <span><strong>ASSESS checklist</strong> — 5 evaluation patterns</span>
+                </div>
+                <div class="framework-item">
+                    <span class="framework-icon">✓</span>
+                    <span><strong>VALIDATE criteria</strong> — verify before logging</span>
+                </div>
+                <div class="framework-item">
+                    <span class="framework-icon">✓</span>
+                    <span><strong>Revert procedure</strong> — undo if worse</span>
+                </div>
+                <div class="framework-item">
+                    <span class="framework-icon">✓</span>
+                    <span><strong>Iteration limits</strong> — prevent infinite loops</span>
+                </div>
             </div>
-            <p>The agent did exactly this. Ran multiple improvement cycles, discovered patterns, then stepped back and codified those patterns into reusable frameworks.</p>
-            <p>Same principle Michael applied to the UI refresh — <span class="highlight">6 months of exploring features</span> before knowing what to simplify for the first 60 seconds.</p>
-            <span class="page-num">4/7</span>
+            <p style="margin-top: 1rem;">Plus: <span class="highlight">launchmate_growth_patterns</span> block for domain-specific patterns.</p>
+            <span class="page-num">4/5</span>
         </div>
     </section>
 
     <section class="slide" id="slide5">
-        <div class="card">
-            <p class="label">The Pivot</p>
-            <h2>From ad-hoc to systematic</h2>
-            <p>growth_boost v2.0 now includes:</p>
-            <div class="checklist">
-                <div class="check-item">
-                    <span class="check-icon">✓</span>
-                    <span><span class="check-label">ASSESS checklist</span> <span class="check-desc">— 5 evaluation patterns before acting</span></span>
-                </div>
-                <div class="check-item">
-                    <span class="check-icon">✓</span>
-                    <span><span class="check-label">VALIDATE criteria</span> <span class="check-desc">— verify improvement before logging</span></span>
-                </div>
-                <div class="check-item">
-                    <span class="check-icon">✓</span>
-                    <span><span class="check-label">Revert procedure</span> <span class="check-desc">— undo if change is worse</span></span>
-                </div>
-                <div class="check-item">
-                    <span class="check-icon">✓</span>
-                    <span><span class="check-label">Iteration limits</span> <span class="check-desc">— prevent infinite loops</span></span>
-                </div>
-            </div>
-            <p style="margin-top: 1rem;">Plus: <span class="highlight">launchmate_growth_patterns</span> block for domain-specific improvement patterns.</p>
-            <span class="page-num">5/7</span>
-        </div>
-    </section>
-
-    <section class="slide" id="slide6">
         <div class="card">
             <p class="label">Status</p>
             <h2>Where it stands</h2>
@@ -350,26 +280,14 @@
                 </div>
                 <div class="status-item">
                     <span class="status-icon">◐</span>
-                    <span class="status-text">Agent-to-agent messaging affordances</span>
+                    <span class="status-text">Agent-to-agent messaging affordances (next)</span>
                 </div>
             </div>
-            <p style="margin-top: 1rem;"><span class="decision">Every future growth_boost now follows the structured protocol.</span> Improvements compound.</p>
-            <span class="page-num">6/7</span>
-        </div>
-    </section>
-
-    <section class="slide" id="slide7">
-        <div class="card">
-            <p class="label">The Arc</p>
-            <h2>From maintenance to methodology</h2>
-            <div class="flow-diagram">
-                Ad-hoc cleanup <span class="flow-arrow">→</span> Multiple cycles <span class="flow-arrow">→</span> Pattern recognition <span class="flow-arrow">→</span> Framework creation <span class="flow-arrow">→</span> Systematic improvement
+            <div class="final-quote">
+                <p>"<span class="highlight">You have to explore before you can simplify.</span>"</p>
+                <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 0.5rem;">Next: A2A messaging, tidbits library, compounding improvements</p>
             </div>
-            <div class="next-box">
-                <div class="next-label">What's Next</div>
-                <p style="margin: 0; font-size: 0.9rem;">Agent-to-agent messaging affordances. Tidbits library page. Compounding improvements using the new methodology.</p>
-            </div>
-            <span class="page-num">7/7</span>
+            <span class="page-num">5/5</span>
         </div>
     </section>
 
