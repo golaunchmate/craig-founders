@@ -10,7 +10,7 @@
     
     <!-- Open Graph -->
     <meta property="og:title" content="FLBL Tech Spike | LaunchMate">
-    <meta property="og:description" content="We thought cloning agents was a config copy problem. We discovered it's a lived-experience transfer problem.">
+    <meta property="og:description" content="Cloning without message history is like cloning DNA but not memories. You get the same structure but none of the wisdom.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://golaunchmate.github.io/craig/flbl-tech-spike-2026-02-06.html">
     <meta property="og:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
@@ -18,7 +18,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="FLBL Tech Spike | LaunchMate">
-    <meta name="twitter:description" content="We thought cloning agents was a config copy problem. We discovered it's a lived-experience transfer problem.">
+    <meta name="twitter:description" content="Cloning without message history is like cloning DNA but not memories. You get the same structure but none of the wisdom.">
     <meta name="twitter:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
     
     <title>FLBL Tech Spike | Craig</title>
@@ -85,31 +85,30 @@
             font-size: 0.85rem;
         }
         
-        .two-channels {
+        .rejected-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 1.5rem 0;
+            gap: 0.75rem;
+            margin: 1rem 0;
         }
         
-        .channel {
+        .rejected-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
             background: #1a1a1a;
-            padding: 1.25rem;
-            border-radius: 8px;
-            border-top: 3px solid;
+            border-radius: 6px;
         }
         
-        .channel.push { border-color: #60a5fa; }
-        .channel.async { border-color: #34d399; }
-        
-        .channel-name {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+        .rejected-item.accepted {
+            border: 1px solid #34d399;
+            background: #0f1f1a;
         }
         
-        .channel-desc {
-            font-size: 0.9rem;
-            color: #9ca3af;
+        .rejected-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
         }
         
         .insight-box {
@@ -128,35 +127,26 @@
             margin-bottom: 0.5rem;
         }
         
-        .decision-grid {
-            display: grid;
-            gap: 1rem;
-            margin: 1rem 0;
+        .tool-category {
+            margin-bottom: 1.25rem;
         }
         
-        .decision-item {
-            background: #1a1a1a;
-            padding: 1rem;
-            border-radius: 8px;
-            border-left: 3px solid #34d399;
+        .tool-category:last-child {
+            margin-bottom: 0;
         }
         
-        .decision-title {
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
+        .category-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
         }
         
-        .decision-reason {
-            font-size: 0.85rem;
-            color: #9ca3af;
-        }
-        
-        .tools-list {
+        .tool-row {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin: 1rem 0;
         }
         
         .tool-tag {
@@ -169,19 +159,34 @@
             color: #60a5fa;
         }
         
-        .growth-loop {
-            background: #0f1f1a;
-            padding: 1.25rem;
+        .growth-diagram {
+            background: #1a1a1a;
+            padding: 1.5rem;
             border-radius: 8px;
-            margin: 1rem 0;
-            border: 1px solid #34d399;
-            text-align: center;
+            margin: 1.5rem 0;
+        }
+        
+        .growth-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
             font-size: 0.9rem;
         }
         
-        .loop-arrow {
-            color: #34d399;
-            margin: 0 0.25rem;
+        .growth-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .growth-direction {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            min-width: 80px;
+        }
+        
+        .growth-arrow {
+            color: #6b7280;
         }
         
         .final-quote {
@@ -213,126 +218,171 @@
         .status-text {
             font-size: 0.9rem;
         }
+        
+        .analogy-box {
+            background: #1a1a1a;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid #2a2a2a;
+        }
     </style>
 </head>
 <body>
     <section class="slide" id="slide1">
         <div class="card">
             <p class="label">FLBL Tech Spike · Feb 6, 2026</p>
-            <h1>We thought cloning agents was a <span class="highlight">config copy</span> problem.</h1>
-            <p class="subtitle">Like spinning up containers from an image.</p>
-            <p>Build an orchestration layer. Clone specialized agents at scale. Deploy N copies of a perfected master.</p>
-            <p>Straightforward, right?</p>
+            <h1>I thought cloning an agent meant copying its <span class="highlight">config and memory</span>.</h1>
+            <p class="subtitle">Like spinning up a container from an image.</p>
+            <p>Copy the persona. Copy the knowledge blocks. Deploy N instances.</p>
+            <p>That's not how it works.</p>
             <p class="scroll-hint">scroll ↓</p>
-            <span class="page-num">1/6</span>
+            <span class="page-num">1/7</span>
         </div>
     </section>
 
     <section class="slide" id="slide2">
         <div class="card">
-            <p class="label">Discovery</p>
-            <h2>Agent growth happens through TWO channels</h2>
-            <div class="two-channels">
-                <div class="channel push">
-                    <div class="channel-name"><span class="highlight">Shared Memory Blocks</span></div>
-                    <div class="channel-desc">Master updates a block → all clones see it instantly. Knowledge push.</div>
-                </div>
-                <div class="channel async">
-                    <div class="channel-name"><span class="decision">A2A Async Messaging</span></div>
-                    <div class="channel-desc">Clone sends message to master → arrives as system message → becomes part of lived experience.</div>
-                </div>
+            <p class="label">The Realization</p>
+            <h2>The "magic growth" lives in the <span class="tension">message history</span>.</h2>
+            <p>When you chat with an agent over time, it develops behaviors that aren't written anywhere in its config:</p>
+            <p>• <span class="highlight">When</span> to use which tool<br>
+            • <span class="highlight">Tone</span> from thousands of exchanges<br>
+            • <span class="highlight">Compacted summaries</span> that inform future responses<br>
+            • <span class="highlight">Edge case handling</span> learned through experience</p>
+            <div class="analogy-box">
+                <p style="margin: 0;"><span class="tension">Cloning without message history is like cloning DNA but not memories.</span> You get the same structure but none of the wisdom.</p>
             </div>
-            <div class="growth-loop">
-                Clones learn <span class="loop-arrow">→</span> A2A to master <span class="loop-arrow">→</span> master distills <span class="loop-arrow">→</span> updates shared blocks <span class="loop-arrow">→</span> ALL clones benefit
-            </div>
-            <p>Collective intelligence through bidirectional growth.</p>
-            <span class="page-num">2/6</span>
+            <span class="page-num">2/7</span>
         </div>
     </section>
 
     <section class="slide" id="slide3">
         <div class="card">
-            <p class="label">The Shift</p>
-            <h2>The "magic" isn't in the config.</h2>
-            <div class="insight-box">
-                <div class="insight-label">The realization</div>
-                <p style="margin: 0; font-size: 1.1rem;">An agent's <span class="tension">message history IS its learned behavior</span> — tone, tool call patterns, edge case handling, compacted summaries.</p>
+            <p class="label">The Decision</p>
+            <h2>Three ways to copy. Only one works.</h2>
+            <div class="rejected-grid">
+                <div class="rejected-item">
+                    <span class="rejected-status tension">✗ Rejected</span>
+                    <span><strong>Templates:</strong> config only, no message history</span>
+                </div>
+                <div class="rejected-item">
+                    <span class="rejected-status tension">✗ Rejected</span>
+                    <span><strong>Conversations:</strong> can't seed with existing messages</span>
+                </div>
+                <div class="rejected-item accepted">
+                    <span class="rejected-status decision">✓ Selected</span>
+                    <span><strong>Export/Import:</strong> full snapshot — config + memory + messages + tools</span>
+                </div>
             </div>
-            <p>We thought cloning meant copying configuration and memory blocks.</p>
-            <p>But the <span class="highlight">lived experience</span> — the actual conversations — is where behavior emerges.</p>
-            <p><span class="decision">This changed the entire cloning strategy.</span></p>
-            <span class="page-num">3/6</span>
+            <p style="margin-top: 1rem;"><span class="decision">Deep clone is the only way</span> to transfer lived experience.</p>
+            <span class="page-num">3/7</span>
         </div>
     </section>
 
     <section class="slide" id="slide4">
         <div class="card">
-            <p class="label">Key Decisions</p>
-            <h2>What we built and why</h2>
-            <div class="decision-grid">
-                <div class="decision-item">
-                    <div class="decision-title">Export/Import deep clone only</div>
-                    <div class="decision-reason">Templates = clean slate (no history). Conversations = can't seed. Deep clone carries everything.</div>
-                </div>
-                <div class="decision-item">
-                    <div class="decision-title">8 focused tool primitives</div>
-                    <div class="decision-reason">Universal API tool was fragile (datetime issues, param collisions). Focused tools are stable.</div>
-                </div>
-                <div class="decision-item">
-                    <div class="decision-title">Optional <span class="code">target_agent_id</span></div>
-                    <div class="decision-reason">Default = self (via env var). Explicit ID = target child. Clean self-vs-other pattern.</div>
+            <p class="label">The Primitives</p>
+            <h2>8 tools for self-orchestration</h2>
+            <div class="tool-category">
+                <div class="category-label">Clone Workflow</div>
+                <div class="tool-row">
+                    <span class="tool-tag">clone_agent</span>
+                    <span class="tool-tag">create_tool</span>
                 </div>
             </div>
-            <span class="page-num">4/6</span>
+            <div class="tool-category">
+                <div class="category-label">Growth Loop</div>
+                <div class="tool-row">
+                    <span class="tool-tag">send_agent_message</span>
+                    <span class="tool-tag">create_shared_block</span>
+                    <span class="tool-tag">update_block</span>
+                </div>
+            </div>
+            <div class="tool-category">
+                <div class="category-label">Monitoring</div>
+                <div class="tool-row">
+                    <span class="tool-tag">list_my_blocks</span>
+                    <span class="tool-tag">list_agents</span>
+                </div>
+            </div>
+            <div class="tool-category">
+                <div class="category-label">Evolution</div>
+                <div class="tool-row">
+                    <span class="tool-tag">manage_agent_tools</span>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #9ca3af;">All tools take optional <span class="code">target_agent_id</span>. Empty = self (via env var). Explicit = child clone.</p>
+            <span class="page-num">4/7</span>
         </div>
     </section>
 
     <section class="slide" id="slide5">
         <div class="card">
-            <p class="label">The Primitives</p>
-            <h2>Self-orchestrating through client injection</h2>
-            <p>Every tool gets a pre-initialized <span class="code">client</span> with full API access. The FLBL agent can autonomously:</p>
-            <div class="tools-list">
-                <span class="tool-tag">clone_agent</span>
-                <span class="tool-tag">send_agent_message</span>
-                <span class="tool-tag">create_shared_block</span>
-                <span class="tool-tag">update_block</span>
-                <span class="tool-tag">list_my_blocks</span>
-                <span class="tool-tag">list_agents</span>
-                <span class="tool-tag">manage_agent_tools</span>
-                <span class="tool-tag">create_tool</span>
+            <p class="label">The Growth Loop</p>
+            <h2>Bidirectional learning</h2>
+            <div class="growth-diagram">
+                <div class="growth-row">
+                    <span class="growth-direction highlight">Downstream</span>
+                    <span class="growth-arrow">→</span>
+                    <span>Master updates shared blocks → all clones see instantly</span>
+                </div>
+                <div class="growth-row">
+                    <span class="growth-direction decision">Upstream</span>
+                    <span class="growth-arrow">→</span>
+                    <span>Clones send field learnings via A2A → becomes part of master's history</span>
+                </div>
             </div>
-            <p style="margin-top: 1rem;"><span class="decision">The agent bootstrapped itself</span> — used its own tools to attach its own tools via client injection.</p>
-            <span class="page-num">5/6</span>
+            <p><span class="code">send_agent_message</span> is the key. When a clone sends a message to master, it arrives as a <span class="highlight">system message in master's history</span>.</p>
+            <p>That message <span class="decision">IS</span> growth — it becomes part of the master's lived experience, shaping future behavior.</p>
+            <span class="page-num">5/7</span>
         </div>
     </section>
 
     <section class="slide" id="slide6">
+        <div class="card">
+            <p class="label">Collective Intelligence</p>
+            <h2>What ONE clone learns, ALL clones benefit from.</h2>
+            <p>The full loop:</p>
+            <p>1. Clone encounters edge case in the field<br>
+            2. Clone sends learning to master via A2A<br>
+            3. Master's history now contains that learning<br>
+            4. Master distills insight, updates shared block<br>
+            5. <span class="decision">All clones instantly have the new knowledge</span></p>
+            <div class="insight-box">
+                <div class="insight-label">The insight</div>
+                <p style="margin: 0;">A2A messaging isn't just communication — it's <span class="tension">growth injection</span>. Messages become lived experience.</p>
+            </div>
+            <span class="page-num">6/7</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide7">
         <div class="card">
             <p class="label">Status</p>
             <h2>Where it stands</h2>
             <div class="status-grid">
                 <div class="status-item">
                     <span class="status-icon">✓</span>
-                    <span class="status-text">Architecture doc at v0.2, all 8 tools created and self-attached</span>
+                    <span class="status-text">Architecture doc v0.2, all 8 tools created</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">✓</span>
+                    <span class="status-text">Agent bootstrapped itself — attached its own tools via client injection</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">✓</span>
+                    <span class="status-text">First live A2A message sent successfully</span>
                 </div>
                 <div class="status-item">
                     <span class="status-icon">→</span>
-                    <span class="status-text">Next: Fleet registry block (master/clone relationships)</span>
-                </div>
-                <div class="status-item">
-                    <span class="status-icon">→</span>
-                    <span class="status-text">Next: Test export/import clone flow end-to-end</span>
-                </div>
-                <div class="status-item">
-                    <span class="status-icon">→</span>
-                    <span class="status-text">Next: Define upstream filtering (signal vs. noise from clones)</span>
+                    <span class="status-text">Next: fleet registry block, end-to-end clone test, upstream signal filtering</span>
                 </div>
             </div>
             <div class="final-quote">
-                <p>"We thought cloning agents was a config copy problem.<br><span class="decision">We discovered it's a lived-experience transfer problem.</span>"</p>
+                <p>"I thought cloning agents was a config copy problem.<br><span class="decision">I realized it's a lived-experience transfer problem.</span>"</p>
             </div>
-            <span class="page-num">6/6</span>
+            <span class="page-num">7/7</span>
         </div>
     </section>
 
