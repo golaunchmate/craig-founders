@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Juan Alcala">
+    <meta name="tidbit-company" content="RAFRS">
+    <meta name="tidbit-date" content="2026-02-09">
+    <meta name="tidbit-agent-id" content="agent-a14b8e7f-8e98-488b-becd-ad2390fbe18c">
+    <meta name="tidbit-period" content="2026-W06-W07">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Juan Alcala | RAFRS">
+    <meta property="og:description" content="We thought we needed more proof. Turns out we need precedent.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://golaunchmate.github.io/craig/juan-rafrs-2026-02-09.html">
+    <meta property="og:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Juan Alcala | RAFRS">
+    <meta name="twitter:description" content="We thought we needed more proof. Turns out we need precedent.">
+    <meta name="twitter:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <title>Juan Alcala | RAFRS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 640px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2; }
+        h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
+        
+        p { margin-bottom: 1rem; }
+        p:last-child { margin-bottom: 0; }
+        
+        .quote-box {
+            background: linear-gradient(135deg, #1a1a2e 0%, #1a1a1a 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 3px solid #60a5fa;
+        }
+        
+        .insight-box {
+            background: linear-gradient(135deg, #1f1a0f 0%, #1a1a1a 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border: 1px solid #f97316;
+        }
+        
+        .insight-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #f97316;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .validation-box {
+            background: #0f1f1a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border: 1px solid #34d399;
+        }
+        
+        .validation-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #34d399;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        
+        .test-card {
+            background: #1a1a1a;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .test-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #60a5fa;
+            margin-bottom: 0.25rem;
+        }
+        
+        .test-goal {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+        
+        .shift-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .shift-before, .shift-after {
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .shift-before {
+            background: #1a1a1a;
+            border: 1px solid #6b7280;
+        }
+        
+        .shift-after {
+            background: #0f1f1a;
+            border: 1px solid #34d399;
+        }
+        
+        .shift-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .shift-before .shift-label { color: #6b7280; }
+        .shift-after .shift-label { color: #34d399; }
+        
+        .shift-text {
+            font-size: 0.85rem;
+        }
+        
+        .final-quote {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f1f1a 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+            border: 1px solid #34d399;
+        }
+        
+        .deadline {
+            font-family: 'JetBrains Mono', monospace;
+            color: #f97316;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <section class="slide" id="slide1">
+        <div class="card">
+            <p class="label">Juan Alcala · RAFRS</p>
+            <h1>We thought we needed more proof.</h1>
+            <p class="subtitle">Turns out we need <span class="decision">precedent</span>.</p>
+            <div class="quote-box">
+                <p style="margin: 0; font-style: italic;">"The question isn't 'does it work?' anymore — it's 'who's desperate for it?'"</p>
+            </div>
+            <p class="scroll-hint">scroll ↓</p>
+            <span class="page-num">1/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide2">
+        <div class="card">
+            <p class="label">Technical Validation</p>
+            <h2>Welders were <span class="decision">blown away</span></h2>
+            <p>Ran the demos. Showed the carbon-fiber repair kit. Got the reactions we wanted.</p>
+            <div class="validation-box">
+                <div class="validation-label">Key Finding</div>
+                <p style="margin: 0;"><strong>Dissimilar metals</strong> — galvanized steel to aluminum — confirmed <span class="tension">"impossible"</span> to weld traditionally. That's a clear capability gap where RAFRS has <span class="highlight">no competition</span>.</p>
+            </div>
+            <p>Got referrals to a retired Navy welder with 20+ years experience. Demo scheduled for Wednesday (Feb 12).</p>
+            <p>But skepticism also emerged: welders doubt carbon fiber strength for structural applications. They want proof they can see — "repair a chair, sit on it." Sourcing a chair to fix before Wednesday.</p>
+            <span class="page-num">2/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide3">
+        <div class="card">
+            <p class="label">The Reframe</p>
+            <h2><span class="tension">Hammer looking for a nail</span></h2>
+            <p>Mentor session with Neal + Craig surfaced the real gap: technical validation is there, but we haven't found the <span class="highlight">BUYER</span> — someone gripping the table.</p>
+            <div class="insight-box">
+                <div class="insight-label">Friction Architect Insight</div>
+                <p style="margin: 0;">The real friction isn't technical — it's <span class="tension">political</span>. Approvers have asymmetric career risk. <strong>"Precedent + Cover > Proof."</strong></p>
+            </div>
+            <p>Non-DoD paths (motorsports, civilian marine) may actually unlock DoD faster by giving approvers cover to say yes.</p>
+            <span class="page-num">3/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide4">
+        <div class="card">
+            <p class="label">Four Neal Tests</p>
+            <h2>Find <span class="highlight">pull</span>, not push</h2>
+            <div class="test-grid">
+                <div class="test-card">
+                    <div class="test-name">A/B Landing Pages</div>
+                    <div class="test-goal">Which framing gets clicks?</div>
+                </div>
+                <div class="test-card">
+                    <div class="test-name">Boat Launch (Marina)</div>
+                    <div class="test-goal">Talk to people with broken boats</div>
+                </div>
+                <div class="test-card">
+                    <div class="test-name">El Segundo</div>
+                    <div class="test-goal">Manufacturing hub — industrial pain</div>
+                </div>
+                <div class="test-card">
+                    <div class="test-name">Machine Shop Hang-out</div>
+                    <div class="test-goal">Watch what breaks, who's frustrated</div>
+                </div>
+            </div>
+            <p class="deadline">Deadline: February 20, 2026</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #9ca3af;">The welder conversations build technical credibility, but the boat launch and El Segundo visits are where <span class="highlight">pull</span> lives.</p>
+            <span class="page-num">4/5</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide5">
+        <div class="card">
+            <p class="label">The Shift</p>
+            <h2>From proof to <span class="decision">precedent</span></h2>
+            <div class="shift-compare">
+                <div class="shift-before">
+                    <div class="shift-label">Before</div>
+                    <div class="shift-text">"We need strength data and welder validation to prove it works."</div>
+                </div>
+                <div class="shift-after">
+                    <div class="shift-label">Now</div>
+                    <div class="shift-text">"We need to find someone actively trying to solve this problem — and be their first success story."</div>
+                </div>
+            </div>
+            <div class="final-quote">
+                <p><span class="highlight">Who is gripping the table?</span></p>
+            </div>
+            <span class="page-num">5/5</span>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) setTimeout(() => target.scrollIntoView(), 100);
+        }
+
+        const slides = document.querySelectorAll('.slide');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    history.replaceState(null, null, '#' + entry.target.id);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => observer.observe(slide));
+    </script>
+</body>
+</html>
