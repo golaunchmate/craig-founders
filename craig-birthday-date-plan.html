@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Craig's Birthday Date Plan">
+    <meta property="og:description" content="Grateful Dead + Sushi, February 13-14, 2026">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Craig's Birthday Date Plan 🎸🍣🎂</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f0f 50%, #1a2e1a 100%);
+            color: #e5e5e5;
+            min-height: 100vh;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 720px;
+            width: 100%;
+            padding: 3rem;
+            background: rgba(26, 26, 26, 0.85);
+            border: 1px solid #333;
+            border-radius: 20px;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #60a5fa;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #f97316, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h2 { 
+            font-size: 1.5rem; 
+            font-weight: 600; 
+            margin-bottom: 1rem;
+            color: #f5f5f5;
+        }
+        
+        .subtitle { 
+            color: #9ca3af; 
+            font-size: 1.1rem; 
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .accent { color: #a78bfa; }
+        
+        p { margin-bottom: 1rem; line-height: 1.7; }
+        p:last-child { margin-bottom: 0; }
+        
+        .weather-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .weather-card {
+            background: rgba(255,255,255,0.05);
+            padding: 1.25rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .weather-day { font-size: 0.8rem; color: #9ca3af; margin-bottom: 0.5rem; }
+        .weather-temp { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .weather-desc { font-size: 0.75rem; color: #6b7280; }
+        
+        .timeline {
+            margin: 1.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #f97316, #60a5fa, #34d399);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: 1rem 0;
+            padding-left: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+        
+        .timeline-item:hover {
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.65rem;
+            top: 1.5rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #0f0f0f;
+            border: 3px solid #60a5fa;
+        }
+        
+        .timeline-time {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #f97316;
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-title {
+            font-weight: 600;
+            color: #e5e5e5;
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-desc {
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+        
+        .venue-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .venue-card:hover {
+            border-color: #60a5fa;
+            transform: translateX(4px);
+        }
+        
+        .venue-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .venue-type {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        
+        .venue-why {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 0.75rem;
+        }
+        
+        .venue-tips {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .venue-tips li {
+            padding: 0.4rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.85rem;
+            color: #d1d5db;
+        }
+        
+        .venue-tips li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .backup-box {
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .backup-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: #a78bfa;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .budget-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .budget-item {
+            background: rgba(255,255,255,0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .budget-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #34d399;
+        }
+        
+        .budget-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+        
+        .set-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-radius: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #6b7280;
+            font-size: 0.8rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
+        }
+        
+        .celebration {
+            font-size: 3rem;
+            margin: 1rem 0;
+        }
+        
+        .playlist {
+            background: rgba(96, 165, 250, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .playlist-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+        }
+        
+        .playlist-song {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            padding: 0.25rem 0;
+        }
+        
+        .pivot-trigger {
+            background: rgba(249, 115, 22, 0.1);
+            border-left: 3px solid #f97316;
+            padding: 0.75rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #f97316;
+        }
+        
+        .pivot-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        
+        .nav-dots {
+            position: fixed;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            z-index: 100;
+        }
+        
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-dot:hover, .nav-dot.active {
+            background: #60a5fa;
+            transform: scale(1.3);
+        }
+        
+        .close-moment {
+            background: linear-gradient(135deg, #1a2e1a, #0f0f0f);
+            border: 1px solid #34d399;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+        }
+        
+        .close-moment h3 {
+            color: #34d399;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        .close-moment p {
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+        
+        @media (max-width: 640px) {
+            .weather-grid, .budget-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.75rem; }
+            .card { padding: 2rem; }
+            .nav-dots { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-dots">
+        <div class="nav-dot active" data-slide="1" title="Cover"></div>
+        <div class="nav-dot" data-slide="2" title="Weather"></div>
+        <div class="nav-dot" data-slide="3" title="Timeline"></div>
+        <div class="nav-dot" data-slide="4" title="Record Store"></div>
+        <div class="nav-dot" data-slide="5" title="Dinner"></div>
+        <div class="nav-dot" data-slide="6" title="Dessert"></div>
+        <div class="nav-dot" data-slide="7" title="Budget"></div>
+        <div class="nav-dot" data-slide="8" title="Close"></div>
+    </div>
+
+    <section class="slide" id="slide1">
+        <div class="card" style="text-align: center;">
+            <div class="celebration">🎸🍣🎂</div>
+            <p class="label">February 13–14, 2026</p>
+            <h1>Craig's Birthday Date Plan</h1>
+            <p class="subtitle">Grateful Dead + Sushi, sober-friendly</p>
+            <p style="color: #6b7280; margin-top: 1rem;">Mission Hills / Bankers Hill, San Diego</p>
+            <div class="close-moment">
+                <h3>🎁 A cozy, no-pressure birthday night</h3>
+                <p>Thoughtful, interactive, and very "her" — record dig → sushi → dessert → stroll</p>
+            </div>
+            <span class="page-num">1/8</span>
+            <span class="scroll-hint">↓ scroll</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide2">
+        <div class="card">
+            <p class="label">Weather Snapshot</p>
+            <h2>Perfect February San Diego</h2>
+            <div class="weather-grid">
+                <div class="weather-card">
+                    <div class="weather-day">Today</div>
+                    <div class="weather-temp">61°F</div>
+                    <div class="weather-desc">Clear</div>
+                </div>
+                <div class="weather-card">
+                    <div class="weather-day">Fri, Feb 13</div>
+                    <div class="weather-temp">66°F</div>
+                    <div class="weather-desc">Partial sunshine</div>
+                </div>
+                <div class="weather-card">
+                    <div class="weather-day">Sat, Feb 14</div>
+                    <div class="weather-temp">65°F</div>
+                    <div class="weather-desc">Sunshine & clouds</div>
+                </div>
+            </div>
+            <p style="text-align: center; color: #6b7280; font-size: 0.85rem;">
+                Evening temps: 49–52°F — bring a light layer for the strolls ☀️
+            </p>
+            <span class="page-num">2/8</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide3">
+        <div class="card">
+            <p class="label">Timeline Overview</p>
+            <h2>The Flow</h2>
+            <div class="timeline">
+                <div class="timeline-item" onclick="goToSlide(4)">
+                    <div class="timeline-time">5:00 – 5:50 PM</div>
+                    <div class="timeline-title"><span class="set-badge">SET 1</span> Record Dig</div>
+                    <div class="timeline-desc">M-Theory Music — Grateful Dead mission</div>
+                </div>
+                <div class="timeline-item" onclick="goToSlide(5)">
+                    <div class="timeline-time">6:15 – 7:45 PM</div>
+                    <div class="timeline-title"><span class="set-badge">SET 2</span> Dinner</div>
+                    <div class="timeline-desc">Hane Sushi — her happy place</div>
+                </div>
+                <div class="timeline-item" onclick="goToSlide(6)">
+                    <div class="timeline-time">8:05 – 9:25 PM</div>
+                    <div class="timeline-title"><span class="set-badge">ENCORE</span> Dessert</div>
+                    <div class="timeline-desc">Extraordinary Desserts — decadent close</div>
+                </div>
+                <div class="timeline-item" onclick="goToSlide(8)">
+                    <div class="timeline-time">9:25 – 10:15 PM</div>
+                    <div class="timeline-title">🌙 Nighttime Stroll</div>
+                    <div class="timeline-desc">Balboa Park paths + setlist recap</div>
+                </div>
+            </div>
+            <div class="close-moment">
+                <h3>Record Store → Sushi → Dessert → Stroll</h3>
+                <p>All walkable in Mission Hills / Bankers Hill</p>
+            </div>
+            <span class="page-num">3/8
