@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foonie Continuity Dashboard | Kavindi × Craig</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #2a2a2a;
+            padding-bottom: 1.5rem;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        .subtitle {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+        .last-updated {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #60a5fa;
+            background: #1a1a1a;
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .section {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .section-icon {
+            font-size: 1.25rem;
+        }
+        .commitment-item, .hypothesis-item {
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .commitment-item:last-child, .hypothesis-item:last-child {
+            margin-bottom: 0;
+        }
+        .commitment-header, .hypothesis-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .commitment-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #60a5fa;
+            font-weight: 600;
+        }
+        .status-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .status-pending {
+            background: #f9731633;
+            color: #f97316;
+        }
+        .status-due-today {
+            background: #f4433633;
+            color: #f44336;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .status-completed {
+            background: #34d39933;
+            color: #34d399;
+        }
+        .status-testing {
+            background: #60a5fa33;
+            color: #60a5fa;
+        }
+        .status-confirmed {
+            background: #34d39933;
+            color: #34d399;
+        }
+        .status-unclear {
+            background: #6b728033;
+            color: #9ca3af;
+        }
+        .commitment-text, .hypothesis-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #d1d5db;
+        }
+        .deadline {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-top: 0.5rem;
+        }
+        .next-action-box {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 1.25rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
+        .implicit-list {
+            list-style: none;
+        }
+        .implicit-list li {
+            background: #0f0f0f;
+            border-left: 3px solid #6b7280;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        .coaching-thread {
+            background: #0f0f0f;
+            border-left: 3px solid #f472b6;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            font-style: italic;
+            color: #d1d5db;
+        }
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a2a2a;
+            color: #6b7280;
+            font-size: 0.8rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #60a5fa;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← Back to Dashboard</a>
+    
+    <header>
+        <h1>🍜 Foonie Continuity Dashboard</h1>
+        <p class="subtitle">Kavindi × Craig | Session-to-Session Tracking</p>
+        <span class="last-updated">Last Updated: Feb 19, 2026 5:00 PM UTC</span>
+    </header>
+
+    <!-- Commitment Spine Section -->
+    <div class="section">
+        <div class="section-title">
+            <span class="section-icon">✅</span>
+            <span>Commitment Spine</span>
+        </div>
+        
+        <div class="commitment-item">
+            <div class="commitment-header">
+                <span class="commitment-id">C1</span>
+                <span class="status-badge status-due-today">DUE TODAY</span>
+            </div>
+            <div class="commitment-text">
+                Get Cluck and Sip conversion data ("How many students redeemed the discount?")
+            </div>
+            <div class="deadline">📅 Deadline: Friday, Feb 21, 2026</div>
+        </div>
+
+        <div class="commitment-item">
+            <div class="commitment-header">
+                <span class="commitment-id">C2</span>
+                <span class="status-badge status-pending">PENDING</span>
+            </div>
+            <div class="commitment-text">
+                Launch CoCo Curry deal with SDSU Foodies collab
+            </div>
+            <div class="deadline">📅 Deadline: Monday, Feb 23, 2026</div>
+        </div>
+
+        <div class="commitment-item">
+            <div class="commitment-header">
+                <span class="commitment-id">C3</span>
+                <span class="status-badge status-pending">PENDING</span>
+            </div>
+            <div class="commitment-text">
+                Secure cafe partner for March 27 event
+            </div>
+            <div class="deadline">📅 Deadline: March 27, 2026</div>
+        </div>
+
+        <div class="commitment-item">
+            <div class="commitment-header">
+                <span class="commitment-id">C4</span>
+                <span class="status-badge status-pending">ONGOING</span>
+            </div>
+            <div class="commitment-text">
+                Practice systems-level business model articulation before next 1:1 — explain what's validated, what's testing, what's next with stakeholder incentives
+            </div>
+            <div class="deadline">📅 Deadline: Before next session with Craig</div>
+        </div>
+    </div>
+
+    <!-- Hypothesis Tracker Section -->
+    <div class="section">
+        <div class="section-title">
+            <span class="section-icon">🔬</span>
+            <span>Hypothesis Tracker</span>
+        </div>
+        
+        <div class="hypothesis-item">
+            <div class="commitment-header">
+                <span class="commitment-id">H1</span>
+                <span class="status-badge status-testing">TESTING</span>
+            </div>
+            <div class="hypothesis-text">
+                <strong>Will Cluck and Sip show measurable conversion?</strong><br>
+                Testing whether student discount promotion drives actual redemptions (measuring views → visits). Answer coming Friday Feb 21.
+            </div>
+        </div>
+
+        <div class="hypothesis-item">
+            <div class="commitment-header">
+                <span class="commitment-id">H2</span>
+                <span class="status-badge status-unclear">EMERGING</span>
+            </div>
+            <div class="hypothesis-text">
+                <strong>Is the actual business "social media as a service for mom & pops"?</strong><br>
+                Craig's insight: Mom and pop restaurants don't get social media. Foonie offers built-in audience, club network, and viral mechanics they can't replicate alone.
+            </div>
+        </div>
+
+        <div class="hypothesis-item">
+            <div class="commitment-header">
+                <span class="commitment-id">H3</span>
+                <span class="status-badge status-testing">PRACTICING</span>
+            </div>
+            <div class="hypothesis-text">
+                <strong>Can Kavindi maintain systems-level articulation?</strong><br>
+                Kavindi is a systems thinker but defaults to task-level explanations. Craig coaching her to express the strategic layer — show stakeholder incentives and what's validated vs. testing.
+            </div>
+        </div>
+    </div>
+
+    <!-- Next Action Section -->
+    <div class="section">
+        <div class="section-title">
+            <span class="section-icon">🎯</span>
+            <span>Next Action</span>
+        </div>
+        <div class="next-action-box">
+            <strong>TODAY (Feb 19):</strong> Cluck and Sip social launch happening<br><br>
+            <strong>FRIDAY (Feb 21):</strong> Follow up with restaurant — "How many students redeemed the discount?" (C1 answer validates Step 3 of business model)<br><br>
+            <strong>MONDAY (Feb 23):</strong> Launch CoCo Curry with SDSU Foodies (C2)<br><br>
+            <strong>BEFORE NEXT 1:1:</strong> Practice systems-level explanation — start with validated/testing/next framework, not task recap (C4)
+        </div>
+    </div>
+
+    <!-- Implicit Commitments Section -->
+    <div class="section">
+        <div class="section-title">
+            <span class="section-icon">🤝</span>
+            <span>Implicit Commitments</span>
+        </div>
+        <ul class="implicit-list">
+            <li><strong>I1 (Kavindi):</strong> Explore viral loop mechanics (tiered discounts, repost incentives) — but don't build yet</li>
+            <li><strong>I2 (Kavindi):</strong> Stay in the validated → testing → next framework; don't jump ahead to app-building</li>
+            <li><strong>I3 (Craig):</strong> Hold Kavindi to systems-level explanation at the START of next session — don't let her recap tasks</li>
+            <li><strong>I4 (Craig):</strong> Follow the conversion data (H1) as the primary signal before expanding to more restaurant partners</li>
+        </ul>
+    </div>
+
+    <!-- Craig's Coaching Thread Section -->
+    <div class="section">
+        <div class="section-title">
+            <span class="section-icon">💬</span>
+            <span>Craig's Coaching Thread</span>
+        </div>
+        <div class="coaching-thread">
+            "Mom and pop restaurants don't get social media. We are effectively an extension of their ability to get their word out."<br><br>
+            
+            "You are a systems thinker. But you don't often share that view with people. You look at all the stakeholders and incentives — express that when you talk about your business."<br><br>
+            
+            "You're sequencing this perfectly. First make videos ✅. Then get restaurants ✅. Now test conversion 🧪. Then viral loop later."<br><br>
+            
+            <strong>Pattern to pick up next session:</strong> Does she start with systems-level articulation or default back to task-level recap?
+        </div>
+    </div>
+
+    <footer>
+        <p>Maintained by Transcript Agent | LaunchMate Continuity System</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem;">This page updates automatically when cron queries are received</p>
+    </footer>
+</div>
+</body>
+</html>
